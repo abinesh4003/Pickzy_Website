@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google';
 import AOSInit from '../components/AOSInit';
 import ScrollToTop from '../components/scrollToTop';
 
-const inter = Inter({ subsets: ['latin'] });
+// const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'PickZy - Software Development & Digital Solutions',
@@ -17,8 +17,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className='overflow-x-hidden'>
+      {/* className={inter.className} */}
+      <body > 
          <AOSInit/>
         {children}
         <ScrollToTop/>

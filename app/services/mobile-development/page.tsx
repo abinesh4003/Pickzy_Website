@@ -104,8 +104,8 @@ export default function MobileDevelopment() {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/images/mobile-app-pattern.svg')] bg-[length:1200px] bg-center mix-blend-overlay"></div>
+        <div className="absolute inset-0 opacity-20 ">
+          <div className="absolute inset-0 bg-[url('/service/mobile/hero_back.jpg')] bg-[length:1200px] bg-center mix-blend-overlay"></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -159,7 +159,7 @@ export default function MobileDevelopment() {
             </div>
             
             {/* Image Content */}
-            <div className="relative rounded-xl w-full h-full flex justify-center items-center shadow-2xl" data-aos="fade-left">
+            <div className="relative rounded-xl w-full h-full flex justify-center items-center " data-aos="fade-left">
               <div className="relative z-10 w-96 h-auto max-w-lg mx-auto">
                 <div className="relative">
                   {/* Main app screenshot with floating elements */}

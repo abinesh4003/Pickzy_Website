@@ -130,8 +130,8 @@ export default function WebDevelopment() {
         data-aos="fade-in"
       >
         {/* Background pattern */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-[length:70px_70px]"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-20 ">
+          <div className="absolute inset-0 bg-[url('/service/web/hero.jpg')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
