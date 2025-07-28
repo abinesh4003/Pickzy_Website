@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github, Facebook } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -8,9 +9,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              PickZy
-            </span>
+             {/* Logo */}
+          <Link href="/" className="flex-shrink-0" aria-label="PickZy Home">
+            <Image
+              src="/assets/pickzy_logo.png"
+              alt="PickZy Logo"
+              width={150}  // Set appropriate width
+              height={60}  // Set appropriate height
+              className="h-10 w-auto"  // Adjust as needed
+              priority  // Optional: if this is above the fold
+            />
+          </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Leading software development company delivering innovative digital solutions that transform businesses and drive growth worldwide.
             </p>

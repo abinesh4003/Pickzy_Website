@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import path from 'node:path';
 
 interface NavItem {
@@ -135,20 +136,26 @@ export default function Header() {
   };
 
   return (
-    <header className={`sticky top-0 w-full transition-all duration-300 z-50 ${
+    <header className={`sticky top-0 bg-transparent w-full transition-all duration-300 z-50 ${
       isScrolled 
-        ? 'bg-white/95 backdrop-blur-sm border-b shadow-sm' 
-        : 'bg-white/80 backdrop-blur-sm border-b border-transparent'
+        ? 'bg-white/70 backdrop-blur-sm border-b shadow-sm' 
+        : 'bg-white/70 backdrop-blur-sm border-b border-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
+         
           {/* Logo */}
           <Link href="/" className="flex-shrink-0" aria-label="PickZy Home">
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              PickZy
-            </span>
+            <Image
+              src="/assets/pickzy_logo.png"
+              alt="PickZy Logo"
+              width={150}  // Set appropriate width
+              height={60}  // Set appropriate height
+              className="h-10 w-auto"  // Adjust as needed
+              priority  // Optional: if this is above the fold
+            />
           </Link>
-          
+
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
