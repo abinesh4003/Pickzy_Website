@@ -13,7 +13,7 @@ export default function PositionsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://myjobsapi.free.nf/php-api/positions.php');
+        const response = await fetch('https://myjobsapi.free.nf/php-api/positions.php');
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
