@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
+import ContactForm from '@/components/ContactForm';
 import Link from 'next/link';
 import { 
   Mail, 
@@ -56,17 +57,6 @@ const contactInfo = [
   }
 ];
 
-
-  const services = [
-    "Web Development",
-    "Mobile App Development", 
-    "Cloud Solutions",
-    "Digital Transformation",
-    "UI/UX Design",
-    "Cybersecurity",
-    "Data Analytics",
-    "IT Consulting"
-  ];
 
   const faqs = [
     {
@@ -162,97 +152,9 @@ const contactInfo = [
   <section className="py-20 bg-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Contact Form */}
-        <Card 
-          className="shadow-xl border-0"
-          data-aos="fade-right"
-        >
-          <CardHeader>
-            <CardTitle 
-              className="text-2xl"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              Send us a message
-            </CardTitle>
-            <CardDescription
-              data-aos="fade-up"
-              data-aos-delay="150"
-            >
-              Fill out the form below and we'll get back to you within 24 hours.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div 
-              className="grid grid-cols-1 md:grid-cols-2 gap-4"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div>
-                <label className="text-sm font-medium mb-2 block">First Name *</label>
-                <Input placeholder="John" />
-              </div>
-              <div>
-                <label className="text-sm font-medium mb-2 block">Last Name *</label>
-                <Input placeholder="Doe" />
-              </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="250">
-              <label className="text-sm font-medium mb-2 block">Email *</label>
-              <Input type="email" placeholder="john@example.com" />
-            </div>
-            <div data-aos="fade-up" data-aos-delay="300">
-              <label className="text-sm font-medium mb-2 block">Phone</label>
-              <Input placeholder="+1 (555) 123-4567" />
-            </div>
-            <div data-aos="fade-up" data-aos-delay="350">
-              <label className="text-sm font-medium mb-2 block">Company</label>
-              <Input placeholder="Your Company" />
-            </div>
-            <div data-aos="fade-up" data-aos-delay="400">
-              <label className="text-sm font-medium mb-2 block">Service Interested In</label>
-              <select className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <option value="">Select a service</option>
-                {services.map((service, index) => (
-                  <option key={index} value={service}>{service}</option>
-                ))}
-              </select>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="450">
-              <label className="text-sm font-medium mb-2 block">Project Budget</label>
-              <select className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <option value="">Select budget range</option>
-                <option value="10k-25k">$10,000 - $25,000</option>
-                <option value="25k-50k">$25,000 - $50,000</option>
-                <option value="50k-100k">$50,000 - $100,000</option>
-                <option value="100k+">$100,000+</option>
-              </select>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="500">
-              <label className="text-sm font-medium mb-2 block">Project Details *</label>
-              <Textarea 
-                placeholder="Tell us about your project, requirements, timeline, and any specific challenges you're facing..."
-                className="min-h-[120px]"
-              />
-            </div>
-            <Button 
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-3"
-              data-aos="fade-up"
-              data-aos-delay="550"
-            >
-              Send Message
-              <MessageSquare className="ml-2 h-4 w-4" />
-            </Button>
-            <p 
-              className="text-xs text-gray-500 text-center"
-              data-aos="fade-up"
-              data-aos-delay="600"
-            >
-              By submitting this form, you agree to our privacy policy and terms of service.
-            </p>
-          </CardContent>
-        </Card>
-
+       {/* contact form */}
+       <ContactForm />
+       
         {/* Additional Info */}
         <div className="space-y-8">
           {/* Why Choose Us */}
