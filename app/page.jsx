@@ -171,7 +171,7 @@ export default function Home() {
                   asChild
 
                 >
-                  <Link href="/contact">Get in Touch</Link>
+                  <Link href="/contact-us">Get in Touch</Link>
                 </Button>
                 <Button
                   variant="outline"
@@ -366,7 +366,7 @@ export default function Home() {
             data-aos-delay="200"
           >
             <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-3" asChild>
-              <Link href="/contact">
+              <Link href="/contact-us">
                 Get Free Consultation
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

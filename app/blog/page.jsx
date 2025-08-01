@@ -9,8 +9,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Calendar, User, ArrowRight, Clock , MapPin, Phone, Send, Mail,} from 'lucide-react';
 
-import Blogs from '../pickZy_blog/blog';
-import ContactForm from '@/components/ContactForm';
+import Blogs from './blog';
+
 
 
 export default function Blog() {

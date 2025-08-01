@@ -212,7 +212,7 @@ export default function DigitalTransformation() {
               Schedule a Free Call
             </Button>
             <Button size="lg" variant="outline" className="text-blue-900 border-white hover:bg-white hover:text-blue-900 px-8 py-6 text-lg font-semibold">
-              <Link rel="stylesheet" href="/contact" >Start Your Project</Link>
+              <Link rel="stylesheet" href="/contact-us" >Start Your Project</Link>
             </Button>
           </div>
         </div>

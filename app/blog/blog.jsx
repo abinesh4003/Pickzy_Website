@@ -78,11 +78,11 @@ const PickzyInteractive = () => {
                   <span>8 min read</span>
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-800 hover:text-indigo-600 transition">
-                  <Link href="pickZy_blog/blogs/reactjs-web-development-company">Why React.js Is the First Choice for Modern Web Applications in 2025</Link>
+                  <Link href="blog/reactjs-web-development-company">Why React.js Is the First Choice for Modern Web Applications in 2025</Link>
                 </h3>
                 <p className="text-gray-600 mb-4">Discover why React.js continues to dominate frontend development with its component-based architecture and virtual DOM.</p>
                 <div className="flex justify-between items-center">
-                  <Link href="pickZy_blog/blogs/reactjs-web-development-company" className="text-indigo-600 font-semibold hover:underline flex items-center gap-1">
+                  <Link href="blog/reactjs-web-development-company" className="text-indigo-600 font-semibold hover:underline flex items-center gap-1">
                     Read More <ArrowRight className="w-4 h-4" />
                   </Link>
                   <div className="flex space-x-2">
@@ -118,11 +118,11 @@ const PickzyInteractive = () => {
                   <span>10 min read</span>
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-800 hover:text-indigo-600 transition">
-                  <Link href="pickZy_blog/blogs/nodejs-backend-development">Top 10 Benefits of Using Node.js for Scalable Backend Development in 2025</Link>
+                  <Link href="blog/nodejs-backend-development">Top 10 Benefits of Using Node.js for Scalable Backend Development in 2025</Link>
                 </h3>
                 <p className="text-gray-600 mb-4">Explore how Node.js enables high-performance, scalable backend solutions with its non-blocking I/O model.</p>
                 <div className="flex justify-between items-center">
-                  <Link href="pickZy_blog/blogs/nodejs-backend-development" className="text-indigo-600 font-semibold hover:underline flex items-center gap-1">
+                  <Link href="blog/nodejs-backend-development" className="text-indigo-600 font-semibold hover:underline flex items-center gap-1">
                     Read More <ArrowRight className="w-4 h-4" />
                   </Link>
                   <div className="flex space-x-2">
@@ -158,11 +158,11 @@ const PickzyInteractive = () => {
                   <span>12 min read</span>
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-800 hover:text-indigo-600 transition">
-                  <Link href="pickZy_blog/blogs/react-nodejs-tech-stack">Why React + Node.js is the Perfect Tech Stack for Modern Web Applications in 2025</Link>
+                  <Link href="blog/react-nodejs-tech-stack">Why React + Node.js is the Perfect Tech Stack for Modern Web Applications in 2025</Link>
                 </h3>
                 <p className="text-gray-600 mb-4">Learn how combining React and Node.js creates a powerful fullstack solution for high-performance web applications.</p>
                 <div className="flex justify-between items-center">
-                  <Link href="pickZy_blog/blogs/react-nodejs-tech-stack" className="text-indigo-600 font-semibold hover:underline flex items-center gap-1">
+                  <Link href="blog/react-nodejs-tech-stack" className="text-indigo-600 font-semibold hover:underline flex items-center gap-1">
                     Read More <ArrowRight className="w-4 h-4" />
                   </Link>
                   <div className="flex space-x-2">

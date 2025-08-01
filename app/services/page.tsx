@@ -414,7 +414,7 @@ export default function Services() {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          <Link href="/contact">
+          <Link href="/contact-us">
             Get Free Consultation
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>

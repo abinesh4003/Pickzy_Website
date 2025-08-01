@@ -175,14 +175,14 @@ const NodeJsBenefitsPost = () => {
                 data-aos-delay="750"
               >
                 <Link 
-                  href="/pickZy_blog/blogs/reactjs-web-development-company" 
+                  href="reactjs-web-development-company" 
                   className="flex items-center justify-center sm:justify-start bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white transition-all duration-300 px-6 py-3 rounded-lg shadow hover:shadow-lg w-full sm:w-auto group"
                 >
                   <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
                   <span className="font-medium">Previous: React.js Advantages</span>
                 </Link>
                 <Link 
-                  href="/pickZy_blog/blogs/react-nodejs-tech-stack" 
+                  href="react-nodejs-tech-stack" 
                   className="flex items-center justify-center sm:justify-end bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white transition-all duration-300 px-6 py-3 rounded-lg shadow hover:shadow-lg w-full sm:w-auto group"
                 >
                   <span className="font-medium">Next: Fullstack Trends</span>

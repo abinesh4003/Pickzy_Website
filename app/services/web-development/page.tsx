@@ -496,7 +496,7 @@ export default function WebDevelopment() {
               Get a Free Quote
             </Button>
             <Button size="lg" variant="outline" className="border-white hover:bg-white hover:text-blue-600">
-              <Link href="/contact">Contact Us Now</Link>
+              <Link href="/contact-us">Contact Us Now</Link>
             </Button>
           </div>
         </div>

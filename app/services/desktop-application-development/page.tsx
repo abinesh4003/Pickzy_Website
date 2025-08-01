@@ -565,7 +565,7 @@ export default function DesktopApplicationDevelopment() {
               Contact Our Team
             </Button>
             <Button size="lg" variant="outline" className="border-white text-blue-900 hover:bg-white hover:text-blue-600 px-8">
-              <Link href="/contact">Schedule a Free Demo</Link>
+              <Link href="/contact-us">Schedule a Free Demo</Link>
             </Button>
           </div>
         </div>

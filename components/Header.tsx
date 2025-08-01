@@ -36,11 +36,11 @@ export default function Header() {
   // Navigation links
   const navLinks: NavItem[] = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
+    { name: "About", href: "/about-us" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Careers", href: "/careers" },
     { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "/contact-us" },
   ];
 
   // Handle scroll effect with debounce
@@ -231,10 +231,10 @@ export default function Header() {
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
             <Button variant="outline" asChild>
-              <Link href="/contact">Get Quote</Link>
+              <Link href="/contact-us">Get Quote</Link>
             </Button>
             <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" asChild>
-              <Link href="/contact">Start Project</Link>
+              <Link href="/contact-us">Start Project</Link>
             </Button>
           </div>
 
@@ -317,10 +317,10 @@ export default function Header() {
             {/* Mobile CTA Buttons */}
             <div className="px-3 pt-2 space-y-2 border-t">
               <Button variant="outline" className="w-full" asChild>
-                <Link href="/contact">Get Quote</Link>
+                <Link href="/contact-us">Get Quote</Link>
               </Button>
               <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600" asChild>
-                <Link href="/contact">Start Project</Link>
+                <Link href="/contact-us">Start Project</Link>
               </Button>
             </div>
           </div>

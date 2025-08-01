@@ -286,7 +286,7 @@ export default function Careers() {
           data-aos="zoom-in"
           data-aos-delay="300"
         >
-          <Link href="/contact">Contact HR</Link>
+          <Link href="/contact-us">Contact HR</Link>
         </Button>
       </div>
     </div>

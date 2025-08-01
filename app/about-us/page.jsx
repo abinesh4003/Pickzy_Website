@@ -340,7 +340,7 @@ export default function About() {
         data-aos-delay="300"
       >
         <Button size="lg" variant="secondary" className="px-8 py-3" asChild>
-          <Link href="/contact">Get in Touch</Link>
+          <Link href="/contact-us">Get in Touch</Link>
         </Button>
         <Button size="lg" variant="outline" className="px-8 py-3 text-black border-white hover:bg-white hover:text-blue-600" asChild>
           <Link href="/careers">Join Our Team</Link>

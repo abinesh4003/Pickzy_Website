@@ -519,7 +519,7 @@ export default function InternetMarketing() {
               Request a Quote
             </Button>
             <Button size="lg" variant="outline" className="text-blue-600 border-white hover:bg-white hover:text-blue-600">
-              <Link href="/contact">Schedule a Free Call</Link>
+              <Link href="/contact-us">Schedule a Free Call</Link>
             </Button>
           </div>
         </div>

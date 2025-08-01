@@ -521,7 +521,7 @@ export default function MobileDevelopment() {
         data-aos="zoom-in"
         data-aos-delay="200"
       >
-        <Link href="/contact">Book Consultation</Link>
+        <Link href="/contact-us">Book Consultation</Link>
       </Button>
     </div>
   </div>

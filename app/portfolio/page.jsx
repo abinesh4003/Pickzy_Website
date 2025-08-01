@@ -40,6 +40,65 @@ export default function Portfolio() {
 
   const projects = [
     {
+  id: 'algo-trading',
+  title: "Algo Trading Platform",
+  category: "finance",
+  type: "Finance",
+  description: "Designed and implemented a fully automated, high-frequency trading system tailored for NSE intraday equity markets with advanced risk control.",
+  image: "https://images.pexels.com/photos/730564/pexels-photo-730564.jpeg?auto=compress&cs=tinysrgb&w=800",
+  tech: ["Node.js", "Python (LSTM)", "MongoDB", "Broker APIs"],
+  features: [
+    "Real-time price tracking",
+    "LSTM trend forecasting",
+    "AI-based stop-loss",
+    "BTST/short trade strategies",
+    "Tick-data storage",
+    "Broker API integration"
+  ],
+  client: "Proprietary In-house",
+  duration: "6 months",
+  team: "4 developers"
+},
+{
+  id: 'nubet',
+  title: "Nubet.com",
+  category: "web-development",
+  type: "Web Development",
+  description: "Secure online betting platform for European client with role-based access and real-time wallet management with Finplay integration.",
+  image: "https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=800",
+  tech: ["PHP", "Node.js", "MongoDB", "MySQL", "Redis", "React.js", "Stripe"],
+  features: [
+    "Role-based access control",
+    "Finplay integration",
+    "Custom admin dashboard",
+    "Redis caching",
+    "Real-time transactions"
+  ],
+  client: "European Betting Client",
+  duration: "8 months",
+  team: "7 developers"
+},
+{
+  id: 'bayfay',
+  title: "BayFay",
+  category: "saas",
+  type: "SaaS",
+  description: "SaaS retail commerce platform enabling merchants and farmers to launch geo-targeted storefronts with complete retail ecosystem support.",
+  image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800",
+  tech: ["Node.js", "Express", "React.js", "Angular", "MongoDB", "Redis", "Kotlin", "Swift", "JWT Auth"],
+  features: [
+    "Multi-tenant SaaS architecture",
+    "Geo-visibility",
+    "Secure internal wallet",
+    "Multiple app ecosystem",
+    "Live tracking",
+    "OWASP-compliant security"
+  ],
+  client: "Retail SaaS Provider",
+  duration: "9 months",
+  team: "8 developers"
+},
+    {
       id: 'ecommerce',
       title: "E-commerce Platform",
       category: "web-development",
@@ -392,7 +451,7 @@ export default function Portfolio() {
                 data-aos-delay={(index % 3) * 100}
               >
                 <Card
-                  className="h-full overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-gray-200"
+                  className="h-full cursor-pointer overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-gray-200"
                   onClick={() => setSelectedProject(project)}
                 >
                   {/* Project Image with Hover Effect */}
@@ -446,15 +505,6 @@ export default function Portfolio() {
                         )}
                       </div>
                     </div>
-
-                    {/* View Details Button */}
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-full mt-2"
-                    >
-                      View Full Project
-                    </Button>
                   </CardContent>
                 </Card>
               </div>
@@ -556,10 +606,7 @@ export default function Portfolio() {
               {/* Footer */}
               <div className="p-4 border-t flex items-center w-full">
                 <div className="w-full flex justify-between text-sm">
-                  <div>
-                    <div className="text-gray-500">Client</div>
-                    <div>{selectedProject.client}</div>
-                  </div>
+                
                   <div>
                     <div className="text-gray-500">Duration</div>
                     <div>{selectedProject.duration}</div>
@@ -626,7 +673,7 @@ export default function Portfolio() {
               className="px-8 py-3"
               asChild
             >
-              <Link href="/contact">
+              <Link href="/contact-us">
                 Start Your Project
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

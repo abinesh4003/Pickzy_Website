@@ -434,7 +434,7 @@ export default function DesignAndMarkup() {
                 Request a Quote
               </Button>
               <Button size="lg" variant="outline" className="text-blue-900 border-white hover:bg-white hover:text-blue-600">
-                <Link href="/contact">Book a Free Consultation</Link>
+                <Link href="/contact-us">Book a Free Consultation</Link>
               </Button>
             </div>
           </div>
