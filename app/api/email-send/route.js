@@ -44,16 +44,12 @@ export async function POST(request) {
     // Configure SMTP transporter
     const transporter = nodemailer.createTransport({
       host: process.env.MAIL_HOST || 'smtp.gmail.com',
-      port: parseInt(process.env.MAIL_PORT) || 587,
-      secure: false, // true for 465, false for other ports
+      port:465,
+      secure: true, // true for 465, false for other ports
       auth: {
         user: process.env.MAIL_USERNAME,
         pass: process.env.MAIL_PASSWORD
       },
-      tls: {
-        ciphers: 'SSLv3',
-        rejectUnauthorized: false // Only for development/testing!
-      }
     });
 
     // Format budget for display

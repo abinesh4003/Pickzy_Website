@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -16,7 +16,6 @@ const services = [
     "Data Analytics",
     "IT Consulting"
 ];
-
 const budgetRanges = [
     { value: "10k-25k", label: "$10,000 - $25,000" },
     { value: "25k-50k", label: "$25,000 - $50,000" },

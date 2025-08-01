@@ -6,12 +6,21 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import { useState } from 'react';
 import { Calendar, User, ArrowRight, Clock , MapPin, Phone, Send, Mail,} from 'lucide-react';
 
 import Blogs from '../pickZy_blog/blog';
+import ContactForm from '@/components/ContactForm';
 
 
 export default function Blog() {
+
+  const[formData, setFormData] = useState({
+    firstName: '',
+    email: '',
+    details: ''
+  });
+
   const featuredPost = {
     title: "The Future of Software Development: AI and Machine Learning Integration",
     excerpt: "Explore how artificial intelligence and machine learning are revolutionizing the software development landscape and what it means for businesses in 2024.",
@@ -95,6 +104,39 @@ export default function Blog() {
     "Design",
     "DevOps"
   ];
+
+  const handleChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    fetch('/api/email-send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        clearFormData();
+      })
+      .catch(error => {
+        console.error('Error searching:', error);
+      });
+
+  };
+
+  const clearFormData = () => {
+    setFormData({
+      firstName: '',
+      email: '',
+      details: '' 
+    });
+  };
 
   return (
   <div className="min-h-screen bg-white">
@@ -365,12 +407,15 @@ export default function Blog() {
               </div>
 
               <div data-aos="fade-left">
-                <form className="bg-gray-50 p-6 rounded-lg shadow-sm">
+                <form onSubmit={handleSubmit} className="bg-gray-50 p-6 rounded-lg shadow-sm">
                   <div className="mb-4">
                     <label htmlFor="name" className="block text-gray-700 mb-2">Your Name</label>
                     <input 
+                    onChange={handleChange}
                       type="text" 
                       id="name"
+                      name="firstName"
+                      value={formData.firstName}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     />
                   </div>
@@ -378,17 +423,23 @@ export default function Blog() {
                   <div className="mb-4">
                     <label htmlFor="email" className="block text-gray-700 mb-2">Email Address</label>
                     <input 
+                    onChange={handleChange}
                       type="email" 
                       id="email"
+                      name='email'
+                      value={formData.email}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     />
                   </div>
 
                   <div className="mb-4">
-                    <label htmlFor="message" className="block text-gray-700 mb-2">Your Message</label>
+                    <label htmlFor="details" className="block text-gray-700 mb-2">Your Message</label>
                     <textarea 
-                      id="message" 
+                    onChange={handleChange}
+                    name='details'
+                      id="details" 
                       rows="4"
+                      value={formData.details}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     ></textarea>
                   </div>

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChevronDown } from 'lucide-react';
 import ImageCarousel from '@/components/ImageCarousel';
+import AnimatedCounter from '@/components/AnimatedCounter'
 
 import {
   ArrowRight,
@@ -125,13 +126,8 @@ export default function Home() {
       {/* Hero Section */}
 
 
-      <section
-        className="relative max-h-screen flex items-center overflow-hidden"
-        style={{ height: 'calc(100vh - var(--navbar-height))' }}
-        data-aos="fade"
-        data-aos-once="false"
-      >
-        {/* Background Layers */}
+      <section className="relative flex items-center justify-center min-h-[90vh] sm:min-h-[calc(100vh-var(--navbar-height))] w-full overflow-hidden">
+        {/* Background Layers - Contained within hero section */}
         <div className="absolute inset-0 z-0">
           <img
             src="/assets/hero/home_hero.jpg"
@@ -144,107 +140,82 @@ export default function Home() {
           <div className="absolute inset-0 bg-[url('https://assets.website-files.com/5f58a4aec3a7b3266b286abe/5f58a4aec3a7b38b9e286b1a_pattern-grey.svg')] bg-repeat opacity-70" />
         </div>
 
-        {/* Hero Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32 relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-
-            {/* Left Column - Text (Always first on mobile) */}
-            <div className="order-1 lg:order-1 mt-0 lg:mt-0" data-aos="fade-right" data-aos-delay="100">
+        {/* Hero Content - Container with safe padding */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20 xl:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 sm:gap-2 items-center">
+            {/* Left Column - Text */}
+            <div className="order-1 lg:order-1">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/80 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-3 sm:mb-4 md:mb-6 border border-white/20">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/80 px-3 py-1 rounded-full mb-4 sm:mb-5 md:mb-6 border border-white/20 text-xs sm:text-sm">
                 <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-300" />
-                <span className="text-xs sm:text-sm font-medium">Innovating Since 2015</span>
+                <span>Innovating Since 2015</span>
               </div>
 
               {/* Heading */}
-              <h1
-                className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-snug sm:leading-tight"
-                data-aos="fade-up"
-                data-aos-delay="100"
-              >
-                Digital Transformation
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent block mt-1 sm:mt-2 md:mt-3">
-                  Tailored for Your Success
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-5 leading-tight" data-aos="fade-up">
+                Custom-Built Software
+                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent block mt-2 sm:mt-3">
+                  That Drives Results
                 </span>
               </h1>
 
               {/* Description */}
-              <p
-                className="text-sm xs:text-base sm:text-lg md:text-xl text-white/90 mb-4 sm:mb-6 md:mb-8 leading-relaxed max-w-lg"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                We craft custom software solutions that drive measurable results, optimize operations,
-                and create competitive advantages for forward-thinking businesses.
+              <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed max-w-lg" data-aos="fade-left">
+                We build custom mobile apps, web platforms, and digital solutions to accelerate your growth.
               </p>
 
-              {/* Buttons - Stack on mobile, row on larger screens */}
-              <div
-                className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-4 sm:mb-6 md:mb-8"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
+              {/* Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 mb-6 sm:mb-8" >
                 <Button
-                  size="sm"
-                  className="sm:text-base sm:px-6 sm:py-3 text-xs px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="text-sm sm:text-base px-5 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
                   asChild
+
                 >
                   <Link href="/contact">Get in Touch</Link>
                 </Button>
                 <Button
-                  size="sm"
                   variant="outline"
-                  className="sm:text-base sm:px-6 sm:py-3 text-xs px-4 py-2 border-white/30 hover:bg-white/10 hover:text-white backdrop-blur-sm"
+                  className="text-sm sm:text-base px-5 py-2.5 sm:px-6 sm:py-3 border-white/30 hover:bg-white/10 hover:text-white"
                   asChild
                 >
                   <Link href="/portfolio">View Portfolio</Link>
                 </Button>
               </div>
 
-              {/* Features - Wrap on small screens */}
-              <div
-                className="flex flex-wrap gap-2 sm:gap-3 md:gap-6 text-xs sm:text-sm text-white/80"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                <div className="flex items-center backdrop-blur-sm bg-white/5 px-2 py-1 sm:px-3 sm:py-2 rounded-md sm:rounded-lg">
-                  <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-green-400 mr-1 sm:mr-2" />
-                  <span>Industry-leading Quality</span>
-                </div>
-                <div className="flex items-center backdrop-blur-sm bg-white/5 px-2 py-1 sm:px-3 sm:py-2 rounded-md sm:rounded-lg">
-                  <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-green-400 mr-1 sm:mr-2" />
-                  <span>Dedicated Support</span>
-                </div>
-                <div className="flex items-center backdrop-blur-sm bg-white/5 px-2 py-1 sm:px-3 sm:py-2 rounded-md sm:rounded-lg">
-                  <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-green-400 mr-1 sm:mr-2" />
-                  <span>Agile Development</span>
-                </div>
+              {/* Features */}
+              <div className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm text-white/80">
+                {["Industry-leading Quality", "Dedicated Support", "Agile Development"].map((feature, i) => (
+                  <div key={i} className="flex items-center bg-white/5 backdrop-blur-sm px-3 py-1.5 rounded-md">
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-400 mr-2" />
+                    <span>{feature}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Right Column - Image with Badges (Hidden on smallest screens if needed) */}
-            <div className="order-2 lg:order-2 relative mt-6 sm:mt-8 md:mt-0" data-aos="fade-left" data-aos-delay="300">
-              <ImageCarousel />
-
-              {/* Tech Logos - Hidden on mobile if space is tight */}
-              <div
-                className="hidden xs:flex absolute -bottom-4 sm:-bottom-6 right-2 sm:right-4 md:right-8 gap-1 sm:gap-2 md:gap-3 bg-white/10 backdrop-blur-sm p-1 sm:p-2 md:p-3 rounded-full border border-white/20"
-                data-aos="fade-left"
-                data-aos-delay="900"
-              >
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8" alt="React" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8" alt="Node.js" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8" alt="Next.js" />
+            {/* Right Column - Image */}
+            <div className="order-2 lg:order-2 mt-8 sm:mt-10 md:mt-0">
+              <div className="relative">
+                <ImageCarousel />
+                {/* Tech Logos */}
+                <div className="absolute -bottom-4 right-0 flex gap-2 bg-white/10 backdrop-blur-sm p-2 rounded-full border border-white/20">
+                  {["react", "nodejs", "nextjs"].map((tech) => (
+                    <img
+                      key={tech}
+                      src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech}/${tech}-original.svg`}
+                      className="h-5 w-5 sm:h-6 sm:w-6"
+                      alt={tech}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator for mobile */}
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center z-20 lg:hidden">
-          <div className="animate-bounce bg-white/20 backdrop-blur-sm p-2 rounded-full">
-            <ChevronDown className="h-5 w-5 text-white" />
-          </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 lg:hidden">
+          <ChevronDown className="h-6 w-6 text-white animate-bounce" />
         </div>
       </section>
 
@@ -260,7 +231,7 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Comprehensive software solutions tailored to meet your business needs and drive digital transformation.
+              From mobile app to smart websites, bold design to digital marketing, we build everything your business need to stand out and scale fast
             </p>
           </div>
 
@@ -308,19 +279,20 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { value: "200+", label: "Projects Completed" },
-              { value: "50+", label: "Happy Clients" },
-              { value: "8+", label: "Years Experience" },
-              { value: "24/7", label: "Support Available" }
+              { value: "300+", label: "Projects Completed" }, // Removed '+' here
+              { value: "200+", label: "Happy Clients" },     // Removed '+' here
+              { value: "13+", label: "Years Experience" },   // Removed '+' here
+              { value: "24/7", label: "Support Available" } // Non-numeric stays the same
             ].map((stat, index) => (
               <div
                 key={index}
                 data-aos="zoom-in"
                 data-aos-delay={150 * index}
                 data-aos-mirror="true"
+                className="text-center p-4" // Added some padding
               >
-                <div className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
-                <div className="text-blue-100">{stat.label}</div>
+                <AnimatedCounter value={stat.value} duration={4} classname="text-4xl font-bold text-white"/>
+                <div className="text-blue-100 mt-2">{stat.label}</div>
               </div>
             ))}
           </div>
