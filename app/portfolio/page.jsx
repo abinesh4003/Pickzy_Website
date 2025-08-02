@@ -49,8 +49,8 @@ const filters = [
   category: "finance",
   type: "Finance",
   description: "Designed and implemented a fully automated, high-frequency trading system tailored for NSE intraday equity markets with advanced risk control.",
-  image: "/images/portfolio-images/Algo_trade.png",
-   modalImage: "/images/portfolio-images/Algo_trade_model.webp",
+  image: "/images/portfolio-images/algo_trade.png",
+   modalImage: "/images/portfolio-images/algo_trade.png",
   tech: ["Node.js", "Python (LSTM)", "MongoDB", "Broker APIs"],
   features: [
     "Real-time price tracking",
