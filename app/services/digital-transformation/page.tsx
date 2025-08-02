@@ -1,6 +1,9 @@
 "use client";
 
-import { Rocket, RefreshCw, Cloud, Database, Zap, Shield, Users, Code, Smartphone, BarChart2, Layers, CheckCircle } from 'lucide-react';
+import { Rocket, RefreshCw, Cloud, Database, Zap, Shield, Users, Code, Smartphone, BarChart2, Layers, CheckCircle, Brain,  
+  ShieldCheck, 
+  Handshake, 
+  Lightbulb } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
@@ -39,35 +42,33 @@ export default function DigitalTransformation() {
       description: "Deliver user-first experiences through responsive apps and platforms."
     }
   ];
-
-  const whyUs = [
-    {
-      icon: "🧠",
-      title: "Expertise Across Industries",
-      description: "Healthcare, Retail, Finance, Education, and more."
-    },
-    {
-      icon: "🚀",
-      title: "Agile & Scalable Approach",
-      description: "Flexible delivery models that grow with your business."
-    },
-    {
-      icon: "🔐",
-      title: "Security & Compliance First",
-      description: "Data privacy and secure systems at every level."
-    },
-    {
-      icon: "🤝",
-      title: "End-to-End Support",
-      description: "From planning to implementation and continuous improvement."
-    },
-    {
-      icon: "💡",
-      title: "Innovation-Driven Culture",
-      description: "Stay ahead with emerging tech trends and solutions."
-    }
-  ];
-
+const whyUs = [
+  {
+    icon: <Brain className="h-6 w-6 text-blue-500" />,
+    title: "Expertise Across Industries",
+    description: "Healthcare, Retail, Finance, Education, and more."
+  },
+  {
+    icon: <Rocket className="h-6 w-6 text-purple-500" />,
+    title: "Agile & Scalable Approach",
+    description: "Flexible delivery models that grow with your business."
+  },
+  {
+    icon: <ShieldCheck className="h-6 w-6 text-green-500" />,
+    title: "Security & Compliance First",
+    description: "Data privacy and secure systems at every level."
+  },
+  {
+    icon: <Handshake className="h-6 w-6 text-orange-500" />,
+    title: "End-to-End Support",
+    description: "From planning to implementation and continuous improvement."
+  },
+  {
+    icon: <Lightbulb className="h-6 w-6 text-yellow-500" />,
+    title: "Innovation-Driven Culture",
+    description: "Stay ahead with emerging tech trends and solutions."
+  }
+];
   const technologies = [
     "AWS", "Azure", "Google Cloud", 
     "React", "Angular", "Vue", 
