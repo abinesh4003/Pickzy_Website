@@ -171,10 +171,10 @@ export default function WebDevelopment() {
                 data-aos-delay="300"
               >
                 <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700">
-                  Get Started
+                  <Link href="/contact-us">Get Started</Link>
                 </Button>
                 <Button variant="outline" className="border-gray-300 hover:bg-gray-50">
-                  View Portfolio
+                  <Link href="/portfolio" >View Portfolio</Link>
                 </Button>
               </div>
             </div>

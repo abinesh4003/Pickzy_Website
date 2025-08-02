@@ -29,7 +29,7 @@ export default function Services() {
       description: "Tailored software solutions built to meet your specific business requirements and scale with your growth.",
       features: ["Full-stack development", "API integration", "Legacy system modernization", "Microservices architecture"],
       technologies: ["React", "Node.js", "Python", "Java", ".NET"],
-      link: "/services/web-development"
+      link: "/services/custom-software-development"
     },
     {
       icon: <Smartphone className="w-12 h-12 text-purple-600" />,

@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
+import Link from 'next/link'; 
 
 export default function PositionsPage() {
   const [positions, setPositions] = useState([]);
@@ -131,7 +132,7 @@ export default function PositionsPage() {
             <h3 className="text-xl font-medium text-gray-900 mb-2">No open positions at the moment</h3>
             <p className="text-gray-600 mb-4">Check back later or send us your resume for future opportunities</p>
             <Button variant="outline" size="lg">
-              Send Us Your Resume
+              <Link href="/contact-us">Send Us Your Resume</Link>
             </Button>
           </div>
         ) : (
@@ -196,7 +197,7 @@ export default function PositionsPage() {
             <div className="text-center mt-12" data-aos="fade-up">
               <p className="text-gray-600 mb-4">Don't see a position that fits? We're always looking for talented people!</p>
               <Button variant="outline" size="lg">
-                Send Us Your Resume
+                <Link href="/contact-us">Send Us Your Resume</Link>
               </Button>
             </div>
           </>

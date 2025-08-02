@@ -27,7 +27,8 @@ import {
   Lightbulb,
   PlayCircle,
   Sparkles,
-  Car
+  Car,
+  Check 
 } from 'lucide-react';
 
 
@@ -39,7 +40,7 @@ export default function Home() {
       icon: <Code className="w-8 h-8 text-blue-600" />,
       title: "Custom Software Development",
       description: "Tailored solutions built to meet your specific business requirements and scale with growth.",
-      link: "/services/web-development"
+      link: "/services/custom-software-development"
     },
     {
       icon: <Smartphone className="w-8 h-8 text-purple-600" />,

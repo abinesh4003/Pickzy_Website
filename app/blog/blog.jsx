@@ -176,7 +176,7 @@ const PickzyInteractive = () => {
 
           <div className="text-center mt-12" data-aos="fade-up">
             <Link 
-              href="#"
+              href="/blog/react-nodejs-tech-stack"
               className="inline-flex items-center border border-indigo-600 text-indigo-600 px-6 py-2 rounded-md font-semibold hover:bg-indigo-600 hover:text-white transition gap-2"
             >
               View All Articles <ChevronRight className="w-5 h-5" />

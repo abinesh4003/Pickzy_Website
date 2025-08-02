@@ -35,7 +35,9 @@ export default function Portfolio() {
     { id: 'healthcare', label: 'Healthcare', icon: <Plug className="w-4 h-4" /> },
     { id: 'enterprise', label: 'Enterprise', icon: <Monitor className="w-4 h-4" /> },
     { id: 'education', label: 'Education', icon: <ArrowRightLeft className="w-4 h-4" /> },
-    { id: 'real-estate', label: 'Real Estate', icon: <ArrowRightLeft className="w-4 h-4" /> }
+    { id: 'real-estate', label: 'Real Estate', icon: <ArrowRightLeft className="w-4 h-4" /> },
+    { id: 'finance', label: 'Finance', icon: <ArrowRightLeft className="w-4 h-4" /> },
+    { id: 'saas', label: 'SaaS', icon: <ArrowRightLeft className="w-4 h-4" /> },
   ];
 
   const projects = [

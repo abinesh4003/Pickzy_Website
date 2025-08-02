@@ -31,6 +31,7 @@ export default function Header() {
     { name: "Design & MarkUp", href: "/services/design-and-markup" },
     { name: "Internet Marketing", href: "/services/internet-marketing" },
     { name: "Digital Transformation", href: "/services/digital-transformation" },
+    { name: "Custom Software", href: "/services/custom-software-development" },
   ];
 
   // Navigation links

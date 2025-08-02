@@ -78,8 +78,11 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4 text-blue-400" />
                 <span className="text-gray-400 text-sm">
-                  Head office in Chennai, TN <br />
-                  Tech City, Chennai
+                  Head office in Chennai, TN<br/>
+                 JVL Plaza, 6th & Ground Floor,
+                 <br />Anna Salai, Teynampet, Chennai 600018
+                 <br />
+
                 </span>
               </div>
             </div>
