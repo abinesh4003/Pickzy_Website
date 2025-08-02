@@ -90,7 +90,7 @@ const filters = [
   category: "saas",
   type: "SaaS",
   description: "SaaS retail commerce platform enabling merchants and farmers to launch geo-targeted storefronts with complete retail ecosystem support.",
-  image: "/images/portfolio-images/bayfay.jpg",
+  image: "/images/portfolio-images/bayfay_model.jpg",
   modalImage: "/images/portfolio-images/bayfay_model.jpg",
   tech: ["Node.js", "Express", "React.js", "Angular", "MongoDB", "Redis", "Kotlin", "Swift", "JWT Auth"],
   features: [
