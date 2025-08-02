@@ -735,20 +735,7 @@ const filters = [
     duration: "Ongoing",
     team: "Framework"
   },
-  {
-    id: 'view-more',
-    title: 'View More',
-    category: 'all',
-    type: '',
-    description: '',
-    image: '/images/portfolio-images/view-more.jpg',
-    modalImage: '',
-    tech: [],
-    features: [],
-    client: "",
-    duration: "",
-    team: ""
-  }
+
 ];
 
   const filteredProjects = activeFilter === 'all'
