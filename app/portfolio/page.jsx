@@ -41,7 +41,7 @@ const filters = [
     { id: 'iot', label: 'IoT', icon: <ArrowRightLeft className="w-4 h-4" /> }, // Added IoT filter
     { id: 'cross-platform', label: 'Cross Platform', icon: <ArrowRightLeft className="w-4 h-4" /> } // Added Cross Platform filter
 ]
-
+ 
   const projects = [
       {
   id: 'algo-trading',
