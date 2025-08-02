@@ -28,7 +28,7 @@ export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [hoveredProject, setHoveredProject] = useState(null);
 
-  const filters = [
+const filters = [
     { id: 'all', label: 'All', icon: <ArrowRightLeft className="w-4 h-4" /> },
     { id: 'web-development', label: 'Web Development', icon: <Globe className="w-4 h-4" /> },
     { id: 'mobile-development', label: 'Mobile Development', icon: <Smartphone className="w-4 h-4" /> },
@@ -37,17 +37,20 @@ export default function Portfolio() {
     { id: 'education', label: 'Education', icon: <ArrowRightLeft className="w-4 h-4" /> },
     { id: 'real-estate', label: 'Real Estate', icon: <ArrowRightLeft className="w-4 h-4" /> },
     { id: 'finance', label: 'Finance', icon: <ArrowRightLeft className="w-4 h-4" /> },
-    { id: 'saas', label: 'SaaS', icon: <ArrowRightLeft className="w-4 h-4" /> },
-  ];
+    { id: 'saas', label: 'SaaS', icon: <ArrowRightLeft className="w-4 h-4" /> },   
+    { id: 'iot', label: 'IoT', icon: <ArrowRightLeft className="w-4 h-4" /> }, // Added IoT filter
+    { id: 'cross-platform', label: 'Cross Platform', icon: <ArrowRightLeft className="w-4 h-4" /> } // Added Cross Platform filter
+]
 
   const projects = [
-    {
+      {
   id: 'algo-trading',
   title: "Algo Trading Platform",
   category: "finance",
   type: "Finance",
   description: "Designed and implemented a fully automated, high-frequency trading system tailored for NSE intraday equity markets with advanced risk control.",
-  image: "https://images.pexels.com/photos/730564/pexels-photo-730564.jpeg?auto=compress&cs=tinysrgb&w=800",
+  image: "/images/portfolio-images/Algo_trade.png",
+   modalImage: "/images/portfolio-images/Algo_trade_model.webp",
   tech: ["Node.js", "Python (LSTM)", "MongoDB", "Broker APIs"],
   features: [
     "Real-time price tracking",
@@ -67,7 +70,8 @@ export default function Portfolio() {
   category: "web-development",
   type: "Web Development",
   description: "Secure online betting platform for European client with role-based access and real-time wallet management with Finplay integration.",
-  image: "https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=800",
+  image: "/images/portfolio-images/newbet.png",
+  modalImage: "/images/portfolio-images/newbet_model.jpg",
   tech: ["PHP", "Node.js", "MongoDB", "MySQL", "Redis", "React.js", "Stripe"],
   features: [
     "Role-based access control",
@@ -86,7 +90,8 @@ export default function Portfolio() {
   category: "saas",
   type: "SaaS",
   description: "SaaS retail commerce platform enabling merchants and farmers to launch geo-targeted storefronts with complete retail ecosystem support.",
-  image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800",
+  image: "/images/portfolio-images/bayfay.jpg",
+  modalImage: "/images/portfolio-images/bayfay_model.jpg",
   tech: ["Node.js", "Express", "React.js", "Angular", "MongoDB", "Redis", "Kotlin", "Swift", "JWT Auth"],
   features: [
     "Multi-tenant SaaS architecture",
@@ -100,267 +105,651 @@ export default function Portfolio() {
   duration: "9 months",
   team: "8 developers"
 },
-    {
-      id: 'ecommerce',
-      title: "E-commerce Platform",
-      category: "web-development",
-      type: "Web Development",
-      description: "Built a scalable e-commerce solution handling 10M+ transactions annually with advanced analytics and inventory management.",
-      image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["React", "Node.js", "PostgreSQL", "AWS", "Stripe"],
-      features: ["Real-time inventory", "Payment processing", "Analytics dashboard", "Mobile responsive"],
-      client: "RetailCorp",
-      duration: "6 months",
-      team: "8 developers"
-    },
-    {
-      id: 'healthcare',
-      title: "Healthcare Management System",
-      category: "healthcare",
-      type: "Healthcare",
-      description: "Developed HIPAA-compliant platform for patient management, telemedicine, and electronic health records.",
-      image: "https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["Next.js", "MongoDB", "Socket.io", "Azure", "FHIR"],
-      features: ["Patient portal", "Telemedicine", "EHR integration", "Appointment scheduling"],
-      client: "MedTech Solutions",
-      duration: "8 months",
-      team: "12 developers"
-    },
-    {
-      id: 'fintech',
-      title: "FinTech Mobile App",
-      category: "mobile-development",
-      type: "Mobile Development",
-      description: "Created secure banking application with real-time transactions, budgeting tools, and investment tracking.",
-      image: "https://images.pexels.com/photos/159888/pexels-photo-159888.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["React Native", "Python", "Redis", "Docker", "Kubernetes"],
-      features: ["Biometric auth", "Real-time transactions", "Investment tracking", "Budget management"],
-      client: "FinanceFirst",
-      duration: "10 months",
-      team: "15 developers"
-    },
-    {
-      id: 'supply-chain',
-      title: "Supply Chain Management",
-      category: "enterprise",
-      type: "Enterprise",
-      description: "Enterprise solution for supply chain optimization with IoT integration and predictive analytics.",
-      image: "https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["Angular", "Java", "Oracle", "Apache Kafka", "TensorFlow"],
-      features: ["IoT integration", "Predictive analytics", "Real-time tracking", "Automated reporting"],
-      client: "LogisticsPro",
-      duration: "12 months",
-      team: "20 developers"
-    },
-    {
-      id: 'edtech',
-      title: "EdTech Learning Platform",
-      category: "education",
-      type: "Education",
-      description: "Interactive learning platform with video streaming, assessments, and progress tracking for online education.",
-      image: "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["Vue.js", "Laravel", "MySQL", "WebRTC", "AWS S3"],
-      features: ["Video streaming", "Interactive assessments", "Progress tracking", "Discussion forums"],
-      client: "EduTech Inc",
-      duration: "7 months",
-      team: "10 developers"
-    },
-    {
-      id: 'real-estate',
-      title: "Real Estate CRM",
-      category: "real-estate",
-      type: "Real Estate",
-      description: "Comprehensive CRM system for real estate agencies with lead management and property listings.",
-      image: "https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["React", "Express.js", "MongoDB", "Cloudinary", "Twilio"],
-      features: ["Lead management", "Property listings", "Document management", "Communication tools"],
-      client: "RealtyMax",
-      duration: "5 months",
-      team: "6 developers"
-    },
-    {
-      id: 'equal-i',
-      title: "Equal-i",
-      category: "iot",
-      type: "IoT",
-      description: "Mobile app designed for a patented teleconference imaging system that works with a patented hardware board component.",
-      image: "https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["iOS SDK", "WebRTC", "Bluetooth", "Hardware Integration"],
-      features: ["Video conferencing", "Hardware integration", "Real-time processing"],
-      client: "Confidential",
-      duration: "9 months",
-      team: "5 developers"
-    },
-    {
-      id: 'offline-ticketing',
-      title: "Offline Ticketing",
-      category: "iot",
-      type: "IoT",
-      description: "Automated traffic citation system that expedites traffic ticket issuance with seamless continuity and integration.",
-      image: "https://images.pexels.com/photos/618079/pexels-photo-618079.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["Android", "Bluetooth", "Thermal Printing", "Offline Sync"],
-      features: ["Offline operation", "Ticket generation", "Data synchronization"],
-      client: "Municipal Government",
-      duration: "6 months",
-      team: "4 developers"
-    },
-    {
-      id: 'light-house-vision',
-      title: "Light House Vision",
-      category: "iot",
-      type: "IoT",
-      description: "Clip-on device that makes smartphones and tablets more accessible with big character interface and high contrasts.",
-      image: "https://images.pexels.com/photos/3937174/pexels-photo-3937174.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["iOS", "Accessibility API", "Bluetooth Low Energy"],
-      features: ["Accessibility features", "Hardware integration", "Custom UI"],
-      client: "Accessibility Tech",
-      duration: "4 months",
-      team: "3 developers"
-    },
-    {
-      id: 'elfkins',
-      title: "Elfkins",
-      category: "iot",
-      type: "IoT",
-      description: "Marketing and analytics platform backed by big data and consulting services.",
-      image: "https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["React", "Node.js", "Big Data", "Analytics"],
-      features: ["Data visualization", "Marketing tools", "Analytics dashboard"],
-      client: "Marketing Corp",
-      duration: "8 months",
-      team: "7 developers"
-    },
-    {
-      id: 'heartface',
-      title: "HeartFace",
-      category: "mobile-development",
-      type: "Mobile",
-      description: "Online shopping platform with the earth's biggest selection of books, magazines, music, DVDs, and electronics.",
-      image: "https://images.pexels.com/photos/3965557/pexels-photo-3965557.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["iOS", "Swift", "Payment Processing", "Recommendation Engine"],
-      features: ["E-commerce", "Recommendations", "Payment processing"],
-      client: "Retail Giant",
-      duration: "7 months",
-      team: "6 developers"
-    },
-    {
-      id: 'miss-me-kiss-me',
-      title: "MISS ME KISS ME",
-      category: "mobile-development",
-      type: "Mobile",
-      description: "App that keeps relationships alive by sending virtual kisses to loved ones over long distances.",
-      image: "https://images.pexels.com/photos/3778876/pexels-photo-3778876.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["iOS", "Swift", "Push Notifications", "Social Features"],
-      features: ["Virtual gifts", "Notifications", "Social integration"],
-      client: "Social Apps Inc",
-      duration: "5 months",
-      team: "4 developers"
-    },
-    {
-      id: 'spotya',
-      title: "SpotYa",
-      category: "mobile-development",
-      type: "Mobile",
-      description: "Fitness app that helps users find and train with different people, featuring the largest exercise database worldwide.",
-      image: "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["iOS", "Swift", "Location Services", "Exercise Database"],
-      features: ["Gym buddy finder", "Exercise database", "Training plans"],
-      client: "Fitness Network",
-      duration: "6 months",
-      team: "5 developers"
-    },
-    {
-      id: 'weedseeker',
-      title: "WEEDSEEKER",
-      category: "web-development",
-      type: "Web",
-      description: "Website connecting buyers of weed products to growers and dealers with flavor search functionality.",
-      image: "https://images.pexels.com/photos/4916562/pexels-photo-4916562.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["React", "Node.js", "Search Algorithms", "E-commerce"],
-      features: ["Product search", "Connections platform", "Flavor matching"],
-      client: "Cannabis Network",
-      duration: "4 months",
-      team: "3 developers"
-    },
-    {
-      id: 'forager-pro',
-      title: "FORAGER PRO",
-      category: "mobile-development",
-      type: "Mobile",
-      description: "Health app for planning daily meals and tracking dietary habits for weight loss and health improvement.",
-      image: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["iOS", "HealthKit", "Nutrition Database", "Meal Planning"],
-      features: ["Meal planning", "Nutrition tracking", "Health integration"],
-      client: "Health & Wellness",
-      duration: "5 months",
-      team: "4 developers"
-    },
-    {
-      id: 'cocave',
-      title: "COCAVE",
-      category: "mobile-development",
-      type: "Mobile",
-      description: "Organic personal care products platform providing solutions for chemical-free personal care.",
-      image: "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["iOS", "E-commerce", "Product Catalog", "Subscription"],
-      features: ["Product catalog", "Subscription", "Organic focus"],
-      client: "Organic Goods",
-      duration: "4 months",
-      team: "3 developers"
-    },
-    {
-      id: 'gym-link',
-      title: "GYM LINK",
-      category: "mobile-development",
-      type: "Mobile",
-      description: "Platform for finding personal trainers located close to home, office or favorite hangout spots.",
-      image: "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["iOS", "Location Services", "Booking System", "Payment Processing"],
-      features: ["Trainer search", "Booking system", "Location-based"],
-      client: "Fitness Network",
-      duration: "5 months",
-      team: "4 developers"
-    },
-    {
-      id: 'blaster',
-      title: "BLASTER",
-      category: "mobile-development",
-      type: "Mobile",
-      description: "Emergency response app for school authorities and rescue teams to track survivors during incidents.",
-      image: "https://images.pexels.com/photos/5991246/pexels-photo-5991246.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["iOS", "Emergency Protocols", "Real-time Tracking", "Alert System"],
-      features: ["Emergency response", "Survivor tracking", "Real-time updates"],
-      client: "Education Safety",
-      duration: "6 months",
-      team: "5 developers"
-    },
-    {
-      id: 'ncc-video-connect',
-      title: "NCC Video Connect",
-      category: "mobile-development",
-      type: "Mobile",
-      description: "Insurance claim solution allowing users to communicate loss information from the field directly to clients.",
-      image: "https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["iOS", "Video Streaming", "Document Upload", "Claim Processing"],
-      features: ["Video claims", "Document upload", "Field reporting"],
-      client: "Insurance Corp",
-      duration: "7 months",
-      team: "6 developers"
-    },
-    {
-      id: 'computer-doctor',
-      title: "COMPUTER DOCTOR",
-      category: "enterprise",
-      type: "Desktop",
-      description: ".NET web application handling inventory management, customer details, purchase orders, and invoicing.",
-      image: "https://images.pexels.com/photos/3584994/pexels-photo-3584994.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: [".NET", "SQL Server", "Inventory Management", "Reporting"],
-      features: ["Inventory management", "Customer tracking", "Invoicing"],
-      client: "IT Services",
-      duration: "8 months",
-      team: "5 developers"
-    }
-  ]
+  {
+    id: 'trigger-demo5',
+    title: 'Equal-i',
+    category: 'iot',
+    type: 'IOT',
+    description: 'Equal-i is a Mobile app, designed by us for a Patented Teleconference Imaging System, that works with the support of a Patented Hardware Board component. Developed as an executable program, this system makes video Conferincing a hassle free process.',
+    image: '/images/portfolio-images/equ_front.jpg',
+    modalImage: '/images/portfolio-images/Equal-i.jpg',
+    tech: ["iOS SDK", "WebRTC", "Bluetooth", "Hardware Integration"],
+    features: [
+      "Video conferencing",
+      "Hardware integration",
+      "Real-time processing"
+    ],
+    client: "Confidential",
+    duration: "9 months",
+    team: "5 developers"
+  },
+  {
+    id: 'trigger-demo15',
+    title: 'Offline Ticketing',
+    category: 'iot',
+    type: 'IOT',
+    description: 'Offline ticketing automates traffic citations, expedites traffic ticket issuance creating a more efficient process with seamless continuity and integration.',
+    image: '/images/portfolio-images/Offline-ticketing.jpg',
+    modalImage: '/images/portfolio-images/Offline-ticketing-view.jpg',
+    tech: ["Android", "Bluetooth", "Thermal Printing", "Offline Sync"],
+    features: [
+      "Offline operation",
+      "Ticket generation",
+      "Data synchronization"
+    ],
+    client: "Municipal Government",
+    duration: "6 months",
+    team: "4 developers"
+  },
+  {
+    id: 'trigger-demo1',
+    title: 'Light House Vision',
+    category: 'iot',
+    type: 'IOT',
+    description: 'Ever struggled to read on your smartphone/tablet because of your sight? Light house vision clip makes your devices accessible and its big character interface, large keyboards and contrasts are very useful.',
+    image: '/images/portfolio-images/LightHouseVision.jpg',
+    modalImage: '/images/portfolio-images/LightHouseVision-view.jpg',
+    tech: ["iOS", "Accessibility API", "Bluetooth Low Energy"],
+    features: [
+      "Accessibility features",
+      "Hardware integration",
+      "Custom UI"
+    ],
+    client: "Accessibility Tech",
+    duration: "4 months",
+    team: "3 developers"
+  },
+  {
+    id: 'trigger-demo',
+    title: 'Elfkins',
+    category: 'iot',
+    type: 'IOT',
+    description: 'The highest caliber marketing, analytics & collaboration apps – backed by big data & world class consulting services.',
+    image: '/images/portfolio-images/elfkin.jpg',
+    modalImage: '/images/portfolio-images/Elfin-view.jpg',
+    tech: ["React", "Node.js", "Big Data", "Analytics"],
+    features: [
+      "Data visualization",
+      "Marketing tools",
+      "Analytics dashboard"
+    ],
+    client: "Marketing Corp",
+    duration: "8 months",
+    team: "7 developers"
+  },
+  {
+    id: 'trigger-demo3',
+    title: 'HeartFace',
+    category: 'mobile-development',
+    type: 'Mobile',
+    description: 'Online shopping from the earth\'s biggest selection of books, magazines, music, DVDs, videos, electronics, computers, software, apparel & accessories, shoes, jewelry, tools & hardware, housewares, furniture, sporting goods, beauty & personal care, broadband & dsl, gourmet food & just about anything else.',
+    image: '/images/portfolio-images/Heartface.jpg',
+    modalImage: '/images/portfolio-images/Hartface-view.jpg',
+    tech: ["iOS", "Swift", "Payment Processing", "Recommendation Engine"],
+    features: [
+      "E-commerce",
+      "Recommendations",
+      "Payment processing"
+    ],
+    client: "Retail Giant",
+    duration: "7 months",
+    team: "6 developers"
+  },
+  {
+    id: 'trigger-demo6',
+    title: 'MISS ME KISS ME',
+    category: 'mobile-development',
+    type: 'Mobile',
+    description: 'Miss Me Kiss Me is an app that will keep your relationships alive. Long distance hurting your romantic sentiments? No worries. Send a quick kiss using the Miss Me Kiss Me app.',
+    image: '/images/portfolio-images/miss_front.jpg',
+    modalImage: '/images/portfolio-images/Miss-me-Kiss-me.jpg',
+    tech: ["iOS", "Swift", "Push Notifications", "Social Features"],
+    features: [
+      "Virtual gifts",
+      "Notifications",
+      "Social integration"
+    ],
+    client: "Social Apps Inc",
+    duration: "5 months",
+    team: "4 developers"
+  },
+  {
+    id: 'trigger-demo4',
+    title: 'SpotYa',
+    category: 'mobile-development',
+    type: 'Mobile',
+    description: 'Find a fitness buddy with SpotYa, the easiest way to meet and train with different people. Finding a gym buddy has never been easier. We have the largest exercise data base world wide.',
+    image: '/images/portfolio-images/Spotya.jpg',
+    modalImage: '/images/portfolio-images/Spotya-view.jpg',
+    tech: ["iOS", "Swift", "Location Services", "Exercise Database"],
+    features: [
+      "Gym buddy finder",
+      "Exercise database",
+      "Training plans"
+    ],
+    client: "Fitness Network",
+    duration: "6 months",
+    team: "5 developers"
+  },
+  {
+    id: 'trigger-demo7',
+    title: 'WEEDSEEKER',
+    category: 'web-development',
+    type: 'Web',
+    description: 'Weedseeker is a website that connects buyers of weed products to growers and dealers. The search button on the home page enables users to search for their favorite flavors of cannabis.',
+    image: '/images/portfolio-images/weed_front.jpg',
+    modalImage: '/images/portfolio-images/Weedseeker.jpg',
+    tech: ["React", "Node.js", "Search Algorithms", "E-commerce"],
+    features: [
+      "Product search",
+      "Connections platform",
+      "Flavor matching"
+    ],
+    client: "Cannabis Network",
+    duration: "4 months",
+    team: "3 developers"
+  },
+  {
+    id: 'trigger-demo8',
+    title: 'FORAGER PRO',
+    category: 'mobile-development',
+    type: 'Mobile',
+    description: 'Health conscious individuals head straight to Forager Pro for planning their daily meals. Losing weight can be a daunting task, especially when you have no idea if your dietary habits are healthy or not.',
+    image: '/images/portfolio-images/foragertwo.jpg',
+    modalImage: '/images/portfolio-images/FORAGER-PRO.jpg',
+    tech: ["iOS", "HealthKit", "Nutrition Database", "Meal Planning"],
+    features: [
+      "Meal planning",
+      "Nutrition tracking",
+      "Health integration"
+    ],
+    client: "Health & Wellness",
+    duration: "5 months",
+    team: "4 developers"
+  },
+  {
+    id: 'trigger-demo8a',
+    title: 'FORAGER PRO',
+    category: 'web-development',
+    type: 'Web',
+    description: 'Health conscious individuals head straight to Forager Pro for planning their daily meals. Losing weight can be a daunting task, especially when you have no idea if your dietary habits are healthy or not.',
+    image: '/images/portfolio-images/Forager-web.jpg',
+    modalImage: '/images/portfolio-images/Forager-Web.jpg',
+    tech: ["React", "Node.js", "MongoDB", "Nutrition API"],
+    features: [
+      "Web-based meal planning",
+      "Cross-platform sync",
+      "Nutrition analytics"
+    ],
+    client: "Health & Wellness",
+    duration: "5 months",
+    team: "4 developers"
+  },
+  {
+    id: 'trigger-demo9',
+    title: 'COCAVE',
+    category: 'ios-app',
+    type: 'Mobile',
+    description: 'Why spoil your health with chemical based personal care products where Global Goods Biz. (Cocave) provides you organic solutions.',
+    image: '/images/portfolio-images/coc_front.jpg',
+    modalImage: '/images/portfolio-images/Cocave.jpg',
+    tech: ["iOS", "E-commerce", "Product Catalog", "Subscription"],
+    features: [
+      "Product catalog",
+      "Subscription",
+      "Organic focus"
+    ],
+    client: "Organic Goods",
+    duration: "4 months",
+    team: "3 developers"
+  },
+  {
+    id: 'trigger-demo10',
+    title: 'GYM LINK',
+    category: 'ios-app',
+    type: 'Mobile',
+    description: 'Find your perfect personal trainer with Gym Link. Search for personal trainers located close to your home, office or favourite hangout.',
+    image: '/images/portfolio-images/gym_front.jpg',
+    modalImage: '/images/portfolio-images/Gym-Link.jpg',
+    tech: ["iOS", "Location Services", "Booking System", "Payment Processing"],
+    features: [
+      "Trainer search",
+      "Booking system",
+      "Location-based"
+    ],
+    client: "Fitness Network",
+    duration: "5 months",
+    team: "4 developers"
+  },
+  {
+    id: 'trigger-demo11',
+    title: 'BLASTER',
+    category: 'ios-app',
+    type: 'Mobile',
+    description: 'Blaster Student assures to make things easier for the school authorities and rescue teams by providing a quick and comprehensive control over the count and details of survivors.',
+    image: '/images/portfolio-images/blaster.jpg',
+    modalImage: '/images/portfolio-images/Blaster_view.jpg',
+    tech: ["iOS", "Emergency Protocols", "Real-time Tracking", "Alert System"],
+    features: [
+      "Emergency response",
+      "Survivor tracking",
+      "Real-time updates"
+    ],
+    client: "Education Safety",
+    duration: "6 months",
+    team: "5 developers"
+  },
+  {
+    id: 'trigger-demo12',
+    title: 'BLASTER',
+    category: 'education',
+    type: 'Desktop',
+    description: 'Blaster Student assures to make things easier for the school authorities and rescue teams by providing a quick and comprehensive control over the count and details of survivors.',
+    image: '/images/portfolio-images/blaster_front.jpg',
+    modalImage: '/images/portfolio-images/Blaster-Web.jpg',
+    tech: [".NET", "SQL Server", "Windows Services", "Desktop UI"],
+    features: [
+      "Desktop version",
+      "Offline capabilities",
+      "Windows integration"
+    ],
+    client: "Education Safety",
+    duration: "6 months",
+    team: "5 developers"
+  },
+  {
+    id: 'trigger-demo13',
+    title: 'NCC Video Connect',
+    category: 'ios-app',
+    type: 'Mobile',
+    description: 'NCC Video Connect is the nation\'s most advanced insurance claim solution provider. The app allows our users to communicate immediate loss information from the field directly to our clients.',
+    image: '/images/portfolio-images/ncc-front.png',
+    modalImage: '/images/portfolio-images/NCC.jpg',
+    tech: ["iOS", "Video Streaming", "Document Upload", "Claim Processing"],
+    features: [
+      "Video claims",
+      "Document upload",
+      "Field reporting"
+    ],
+    client: "Insurance Corp",
+    duration: "7 months",
+    team: "6 developers"
+  },
+  {
+    id: 'trigger-demo14',
+    title: 'COMPUTER DOCTOR',
+    category: 'windows-port',
+    type: 'Desktop',
+    description: 'Computer Doctor is a .NET web Application handles Inventory management process, Customer details, Purchase and sales order, Invoice Generation, Payment Tracking and Appointment scheduling.',
+    image: '/images/portfolio-images/cd-home banner.jpg',
+    modalImage: '/images/portfolio-images/Computer-Doctor.jpg',
+    tech: [".NET", "SQL Server", "Inventory Management", "Reporting"],
+    features: [
+      "Inventory management",
+      "Customer tracking",
+      "Invoicing"
+    ],
+    client: "IT Services",
+    duration: "8 months",
+    team: "5 developers"
+  },
+  {
+    id: 'trigger-demo35',
+    title: 'Super Market Billing Software',
+    category: 'windows-port',
+    type: 'Desktop',
+    description: 'Our software gives you complete control over your business and is in perfect compliance with the industry standards. Our software fully understands the need for convenience and efficiency in any industry.',
+    image: '/images/portfolio-images/billing software-pop-up.jpg',
+    modalImage: '/images/portfolio-images/billing software-view.jpg',
+    tech: [".NET", "SQL Server", "Barcode Scanning", "POS Integration"],
+    features: [
+      "POS system",
+      "Inventory tracking",
+      "Barcode support"
+    ],
+    client: "Retail Chain",
+    duration: "8 months",
+    team: "5 developers"
+  },
+  {
+    id: 'trigger-demo23',
+    title: 'HIIT',
+    category: 'ios-app',
+    type: 'Mobile',
+    description: 'Welcome to this easy to use HIIT & Tabata Workout Timer giving you the possibility to measure your training and achieve even better results.',
+    image: '/images/portfolio-images/HIIT.jpg',
+    modalImage: '/images/portfolio-images/HIIT-view.jpg',
+    tech: ["iOS", "Swift", "HealthKit", "Workout Tracking"],
+    features: [
+      "HIIT timer",
+      "Workout tracking",
+      "Health integration"
+    ],
+    client: "Fitness App",
+    duration: "4 months",
+    team: "3 developers"
+  },
+  {
+    id: 'trigger-demo25',
+    title: 'TO SHARE',
+    category: 'ios-app',
+    type: 'Mobile',
+    description: 'This app helps to share the play time or usage time equally between the kids or teenage who interested to share usage of one IPAD/IPHONE.',
+    image: '/images/portfolio-images/To-Share.jpg',
+    modalImage: '/images/portfolio-images/To-Share-view.jpg',
+    tech: ["iOS", "Swift", "Parental Controls", "Time Management"],
+    features: [
+      "Time sharing",
+      "Usage tracking",
+      "Parental controls"
+    ],
+    client: "Family Tech",
+    duration: "3 months",
+    team: "2 developers"
+  },
+  {
+    id: 'trigger-demo26',
+    title: 'ECOMMERCE MAGAZIN',
+    category: 'ios-app',
+    type: 'Mobile',
+    description: 'Its an e-commerce magazine. Our intuitive help section is the one-stop destination to manage your account, email preferences and magazine subscription.',
+    image: '/images/portfolio-images/ecommerce-magazin.jpg',
+    modalImage: '/images/portfolio-images/ecommerce-magazin-view.jpg',
+    tech: ["iOS", "Swift", "E-commerce", "Subscription"],
+    features: [
+      "Digital magazine",
+      "Subscription management",
+      "E-commerce"
+    ],
+    client: "Media Company",
+    duration: "5 months",
+    team: "3 developers"
+  },
+  {
+    id: 'trigger-demo27',
+    title: 'FLURV',
+    category: 'ios-app',
+    type: 'Mobile',
+    description: 'Flurv is the global network for meeting new people. Instantly meet people near you or around the world! See who is broadcasting in Live.',
+    image: '/images/portfolio-images/flurv.jpg',
+    modalImage: '/images/portfolio-images/flurv-view.jpg',
+    tech: ["iOS", "Swift", "Location Services", "Social Networking"],
+    features: [
+      "Social networking",
+      "Live broadcasting",
+      "Location-based"
+    ],
+    client: "Social Network",
+    duration: "6 months",
+    team: "5 developers"
+  },
+  {
+    id: 'trigger-demo28',
+    title: 'CITY LIMOUSINE',
+    category: 'web-application',
+    type: 'Web',
+    description: 'Our chauffeured car services offering you the most comfortable way of travelling in Paris. We can adjust to your needs with our luxury vehicles.',
+    image: '/images/portfolio-images/City-Limousine.jpg',
+    modalImage: '/images/portfolio-images/City-Limousine-Paris.jpg',
+    tech: ["React", "Node.js", "Booking System", "Payment Processing"],
+    features: [
+      "Luxury car booking",
+      "Online payments",
+      "Schedule management"
+    ],
+    client: "Transportation Service",
+    duration: "4 months",
+    team: "3 developers"
+  },
+  {
+    id: 'trigger-demo29',
+    title: 'CLASSIC VACATIONS',
+    category: 'web-application',
+    type: 'Web',
+    description: 'A premier provider of vacations for discerning travelers, Classic Vacations offers a full line of luxury accommodations, first class and private transportation options.',
+    image: '/images/portfolio-images/Classic-Vacations-pop-up.jpg',
+    modalImage: '/images/portfolio-images/Classic-Vacations.jpg',
+    tech: ["Angular", "Node.js", "Travel API", "Booking System"],
+    features: [
+      "Vacation packages",
+      "Luxury bookings",
+      "Travel planning"
+    ],
+    client: "Travel Agency",
+    duration: "5 months",
+    team: "4 developers"
+  },
+  {
+    id: 'trigger-demo30',
+    title: 'EHR EVOLUTION',
+    category: 'healthcare',
+    type: 'Web',
+    description: 'A single platform that unifies clinical, operational, and financial data to drive improvements using real time information.',
+    image: '/images/portfolio-images/EHR.jpg',
+    modalImage: '/images/portfolio-images/EHR-Evolution.jpg',
+    tech: ["React", "Node.js", "HL7/FHIR", "Healthcare API"],
+    features: [
+      "Health records",
+      "Real-time data",
+      "Clinical integration"
+    ],
+    client: "Healthcare Provider",
+    duration: "8 months",
+    team: "7 developers"
+  },
+  {
+    id: 'trigger-demo31',
+    title: 'T5 DATA CENTERS',
+    category: 'enterprise',
+    type: 'Web',
+    description: 'T5 Data Centers, innovators in providing secure, customizable, hyperscale computing environments for enterprise companies.',
+    image: '/images/portfolio-images/T5-Data-Centers.jpg',
+    modalImage: '/images/portfolio-images/T5-Data-Centers-Enterprise-Wholesale-Solutions.jpg',
+    tech: ["Vue.js", "Node.js", "Enterprise Security", "Data Visualization"],
+    features: [
+      "Data center management",
+      "Enterprise security",
+      "Infrastructure monitoring"
+    ],
+    client: "Data Center Provider",
+    duration: "6 months",
+    team: "5 developers"
+  },
+  {
+    id: 'trigger-demo32',
+    title: 'WI SPA USA',
+    category: 'web-application',
+    type: 'Web',
+    description: 'Get away from the city for an hour. Or stay away for a day. Just minutes from Hollywood and downtown. Wi Spa is a convenient and affordable place to de-stress and be pampered.',
+    image: '/images/portfolio-images/WiSpa.jpg',
+    modalImage: '/images/portfolio-images/WiSpa-USA-24 Hour-Spa-in-Los-Angeles.jpg',
+    tech: ["React", "Node.js", "Booking System", "Spa Management"],
+    features: [
+      "Spa booking",
+      "Service catalog",
+      "Membership management"
+    ],
+    client: "Spa Chain",
+    duration: "4 months",
+    team: "3 developers"
+  },
+  {
+    id: 'trigger-demo33',
+    title: 'PLE',
+    category: 'web-application',
+    type: 'Web',
+    description: 'Traveling through a large, busy airport can be a harrowing experience. Booking one of our airport pickup and transfers to Le bourget or other Paris airport transfer in advance takes a big problem off your mind.',
+    image: '/images/portfolio-images/Parislimo-express-pop-up.jpg',
+    modalImage: '/images/portfolio-images/Parislimoexpress.jpg',
+    tech: ["Angular", "Node.js", "Booking System", "Transportation API"],
+    features: [
+      "Airport transfers",
+      "Online booking",
+      "Fleet management"
+    ],
+    client: "Transportation Service",
+    duration: "5 months",
+    team: "4 developers"
+  },
+  {
+    id: 'trigger-demo2',
+    title: 'Smart Home',
+    category: 'iot',
+    type: 'IOT',
+    description: 'AppPics is a web application developed in HTML 5, CSS 3, PHP, JQuery, AJAX & DOM. This web application will let any user to pick an app from the pre existing apps gallery.',
+    image: '/images/portfolio-images/smart-home.jpg',
+    modalImage: '/images/portfolio-images/smart-home-view.jpg',
+    tech: ["IoT", "Home Automation", "Mobile App", "Cloud Integration"],
+    features: [
+      "Smart home control",
+      "Device automation",
+      "Remote access"
+    ],
+    client: "Home Automation",
+    duration: "6 months",
+    team: "4 developers"
+  },
+  {
+    id: 'trigger-demo20',
+    title: 'Home Controls',
+    category: 'iot',
+    type: 'IOT',
+    description: 'AppPics is a web application developed in HTML 5, CSS 3, PHP, JQuery, AJAX & DOM. This web application will let any user to pick an app from the pre existing apps gallery.',
+    image: '/images/portfolio-images/Home-Controls.jpg',
+    modalImage: '/images/portfolio-images/Home-Control-view.jpg',
+    tech: ["IoT", "Z-Wave", "Zigbee", "Home Automation"],
+    features: [
+      "Device control",
+      "Automation rules",
+      "Energy monitoring"
+    ],
+    client: "Smart Home",
+    duration: "5 months",
+    team: "3 developers"
+  },
+  {
+    id: 'trigger-demo21',
+    title: 'Ez Trailer',
+    category: 'iot',
+    type: 'IOT',
+    description: 'Use your smartphone to browse, explore and manage files of any Bluetooth ready device, sensors are installed on the bogie of axle box at each shaft, connected with temperature monitoring device directly.',
+    image: '/images/portfolio-images/EzTrailer.jpg',
+    modalImage: '/images/portfolio-images/EzTrailer-view.jpg',
+    tech: ["IoT", "Bluetooth", "Sensor Network", "Mobile App"],
+    features: [
+      "Trailer monitoring",
+      "Sensor data",
+      "Bluetooth connectivity"
+    ],
+    client: "Transportation",
+    duration: "7 months",
+    team: "5 developers"
+  },
+  {
+    id: 'trigger-demo22',
+    title: 'HOME AUTOMATION',
+    category: 'iot',
+    type: 'IOT',
+    description: 'AppPics is a web application developed in HTML 5, CSS 3, PHP, JQuery, AJAX & DOM. This web application will let any user to pick an app from the pre existing apps gallery.',
+    image: '/images/portfolio-images/HOME-AUTOMATION.png',
+    modalImage: '/images/portfolio-images/HOME-AUTOMATION-view.jpg',
+    tech: ["IoT", "Home Automation", "Voice Control", "Mobile App"],
+    features: [
+      "Voice control",
+      "Scene automation",
+      "Energy saving"
+    ],
+    client: "Smart Home",
+    duration: "6 months",
+    team: "4 developers"
+  },
+  {
+    id: 'trigger-demo16',
+    title: 'React Native',
+    category: 'cross-platform',
+    type: 'Cross Platform',
+    description: 'With React Native, you don\'t build a "mobile web app", an "HTML5 app", or a "hybrid app". You build a real mobile app that\'s indistinguishable.',
+    image: '/images/portfolio-images/React-Native.jpg',
+    modalImage: '/images/portfolio-images/React-Native-view.jpg',
+    tech: ["React Native", "JavaScript", "iOS", "Android"],
+    features: [
+      "Cross-platform",
+      "Native performance",
+      "Hot reloading"
+    ],
+    client: "Various",
+    duration: "Ongoing",
+    team: "Framework"
+  },
+  {
+    id: 'trigger-demo17',
+    title: 'Angular JS',
+    category: 'cross-platform',
+    type: 'Cross Platform',
+    description: 'Angular JS stack is one of the best stacks for web application developments. Angular JS focus and aims to work on fast and modern browsers such as Chrome, firefox, Opera, Internet Explorer 8, Android, iOS6+ etc.',
+    image: '/images/portfolio-images/Angular-JS.jpg',
+    modalImage: '/images/portfolio-images/Angular-JS-view.jpg',
+    tech: ["AngularJS", "JavaScript", "HTML5", "CSS3"],
+    features: [
+      "SPA framework",
+      "Two-way binding",
+      "Modular architecture"
+    ],
+    client: "Various",
+    duration: "Ongoing",
+    team: "Framework"
+  },
+  {
+    id: 'trigger-demo18',
+    title: 'Ionic',
+    category: 'cross-platform',
+    type: 'Cross Platform',
+    description: 'The top open source framework for building amazing mobile apps.Ionic is the beautiful, free and open source mobile SDK for developing native and progressive web apps with ease.',
+    image: '/images/portfolio-images/ionic.jpg',
+    modalImage: '/images/portfolio-images/ionic-view.jpg',
+    tech: ["Ionic", "Angular", "Cordova", "Hybrid Apps"],
+    features: [
+      "Hybrid apps",
+      "UI components",
+      "Cross-platform"
+    ],
+    client: "Various",
+    duration: "Ongoing",
+    team: "Framework"
+  },
+  {
+    id: 'trigger-demo19',
+    title: 'Xamarin',
+    category: 'cross-platform',
+    type: 'Cross Platform',
+    description: 'Stay on top of mobile trends with curriculum that\'s constantly updated by a dedicated team of mobile experts. Individually, Xamarin\'s mobile lifecycle products are best-in-class.',
+    image: '/images/portfolio-images/xamarin.jpg',
+    modalImage: '/images/portfolio-images/xamarin-view.jpg',
+    tech: ["Xamarin", "C#", ".NET", "Mobile"],
+    features: [
+      "Native performance",
+      "Shared codebase",
+      "Microsoft ecosystem"
+    ],
+    client: "Various",
+    duration: "Ongoing",
+    team: "Framework"
+  },
+  {
+    id: 'view-more',
+    title: 'View More',
+    category: 'all',
+    type: '',
+    description: '',
+    image: '/images/portfolio-images/view-more.jpg',
+    modalImage: '',
+    tech: [],
+    features: [],
+    client: "",
+    duration: "",
+    team: ""
+  }
+];
 
   const filteredProjects = activeFilter === 'all'
     ? projects
@@ -553,7 +942,7 @@ export default function Portfolio() {
                     {/* Image */}
                     <div className="relative aspect-video rounded-md overflow-hidden bg-gray-100">
                       <Image
-                        src={selectedProject.image}
+                        src={selectedProject.modalImage}
                         alt={selectedProject.title}
                         fill
                         className="object-cover"
