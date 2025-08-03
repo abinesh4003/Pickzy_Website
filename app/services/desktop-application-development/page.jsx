@@ -45,3 +45,7 @@ export const metadata = {
     },
   ],
 };
+
+export default function DesktopApplicationDevelopmentPage() {
+  return <DesktopApplicationDevelopment />;
+}

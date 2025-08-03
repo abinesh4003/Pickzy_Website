@@ -4,126 +4,115 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-         
-          {/* Services - Second column */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li><Link href="/services/web-development" className="text-gray-400 hover:text-white transition-colors text-sm block">Web Development</Link></li>
-              <li><Link href="/services/mobile-development" className="text-gray-400 hover:text-white transition-colors text-sm block">Mobile Development</Link></li>
-              <li><Link href="/services/cloud-solutions" className="text-gray-400 hover:text-white transition-colors text-sm block">Cloud Solutions</Link></li>
-              <li><Link href="/services/digital-transformation" className="text-gray-400 hover:text-white transition-colors text-sm block">Digital Transformation</Link></li>
-              <li><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">All Services</Link></li>
-            </ul>
-          </div>
+    <section className="footer_section bg-gray-900 text-white py-12">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="border-foot border-b border-gray-800 pb-8">
+          <div className="footer_link_menu grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            {/* Company Links - Column 1 */}
+            <div className="foot_sstyle fm1 space-y-3">
+              <h3 className="text-lg font-semibold mb-4">Company</h3>
+              <p><Link href="/" className="text-gray-400 hover:text-white transition-colors text-sm block">Home</Link></p>
+              <p><Link href="/about-us" className="text-gray-400 hover:text-white transition-colors text-sm block">About Us</Link></p>
+              <p><Link href="/careers" className="text-gray-400 hover:text-white transition-colors text-sm block">Careers</Link></p>
+              <p><Link href="/portfolio" className="text-gray-400 hover:text-white transition-colors text-sm block">Portfolio</Link></p>
+              <p><Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm block">Blog</Link></p>
+              <p><Link href="/contact-us" className="text-gray-400 hover:text-white transition-colors text-sm block">Contact Us</Link></p>
+            </div>
 
-          {/* Company - Third column */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li><Link href="/about-us" className="text-gray-400 hover:text-white transition-colors text-sm block">About Us</Link></li>
-              <li><Link href="/portfolio" className="text-gray-400 hover:text-white transition-colors text-sm block">Portfolio</Link></li>
-              <li><Link href="/careers" className="text-gray-400 hover:text-white transition-colors text-sm block">Careers</Link></li>
-              <li><Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm block">Blog</Link></li>
-              <li><Link href="/contact-us" className="text-gray-400 hover:text-white transition-colors text-sm block">Contact</Link></li>
-            </ul>
-          </div>
+            {/* Services - Column 2 */}
+            <div className="foot_sstyle fm2 space-y-3">
+              <h3 className="text-lg font-semibold mb-4">Mobile Services</h3>
+              <p><Link href="/services/mobile-development" className="text-gray-400 hover:text-white transition-colors text-sm block">Mobile Development</Link></p>
+              <p><Link href="/services/web-development" className="text-gray-400 hover:text-white transition-colors text-sm block">Web Development</Link></p>
+              <p><Link href="/services/cloud-solutions" className="text-gray-400 hover:text-white transition-colors text-sm block">Cloud Solutions</Link></p>
+              <p><Link href="/services/digital-transformation" className="text-gray-400 hover:text-white transition-colors text-sm block">Digital Transformation</Link></p>
+              <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">All Services</Link></p>
+            </div>
 
-          {/* Contact Info - Fourth column */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Get in Touch</h3>
-            <div className="space-y-3">
+            {/* Technologies - Column 3 */}
+            <div className="foot_sstyle fm3 space-y-3">
+              <h3 className="text-lg font-semibold mb-4">Technologies</h3>
+              <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">Microsoft .Net</Link></p>
+              <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">Java Development</Link></p>
+              <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">Python</Link></p>
+              <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">Node.js</Link></p>
+              <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">React/Angular</Link></p>
+            </div>
+
+            {/* Policies - Column 4 */}
+            <div className="foot_sstyle fm4 space-y-3">
+              <h3 className="text-lg font-semibold mb-4">Policies</h3>
+              <p><Link href="/placeholders/privacy" className="text-gray-400 hover:text-white transition-colors text-sm block">Privacy Policy</Link></p>
+              <p><Link href="/placeholders/cookies" className="text-gray-400 hover:text-white transition-colors text-sm block">Cookie Policy</Link></p>
+              <p><Link href="/placeholders/terms" className="text-gray-400 hover:text-white transition-colors text-sm block">Terms of Service</Link></p>
+                <div className="flex space-x-4">
+                  <Link href="https://www.linkedin.com/company/pickzy-interactive-private-limited/" className="text-gray-400 hover:text-white transition-colors">
+                    <Linkedin className="h-5 w-5" />
+                  </Link>
+                  <Link href="https://x.com/PickZySoftware" className="text-gray-400 hover:text-white transition-colors">
+                    <Twitter className="h-5 w-5" />
+                  </Link>
+                  <Link href="https://www.instagram.com/pickzy__softwares?igsh=aDVmamU5Z3lubjJ1" className="text-gray-400 hover:text-white transition-colors">
+                    <Instagram className="h-5 w-5" />
+                  </Link>
+                  <Link href="https://www.facebook.com/pickzy" className="text-gray-400 hover:text-white transition-colors">
+                    <Facebook className="h-5 w-5" />
+                  </Link>
+                </div>
+            </div>
+
+            {/* Contact - Column 5 */}
+            <div className="foot_sstyle fm5 space-y-3">
+              <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <div className="flex items-center space-x-3">
-                <Mail className="h-4 w-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                <Mail className="h-4 w-4 text-blue-400" />
                 <span className="text-gray-400 text-sm">sales@pickzy.com</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone className="h-4 w-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                <Phone className="h-4 w-4 text-blue-400" />
                 <span className="text-gray-400 text-sm">+91 44 4501 4466</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="h-4 w-4 text-blue-400 mt-0.5 flex-shrink-0" />
+              <div className="flex items-start space-x-3">
+                <MapPin className="h-4 w-4 text-blue-400 mt-1" />
                 <span className="text-gray-400 text-sm">
-                  JVL Plaza, 6th Floor,
-                  Anna Salai, Teynampet,
+                  JVL Plaza, 6th Floor,<br />
+                  Anna Salai, Teynampet,<br />
                   Chennai 600018
                 </span>
               </div>
             </div>
           </div>
-
-
-         {/* Company - Fourth column */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Policies </h3>
-            <ul className="space-y-2">
-              <li><Link href="/placeholders/privacy" className="text-gray-400 hover:text-white transition-colors text-sm block">privacy policy</Link></li>
-              <li><Link href="/placeholders/cookie" className="text-gray-400 hover:text-white transition-colors text-sm block">cookie policy</Link></li>
-              <li><Link href="/placeholders/terms" className="text-gray-400 hover:text-white transition-colors text-sm block">Terms of Service</Link></li>
-             
-            </ul>
-          </div>
-
-
-
-         {/* Company Info - 5th column */}
-          <div className="space-y-4">
-            <div className="flex flex-col items-start">
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Leading software development company delivering innovative digital solutions that transform businesses and drive growth worldwide.
-              </p>
-              <div className="flex space-x-4 mt-4">
-                <Link href="https://www.linkedin.com/company/pickzy-interactive-private-limited/" className="text-gray-400 hover:text-white transition-colors">
-                  <Linkedin className="h-5 w-5" />
-                </Link>
-                <Link href="https://x.com/PickZySoftware" className="text-gray-400 hover:text-white transition-colors">
-                  <Twitter className="h-5 w-5" />
-                </Link>
-                <Link href="https://www.instagram.com/pickzy__softwares?igsh=aDVmamU5Z3lubjJ1" className="text-gray-400 hover:text-white transition-colors">
-                  <Instagram className="h-5 w-5" />
-                </Link>
-                <Link href="https://www.facebook.com/pickzy" className="text-gray-400 hover:text-white transition-colors">
-                  <Facebook className="h-5 w-5" />
-                </Link>
-              </div>
-            
-            </div>
-          </div>
-
-
         </div>
 
-        {/* Bottom section */}
-        <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm text-center md:text-left">
-              PickZy Software Pvt Ltd &copy; 2011-{new Date().getFullYear()} | All rights reserved
-            </p>
+        {/* Bottom Footer */}
+        <div className="footer_bot pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="footer_copy text-gray-400 text-sm mb-4 md:mb-0">
+              PickZy Software Pvt Ltd © 2011-{new Date().getFullYear()} | All rights reserved
+            </div>
             
-            <div className="flex items-center space-x-6">
-              <Link href="/" className="flex-shrink-0">
+            <div className="footer_sm">
+              <div className="foot_logo flex items-center space-x-6">
+                 <Image 
+                  src="/assets/footer_logo.png" 
+                  alt="PickZy Logo" 
+                  width={180} 
+                  height={70} 
+                  className="h-12 w-auto ml-6"
+                />
                 <Image 
                   src="/assets/pickzy_logo.png" 
                   alt="PickZy Logo" 
-                  width={150} 
-                  height={60} 
-                  className="h-10 w-auto"
+                  width={120} 
+                  height={48} 
+                  className="h-10 w-auto ml-6"
                 />
-              </Link>
-              <Image 
-                src="/assets/footer_logo.png" 
-                alt="Pickzy Software Logo" 
-                width={150} 
-                height={60} 
-                className="h-10 w-auto"
-              />
+
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </footer>
+    </section>
   );
-} 
+}
