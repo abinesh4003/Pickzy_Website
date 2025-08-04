@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
-import Link from 'next/link'; 
+import { ResumeSubmissionDialog } from '@/components/resume-submission-dialog';
 
 export default function PositionsPage() {
   const [positions, setPositions] = useState([]);
@@ -131,9 +131,7 @@ export default function PositionsPage() {
           <div className="text-center py-12">
             <h3 className="text-xl font-medium text-gray-900 mb-2">No open positions at the moment</h3>
             <p className="text-gray-600 mb-4">Check back later or send us your resume for future opportunities</p>
-            <Button variant="outline" size="lg">
-              <Link href="/contact-us">Send Us Your Resume</Link>
-            </Button>
+            <ResumeSubmissionDialog />
           </div>
         ) : (
           <>
@@ -142,7 +140,7 @@ export default function PositionsPage() {
                 <Card 
                   key={position.id} 
                   className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                  data-aos-delay={index * 50}
+                   
                 >
                   <CardContent className="p-8">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
@@ -196,9 +194,7 @@ export default function PositionsPage() {
 
             <div className="text-center mt-12" data-aos="fade-up">
               <p className="text-gray-600 mb-4">Don't see a position that fits? We're always looking for talented people!</p>
-              <Button variant="outline" size="lg">
-                <Link href="/contact-us">Send Us Your Resume</Link>
-              </Button>
+              <ResumeSubmissionDialog />
             </div>
           </>
         )}

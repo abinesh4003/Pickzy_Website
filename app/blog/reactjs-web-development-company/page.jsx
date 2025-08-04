@@ -19,7 +19,7 @@ const ReactJsBlogPost = () => {
           <div 
   className="relative bg-gray-900 overflow-hidden"
   data-aos="fade"
-  data-aos-duration="800"
+   
 >
   {/* Background Image with Overlay */}
   <div className="absolute inset-0 z-0">
@@ -38,7 +38,7 @@ const ReactJsBlogPost = () => {
       <span 
         className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-indigo-600 text-white mb-6"
         data-aos="fade-up"
-        data-aos-delay="100"
+          
       >
         Frontend Development
       </span>
@@ -47,7 +47,7 @@ const ReactJsBlogPost = () => {
       <h1 
         className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6"
         data-aos="fade-up"
-        data-aos-delay="200"
+         
       >
         Why React.js Is the First Choice for Modern Web Applications in 2025
       </h1>
@@ -56,7 +56,7 @@ const ReactJsBlogPost = () => {
       <p 
         className="max-w-3xl mx-auto text-xl text-gray-300 mb-10"
         data-aos="fade-up"
-        data-aos-delay="300"
+         
       >
         Discover how React.js continues to dominate frontend development with its unparalleled ecosystem and performance.
       </p>
@@ -65,7 +65,7 @@ const ReactJsBlogPost = () => {
       <div 
         className="flex flex-wrap justify-center gap-6 text-gray-300"
         data-aos="fade-up"
-        data-aos-delay="400"
+         
       >
         <div className="flex items-center">
           <svg className="w-5 h-5 mr-2 text-indigo-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +91,7 @@ const ReactJsBlogPost = () => {
       <div 
         className="mt-10"
         data-aos="fade-up"
-        data-aos-delay="500"
+         
       >
         <Link
           href="#content"
@@ -110,8 +110,8 @@ const ReactJsBlogPost = () => {
               <p 
                 className="mb-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="150"
+                  
+                 
               >
                 In today's fast-paced digital economy, users expect lightning-fast, responsive, and seamless web experiences. 
                 For businesses — whether startups or enterprises — the choice of frontend technology can make or break their 
@@ -122,8 +122,8 @@ const ReactJsBlogPost = () => {
               <h2 
                 className="text-2xl md:text-3xl font-bold mb-6 mt-10 text-gray-900 dark:text-white" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="200"
+                  
+                 
               >
                 Why React.js? Key Advantages
               </h2>
@@ -154,8 +154,8 @@ const ReactJsBlogPost = () => {
                   key={index} 
                   className="mb-8 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
                   data-aos="fade-up" 
-                  data-aos-duration="700" 
-                  data-aos-delay={200 + (index * 50)}
+                    
+              
                 >
                   <h3 className="text-xl font-bold mb-3 text-indigo-600 dark:text-indigo-400">
                     {item.title}
@@ -170,8 +170,8 @@ const ReactJsBlogPost = () => {
               <div 
                 className="bg-indigo-50 dark:bg-indigo-900/30 border-l-4 border-indigo-500 p-6 my-8 rounded-r-lg" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="450"
+                  
+                 
               >
                 <p className="text-indigo-800 dark:text-indigo-200">
                   <span className="font-semibold">Case Study:</span> A US logistics startup partnered with PickZy to migrate their legacy PHP dashboard to a React.js web portal — 
@@ -183,16 +183,16 @@ const ReactJsBlogPost = () => {
               <h2 
                 className="text-2xl md:text-3xl font-bold mb-6 mt-10 text-gray-900 dark:text-white" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="500"
+                  
+                 
               >
                 When to Choose React.js for Your Project
               </h2>
               <ul 
                 className="space-y-4 mb-8" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="550"
+                  
+                 
               >
                 {[
                   "You're building a single-page application (SPA)",
@@ -214,24 +214,24 @@ const ReactJsBlogPost = () => {
               <h2 
                 className="text-2xl md:text-3xl font-bold mb-6 mt-10 text-gray-900 dark:text-white" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="600"
+                  
+                 
               >
                 How PickZy Interactive Delivers React Solutions
               </h2>
               <p 
                 className="mb-4 text-gray-700 dark:text-gray-300" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="650"
+                  
+                 
               >
                 At <strong className="font-semibold text-indigo-600 dark:text-indigo-400">PickZy</strong>, our team of senior React.js developers specializes in:
               </p>
               <ul 
                 className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="700"
+                  
+                 
               >
                 {[
                   "Building scalable web dashboards and portals",
@@ -253,8 +253,8 @@ const ReactJsBlogPost = () => {
               <div 
                 className="flex flex-col sm:flex-row justify-between gap-4 mt-16 py-8 border-t border-gray-200 dark:border-gray-700" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="750"
+                  
+                 
               >
                 <Link 
                   href="react-nodejs-tech-stack" 
@@ -276,8 +276,8 @@ const ReactJsBlogPost = () => {
               <div 
                 className="bg-gradient-to-r from-indigo-500 to-blue-600 p-8 rounded-xl my-8 text-white" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="800"
+                  
+                 
               >
                 <h3 className="text-xl font-bold mb-2">Ready to Build With React?</h3>
                 <p className="mb-6 opacity-90">If you're looking for a <strong>trusted React.js development company</strong> to build, scale, or modernize your web application — we're here to help.</p>
@@ -293,8 +293,8 @@ const ReactJsBlogPost = () => {
               <div 
                 className="flex flex-col sm:flex-row gap-6 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl my-8" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="850"
+                  
+                 
               >
                 <div className="flex-shrink-0">
                   <Image
@@ -316,8 +316,8 @@ const ReactJsBlogPost = () => {
               <div 
                 className="mt-8" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="900"
+                  
+                 
               >
                 <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">Share this article:</h4>
                 <div className="flex gap-3">

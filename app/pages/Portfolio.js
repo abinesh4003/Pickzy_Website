@@ -735,6 +735,218 @@ const filters = [
     duration: "Ongoing",
     team: "Framework"
   },
+  {
+  id: 'face-guru-dox-sales',
+  title: "Face Guru, Face Dox & Sales Guru",
+  category: "marketing-analytics",
+  type: "SaaS",
+  description: "AI-powered marketing, analytics, and collaboration suite leveraging big data and facial recognition to optimize sales, customer profiling, and targeted outreach for enterprises.",
+  image: "/images/portfolio-images/faceguru_model.jpg ",
+  modalImage: "/images/portfolio-images/Face-Guru.jpg",
+  tech: [
+    "Python", 
+    "TensorFlow/Keras", 
+    "Node.js", 
+    "React.js", 
+    "AWS/GCP", 
+    "OpenCV", 
+    "PostgreSQL", 
+    "Redis", 
+    "OAuth 2.0"
+  ],
+  features: [
+    "Facial recognition & sentiment analysis (Face Guru)",
+    "Data aggregation & customer profiling (Face Dox)",
+    "AI-driven sales pipeline optimization (Sales Guru)",
+    "Real-time analytics dashboard",
+    "Multi-platform integration (CRM, ERP, etc.)",
+    "GDPR/CCPA-compliant data handling"
+  ],
+  client: "Enterprise Marketing & Sales Teams",
+  duration: "12 months",
+  team: "10 developers, 3 data scientists, 2 UX designers"
+},
+
+{
+  id: 'cookn',
+  title: "COOK'N",
+  category: "food-tech",
+  type: "Web & Mobile App",
+  description: "A recipe discovery and organization platform for food enthusiasts, enabling users to compile, save, and discover new recipes from across the web in one centralized hub.",
+  image: "/images/portfolio-images/cookn_app.jpg",
+  modalImage: "/images/portfolio-images/cookn_app_modal.jpg",
+  tech: [
+    "React.js", 
+    "Next.js", 
+    "Node.js", 
+    "Firebase", 
+    "MongoDB", 
+    "Web Scraping (Puppeteer/Cheerio)", 
+    "RESTful API", 
+    "OAuth 2.0"
+  ],
+  features: [
+    "Recipe aggregation from multiple sources",
+    "Smart search & filtering by dietary preferences",
+    "User recipe collections & bookmarking",
+    "Meal planning & grocery list generation",
+    "Community sharing & ratings",
+    "Browser extension for quick recipe saves"
+  ],
+  client: "Food Enthusiasts & Home Cooks",
+  duration: "6 months",
+  team: "5 developers, 1 UI/UX designer, 1 QA specialist"
+},
+{
+  id: 'health-mirror',
+  title: "Health Mirror",
+  category: "health-tech",
+  type: "Cloud-Based SaaS",
+  description: "An interactive patient engagement platform that delivers personalized, multimedia health education at every stage of care—before, during, and after clinical visits—to improve outcomes and adherence.",
+  image: "/images/portfolio-images/health_mirror_front.png",
+  modalImage: "/images/portfolio-images/Health-Mirror.jpg",
+  tech: [
+    "AWS/GCP (Cloud Hosting)", 
+    "React.js/React Native", 
+    "Node.js", 
+    "MongoDB", 
+    "WebRTC (Video Support)", 
+    "HIPAA-Compliant APIs", 
+    "Content Management System (CMS)"
+  ],
+  features: [
+    "Personalized health content delivery",
+    "Real-time updates for post-care instructions",
+    "Multimedia support (videos, interactive guides, FAQs)",
+    "Integration with EHR/EMR systems",
+    "Multi-language & accessibility support",
+    "Analytics dashboard for providers"
+  ],
+  client: "Hospitals, Clinics, and Telehealth Providers",
+  duration: "8 months",
+  team: "6 developers, 2 healthcare UX specialists, 1 compliance officer"
+},
+{
+  id: 'meditation-app',
+  title: "Meditation App",
+  category: "health-wellness",
+  type: "Mobile Application",
+  description: "A precision-engineered brainwave entrainment app featuring 75+ scientifically-backed meditation programs using Isochronic Tones and Binaural Beats for stress relief, focus, and sleep enhancement.",
+  image: "/images/portfolio-images/meditation_app.jpg",
+  modalImage: "/images/portfolio-images/meditation-view.jpg",
+  tech: [
+    "Flutter (Cross-platform)",
+    "Dart",
+    "Firebase",
+    "Audio Signal Processing",
+    "FFmpeg",
+    "Google Billing API",
+    "Meditation Analytics SDK"
+  ],
+  features: [
+    "75+ science-backed meditation programs",
+    "Customizable brainwave entrainment (Alpha/Theta/Delta)",
+    "Sleep timer & background playback",
+    "Progress tracking & achievements",
+    "Offline mode with downloadable content",
+    "Premium subscription model"
+  ],
+  client: "Mental Wellness Seekers",
+  duration: "7 months",
+  team: "4 developers, 1 audio engineer, 1 neuroscientist consultant"
+},
+{
+  id: 'photo-lasso',
+  title: "Photo Lasso",
+  category: "photo-editing",
+  type: "Mobile Application",
+  description: "An intuitive photo editing app that transforms images with powerful yet simple tools including filters, color adjustments, and AI-enhanced effects.",
+  image: "/images/portfolio-images/photo-lasso.jpg",
+  modalImage: "/images/portfolio-images/photo-lasso-view.jpg",
+  tech: [
+    "React Native",
+    "Python (for AI filters)",
+    "OpenCV",
+    "TensorFlow Lite",
+    "Firebase Storage",
+    "GPUImage",
+    "FastAPI (for cloud processing)"
+  ],
+  features: [
+    "One-tap AI photo enhancement",
+    "100+ customizable filters",
+    "Advanced color correction tools",
+    "Background removal tool",
+    "Social media sharing integration",
+    "Before/after comparison",
+    "Premium filter packs"
+  ],
+  client: "Mobile Photographers & Social Media Users",
+  duration: "6 months",
+  team: "3 mobile developers, 1 AI specialist, 1 UI designer"
+},
+{
+  id: 'tix-alert',
+  title: "TIX ALERT",
+  category: "smart-city-mobility",
+  type: "Mobile Application",
+  description: "A parking intelligence app that helps drivers avoid tickets by identifying restricted zones, disabled parking, and available parking spots in real-time across urban areas.",
+  image: "/images/portfolio-images/tix_front.jpg",
+  modalImage: "/images/portfolio-images/tix_map_view.jpg",
+  tech: [
+    "Flutter (Cross-platform)",
+    "Firebase Realtime Database",
+    "Google Maps API",
+    "Geofencing API",
+    "ARKit/ARCore (AR Parking Spot Detection)",
+    "Stripe Payment Integration",
+    "Machine Learning (for Parking Predictions)"
+  ],
+  features: [
+    "Real-time parking zone visualization (color-coded maps)",
+    "Voice-guided parking alerts",
+    "User-reported violation hotspots",
+    "Meter reminder notifications",
+    "Premium subscription for premium parking spots",
+    "AR view for spot identification",
+    "Municipal regulation database integration"
+  ],
+  client: "Urban Drivers & City Commuters",
+  duration: "8 months",
+  team: "5 developers, 1 GIS specialist, 1 urban planner consultant"
+},
+{
+  id: 'fajr-wakeup',
+  title: "Fajr WakeUp",
+  category: "religious-tech",
+  type: "Android Application",
+  description: "A comprehensive Islamic prayer companion app featuring synchronized prayer alarms, community features, and spiritual reminders with push notifications.",
+  image: "/images/portfolio-images/fajr-wakeup-main.jpg",
+  modalImage: "/images/portfolio-images/fajr-wakeup-modal.jpg",
+  tech: [
+    "Core Java (Android)",
+    "XML",
+    "Google GCM Service",
+    "Parse Push Service",
+    "Parse (MBaaS)",
+    "REST APIs",
+    "Android SDK",
+    "Prayer Time Calculation API",
+    "SQLite"
+  ],
+  features: [
+    "Location-based prayer time calculations",
+    "Synchronized community prayer alarms",
+    "In-app Islamic chat community",
+    "Qibla direction finder",
+    "Progress tracking for prayers",
+    "Islamic calendar with important dates",
+    "Adhan (prayer call) customization"
+  ],
+  client: "Muslim Community Worldwide",
+  duration: "6 months",
+  team: "3 Android developers, 1 Islamic scholar consultant, 1 UX designer"
+}
 
 ];
 
@@ -762,7 +974,7 @@ const filters = [
             <p
               className="text-xl text-gray-600 max-w-3xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               Discover how we've helped businesses transform their operations with innovative software solutions across various industries.
             </p>
@@ -778,7 +990,7 @@ const filters = [
               <div
                 key={index}
                 data-aos="zoom-in"
-                data-aos-delay={200 + (index * 100)}
+          
               >
                 <AnimatedCounter value={stat.value} classname={stat.color} duration={3} />
                 <div className="text-gray-600">{stat.label}</div>
@@ -806,7 +1018,7 @@ const filters = [
             value={filter.id}
             className="px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base rounded-full border border-gray-300 bg-white shadow-sm hover:bg-gray-50 transition-colors data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:border-transparent"
             data-aos="fade-up"
-            data-aos-delay={index * 50}
+             
           >
             <span className="mr-1 sm:mr-2">{filter.icon}</span>
             {filter.label}
@@ -826,7 +1038,7 @@ const filters = [
                 key={project.id}
                 className="group relative"
                 data-aos="fade-up"
-                data-aos-delay={(index % 3) * 100}
+           
               >
                 <Card
                   className="h-full cursor-pointer overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-gray-200"
@@ -1024,7 +1236,7 @@ const filters = [
                 key={index}
                 className="text-center group hover:-translate-y-1 transition-transform duration-200"
                 data-aos="zoom-in"
-                data-aos-delay={index % 6 * 50}
+                
               >
                 <div className="bg-white p-6 rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-300">
                   <div className="text-lg font-semibold text-gray-900">{tech}</div>

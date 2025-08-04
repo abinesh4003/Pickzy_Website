@@ -91,14 +91,12 @@ const contactInfo = [
         <h1 
           className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
           data-aos="fade-up"
-          data-aos-delay="100"
         >
           Get in <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Touch</span>
         </h1>
         <p 
           className="text-xl text-gray-600 max-w-3xl mx-auto"
           data-aos="fade-up"
-          data-aos-delay="200"
         >
           Ready to transform your business with cutting-edge software? Let's discuss your project and explore how we can help you achieve your goals.
         </p>
@@ -110,34 +108,29 @@ const contactInfo = [
             key={index} 
             className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow duration-300"
             data-aos="fade-up"
-            data-aos-delay={100 + (index * 100)}
           >
             <CardContent className="p-6">
               <div 
                 className="mx-auto mb-4 p-3 bg-gray-50 rounded-full w-fit"
                 data-aos="zoom-in"
-                data-aos-delay={150 + (index * 100)}
               >
                 {info.icon}
               </div>
               <h3 
                 className="font-semibold text-gray-900 mb-1"
                 data-aos="fade-up"
-                data-aos-delay={200 + (index * 100)}
               >
                 {info.title}
               </h3>
               <p 
                 className="text-gray-900 font-medium mb-1"
                 data-aos="fade-up"
-                data-aos-delay={250 + (index * 100)}
               >
                 {info.details}
               </p>
               <p 
                 className="text-sm text-gray-600"
                 data-aos="fade-up"
-                data-aos-delay={300 + (index * 100)}
               >
                 {info.description}
               </p>
@@ -161,13 +154,11 @@ const contactInfo = [
           <Card 
             className="border-0 shadow-lg"
             data-aos="fade-left"
-            data-aos-delay="100"
           >
             <CardHeader>
               <CardTitle 
                 className="text-xl"
                 data-aos="fade-up"
-                data-aos-delay="150"
               >
                 Why Choose PickZy?
               </CardTitle>
@@ -195,25 +186,21 @@ const contactInfo = [
                   key={index} 
                   className="flex items-start space-x-3"
                   data-aos="fade-up"
-                  data-aos-delay={200 + (index * 50)}
                 >
                   <CheckCircle 
                     className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" 
                     data-aos="zoom-in"
-                    data-aos-delay={200 + (index * 50) + 25}
                   />
                   <div>
                     <h4 
                       className="font-semibold text-gray-900"
                       data-aos="fade-up"
-                      data-aos-delay={200 + (index * 50)}
                     >
                       {item.title}
                     </h4>
                     <p 
                       className="text-sm text-gray-600"
                       data-aos="fade-up"
-                      data-aos-delay={200 + (index * 50) + 25}
                     >
                       {item.desc}
                     </p>
@@ -227,54 +214,46 @@ const contactInfo = [
           <Card 
             className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-purple-50"
             data-aos="fade-left"
-            data-aos-delay="200"
           >
             <CardContent className="p-6">
               <div 
                 className="flex items-center mb-4"
                 data-aos="fade-up"
-                data-aos-delay="250"
               >
                 {[1,2,3,4,5].map((star) => (
                   <Star 
                     key={star} 
                     className="h-5 w-5 fill-yellow-400 text-yellow-400"
                     data-aos="zoom-in"
-                    data-aos-delay={250 + (star * 50)}
                   />
                 ))}
               </div>
               <p 
                 className="text-gray-700 mb-4 italic"
                 data-aos="fade-up"
-                data-aos-delay="300"
               >
                 "PickZy transformed our business with their exceptional software solutions. The team's expertise and dedication exceeded our expectations."
               </p>
               <div 
                 className="flex items-center space-x-3"
                 data-aos="fade-up"
-                data-aos-delay="350"
               >
                 <img 
                   src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400"
                   alt="Rathish TR"
                   className="w-12 h-12 rounded-full object-cover"
                   data-aos="zoom-in"
-                  data-aos-delay="400"
                 />
                 <div>
                   <div 
                     className="font-semibold text-gray-900"
                     data-aos="fade-up"
-                    data-aos-delay="450"
                   >
                     Sarah Johnson
                   </div>
                   <div 
                     className="text-sm text-gray-600"
                     data-aos="fade-up"
-                    data-aos-delay="500"
                   >
                     CEO, InnovateCorp
                   </div>
@@ -287,19 +266,16 @@ const contactInfo = [
           <Card 
             className="border-0 shadow-lg"
             data-aos="fade-left"
-            data-aos-delay="300"
           >
             <CardHeader>
               <CardTitle 
                 className="text-xl"
                 data-aos="fade-up"
-                data-aos-delay="350"
               >
                 Follow Us
               </CardTitle>
               <CardDescription
                 data-aos="fade-up"
-                data-aos-delay="400"
               >
                 Stay updated with our latest projects and insights
               </CardDescription>
@@ -308,7 +284,7 @@ const contactInfo = [
               <div 
                 className="flex space-x-4"
                 data-aos="fade-up"
-                data-aos-delay="450"
+                 
               >
                 <Link href="#" className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                   <Linkedin className="h-5 w-5" />
@@ -340,7 +316,7 @@ const contactInfo = [
         <p 
           className="text-xl text-gray-600"
           data-aos="fade-up"
-          data-aos-delay="100"
+            
         >
           Get answers to common questions about our services and process.
         </p>
@@ -352,20 +328,20 @@ const contactInfo = [
             key={index} 
             className="border-0 shadow-lg"
             data-aos="fade-up"
-            data-aos-delay={100 + (index * 50)}
+        
           >
             <CardContent className="p-6">
               <h3 
                 className="text-lg font-semibold text-gray-900 mb-3"
                 data-aos="fade-up"
-                data-aos-delay={100 + (index * 50)}
+             
               >
                 {faq.question}
               </h3>
               <p 
                 className="text-gray-600"
                 data-aos="fade-up"
-                data-aos-delay={150 + (index * 50)}
+       
               >
                 {faq.answer}
               </p>
@@ -381,14 +357,14 @@ const contactInfo = [
         <p 
           className="text-gray-600 mb-4"
           data-aos="fade-up"
-          data-aos-delay="100"
+            
         >
           Still have questions?
         </p>
         <Button 
           className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
           data-aos="fade-up"
-          data-aos-delay="200"
+           
         >
           Schedule a Call
           <ArrowRight className="ml-2 h-4 w-4" />
@@ -407,14 +383,14 @@ const contactInfo = [
       <h2 
         className="text-3xl font-bold text-gray-900 mb-4"
         data-aos="fade-up"
-        data-aos-delay="100"
+          
       >
         Visit Our Office
       </h2>
       <p 
         className="text-xl text-gray-600"
         data-aos="fade-up"
-        data-aos-delay="200"
+         
       >
         Located in the heart of Tech City's innovation district
       </p>

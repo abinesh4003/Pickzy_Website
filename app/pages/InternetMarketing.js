@@ -122,7 +122,7 @@ export default function InternetMarketing() {
               <div 
                 className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm mb-6"
                 data-aos="fade-up"
-                data-aos-delay="100"
+                  
               >
                 <span className="text-blue-600 mr-2">🏆</span>
                 <span className="text-sm font-medium text-gray-700">Trusted by 500+ businesses</span>
@@ -135,7 +135,7 @@ export default function InternetMarketing() {
               <p 
                 className="text-xl text-gray-600 max-w-2xl mb-8"
                 data-aos="fade-up"
-                data-aos-delay="200"
+                 
               >
                 We craft measurable marketing strategies that increase visibility, drive qualified traffic, and convert visitors into customers.
               </p>
@@ -143,7 +143,7 @@ export default function InternetMarketing() {
               <div 
                 className="flex flex-wrap gap-4"
                 data-aos="fade-up"
-                data-aos-delay="300"
+                 
               >
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-sm">
                   Get a Free Consultation
@@ -170,7 +170,7 @@ export default function InternetMarketing() {
                 <div 
                   className="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20 max-w-xs"
                   data-aos="fade-up"
-                  data-aos-delay="400"
+                   
                 >
                   <div className="flex items-center mb-2">
                     <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
@@ -201,7 +201,7 @@ export default function InternetMarketing() {
             <p 
               className="text-xl text-gray-600 max-w-3xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               In today's digital world, your website alone isn't enough. With billions of people using the internet daily, you need to attract, engage, and convert your audience where they spend the most time — online.
             </p>
@@ -232,7 +232,7 @@ export default function InternetMarketing() {
                     key={index} 
                     className="flex items-start"
                     data-aos="fade-up"
-                    data-aos-delay={index * 100}
+                     
                   >
                     <div className="flex-shrink-0 mt-1 mr-4 text-blue-600">
                       <Check className="h-6 w-6" />
@@ -272,7 +272,7 @@ export default function InternetMarketing() {
             <p 
               className="text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               Comprehensive solutions tailored to your business goals and industry.
             </p>
@@ -284,7 +284,7 @@ export default function InternetMarketing() {
                 key={index} 
                 className="hover:shadow-xl transition-all duration-300 border border-gray-100 group"
                 data-aos="fade-up"
-                data-aos-delay={index * 50}
+                 
               >
                 <CardHeader>
                   <div className="p-3 rounded-lg bg-blue-50 w-12 h-12 flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors">
@@ -315,7 +315,7 @@ export default function InternetMarketing() {
             <p 
               className="text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               A systematic approach that delivers consistent results.
             </p>
@@ -327,7 +327,7 @@ export default function InternetMarketing() {
                 key={index} 
                 className="text-center"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold">
                   {index + 1}
@@ -351,7 +351,7 @@ export default function InternetMarketing() {
             <p 
               className="text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               We use industry-leading platforms to maximize your marketing performance.
             </p>
@@ -363,7 +363,7 @@ export default function InternetMarketing() {
                 key={index} 
                 className="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                 data-aos="fade-up"
-                data-aos-delay={index * 50}
+                 
               >
                 <div className="w-16 h-16 mb-4 flex items-center justify-center">
                   <Image 
@@ -392,7 +392,7 @@ export default function InternetMarketing() {
             <p 
               className="text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               Customized strategies for your specific industry needs.
             </p>
@@ -404,7 +404,7 @@ export default function InternetMarketing() {
                 key={index} 
                 className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100"
                 data-aos="fade-up"
-                data-aos-delay={index * 50}
+                 
               >
                 <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                   <Check className="h-5 w-5 text-green-500 mr-3" />
@@ -427,7 +427,7 @@ export default function InternetMarketing() {
             <p 
               className="text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               Don't just take our word for it - hear from our clients.
             </p>
@@ -439,7 +439,7 @@ export default function InternetMarketing() {
                 key={index} 
                 className="hover:shadow-lg transition-shadow"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <CardContent className="p-6">
                   <div className="mb-4 text-yellow-400">
@@ -470,7 +470,7 @@ export default function InternetMarketing() {
             <p 
               className="text-xl text-blue-200 max-w-2xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               The difference is in our approach and commitment to your success.
             </p>
@@ -482,7 +482,7 @@ export default function InternetMarketing() {
                 key={index} 
                 className="flex items-start"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <div className="flex-shrink-0 mt-1 mr-4 text-blue-400">
                   <Check className="h-6 w-6" />
@@ -506,14 +506,14 @@ export default function InternetMarketing() {
           <p 
             className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
             data-aos="fade-up"
-            data-aos-delay="100"
+              
           >
             Ready to grow your business online? Whether you're starting fresh or scaling up, we'll craft a digital strategy that gets results.
           </p>
           <div 
             className="flex flex-wrap justify-center gap-4"
             data-aos="fade-up"
-            data-aos-delay="200"
+             
           >
             <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-100 font-semibold">
               Request a Quote

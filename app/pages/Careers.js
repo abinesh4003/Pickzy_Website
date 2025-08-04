@@ -80,10 +80,10 @@ export default function Careers() {
  <div className="min-h-screen bg-white">
   <Header />
 
-  {/* Hero Section */}
+  {/* Hero Section */} 
   <section className="pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16" data-aos="zoom-in" data-aos-duration="800">
+      <div className="text-center mb-16" data-aos="zoom-in"  >
         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
           Join Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Amazing Team</span>
         </h1>
@@ -93,15 +93,15 @@ export default function Careers() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-        <div data-aos="fade-up" data-aos-delay="100">
+        <div data-aos="fade-up"   >
           <div className="text-4xl font-bold text-blue-600 mb-2">50+</div>
           <div className="text-gray-600">Team Members</div>
         </div>
-        <div data-aos="fade-up" data-aos-delay="200">
+        <div data-aos="fade-up"  >
           <div className="text-4xl font-bold text-purple-600 mb-2">15+</div>
           <div className="text-gray-600">Countries</div>
         </div>
-        <div data-aos="fade-up" data-aos-delay="300">
+        <div data-aos="fade-up"  >
           <div className="text-4xl font-bold text-green-600 mb-2">4.9/5</div>
           <div className="text-gray-600">Employee Rating</div>
         </div>
@@ -125,7 +125,7 @@ export default function Careers() {
             key={index} 
             className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow duration-300"
             data-aos="flip-up"
-            data-aos-delay={index * 100}
+             
           >
             <CardContent className="p-6">
               <div className="mx-auto mb-4 p-3 bg-gray-50 rounded-full w-fit">
@@ -156,7 +156,7 @@ export default function Careers() {
             key={index} 
             className="border-0 shadow-lg"
             data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-            data-aos-delay={index * 100}
+             
           >
             <CardContent className="p-8">
               <h3 className="text-xl font-semibold mb-3 text-gray-900">{value.title}</h3>
@@ -172,7 +172,6 @@ export default function Careers() {
  {/* Open Positions */}
    <PositionsPage/>
 
- 
   
 
   {/* Application Process */}
@@ -212,7 +211,7 @@ export default function Careers() {
             key={index} 
             className="text-center"
             data-aos="zoom-in"
-            data-aos-delay={index * 150}
+       
           >
             <div className="relative mb-6">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto">
@@ -244,12 +243,12 @@ export default function Careers() {
             alt="David Kim"
             className="w-20 h-20 rounded-full mx-auto mb-6 object-cover"
             data-aos="zoom-in"
-            data-aos-delay="200"
+             
           />
-          <blockquote className="text-xl text-gray-700 mb-6 italic" data-aos="fade-up" data-aos-delay="300">
+          <blockquote className="text-xl text-gray-700 mb-6 italic" data-aos="fade-up"  >
             "PickZy has been an incredible place to grow my career. The team is supportive, the projects are challenging, and the work-life balance is amazing. I've learned more in my two years here than in my previous five years combined."
           </blockquote>
-          <div data-aos="fade-up" data-aos-delay="400">
+          <div data-aos="fade-up"  >
             <div className="font-semibold text-gray-900">David Kim</div>
             <div className="text-gray-600">Senior Full Stack Developer</div>
           </div>
@@ -264,7 +263,7 @@ export default function Careers() {
       <h2 className="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-down">
         Ready to Join Our Team?
       </h2>
-      <p className="text-xl mb-8 text-blue-100" data-aos="fade-down" data-aos-delay="100">
+      <p className="text-xl mb-8 text-blue-100" data-aos="fade-down"   >
         Take the next step in your career and help us build amazing software solutions that make a difference.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -273,7 +272,7 @@ export default function Careers() {
           variant="secondary" 
           className="px-8 py-3"
           data-aos="zoom-in"
-          data-aos-delay="200"
+           
         >
           View Open Positions
           <ArrowRight className="ml-2 h-5 w-5" />
@@ -284,7 +283,7 @@ export default function Careers() {
           className="px-8 py-3 text-black border-white hover:bg-white hover:text-blue-600" 
           asChild
           data-aos="zoom-in"
-          data-aos-delay="300"
+           
         >
           <Link href="/contact-us">Contact HR</Link>
         </Button>
@@ -293,6 +292,7 @@ export default function Careers() {
   </section>
 
   <Footer />
+   
 </div>
   );
 }

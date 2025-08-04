@@ -230,7 +230,7 @@ export default function Home() {
           <div
             className="text-center mb-16"
             data-aos="fade-up"
-            data-aos-delay="100"
+              
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -244,7 +244,7 @@ export default function Home() {
                 key={index}
                 className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg"
                 data-aos="fade-up"
-                data-aos-delay={150 * index}
+              
                 data-aos-mirror="true"
               >
                 <CardHeader className="text-center pb-4">
@@ -268,7 +268,7 @@ export default function Home() {
           <div
             className="text-center mt-12"
             data-aos="fade-up"
-            data-aos-delay="300"
+             
           >
             <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" asChild>
               <Link href="/services">View All Services</Link>
@@ -290,7 +290,7 @@ export default function Home() {
               <div
                 key={index}
                 data-aos="zoom-in"
-                data-aos-delay={150 * index}
+               
                 data-aos-mirror="true"
                 className="text-center p-4" // Added some padding
               >
@@ -308,7 +308,7 @@ export default function Home() {
           <div
             className="text-center mb-16"
             data-aos="fade-up"
-            data-aos-delay="100"
+              
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-aos="fade-right">What Our Clients Say</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto" data-aos="fade-left">
@@ -322,7 +322,7 @@ export default function Home() {
                 key={index}
                 className="text-center shadow-lg border-0"
                 data-aos="fade-up"
-                data-aos-delay={150 * index}
+           
                 data-aos-mirror="true"
               >
                 <CardContent className="p-6">
@@ -366,7 +366,7 @@ export default function Home() {
           <div
             className="flex flex-col sm:flex-row gap-4 justify-center"
             data-aos="fade-up"
-            data-aos-delay="200"
+             
           >
             <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-3" asChild>
               <Link href="/contact-us">

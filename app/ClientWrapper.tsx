@@ -4,6 +4,7 @@
 import { usePathname } from 'next/navigation';
 import AOSInit from '@/components/AOSInit';
 import ScrollToTop from '@/components/scrollToTop';
+import { Toast } from '@/components/ui/toast';
 
 export default function ClientWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -13,6 +14,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
       <AOSInit />
       {children}
       <ScrollToTop />
+      <Toast/>
     </>
   );
 }

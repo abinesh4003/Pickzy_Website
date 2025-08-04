@@ -130,10 +130,10 @@ export default function DesignAndMarkup() {
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Pixel-Perfect Designs, <span className="text-blue-600">Hand-Coded Markup</span>
               </h1>
-              <p className="text-xl text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="100">
+              <p className="text-xl text-gray-600 mb-8" data-aos="fade-up"   >
                 From Figma to Functional – We bring your UI/UX designs to life with clean, responsive HTML, CSS, and modern frontend tech.
               </p>
-              <div className="flex gap-4" data-aos="fade-up" data-aos-delay="200">
+              <div className="flex gap-4" data-aos="fade-up"  >
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
                   Let's Work Together
                 </Button>
@@ -167,7 +167,7 @@ export default function DesignAndMarkup() {
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
             <div className="max-w-3xl mx-auto">
-              <p className="text-xl text-gray-600" data-aos="fade-up" data-aos-delay="100">
+              <p className="text-xl text-gray-600" data-aos="fade-up"   >
                 In the digital world, first impressions matter. A seamless blend of beautiful design and clean, semantic code ensures:
               </p>
             </div>
@@ -183,7 +183,7 @@ export default function DesignAndMarkup() {
                 key={index} 
                 className="bg-gray-50 p-6 rounded-xl text-center"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   {item.icon}
@@ -207,7 +207,7 @@ export default function DesignAndMarkup() {
             <p 
               className="text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               Comprehensive solutions from design to implementation
             </p>
@@ -219,7 +219,7 @@ export default function DesignAndMarkup() {
                 key={index} 
                 className="hover:shadow-lg transition-all duration-300 border-0"
                 data-aos="fade-up"
-                data-aos-delay={index * 50}
+                 
               >
                 <CardHeader>
                   <div className="flex items-center mb-4">
@@ -249,7 +249,7 @@ export default function DesignAndMarkup() {
             <p 
               className="text-xl text-gray-600 max-w-3xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               A seamless workflow that transforms your designs into clean, functional, and scalable code
             </p>
@@ -261,7 +261,7 @@ export default function DesignAndMarkup() {
                 key={index}
                 className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 {/* Content */}
                 <div className="p-6">
@@ -300,7 +300,7 @@ export default function DesignAndMarkup() {
             <p 
               className="text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               Modern stack for cutting-edge frontend development
             </p>
@@ -312,7 +312,7 @@ export default function DesignAndMarkup() {
                 key={index} 
                 className="flex flex-col items-center"
                 data-aos="fade-up"
-                data-aos-delay={index * 50}
+                 
               >
                 <div className="w-16 h-16 bg-white rounded-lg shadow-sm flex items-center justify-center p-3 mb-3">
                   <img src={tech.icon} alt={tech.name} className="w-full h-auto" />
@@ -335,7 +335,7 @@ export default function DesignAndMarkup() {
             <p 
               className="text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               We deliver exceptional quality with every project
             </p>
@@ -347,7 +347,7 @@ export default function DesignAndMarkup() {
                 key={index} 
                 className="flex items-start gap-4"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <div className="flex-shrink-0 mt-1">
                   <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
@@ -375,7 +375,7 @@ export default function DesignAndMarkup() {
             <p 
               className="text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               Don't just take our word for it
             </p>
@@ -387,7 +387,7 @@ export default function DesignAndMarkup() {
                 key={index} 
                 className="bg-white p-8 rounded-xl shadow-sm border border-gray-100"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <div className="mb-6">
                   <div className="flex">
@@ -421,14 +421,14 @@ export default function DesignAndMarkup() {
             <p 
               className="text-xl text-blue-100 mb-8"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               Whether you're a startup, agency, or enterprise, we're ready to bring your design vision to the web.
             </p>
             <div 
               className="flex flex-col sm:flex-row justify-center gap-4"
               data-aos="fade-up"
-              data-aos-delay="200"
+               
             >
               <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
                 Request a Quote

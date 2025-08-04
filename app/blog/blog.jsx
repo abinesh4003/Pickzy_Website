@@ -57,7 +57,7 @@ const PickzyInteractive = () => {
             <div 
               className="blog-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300"
               data-aos="fade-up" 
-              data-aos-delay="100"
+                
             >
               <div className="relative overflow-hidden h-48">
                 <Image 
@@ -97,7 +97,7 @@ const PickzyInteractive = () => {
             <div 
               className="blog-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300"
               data-aos="fade-up" 
-              data-aos-delay="200"
+               
             >
               <div className="relative overflow-hidden h-48">
                 <Image 
@@ -137,7 +137,7 @@ const PickzyInteractive = () => {
             <div 
               className="blog-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300"
               data-aos="fade-up" 
-              data-aos-delay="300"
+               
             >
               <div className="relative overflow-hidden h-48">
                 <Image 
@@ -197,7 +197,7 @@ const PickzyInteractive = () => {
             <div 
               className="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition" 
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               <div className="w-14 h-14 bg-indigo-600 rounded-lg flex items-center justify-center text-white  mb-6">
                 <Code className="w-6 h-6" />
@@ -209,7 +209,7 @@ const PickzyInteractive = () => {
             <div 
               className="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition" 
               data-aos="fade-up"
-              data-aos-delay="200"
+               
             >
               <div className="w-14 h-14 bg-green-600 rounded-lg flex items-center justify-center text-white mb-6">
                 <Server className="w-6 h-6" />
@@ -221,7 +221,7 @@ const PickzyInteractive = () => {
             <div 
               className="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition" 
               data-aos="fade-up"
-              data-aos-delay="300"
+               
             >
               <div className="w-14 h-14 bg-purple-600 rounded-lg flex items-center justify-center text-white mb-6">
                 <Layers className="w-6 h-6" />

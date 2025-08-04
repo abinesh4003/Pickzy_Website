@@ -142,14 +142,14 @@ export default function Services() {
         <h1 
           className="text-4xl md:text-6xl font-bold text-gray-900 mb-6" 
           data-aos="fade-right"
-          data-aos-delay="100"
+            
         >
           Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Services</span>
         </h1>
         <p 
           className="text-xl text-gray-600 max-w-3xl mx-auto"
           data-aos="fade-left"
-          data-aos-delay="200"
+           
         >
           Comprehensive software solutions tailored to meet your business needs and drive digital transformation across all industries.
         </p>
@@ -169,7 +169,6 @@ export default function Services() {
             key={index} 
             className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg"
             data-aos="fade-up"
-            data-aos-delay={100 * (index % 3)}
           >
             <CardHeader className="text-center pb-4">
               <div 
@@ -193,7 +192,7 @@ export default function Services() {
                         key={idx} 
                         className="flex items-center text-sm text-gray-600"
                         data-aos="fade-up"
-                        data-aos-delay={idx * 50}
+                      
                       >
                         <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                         {feature}
@@ -210,7 +209,7 @@ export default function Services() {
                         variant="secondary" 
                         className="text-xs"
                         data-aos="zoom-in"
-                        data-aos-delay={idx * 30}
+                      
                       >
                         {tech}
                       </Badge>
@@ -252,7 +251,7 @@ export default function Services() {
         <p 
           className="text-xl text-gray-600 max-w-2xl mx-auto"
           data-aos="fade-up"
-          data-aos-delay="100"
+            
         >
           We follow a proven methodology to ensure successful project delivery and client satisfaction.
         </p>
@@ -264,13 +263,13 @@ export default function Services() {
             key={index} 
             className="text-center"
             data-aos="fade-up"
-            data-aos-delay={150 * index}
+            
           >
             <div className="relative mb-6">
               <div 
                 className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto"
                 data-aos="zoom-in"
-                data-aos-delay={150 * index + 100}
+               
               >
                 {step.step}
               </div>
@@ -278,21 +277,21 @@ export default function Services() {
                 <div 
                   className="hidden lg:block absolute top-8  left-1/2 z-[-1] w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transform -translate-y-1/2 "
                   data-aos="fade-right"
-                  data-aos-delay={150 * index + 50}
+                 
                 ></div>
               )}
             </div>
             <h3 
               className="text-xl font-semibold mb-3"
               data-aos="fade-up"
-              data-aos-delay={150 * index + 100}
+            
             >
               {step.title}
             </h3>
             <p 
               className="text-gray-600 text-sm"
               data-aos="fade-up"
-              data-aos-delay={150 * index + 150}
+             
             >
               {step.description}
             </p>
@@ -339,25 +338,25 @@ export default function Services() {
                 key={index} 
                 className="flex items-start space-x-4"
                 data-aos="fade-right"
-                data-aos-delay={100 * index}
+               
               >
                 <CheckCircle 
                   className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" 
                   data-aos="zoom-in"
-                  data-aos-delay={100 * index + 50}
+                 
                 />
                 <div>
                   <h3 
                     className="font-semibold text-gray-900 mb-1"
                     data-aos="fade-up"
-                    data-aos-delay={100 * index + 50}
+                  
                   >
                     {item.title}
                   </h3>
                   <p 
                     className="text-gray-600"
                     data-aos="fade-up"
-                    data-aos-delay={100 * index + 100}
+                  
                   >
                     {item.desc}
                   </p>
@@ -368,14 +367,14 @@ export default function Services() {
         </div>
         <div
           data-aos="fade-left"
-          data-aos-delay="200"
+           
         >
           <img 
             src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800"
             alt="Team working"
             className="rounded-lg shadow-xl"
             data-aos="zoom-in"
-            data-aos-delay="300"
+             
           />
         </div>
       </div>
@@ -397,14 +396,14 @@ export default function Services() {
       <p 
         className="text-xl mb-8 text-blue-100"
         data-aos="fade-up"
-        data-aos-delay="100"
+          
       >
         Let's discuss your requirements and create a custom solution that drives your business forward.
       </p>
       <div 
         className="flex flex-col sm:flex-row gap-4 justify-center"
         data-aos="fade-up"
-        data-aos-delay="200"
+         
       >
         <Button 
           size="lg" 
@@ -412,7 +411,7 @@ export default function Services() {
           className="px-8 py-3"
           asChild
           data-aos="fade-up"
-          data-aos-delay="300"
+           
         >
           <Link href="/contact-us">
             Get Free Consultation
@@ -425,7 +424,7 @@ export default function Services() {
           className="px-8 py-3 text-black border-white hover:bg-white hover:text-blue-600"
           asChild
           data-aos="fade-up"
-          data-aos-delay="400"
+           
         >
           <Link href="/portfolio">View Our Work</Link>
         </Button>

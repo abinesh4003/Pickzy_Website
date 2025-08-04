@@ -151,7 +151,7 @@ export default function WebDevelopment() {
               <p 
                 className="text-xl text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0"
                 data-aos="fade-up"
-                data-aos-delay="100"
+                  
               >
                 Build Powerful, Scalable, and Modern Web Solutions
               </p>
@@ -159,7 +159,7 @@ export default function WebDevelopment() {
               <p 
                 className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto lg:mx-0"
                 data-aos="fade-up"
-                data-aos-delay="200"
+                 
               >
                 We build high-performance web applications using all major technologies. 
                 Whether you're a startup or an enterprise, we'll bring your vision to life.
@@ -168,7 +168,7 @@ export default function WebDevelopment() {
               <div 
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                 data-aos="fade-up"
-                data-aos-delay="300"
+                 
               >
                 <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700">
                   <Link href="/contact-us">Get Started</Link>
@@ -185,7 +185,7 @@ export default function WebDevelopment() {
               <div 
                 className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300"
                 data-aos="fade-left"
-                data-aos-delay="200"
+                 
               >
                 <img
                   src="/service/web/hero.avif"
@@ -203,7 +203,7 @@ export default function WebDevelopment() {
               <div 
                 className="absolute -bottom-6 -left-6 bg-white p-3 rounded-full shadow-lg"
                 data-aos="zoom-in"
-                data-aos-delay="400"
+                 
               >
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                   <Code className="h-6 w-6 text-blue-600" />
@@ -212,7 +212,7 @@ export default function WebDevelopment() {
               <div 
                 className="absolute -top-6 -right-6 bg-white p-3 rounded-full shadow-lg"
                 data-aos="zoom-in"
-                data-aos-delay="500"
+                 
               >
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
                   <Cpu className="h-6 w-6 text-purple-600" />
@@ -245,7 +245,7 @@ export default function WebDevelopment() {
                 key={index} 
                 className="hover:shadow-lg transition-all duration-300"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <CardHeader>
                   <div className="flex items-center mb-4">
@@ -286,7 +286,7 @@ export default function WebDevelopment() {
                 key={index} 
                 className="hover:shadow-lg transition-all duration-300"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <CardHeader>
                   <div className="flex items-center mb-4">
@@ -334,7 +334,7 @@ export default function WebDevelopment() {
                 key={category}
                 className="bg-gray-50 p-6 rounded-lg"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <h3 className={`text-lg font-semibold mb-4 ${
                   category === 'languages' ? 'text-blue-600' :
@@ -380,7 +380,7 @@ export default function WebDevelopment() {
                   key={index} 
                   className={`relative lg:flex ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-between`}
                   data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-                  data-aos-delay={index * 150}
+       
                 >
                   <div className={`lg:w-5/12 mb-8 lg:mb-0 ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}>
                     <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -453,7 +453,7 @@ export default function WebDevelopment() {
                 key={index}
                 className={`${item.bg} p-8 rounded-lg hover:shadow-lg transition-shadow duration-300`}
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <h3 className={`text-xl font-semibold mb-4 ${item.text}`}>{item.title}</h3>
                 <p className="text-gray-700">{item.content}</p>
@@ -478,19 +478,19 @@ export default function WebDevelopment() {
           <div 
             className="w-24 h-1 bg-blue-200 mx-auto mb-8"
             data-aos="fade-up"
-            data-aos-delay="100"
+              
           ></div>
           <p 
             className="text-xl text-blue-100 mb-8"
             data-aos="fade-up"
-            data-aos-delay="200"
+             
           >
             Let's discuss your requirements and create a custom solution for your business. We'll help you choose the right stack and bring your ideas to life—on time and within budget.
           </p>
           <div 
             className="flex flex-col sm:flex-row justify-center gap-4"
             data-aos="fade-up"
-            data-aos-delay="300"
+             
           >
             <Button size="lg" className="bg-white text-black hover:bg-gray-100">
               Get a Free Quote

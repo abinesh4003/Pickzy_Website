@@ -113,11 +113,11 @@ export default function About() {
 {/* Hero Section */}
   <section className="pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16" data-aos="fade-down" data-aos-duration="800">
+          <div className="text-center mb-16" data-aos="fade-down"  >
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
               About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">PickZy</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up"  >
               Founded in 2011, PickZy Interactive is a Chennai‑based software company delivering AI‑driven web & mobile solutions to clients in the US, UK, and India.
             </p>
           </div>
@@ -130,7 +130,7 @@ export default function About() {
               <p className="text-lg text-gray-600 mb-8">
                 With over 200 successful projects and a presence in global markets, we continue to build enterprise-grade software with precision and passion.
               </p>
-              <div className="grid grid-cols-2 gap-6" data-aos="zoom-in" data-aos-delay="300">
+              <div className="grid grid-cols-2 gap-6" data-aos="zoom-in"  >
                 <div className="text-center">
                   <div className="text-3xl font-bold text-blue-600 mb-2">200+</div>
                   <div className="text-gray-600">Projects Delivered</div>
@@ -141,7 +141,7 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <div data-aos="fade-left" data-aos-delay="200" className='w-full h-full'>
+            <div data-aos="fade-left"   className='w-full h-full'>
               <img src="/team/about_hero.jpg" alt="PickZy team working" className="rounded-lg shadow-xl w-full h-full" />
             </div>
           </div>
@@ -152,7 +152,7 @@ export default function About() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12" data-aos="fade-up">
-            <Card className="p-8 border-0 shadow-lg" data-aos="flip-left" data-aos-delay="100">
+            <Card className="p-8 border-0 shadow-lg" data-aos="flip-left"   >
               <div className="text-center">
                 <Target className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
@@ -161,7 +161,7 @@ export default function About() {
                 </p>
               </div>
             </Card>
-            <Card className="p-8 border-0 shadow-lg" data-aos="flip-right" data-aos-delay="200">
+            <Card className="p-8 border-0 shadow-lg" data-aos="flip-right"  >
               <div className="text-center">
                 <Globe className="w-12 h-12 text-purple-600 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
@@ -194,7 +194,7 @@ export default function About() {
             key={index} 
             className="text-center p-6 border-0 shadow-lg hover:shadow-xl transition-shadow duration-300"
             data-aos="zoom-in"
-            data-aos-delay={index * 100}
+             
           >
             <CardContent className="p-0">
               <div className="mx-auto mb-4 p-3 bg-gray-50 rounded-full w-fit">
@@ -222,7 +222,7 @@ export default function About() {
             <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-600 to-purple-600"></div>
             <div className="space-y-12">
               {milestones.map((milestone, index) => (
-                <div key={index} className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} data-aos={index % 2 === 0 ? "fade-right" : "fade-left"} data-aos-delay={index * 100}>
+                <div key={index} className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}  >
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
                     <Card className="p-6 border-0 shadow-lg">
                       <div className="text-2xl font-bold text-blue-600 mb-2">{milestone.year}</div>
@@ -260,7 +260,7 @@ export default function About() {
             key={index} 
             className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow duration-300"
             data-aos="zoom-in"
-            data-aos-delay={(index % 3) * 100}
+          
           >
             <CardContent className="p-6">
               <img 
@@ -323,21 +323,21 @@ export default function About() {
       <h2 
         className="text-3xl md:text-4xl font-bold mb-6"
         data-aos="fade-down"
-        data-aos-delay="100"
+          
       >
         Ready to Work with Us?
       </h2>
       <p 
         className="text-xl mb-8 text-blue-100"
         data-aos="fade-up"
-        data-aos-delay="200"
+         
       >
         Let's discuss your project and explore how our team can help you achieve your goals.
       </p>
       <div 
         className="flex flex-col sm:flex-row gap-4 justify-center"
         data-aos="zoom-in"
-        data-aos-delay="300"
+         
       >
         <Button size="lg" variant="secondary" className="px-8 py-3" asChild>
           <Link href="/contact-us">Get in Touch</Link>

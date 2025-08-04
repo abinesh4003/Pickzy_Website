@@ -20,7 +20,7 @@ const FullstackBlogPost = () => {
       <Header />
       
       {/* Hero Section */}
-      <div className="relative bg-gray-900 overflow-hidden" data-aos="fade" data-aos-duration="800">
+      <div className="relative bg-gray-900 overflow-hidden" data-aos="fade"  >
         <div className="absolute inset-0 z-0">
           <Image
             src="/assets/images/react-nodejs.webp"
@@ -36,7 +36,7 @@ const FullstackBlogPost = () => {
             <span 
               className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500 to-purple-600 text-white mb-6"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               Fullstack Development
             </span>
@@ -44,7 +44,7 @@ const FullstackBlogPost = () => {
             <h1 
               className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6"
               data-aos="fade-up"
-              data-aos-delay="200"
+               
             >
               Building Modern Web Apps with React.js and Node.js in 2025
             </h1>
@@ -52,7 +52,7 @@ const FullstackBlogPost = () => {
             <p 
               className="max-w-3xl mx-auto text-xl text-gray-300 mb-10"
               data-aos="fade-up"
-              data-aos-delay="300"
+               
             >
               Why the MERN stack continues to dominate fullstack development with unmatched performance and developer experience.
             </p>
@@ -60,7 +60,7 @@ const FullstackBlogPost = () => {
             <div 
               className="flex flex-wrap justify-center gap-6 text-gray-300"
               data-aos="fade-up"
-              data-aos-delay="400"
+               
             >
               <div className="flex items-center">
                 <svg className="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
@@ -93,8 +93,8 @@ const FullstackBlogPost = () => {
               <p 
                 className="mb-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="150"
+                  
+                 
               >
                 In the evolving landscape of web development, the combination of <strong className="font-semibold text-blue-600 dark:text-blue-400">React.js</strong> for frontend and <strong className="font-semibold text-green-600 dark:text-green-400">Node.js</strong> for backend continues to be the preferred fullstack solution for startups and enterprises alike. This powerful duo, often complemented with MongoDB (forming the MERN stack), offers unparalleled advantages for building modern, scalable web applications.
               </p>
@@ -102,8 +102,8 @@ const FullstackBlogPost = () => {
               <h2 
                 className="text-2xl md:text-3xl font-bold mb-6 mt-10 text-gray-900 dark:text-white" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="200"
+                  
+                 
               >
                 Why Choose React.js + Node.js in 2025?
               </h2>
@@ -114,8 +114,8 @@ const FullstackBlogPost = () => {
                 <div 
                   className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border-l-4 border-blue-500"
                   data-aos="fade-up" 
-                  data-aos-duration="700" 
-                  data-aos-delay="250"
+                    
+                   
                 >
                   <h3 className="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400 flex items-center">
                     <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,8 +144,8 @@ const FullstackBlogPost = () => {
                 <div 
                   className="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl border-l-4 border-green-500"
                   data-aos="fade-up" 
-                  data-aos-duration="700" 
-                  data-aos-delay="300"
+                    
+                   
                 >
                   <h3 className="text-xl font-bold mb-4 text-green-600 dark:text-green-400 flex items-center">
                     <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -175,8 +175,8 @@ const FullstackBlogPost = () => {
               <h2 
                 className="text-2xl md:text-3xl font-bold mb-6 mt-10 text-gray-900 dark:text-white" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="350"
+                  
+                 
               >
                 The Power of Combining React + Node
               </h2>
@@ -207,8 +207,8 @@ const FullstackBlogPost = () => {
                   key={index} 
                   className="mb-8 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
                   data-aos="fade-up" 
-                  data-aos-duration="700" 
-                  data-aos-delay={400 + (index * 50)}
+                    
+                 
                 >
                   <h3 className="text-xl font-bold mb-3 text-gradient bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
                     {item.title}
@@ -223,8 +223,8 @@ const FullstackBlogPost = () => {
               <div 
                 className="my-12 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl"
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="650"
+                  
+                 
               >
                 <h3 className="text-xl font-bold mb-4 text-center text-gray-900 dark:text-white">
                   Typical MERN Stack Architecture
@@ -254,8 +254,8 @@ const FullstackBlogPost = () => {
               <h2 
                 className="text-2xl md:text-3xl font-bold mb-6 mt-10 text-gray-900 dark:text-white" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="700"
+                  
+                 
               >
                 Real-World Success Stories
               </h2>
@@ -277,8 +277,8 @@ const FullstackBlogPost = () => {
                     key={index}
                     className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200 dark:border-gray-700"
                     data-aos="fade-up" 
-                    data-aos-duration="700" 
-                    data-aos-delay={750 + (index * 100)}
+                      
+               
                   >
                     <h3 className="text-xl font-bold mb-3 text-gradient bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
                       {caseStudy.title}
@@ -297,8 +297,8 @@ const FullstackBlogPost = () => {
               <div 
                 className="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-xl my-8 border-l-4 border-indigo-500"
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="850"
+                  
+                 
               >
                 <h3 className="text-xl font-bold mb-3 text-indigo-600 dark:text-indigo-400">
                   When to Choose React + Node.js
@@ -324,8 +324,8 @@ const FullstackBlogPost = () => {
               <div 
                 className="flex flex-col sm:flex-row justify-between gap-4 mt-16 py-8 border-t border-gray-200 dark:border-gray-700" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="900"
+                  
+                 
               >
                 <Link 
                   href="nodejs-backend-development" 
@@ -347,8 +347,8 @@ const FullstackBlogPost = () => {
               <div 
                 className="bg-gradient-to-r from-blue-600 to-green-600 p-8 rounded-xl my-8 text-white" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="950"
+                  
+                 
               >
                 <h3 className="text-xl font-bold mb-2">Need Fullstack MERN Developers?</h3>
                 <p className="mb-6 opacity-90">Our team specializes in building performant, scalable applications with React.js and Node.js.</p>
@@ -364,8 +364,8 @@ const FullstackBlogPost = () => {
               <div 
                 className="flex flex-col sm:flex-row gap-6 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl my-8" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="1000"
+                  
+                 
               >
                 <div className="flex-shrink-0">
                   <Image
@@ -389,8 +389,8 @@ const FullstackBlogPost = () => {
               <div 
                 className="mt-8" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="1050"
+                  
+             
               >
                 <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">Share this article:</h4>
                 <div className="flex gap-3">

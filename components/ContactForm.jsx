@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { MessageSquare } from 'lucide-react';
+import { showToast } from './ui/toast';
 
 const services = [
     "Web Development",
@@ -35,7 +36,6 @@ export default function ContactForm() {
         details: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState(null);
     const [errors, setErrors] = useState({});
 
     const validateField = (name, value) => {
@@ -79,12 +79,11 @@ export default function ContactForm() {
   e.preventDefault();
   
   if (!validateForm()) {
-    setSubmitStatus({ success: false, message: 'Please fix the errors in the form' });
+    showToast('error','Please fix the errors in the form', 'error');
     return;
   }
 
   setIsSubmitting(true);
-  setSubmitStatus(null);
 
   try {
     const response = await fetch('/api/email-send', {
@@ -122,16 +121,11 @@ export default function ContactForm() {
       details: ''
     });
 
-    setSubmitStatus({ 
-      success: true, 
-      message: 'Your message has been sent successfully! We will get back to you soon.' 
-    });
+    showToast('success','Your message has been sent successfully! We will get back to you soon.' );
   } catch (error) {
     console.error('Submission error:', error);
-    setSubmitStatus({ 
-      success: false, 
-      message: error.message || 'An unexpected error occurred. Please try again later.' 
-    });
+    showToast('error', 'An unexpected error occurred. Please try again later.', 'error');
+    
   } finally {
     setIsSubmitting(false);
   }
@@ -140,16 +134,16 @@ export default function ContactForm() {
     return (
         <Card className="shadow-xl border-0" data-aos="fade-right">
             <CardHeader>
-                <CardTitle className="text-2xl" data-aos="fade-up" data-aos-delay="100">
+                <CardTitle className="text-2xl" data-aos="fade-up"   >
                     Send us a message
                 </CardTitle>
-                <CardDescription data-aos="fade-up" data-aos-delay="150">
+                <CardDescription data-aos="fade-up"  >
                     Fill out the form below and we'll get back to you within 24 hours.
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4" data-aos="fade-up" data-aos-delay="200">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4" data-aos="fade-up"  >
                         <div>
                             <label htmlFor="firstName" className="text-sm font-medium mb-2 block">
                                 First Name *
@@ -180,7 +174,7 @@ export default function ContactForm() {
                         </div>
                     </div>
 
-                    <div data-aos="fade-up" data-aos-delay="250">
+                    <div data-aos="fade-up"  >
                         <label htmlFor="email" className="text-sm font-medium mb-2 block">
                             Email *
                         </label>
@@ -198,7 +192,7 @@ export default function ContactForm() {
                         )}
                     </div>
 
-                    <div data-aos="fade-up" data-aos-delay="300">
+                    <div data-aos="fade-up"  >
                         <label htmlFor="phone" className="text-sm font-medium mb-2 block">
                             Phone
                         </label>
@@ -211,7 +205,7 @@ export default function ContactForm() {
                         />
                     </div>
 
-                    <div data-aos="fade-up" data-aos-delay="350">
+                    <div data-aos="fade-up"  >
                         <label htmlFor="company" className="text-sm font-medium mb-2 block">
                             Company
                         </label>
@@ -224,7 +218,7 @@ export default function ContactForm() {
                         />
                     </div>
 
-                    <div data-aos="fade-up" data-aos-delay="400">
+                    <div data-aos="fade-up"  >
                         <label htmlFor="service" className="text-sm font-medium mb-2 block">
                             Service Interested In
                         </label>
@@ -242,7 +236,7 @@ export default function ContactForm() {
                         </select>
                     </div>
 
-                    <div data-aos="fade-up" data-aos-delay="450">
+                    <div data-aos="fade-up"  >
                         <label htmlFor="budget" className="text-sm font-medium mb-2 block">
                             Project Budget
                         </label>
@@ -260,7 +254,7 @@ export default function ContactForm() {
                         </select>
                     </div>
 
-                    <div data-aos="fade-up" data-aos-delay="500">
+                    <div data-aos="fade-up"  >
                         <label htmlFor="details" className="text-sm font-medium mb-2 block">
                             Project Details *
                         </label>
@@ -277,24 +271,12 @@ export default function ContactForm() {
                         )}
                     </div>
 
-                    {submitStatus && (
-                        <div
-                            className={`p-4 rounded-md ${
-                                submitStatus.success 
-                                    ? 'bg-green-100 text-green-800' 
-                                    : 'bg-red-100 text-red-800'
-                            }`}
-                            data-aos="fade-up"
-                        >
-                            {submitStatus.message}
-                        </div>
-                    )}
 
                     <Button
                         type="submit"
                         className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-3 transition-all"
                         data-aos="fade-up"
-                        data-aos-delay="550"
+                         
                         disabled={isSubmitting}
                     >
                         {isSubmitting ? (
@@ -317,7 +299,7 @@ export default function ContactForm() {
                 <p
                     className="text-xs text-gray-500 text-center"
                     data-aos="fade-up"
-                    data-aos-delay="600"
+                     
                 >
                     By submitting this form, you agree to our privacy policy and terms of service.
                 </p>

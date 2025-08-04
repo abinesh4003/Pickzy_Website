@@ -7,18 +7,27 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Calendar, User, ArrowRight, Clock , MapPin, Phone, Send, Mail,} from 'lucide-react';
+import { Calendar, User, ArrowRight, Clock , MapPin, Phone, Send, Mail,MessageSquare} from 'lucide-react';
 import Blogs from '@/app/blog/blog';
+import { showToast } from '@/components/ui/toast';
 
 
 
 export default function Blog() {
 
-  const[formData, setFormData] = useState({
+       const [formData, setFormData] = useState({
     firstName: '',
     email: '',
     details: ''
   });
+
+  const [errors, setErrors] = useState({
+    firstName: '',
+    email: '',
+    details: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const featuredPost = {
     title: "The Future of Software Development: AI and Machine Learning Integration",
@@ -104,37 +113,98 @@ export default function Blog() {
     "DevOps"
   ];
 
-  const handleChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    fetch('/api/email-send', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        clearFormData();
-      })
-      .catch(error => {
-        console.error('Error searching:', error);
-      });
-
-  };
-
-  const clearFormData = () => {
-    setFormData({
+ const validateForm = () => {
+    let isValid = true;
+    const newErrors = {
       firstName: '',
       email: '',
-      details: '' 
-    });
+      details: ''
+    };
+
+    // Name validation
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'Name is required';
+      isValid = false;
+    } else if (formData.firstName.trim().length < 2) {
+      newErrors.firstName = 'Name must be at least 2 characters';
+      isValid = false;
+    }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
+      isValid = false;
+    }
+
+    // Message validation
+    if (!formData.details.trim()) {
+      newErrors.details = 'Message is required';
+      isValid = false;
+    } else if (formData.details.trim().length < 10) {
+      newErrors.details = 'Message must be at least 10 characters';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+
+const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ 
+      ...prev, 
+      [name]: value 
+    }));
+    // Clear error when user types
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+
+   const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      showToast('Error', 'Please fix the errors in the form', 'error');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/email-send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      showToast('Success', 'Your message has been sent successfully!', 'success');
+      setFormData({
+        firstName: '',
+        email: '',
+        details: '' 
+      });
+    } catch (error) {
+      showToast('Error', 'Failed to send message. Please try again.', 'error');
+      console.error('Error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -158,7 +228,7 @@ export default function Blog() {
       <Card 
         className="overflow-hidden border-0 shadow-xl"
         data-aos="zoom-in"
-        data-aos-delay="200"
+         
       >
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="relative">
@@ -172,7 +242,7 @@ export default function Blog() {
               <Badge 
                 className="bg-blue-600 text-white"
                 data-aos="zoom-in"
-                data-aos-delay="400"
+                 
               >
                 {featuredPost.category}
               </Badge>
@@ -181,7 +251,7 @@ export default function Blog() {
           <CardContent 
             className="p-8 lg:p-12 flex flex-col justify-center"
             data-aos="fade-left"
-            data-aos-delay="300"
+             
           >
             <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
               {featuredPost.title}
@@ -192,7 +262,7 @@ export default function Blog() {
             <div 
               className="flex items-center space-x-6 text-sm text-gray-500 mb-6"
               data-aos="fade-up"
-              data-aos-delay="400"
+               
             >
               <div className="flex items-center">
                 <User className="h-4 w-4 mr-2" />
@@ -211,9 +281,9 @@ export default function Blog() {
               className="w-fit bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" 
               asChild
               data-aos="zoom-in"
-              data-aos-delay="500"
+               
             >
-              <Link href={`/blog/${featuredPost.slug}`}>
+              <Link href='/blog/reactjs-web-development-company'>
                 Read Full Article
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -243,7 +313,7 @@ export default function Blog() {
             variant={index === 0 ? "default" : "outline"}
             className={index === 0 ? "bg-gradient-to-r from-blue-600 to-purple-600" : ""}
             data-aos="zoom-in"
-            data-aos-delay={index * 100}
+             
           >
             {category}
           </Button>
@@ -269,7 +339,7 @@ export default function Blog() {
             key={index} 
             className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg"
             data-aos="fade-up"
-            data-aos-delay={(index % 3) * 100}
+    
           >
             <div className="relative overflow-hidden">
               <img 
@@ -283,7 +353,7 @@ export default function Blog() {
                   variant="secondary" 
                   className="bg-white text-gray-900"
                   data-aos="zoom-in"
-                  data-aos-delay="300"
+                   
                 >
                   {post.category}
                 </Badge>
@@ -317,7 +387,7 @@ export default function Blog() {
                 className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300"
                 asChild
                 data-aos="zoom-in"
-                data-aos-delay="400"
+                 
               >
                 <Link href={`/blog/${post.slug}`}>
                   Read More
@@ -406,50 +476,91 @@ export default function Blog() {
               </div>
 
               <div data-aos="fade-left">
-                <form onSubmit={handleSubmit} className="bg-gray-50 p-6 rounded-lg shadow-sm">
-                  <div className="mb-4">
-                    <label htmlFor="name" className="block text-gray-700 mb-2">Your Name</label>
-                    <input 
-                    onChange={handleChange}
-                      type="text" 
-                      id="name"
-                      name="firstName"
-                      value={formData.firstName}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
-                  </div>
+                 <form onSubmit={handleSubmit} className="bg-gray-50 p-6 rounded-lg shadow-sm">
+      <div className="mb-4">
+        <label htmlFor="firstName" className="block text-gray-700 mb-2">
+          Your Name
+          {errors.firstName && (
+            <span className="text-red-500 text-sm ml-2">{errors.firstName}</span>
+          )}
+        </label>
+        <input 
+          type="text" 
+          id="firstName"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
+            errors.firstName 
+              ? 'border-red-500 focus:ring-red-200' 
+              : 'border-gray-300 focus:ring-indigo-500'
+          }`}
+        />
+      </div>
 
-                  <div className="mb-4">
-                    <label htmlFor="email" className="block text-gray-700 mb-2">Email Address</label>
-                    <input 
-                    onChange={handleChange}
-                      type="email" 
-                      id="email"
-                      name='email'
-                      value={formData.email}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
-                  </div>
+      <div className="mb-4">
+        <label htmlFor="email" className="block text-gray-700 mb-2">
+          Email Address
+          {errors.email && (
+            <span className="text-red-500 text-sm ml-2">{errors.email}</span>
+          )}
+        </label>
+        <input 
+          type="email" 
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
+            errors.email 
+              ? 'border-red-500 focus:ring-red-200' 
+              : 'border-gray-300 focus:ring-indigo-500'
+          }`}
+        />
+      </div>
 
-                  <div className="mb-4">
-                    <label htmlFor="details" className="block text-gray-700 mb-2">Your Message</label>
-                    <textarea 
-                    onChange={handleChange}
-                    name='details'
-                      id="details" 
-                      rows="4"
-                      value={formData.details}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    ></textarea>
-                  </div>
+      <div className="mb-4">
+        <label htmlFor="details" className="block text-gray-700 mb-2">
+          Your Message
+          {errors.details && (
+            <span className="text-red-500 text-sm ml-2">{errors.details}</span>
+          )}
+        </label>
+        <textarea 
+          id="details"
+          name="details"
+          rows="4"
+          value={formData.details}
+          onChange={handleChange}
+          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
+            errors.details 
+              ? 'border-red-500 focus:ring-red-200' 
+              : 'border-gray-300 focus:ring-indigo-500'
+          }`}
+        ></textarea>
+      </div>
 
-                  <button 
-                    type="submit"
-                    className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md font-semibold hover:opacity-90 transition flex items-center justify-center gap-2"
-                  >
-                    Send Message <Send className="w-5 h-5" />
-                  </button>
-                </form>
+      <Button
+        type="submit"
+        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-3 transition-all"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? (
+          <span className="flex items-center justify-center">
+            <svg className="animate-spin -ml-1 mr-3 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Sending...
+          </span>
+        ) : (
+          <span className="flex items-center justify-center">
+            Send Message
+            <MessageSquare className="ml-2 h-4 w-4" />
+          </span>
+        )}
+      </Button>
+    </form>
               </div>
             </div>
           </div>
@@ -472,14 +583,14 @@ export default function Blog() {
       <p 
         className="text-xl mb-8 text-blue-100"
         data-aos="fade-up"
-        data-aos-delay="100"
+          
       >
         Get the latest tech insights, tutorials, and industry news delivered straight to your inbox.
       </p>
       <div 
         className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"
         data-aos="fade-up"
-        data-aos-delay="200"
+         
       >
         <input 
           type="email" 
@@ -491,7 +602,7 @@ export default function Blog() {
           variant="secondary" 
           className="px-8"
           data-aos="zoom-in"
-          data-aos-delay="300"
+           
         >
           Subscribe
         </Button>
@@ -499,7 +610,7 @@ export default function Blog() {
       <p 
         className="text-sm text-blue-100 mt-4"
         data-aos="fade-up"
-        data-aos-delay="400"
+         
       >
         No spam, unsubscribe at any time.
       </p>

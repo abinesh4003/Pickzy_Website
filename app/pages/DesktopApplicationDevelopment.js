@@ -119,14 +119,14 @@ export default function DesktopApplicationDevelopment() {
               <p 
                 className="text-xl text-gray-600 mb-8"
                 data-aos="fade-up"
-                data-aos-delay="100"
+                  
               >
                 We develop secure, high-performance desktop applications for Windows, macOS, and Linux using modern frameworks like Electron, .NET MAUI, and Flutter Desktop.
               </p>
               <div 
                 className="flex flex-col sm:flex-row gap-4"
                 data-aos="fade-up"
-                data-aos-delay="200"
+                 
               >
                 <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg">
                   Request Free Consultation
@@ -139,7 +139,7 @@ export default function DesktopApplicationDevelopment() {
                   variant="outline" 
                   className="border-gray-300 hover:bg-white/90 shadow-sm"
                   data-aos="fade-up"
-                  data-aos-delay="300"
+                   
                 >
                   View Case Studies
                 </Button>
@@ -149,7 +149,7 @@ export default function DesktopApplicationDevelopment() {
               <div 
                 className="mt-12"
                 data-aos="fade-up"
-                data-aos-delay="400"
+                 
               >
                 <p className="text-sm text-gray-500 mb-4">Built with modern technologies:</p>
                 <div className="flex flex-wrap gap-6 items-center">
@@ -166,7 +166,7 @@ export default function DesktopApplicationDevelopment() {
               <div 
                 className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-100"
                 data-aos="fade-left"
-                data-aos-delay="200"
+                 
               >
                 <img 
                   src="/service/desktop/hero.png" 
@@ -182,7 +182,7 @@ export default function DesktopApplicationDevelopment() {
               <div 
                 className="absolute -bottom-8 -right-8 bg-white px-4 py-3 rounded-xl shadow-lg border border-gray-100 flex items-center"
                 data-aos="zoom-in"
-                data-aos-delay="500"
+                 
               >
                 <div className="bg-green-100 p-2 rounded-lg mr-3">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -219,7 +219,7 @@ export default function DesktopApplicationDevelopment() {
                 key={index} 
                 className="hover:shadow-lg transition-all duration-300"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <CardHeader>
                   <div className="flex items-center mb-4">
@@ -252,7 +252,7 @@ export default function DesktopApplicationDevelopment() {
             <p 
               className="text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               We handle the full lifecycle—from ideation to deployment—whether you need a lightweight utility app or a full-featured enterprise-grade platform.
             </p>
@@ -264,7 +264,7 @@ export default function DesktopApplicationDevelopment() {
                 key={index} 
                 className="p-6 border border-gray-100 rounded-lg hover:shadow-md transition-all bg-white"
                 data-aos="fade-up"
-                data-aos-delay={index * 50}
+                 
               >
                 <h3 className="text-lg font-semibold mb-3">{service.title}</h3>
                 <p className="text-gray-600 text-sm">{service.technologies}</p>
@@ -291,7 +291,7 @@ export default function DesktopApplicationDevelopment() {
             <div 
               className="p-6 border border-gray-100 rounded-lg bg-gray-50"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               <h3 className="text-lg font-semibold mb-4 flex items-center">
                 <Code className="h-5 w-5 mr-2 text-blue-600" /> Languages
@@ -306,7 +306,7 @@ export default function DesktopApplicationDevelopment() {
             <div 
               className="p-6 border border-gray-100 rounded-lg bg-gray-50"
               data-aos="fade-up"
-              data-aos-delay="200"
+               
             >
               <h3 className="text-lg font-semibold mb-4 flex items-center">
                 <Layers className="h-5 w-5 mr-2 text-purple-600" /> Frameworks
@@ -321,7 +321,7 @@ export default function DesktopApplicationDevelopment() {
             <div 
               className="p-6 border border-gray-100 rounded-lg bg-gray-50"
               data-aos="fade-up"
-              data-aos-delay="300"
+               
             >
               <h3 className="text-lg font-semibold mb-4 flex items-center">
                 <Database className="h-5 w-5 mr-2 text-green-600" /> Databases
@@ -336,7 +336,7 @@ export default function DesktopApplicationDevelopment() {
             <div 
               className="p-6 border border-gray-100 rounded-lg bg-gray-50"
               data-aos="fade-up"
-              data-aos-delay="400"
+               
             >
               <h3 className="text-lg font-semibold mb-4 flex items-center">
                 <Package className="h-5 w-5 mr-2 text-orange-600" /> Packaging
@@ -371,7 +371,7 @@ export default function DesktopApplicationDevelopment() {
                 key={index} 
                 className="p-6 border border-gray-100 rounded-lg hover:shadow-md transition-all bg-white flex items-center"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <div className="p-2 mr-4 rounded-full bg-blue-50">
                   {useCase.icon}
@@ -402,7 +402,7 @@ export default function DesktopApplicationDevelopment() {
                 key={index} 
                 className="text-center"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
                   {step.icon}
@@ -424,7 +424,7 @@ export default function DesktopApplicationDevelopment() {
             <span 
               className="inline-block px-3 py-1 text-sm font-medium text-blue-600 bg-blue-50 rounded-full mb-4"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               Why Choose Us
             </span>
@@ -436,7 +436,7 @@ export default function DesktopApplicationDevelopment() {
             <p 
               className="text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-              data-aos-delay="300"
+               
             >
               We don't just build apps - we create solutions that drive your business forward.
             </p>
@@ -493,7 +493,7 @@ export default function DesktopApplicationDevelopment() {
                 key={index}
                 className="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-all duration-300 border border-gray-100"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                 
               >
                 <div className={`w-12 h-12 ${item.bg} rounded-lg flex items-center justify-center mb-6`}>
                   {item.icon}
@@ -513,7 +513,7 @@ export default function DesktopApplicationDevelopment() {
               <div 
                 className="text-center"
                 data-aos="fade-up"
-                data-aos-delay="100"
+                  
               >
                 <div className="text-4xl font-bold text-blue-600 mb-2">10+</div>
                 <p className="text-gray-600 font-medium">Years in Desktop Development</p>
@@ -521,7 +521,7 @@ export default function DesktopApplicationDevelopment() {
               <div 
                 className="text-center"
                 data-aos="fade-up"
-                data-aos-delay="200"
+                 
               >
                 <div className="text-4xl font-bold text-purple-600 mb-2">250+</div>
                 <p className="text-gray-600 font-medium">Successful Projects Delivered</p>
@@ -529,7 +529,7 @@ export default function DesktopApplicationDevelopment() {
               <div 
                 className="text-center"
                 data-aos="fade-up"
-                data-aos-delay="300"
+                 
               >
                 <div className="text-4xl font-bold text-green-600 mb-2">99%</div>
                 <p className="text-gray-600 font-medium">Client Satisfaction Rate</p>
@@ -552,14 +552,14 @@ export default function DesktopApplicationDevelopment() {
           <p 
             className="text-xl text-blue-100 mb-8"
             data-aos="fade-up"
-            data-aos-delay="100"
+              
           >
             Have an idea for a desktop application? We're ready to build it with precision and performance.
           </p>
           <div 
             className="space-y-4 sm:space-y-0 sm:space-x-4"
             data-aos="fade-up"
-            data-aos-delay="200"
+             
           >
             <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8">
               Contact Our Team

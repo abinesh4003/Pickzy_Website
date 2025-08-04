@@ -262,7 +262,7 @@ export default function MobileDevelopment() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 h-full" data-aos="fade-up" data-aos-delay={index * 100}>
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 h-full" data-aos="fade-up"  >
                 <CardHeader>
                   <div className="flex items-center mb-4">
                     <div className="p-2 mr-4 rounded-full bg-blue-50">
@@ -298,7 +298,7 @@ export default function MobileDevelopment() {
               <div key={index} 
                    className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
                    data-aos="fade-up" 
-                   data-aos-delay={index * 100}>
+                    >
                 <div className="flex items-center mb-4">
                   <div className="p-2 mr-4 rounded-full bg-blue-50">
                     {capability.icon}
@@ -340,7 +340,7 @@ export default function MobileDevelopment() {
                 <div key={index} 
                      className={`relative lg:flex ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-between`}
                      data-aos="fade-up"
-                     data-aos-delay={index * 100}>
+                      >
                   <div className={`lg:w-5/12 ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8'} mb-6 lg:mb-0`}>
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                       <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
@@ -393,7 +393,7 @@ export default function MobileDevelopment() {
         <div 
           className="bg-white p-6 rounded-xl shadow-sm mb-6 hover:shadow-md transition-shadow"
           data-aos="fade-up"
-          data-aos-delay="100"
+            
         >
           <div className="flex items-center mb-4">
             <div className="p-2 mr-4 rounded-full bg-blue-100">
@@ -409,7 +409,7 @@ export default function MobileDevelopment() {
         <div 
           className="bg-white p-6 rounded-xl shadow-sm mb-6 hover:shadow-md transition-shadow"
           data-aos="fade-up"
-          data-aos-delay="200"
+           
         >
           <div className="flex items-center mb-4">
             <div className="p-2 mr-4 rounded-full bg-purple-100">
@@ -425,7 +425,7 @@ export default function MobileDevelopment() {
         <div 
           className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
           data-aos="fade-up"
-          data-aos-delay="300"
+           
         >
           <div className="flex items-center mb-4">
             <div className="p-2 mr-4 rounded-full bg-green-100">
@@ -443,7 +443,7 @@ export default function MobileDevelopment() {
         <div 
           className="bg-white p-6 rounded-xl shadow-sm mb-6 hover:shadow-md transition-shadow"
           data-aos="fade-up"
-          data-aos-delay="150"
+           
         >
           <div className="flex items-center mb-4">
             <div className="p-2 mr-4 rounded-full bg-yellow-100">
@@ -459,7 +459,7 @@ export default function MobileDevelopment() {
         <div 
           className="bg-white p-6 rounded-xl shadow-sm mb-6 hover:shadow-md transition-shadow"
           data-aos="fade-up"
-          data-aos-delay="250"
+           
         >
           <div className="flex items-center mb-4">
             <div className="p-2 mr-4 rounded-full bg-red-100">
@@ -475,7 +475,7 @@ export default function MobileDevelopment() {
         <div 
           className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
           data-aos="fade-up"
-          data-aos-delay="350"
+           
         >
           <div className="flex items-center mb-4">
             <div className="p-2 mr-4 rounded-full bg-indigo-100">
@@ -510,7 +510,7 @@ export default function MobileDevelopment() {
         size="lg" 
         className="bg-white text-blue-600 hover:bg-gray-100"
         data-aos="zoom-in"
-        data-aos-delay="100"
+          
       >
         Start Your Project
       </Button>
@@ -519,7 +519,7 @@ export default function MobileDevelopment() {
         variant="outline" 
         className=" border-white hover:bg-white hover:text-blue-600"
         data-aos="zoom-in"
-        data-aos-delay="200"
+         
       >
         <Link href="/contact-us">Book Consultation</Link>
       </Button>

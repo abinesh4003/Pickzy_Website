@@ -18,7 +18,7 @@ const NodeJsBenefitsPost = () => {
       {/* Header - You should replace this with your actual Header component */}
       <Header/>
       {/* Hero Section */}
-      <div className="relative bg-gray-900 overflow-hidden" data-aos="fade" data-aos-duration="800">
+      <div className="relative bg-gray-900 overflow-hidden" data-aos="fade"  >
         <div className="absolute inset-0 z-0">
           <img
             src="/assets/images/nodejs.png"
@@ -32,7 +32,7 @@ const NodeJsBenefitsPost = () => {
             <span 
               className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-green-600 text-white mb-6"
               data-aos="fade-up"
-              data-aos-delay="100"
+                
             >
               Backend Development
             </span>
@@ -40,7 +40,7 @@ const NodeJsBenefitsPost = () => {
             <h1 
               className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6"
               data-aos="fade-up"
-              data-aos-delay="200"
+               
             >
               Top 10 Benefits of Using Node.js for Scalable Backend Development in 2025
             </h1>
@@ -48,7 +48,7 @@ const NodeJsBenefitsPost = () => {
             <p 
               className="max-w-3xl mx-auto text-xl text-gray-300 mb-10"
               data-aos="fade-up"
-              data-aos-delay="300"
+               
             >
               Discover how Node.js continues to revolutionize backend development with its unparalleled performance and ecosystem.
             </p>
@@ -56,7 +56,7 @@ const NodeJsBenefitsPost = () => {
             <div 
               className="flex flex-wrap justify-center gap-6 text-gray-300"
               data-aos="fade-up"
-              data-aos-delay="400"
+               
             >
               <div className="flex items-center">
                 <svg className="w-5 h-5 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -89,8 +89,8 @@ const NodeJsBenefitsPost = () => {
               <p 
                 className="mb-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="150"
+                  
+                 
               >
                 In the fast-paced world of web and mobile application development, choosing the right backend technology is critical. 
                 <strong className="font-semibold text-green-600 dark:text-green-400"> Node.js</strong> continues to stand out as a preferred choice for startups and enterprises alike due to its performance, scalability, and developer-friendly environment.
@@ -143,8 +143,8 @@ const NodeJsBenefitsPost = () => {
                   key={index} 
                   className="mb-8 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
                   data-aos="fade-up" 
-                  data-aos-duration="700" 
-                  data-aos-delay={200 + (index * 50)}
+                    
+              
                 >
                   <h3 className="text-xl font-bold mb-3 text-green-600 dark:text-green-400">
                     {item.title}
@@ -159,8 +159,8 @@ const NodeJsBenefitsPost = () => {
               <div 
                 className="bg-green-50 dark:bg-green-900/30 border-l-4 border-green-500 p-6 my-8 rounded-r-lg" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="450"
+                  
+                 
               >
                 <p className="text-green-800 dark:text-green-200">
                   <span className="font-semibold">Case Study:</span> A fintech startup migrated their Java backend to Node.js with our help, achieving 40% faster response times and reducing server costs by 35%.
@@ -171,8 +171,8 @@ const NodeJsBenefitsPost = () => {
               <div 
                 className="flex flex-col sm:flex-row justify-between gap-4 mt-16 py-8 border-t border-gray-200 dark:border-gray-700" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="750"
+                  
+                 
               >
                 <Link 
                   href="reactjs-web-development-company" 
@@ -194,8 +194,8 @@ const NodeJsBenefitsPost = () => {
               <div 
                 className="bg-gradient-to-r from-green-500 to-blue-600 p-8 rounded-xl my-8 text-white" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="800"
+                  
+                 
               >
                 <h3 className="text-xl font-bold mb-2">Need Node.js Experts for Your Project?</h3>
                 <p className="mb-6 opacity-90">Our team specializes in building scalable, high-performance backend systems with Node.js.</p>
@@ -211,8 +211,8 @@ const NodeJsBenefitsPost = () => {
               <div 
                 className="flex flex-col sm:flex-row gap-6 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl my-8" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="850"
+                  
+                 
               >
                 <div className="flex-shrink-0">
                   <img
@@ -234,8 +234,8 @@ const NodeJsBenefitsPost = () => {
               <div 
                 className="mt-8" 
                 data-aos="fade-up" 
-                data-aos-duration="800" 
-                data-aos-delay="900"
+                  
+                 
               >
                 <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">Share this article:</h4>
                 <div className="flex gap-3">
