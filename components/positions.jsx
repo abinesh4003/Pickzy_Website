@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { MapPin, DollarSign, Clock, ArrowRight } from 'lucide-react';
+import { MapPin, DollarSign, Clock, ArrowRight, Briefcase, BarChart2, Award, Users } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -136,11 +136,10 @@ export default function PositionsPage() {
         ) : (
           <>
             <div className="space-y-6">
-              {positions.map((position, index) => (
+              {positions.map((position) => (
                 <Card 
                   key={position.id} 
                   className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                   
                 >
                   <CardContent className="p-8">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
@@ -149,6 +148,12 @@ export default function PositionsPage() {
                           <h3 className="text-2xl font-bold text-gray-900">{position.title}</h3>
                           <Badge variant="secondary">{position.department}</Badge>
                           <Badge variant="outline">{position.type}</Badge>
+                          {position.experience && (
+                            <Badge variant="outline" className="flex items-center">
+                              <Award className="h-3 w-3 mr-1" />
+                              {position.experience}
+                            </Badge>
+                          )}
                         </div>
                         
                         <p className="text-gray-600 mb-4">{position.description}</p>
@@ -168,8 +173,35 @@ export default function PositionsPage() {
                           </div>
                         </div>
 
+                        {position.responsibilities && (
+                          <div className="mb-4">
+                            <h4 className="font-semibold text-sm text-gray-900 mb-2 flex items-center">
+                              <Briefcase className="h-4 w-4 mr-2" />
+                              Key Responsibilities:
+                            </h4>
+                            <ul className="text-gray-600 text-sm list-disc pl-5 space-y-1">
+                              {position.responsibilities.split('\n').map((item, idx) => (
+                                item.trim() && <li key={idx}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {position.benefits && (
+                          <div className="mb-4">
+                            <h4 className="font-semibold text-sm text-gray-900 mb-2 flex items-center">
+                              <BarChart2 className="h-4 w-4 mr-2" />
+                              Benefits & Perks:
+                            </h4>
+                            <p className="text-gray-600 text-sm">{position.benefits}</p>
+                          </div>
+                        )}
+
                         <div>
-                          <h4 className="font-semibold text-sm text-gray-900 mb-2">Requirements:</h4>
+                          <h4 className="font-semibold text-sm text-gray-900 mb-2 flex items-center">
+                            <Users className="h-4 w-4 mr-2" />
+                            Requirements:
+                          </h4>
                           <div className="flex flex-wrap gap-2">
                             {position.requirements?.map((req, idx) => (
                               <Badge key={idx} variant="outline" className="text-xs">
