@@ -109,7 +109,7 @@ export default function About() {
 
   return (
    <div className="min-h-screen bg-white">
-  <Header />
+   
 {/* Hero Section */}
   <section className="pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

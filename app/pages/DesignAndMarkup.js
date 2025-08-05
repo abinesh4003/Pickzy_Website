@@ -120,7 +120,7 @@ export default function DesignAndMarkup() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+       
       
       {/* Hero Section */}
       <section className="pt-28 pb-20 bg-gradient-to-br from-blue-50 to-indigo-50">

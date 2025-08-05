@@ -108,7 +108,7 @@ export default function InternetMarketing() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+       
       
       {/* Hero Section */}
       <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 bg-white">

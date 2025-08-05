@@ -100,7 +100,7 @@ export default function MobileDevelopment() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+       
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">

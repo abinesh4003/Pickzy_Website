@@ -17,7 +17,7 @@ const FullstackBlogPost = () => {
         <meta name="description" content="Discover why the React.js and Node.js combination remains the top choice for fullstack development in 2025 with real-world benefits and case studies." />
       </Head>
 
-      <Header />
+       
       
       {/* Hero Section */}
       <div className="relative bg-gray-900 overflow-hidden" data-aos="fade"  >

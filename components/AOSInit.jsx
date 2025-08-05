@@ -3,36 +3,39 @@
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { usePathname } from 'next/navigation';
 
 export default function AOSInit() {
+  const pathname = usePathname();
+
   useEffect(() => {
-    // Initialize AOS with custom configuration
-    AOS.init({
-      duration: 800,               // Animation duration (ms)
-      easing: 'ease-out-quad',     // Easing function
-      once: false,                 // Whether animation should happen only once
-      mirror: true,                // Whether elements should animate out while scrolling past them
-      offset: 100,                 // Offset (px) from the original trigger point
-      anchorPlacement: 'top-bottom', // Defines which position triggers the animation
-      disable: window.innerWidth < 768 // Disable on mobile if needed
-    });
+    // Safe check for window in client-side only
+    if (typeof window !== 'undefined') {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-quad',
+        once: false,
+        mirror: true,
+        offset: 100,
+        anchorPlacement: 'top-bottom',
+        disable: window.innerWidth < 768, // Disable on mobile safely
+      });
 
-    // Refresh AOS when window is resized
-    const handleResize = () => {
-      AOS.refreshHard(); // Force recalculate all positions
-    };
+      // Force refresh after init
+      AOS.refresh();
 
-    // Add event listeners
-    window.addEventListener('load', AOS.refresh);
-    window.addEventListener('resize', handleResize);
+      const handleResize = () => {
+        AOS.refreshHard();
+      };
 
-    // Cleanup function
-    return () => {
-      window.removeEventListener('load', AOS.refresh);
-      window.removeEventListener('resize', handleResize);
-      AOS.refreshHard(); // Final refresh before unmounting
-    };
-  }, []);
+      window.addEventListener('resize', handleResize);
+
+      // Cleanup
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, [pathname]); // Re-initialize on every route change
 
   return null;
 }

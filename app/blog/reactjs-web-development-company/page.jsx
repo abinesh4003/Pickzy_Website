@@ -11,7 +11,7 @@ const ReactJsBlogPost = () => {
   
   return (
     <>
-      <Header />
+       
       {/* Blog Content */}
       <main className="blog-post bg-white dark:bg-gray-900 transition-colors duration-300">
         <article>

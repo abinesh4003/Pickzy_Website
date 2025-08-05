@@ -78,7 +78,7 @@ export default function Careers() {
 
   return (
  <div className="min-h-screen bg-white">
-  <Header />
+   
 
   {/* Hero Section */} 
   <section className="pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">

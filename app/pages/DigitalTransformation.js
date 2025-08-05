@@ -80,7 +80,7 @@ const whyUs = [
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+       
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-28 bg-gradient-to-br from-blue-900 to-purple-800 text-white overflow-hidden">

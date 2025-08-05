@@ -209,7 +209,7 @@ const handleChange = (e) => {
 
   return (
   <div className="min-h-screen bg-white">
-  <Header />
+   
 
 <Blogs/>
  

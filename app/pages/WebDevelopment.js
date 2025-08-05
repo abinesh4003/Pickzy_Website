@@ -122,7 +122,7 @@ export default function WebDevelopment() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+       
       
       {/* Hero Section with Image */}
       <section 
