@@ -27,11 +27,9 @@ export default function PositionsPage() {
         const result = await response.json();
         
         const formattedPositions = Array.isArray(result.data)
-          ? result.data.map(pos => ({
-              ...pos,
-              id: pos.id || pos._id?.toString()
-            }))
+          ? result.data.filter((position) => position.status === 'active')
           : [];
+          console.log(formattedPositions);
           
         setPositions(formattedPositions);
       } catch (err) {
