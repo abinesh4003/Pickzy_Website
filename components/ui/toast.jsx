@@ -10,25 +10,21 @@ let updateToasts = () => {}
 export function Toast() {
   const [toasts, setToasts] = useState([])
 
-  // Connect the update function
   useEffect(() => {
     updateToasts = setToasts
     return () => { updateToasts = () => {} }
   }, [])
 
   return (
-    <div className="fixed top-12 right-4 z-50 ">
-
+    <div className="fixed top-12 right-4 z-[1000] space-y-2">
       {toasts.map(toast => (
         <div
           key={toast.id}
-          className={`
-            flex w-80 items-start gap-3 rounded-lg p-4 shadow-lg
-            ${toast.variant === 'success' 
-              ? 'bg-green-50 border border-green-200 text-green-800' 
+          className={`flex w-80 items-start gap-3 rounded-lg p-4 shadow-lg
+            ${toast.variant === 'success'
+              ? 'bg-green-50 border border-green-200 text-green-800'
               : 'bg-red-50 border border-red-200 text-red-800'}
-            animate-fade-in-up
-          `}
+            animate-fade-in-up`}
         >
           <div className="mt-0.5">
             {toast.variant === 'success' ? (
@@ -41,7 +37,7 @@ export function Toast() {
             <h3 className="font-medium">{toast.title}</h3>
             <p className="text-sm">{toast.description}</p>
           </div>
-          <button 
+          <button
             onClick={() => removeToast(toast.id)}
             className="text-gray-500 hover:text-gray-700"
             aria-label="Dismiss toast"
@@ -50,9 +46,8 @@ export function Toast() {
           </button>
         </div>
       ))}
-    </div>
-   
-  )
+    </div> 
+  )       
 }
 
 // Remove toast from queue
@@ -65,11 +60,9 @@ function removeToast(id) {
 export function showToast(title, description, variant = 'success') {
   const id = ++toastId
   const toast = { id, title, description, variant }
-  
-  // Add to queue and update
+
   toastQueue.push(toast)
   updateToasts([...toastQueue])
-  
-  // Auto-dismiss after 5 seconds
+
   setTimeout(() => removeToast(id), 5000)
-} 
+}

@@ -40,7 +40,7 @@ export default function Header() {
     { name: "About", href: "/about-us" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Careers", href: "/careers" },
-    { name: "Blog", href: "/blog" },
+    { name: "HireUs", href: "/hire-us" },
     { name: "Contact", href: "/contact-us" },
   ];
 

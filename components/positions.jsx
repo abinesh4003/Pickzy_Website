@@ -6,31 +6,142 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ResumeSubmissionDialog } from '@/components/resume-submission-dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { showToast } from './ui/toast';
 
 export default function PositionsPage() {
   const [positions, setPositions] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    position: '',
+    message: '',
+    resume: null
+  });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setFormData(prev => ({ ...prev, resume: e.target.files[0] }));
+    }
+  };
+
+  // Atomic increment for views
+  const handleViewSubmit = async (position) => {
+    try {
+      const response = await fetch(`/api/positions/${position.id}/view`, {
+        method: 'POST'
+      });
+      
+      if (!response.ok) {
+        console.error('Failed to update view count');
+      }
+      setFormData(prev => ({
+      ...prev,
+      position: position.title
+    }));
+    } catch (error) {
+      console.error('Error updating view count:', error);
+    }
+  };
+
+  // Atomic increment for applicants
+  const handleApplySubmit = async (positionId) => {
+    try {
+      const response = await fetch(`/api/positions/${positionId}/apply`, {
+        method: 'POST'
+      });
+      
+      if (!response.ok) {
+        console.error('Failed to update applicant count');
+      }
+    } catch (error) {
+      console.error('Error updating applicant count:', error);
+    }
+  };
+
+  const handleSubmit = async (e, positionId) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const formPayload = new FormData();
+      formPayload.append('name', formData.name);
+      formPayload.append('email', formData.email);
+      formPayload.append('phone', formData.phone);
+      formPayload.append('position', formData.position);
+      formPayload.append('message', formData.message);
+      if (formData.resume) {
+        formPayload.append('resume', formData.resume);
+      }
+
+      const response = await fetch('/api/resume-send', {
+        method: 'POST',
+        body: formPayload,
+      });
+
+      if (!response.ok) {
+        showToast('Error', 'Failed to submit resume', 'error');
+        throw new Error('Failed to submit resume');
+      }
+
+      setOpen(false);
+      showToast('Success', 'Resume submitted successfully, Our team will get back to you soon!', 'success');
+      
+      // Update applicant count after successful submission
+      await handleApplySubmit(positionId);
+      
+      clearForm();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+const close=()=>{
+  setOpen(false)
+  clearForm();
+
+}
+const clearForm = () => {
+  setFormData({
+    name: '',
+    email: '',
+    phone: '',
+    position: '',
+    message: '',
+    resume: null
+  });
+};
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
         setError(null);
-        
+
         const response = await fetch('/api/positions');
-        
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         const result = await response.json();
-        
+
         const formattedPositions = Array.isArray(result.data)
           ? result.data.filter((position) => position.status === 'active')
           : [];
-          console.log(formattedPositions);
-          
+
         setPositions(formattedPositions);
       } catch (err) {
         console.error("Failed to fetch positions:", err);
@@ -51,7 +162,7 @@ export default function PositionsPage() {
             <Skeleton className="h-10 w-64 mx-auto mb-4" />
             <Skeleton className="h-6 w-96 mx-auto" />
           </div>
-          
+
           <div className="space-y-6">
             {[...Array(3)].map((_, index) => (
               <Card key={index} className="border-0 shadow-lg">
@@ -63,10 +174,10 @@ export default function PositionsPage() {
                         <Skeleton className="h-6 w-20" />
                         <Skeleton className="h-6 w-24" />
                       </div>
-                      
+
                       <Skeleton className="h-4 w-full mb-4" />
                       <Skeleton className="h-4 w-3/4 mb-4" />
-                      
+
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <Skeleton className="h-4 w-32" />
                         <Skeleton className="h-4 w-32" />
@@ -104,8 +215,8 @@ export default function PositionsPage() {
             <h3 className="font-bold text-lg mb-2">Error loading positions</h3>
             <p>{error}</p>
           </div>
-          <Button 
-            onClick={() => window.location.reload()} 
+          <Button
+            onClick={() => window.location.reload()}
             variant="outline"
           >
             Retry
@@ -135,8 +246,8 @@ export default function PositionsPage() {
           <>
             <div className="space-y-6">
               {positions.map((position) => (
-                <Card 
-                  key={position.id} 
+                <Card
+                  key={position.id}
                   className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <CardContent className="p-8">
@@ -153,9 +264,9 @@ export default function PositionsPage() {
                             </Badge>
                           )}
                         </div>
-                        
+
                         <p className="text-gray-600 mb-4">{position.description}</p>
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                           <div className="flex items-center text-sm text-gray-600">
                             <MapPin className="h-4 w-4 mr-2 text-blue-600" />
@@ -167,7 +278,7 @@ export default function PositionsPage() {
                           </div>
                           <div className="flex items-center text-sm text-gray-600">
                             <Clock className="h-4 w-4 mr-2 text-orange-600" />
-                            Posted {position.posted}
+                            Posted on {new Date(position.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                           </div>
                         </div>
 
@@ -211,10 +322,109 @@ export default function PositionsPage() {
                       </div>
 
                       <div className="mt-6 lg:mt-0 lg:ml-8">
-                        <Button className="w-full lg:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                          Apply Now
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
+                        <Dialog open={open} onOpenChange={setOpen} >
+                          <DialogTrigger asChild>
+                            <Button 
+                              className='w-full bg-gradient-to-r from-blue-600 to-purple-600' 
+                              size="lg" 
+                              onClick={() => handleViewSubmit(position)}
+                            >
+                              Apply Now <span><ArrowRight className="w-5 h-5 ml-2" /></span>
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="sm:max-w-[600px]"onInteractOutside={(e) => e.preventDefault()} >
+                            <DialogHeader>
+                              <DialogTitle>Submit Your Resume</DialogTitle>
+                            </DialogHeader>
+                            <form onSubmit={(e) => handleSubmit(e, position.id)} className="space-y-4">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                  <Label htmlFor="name">Full Name *</Label>
+                                  <Input
+                                    id="name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                  />
+                                </div>
+                                <div>
+                                  <Label htmlFor="email">Email *</Label>
+                                  <Input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                  <Label htmlFor="phone">Phone Number</Label>
+                                  <Input
+                                    id="phone"
+                                    name="phone"
+                                    type="tel"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                  />
+                                </div>
+                                <div>
+                                  <Label htmlFor="position">Position Interested In</Label>
+                                  <Input
+                                    id="position"
+                                    name="position"
+                                    value={formData.position}
+                                    onChange={handleChange}
+                                  />
+                                </div>
+                              </div>
+
+                              <div>
+                                <Label htmlFor="message">Cover Letter (Optional)</Label>
+                                <Textarea
+                                  id="message"
+                                  name="message"
+                                  value={formData.message}
+                                  onChange={handleChange}
+                                  rows={4}
+                                />
+                              </div>
+
+                              <div>
+                                <Label htmlFor="resume">Resume *</Label>
+                                <Input
+                                  id="resume"
+                                  name="resume"
+                                  type="file"
+                                  accept=".pdf,.doc,.docx"
+                                  onChange={handleFileChange}
+                                  required
+                                />
+                                <p className="text-sm text-muted-foreground mt-1">
+                                  Accepted formats: PDF, DOC, DOCX (Max 5MB)
+                                </p>
+                              </div>
+
+                              <div className="flex justify-end gap-2 pt-4">
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  onClick={() =>close()}
+                                  disabled={loading}
+                                >
+                                  Cancel
+                                </Button>
+                                <Button type="submit" disabled={loading}>
+                                  {loading ? 'Submitting...' : 'Submit Resume'}
+                                </Button>
+                              </div>
+                            </form>
+                          </DialogContent>
+                        </Dialog>
                       </div>
                     </div>
                   </CardContent>
