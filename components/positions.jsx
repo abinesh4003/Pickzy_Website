@@ -17,6 +17,7 @@ export default function PositionsPage() {
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [applyID, setApplyID] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,9 +40,10 @@ export default function PositionsPage() {
 
   // Atomic increment for views
   const handleViewSubmit = async (position) => {
+    setApplyID(position.id);
     try {
       const response = await fetch(`/api/positions/${position.id}/view`, {
-        method: 'POST'
+        method: 'PUT'
       });
       
       if (!response.ok) {
@@ -57,10 +59,10 @@ export default function PositionsPage() {
   };
 
   // Atomic increment for applicants
-  const handleApplySubmit = async (positionId) => {
+  const handleApplySubmit = async () => {
     try {
-      const response = await fetch(`/api/positions/${positionId}/apply`, {
-        method: 'POST'
+      const response = await fetch(`/api/positions/${applyID}/apply`, {
+        method: 'PUT'
       });
       
       if (!response.ok) {
@@ -100,8 +102,10 @@ export default function PositionsPage() {
       showToast('Success', 'Resume submitted successfully, Our team will get back to you soon!', 'success');
       
       // Update applicant count after successful submission
-      await handleApplySubmit(positionId);
-      
+
+    if(positionId){
+      await handleApplySubmit();
+    }
       clearForm();
     } catch (error) {
       console.error(error);
@@ -135,14 +139,16 @@ const clearForm = () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
+        
         const result = await response.json();
 
+        console.log(result);
         const formattedPositions = Array.isArray(result.data)
-          ? result.data.filter((position) => position.status === 'active')
+          ? result.data.filter((position) => position.status.trim()=="active")
           : [];
 
         setPositions(formattedPositions);
+        console.log("formattedPositions:",formattedPositions);
       } catch (err) {
         console.error("Failed to fetch positions:", err);
         setError(err.message || 'Failed to load positions');
@@ -229,7 +235,7 @@ const clearForm = () => {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16" data-aos="zoom-out">
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Open Positions</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Explore exciting opportunities to grow your career and make an impact with cutting-edge technology.
@@ -432,7 +438,7 @@ const clearForm = () => {
               ))}
             </div>
 
-            <div className="text-center mt-12" data-aos="fade-up">
+            <div className="text-center mt-12">
               <p className="text-gray-600 mb-4">Don't see a position that fits? We're always looking for talented people!</p>
               <ResumeSubmissionDialog />
             </div>

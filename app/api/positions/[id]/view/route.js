@@ -2,39 +2,34 @@ import { NextResponse } from 'next/server'
 import clientPromise from '@/lib/mongodb'
 import { ObjectId } from 'mongodb'
 
-export async function POST(request, { params }) {
+export async function PUT(request, { params }) {
   const { id } = params;
 
-  try {
-    if (!ObjectId.isValid(id)) {
-      return NextResponse.json({ error: 'Invalid position ID' }, { status: 400 });
-    }
+  if (!id) {
+    return NextResponse.json({ error: 'Valid position ID is required' }, { status: 400 });
+  }
 
+  try {
     const client = await clientPromise;
     const db = client.db();
+    const collection = db.collection('positions');
 
-    // Atomic update to increment view count
-    const result = await db.collection('positions').findOneAndUpdate(
-      { _id: new ObjectId(id) },
-      { $inc: { views: 1 } },
-      { returnDocument: 'after' } // Return the updated document
+    const result = await collection.updateOne(
+      { _id: new ObjectId(id) },   
+      { $inc: { views: 1 } } // increment views field by 1
     );
 
-    if (!result.value) {
+    if (result.matchedCount === 0) {
       return NextResponse.json({ error: 'Position not found' }, { status: 404 });
     }
 
-    const { _id, ...rest } = result.value;
     return NextResponse.json({
-      id: _id.toString(),
-      ...rest,
+      success: true,
+      updatedCount: result.modifiedCount,
     });
 
-  } catch (e) {
-    console.error('View Count Error:', e);
-    return NextResponse.json(
-      { error: 'Failed to update view count' }, 
-      { status: 500 }
-    );
+  } catch (error) {
+    console.error('Error updating views:', error);
+    return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }
 }
