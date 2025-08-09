@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { MapPin, DollarSign, Clock, ArrowRight, Briefcase, BarChart2, Award, Users } from 'lucide-react';
+import { MapPin, DollarSign, Clock, ArrowRight, Briefcase, BarChart2, Award, Users, Eye, FileText, ListChecks, Gift ,Info} from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -15,9 +15,11 @@ import { showToast } from './ui/toast';
 export default function PositionsPage() {
   const [positions, setPositions] = useState([]);
   const [error, setError] = useState(null);
-  const [open, setOpen] = useState(false);
+  const [openApplyDialog, setOpenApplyDialog] = useState(false);
+  const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
   const [loading, setLoading] = useState(false);
   const [applyID, setApplyID] = useState(null);
+  const [selectedPosition, setSelectedPosition] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -38,33 +40,31 @@ export default function PositionsPage() {
     }
   };
 
-  // Atomic increment for views
   const handleViewSubmit = async (position) => {
     setApplyID(position.id);
     try {
       const response = await fetch(`/api/positions/${position.id}/view`, {
         method: 'PUT'
       });
-      
+
       if (!response.ok) {
         console.error('Failed to update view count');
       }
       setFormData(prev => ({
-      ...prev,
-      position: position.title
-    }));
+        ...prev,
+        position: position.title
+      }));
     } catch (error) {
       console.error('Error updating view count:', error);
     }
   };
 
-  // Atomic increment for applicants
   const handleApplySubmit = async () => {
     try {
       const response = await fetch(`/api/positions/${applyID}/apply`, {
         method: 'PUT'
       });
-      
+
       if (!response.ok) {
         console.error('Failed to update applicant count');
       }
@@ -98,14 +98,12 @@ export default function PositionsPage() {
         throw new Error('Failed to submit resume');
       }
 
-      setOpen(false);
+      setOpenApplyDialog(false);
       showToast('Success', 'Resume submitted successfully, Our team will get back to you soon!', 'success');
-      
-      // Update applicant count after successful submission
 
-    if(positionId){
-      await handleApplySubmit();
-    }
+      if (positionId) {
+        await handleApplySubmit();
+      }
       clearForm();
     } catch (error) {
       console.error(error);
@@ -113,21 +111,29 @@ export default function PositionsPage() {
       setLoading(false);
     }
   };
-const close=()=>{
-  setOpen(false)
-  clearForm();
 
-}
-const clearForm = () => {
-  setFormData({
-    name: '',
-    email: '',
-    phone: '',
-    position: '',
-    message: '',
-    resume: null
-  });
-};
+  const close = () => {
+    setOpenApplyDialog(false);
+    clearForm();
+  };
+
+  const clearForm = () => {
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      position: '',
+      message: '',
+      resume: null
+    });
+  };
+
+  const openPositionDetails = (position) => {
+    setSelectedPosition(position);
+    setOpenDetailsDialog(true);
+    handleViewSubmit(position);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -139,16 +145,16 @@ const clearForm = () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         const result = await response.json();
 
         console.log(result);
         const formattedPositions = Array.isArray(result.data)
-          ? result.data.filter((position) => position.status.trim()=="active")
+          ? result.data.filter((position) => position.status.trim() === "active")
           : [];
 
         setPositions(formattedPositions);
-        console.log("formattedPositions:",formattedPositions);
+        console.log("formattedPositions:", formattedPositions);
       } catch (err) {
         console.error("Failed to fetch positions:", err);
         setError(err.message || 'Failed to load positions');
@@ -189,18 +195,10 @@ const clearForm = () => {
                         <Skeleton className="h-4 w-32" />
                         <Skeleton className="h-4 w-32" />
                       </div>
-
-                      <div>
-                        <Skeleton className="h-4 w-24 mb-2" />
-                        <div className="flex flex-wrap gap-2">
-                          {[...Array(4)].map((_, idx) => (
-                            <Skeleton key={idx} className="h-6 w-16" />
-                          ))}
-                        </div>
-                      </div>
                     </div>
 
-                    <div className="mt-6 lg:mt-0 lg:ml-8">
+                    <div className="mt-6 lg:mt-0 lg:ml-8 flex gap-2">
+                      <Skeleton className="h-10 w-32" />
                       <Skeleton className="h-10 w-32" />
                     </div>
                   </div>
@@ -263,15 +261,9 @@ const clearForm = () => {
                           <h3 className="text-2xl font-bold text-gray-900">{position.title}</h3>
                           <Badge variant="secondary">{position.department}</Badge>
                           <Badge variant="outline">{position.type}</Badge>
-                          {position.experience && (
-                            <Badge variant="outline" className="flex items-center">
-                              <Award className="h-3 w-3 mr-1" />
-                              {position.experience}
-                            </Badge>
-                          )}
                         </div>
 
-                        <p className="text-gray-600 mb-4">{position.description}</p>
+                        <p className="text-gray-600 mb-4 line-clamp-2">{position.description}</p>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                           <div className="flex items-center text-sm text-gray-600">
@@ -279,66 +271,39 @@ const clearForm = () => {
                             {position.location}
                           </div>
                           <div className="flex items-center text-sm text-gray-600">
-                            <DollarSign className="h-4 w-4 mr-2 text-green-600" />
-                            {position.salary}
+                            {/* {experience/*  */}
+                            <Briefcase className="h-4 w-4 mr-2 text-green-600" />
+                            {position.experience}
+
                           </div>
                           <div className="flex items-center text-sm text-gray-600">
                             <Clock className="h-4 w-4 mr-2 text-orange-600" />
                             Posted on {new Date(position.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                           </div>
                         </div>
-
-                        {position.responsibilities && (
-                          <div className="mb-4">
-                            <h4 className="font-semibold text-sm text-gray-900 mb-2 flex items-center">
-                              <Briefcase className="h-4 w-4 mr-2" />
-                              Key Responsibilities:
-                            </h4>
-                            <ul className="text-gray-600 text-sm list-disc pl-5 space-y-1">
-                              {position.responsibilities.split('\n').map((item, idx) => (
-                                item.trim() && <li key={idx}>{item}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-
-                        {position.benefits && (
-                          <div className="mb-4">
-                            <h4 className="font-semibold text-sm text-gray-900 mb-2 flex items-center">
-                              <BarChart2 className="h-4 w-4 mr-2" />
-                              Benefits & Perks:
-                            </h4>
-                            <p className="text-gray-600 text-sm">{position.benefits}</p>
-                          </div>
-                        )}
-
-                        <div>
-                          <h4 className="font-semibold text-sm text-gray-900 mb-2 flex items-center">
-                            <Users className="h-4 w-4 mr-2" />
-                            Requirements:
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {position.requirements?.map((req, idx) => (
-                              <Badge key={idx} variant="outline" className="text-xs">
-                                {req}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
                       </div>
 
-                      <div className="mt-6 lg:mt-0 lg:ml-8">
-                        <Dialog open={open} onOpenChange={setOpen} >
+                      <div className="mt-6 lg:mt-0 lg:ml-8 flex gap-5 items-center">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="p-1 h-8 w-8"
+                          onClick={() => openPositionDetails(position)}
+                        >
+                          <Info className="w-4 h-4 text-blue-600" />
+                        </Button>
+
+                        <Dialog open={openApplyDialog} onOpenChange={setOpenApplyDialog}>
                           <DialogTrigger asChild>
-                            <Button 
-                              className='w-full bg-gradient-to-r from-blue-600 to-purple-600' 
-                              size="lg" 
+                            <Button
+                              className='w-full bg-gradient-to-r from-blue-600 to-purple-600'
+                              size="lg"
                               onClick={() => handleViewSubmit(position)}
                             >
                               Apply Now <span><ArrowRight className="w-5 h-5 ml-2" /></span>
                             </Button>
                           </DialogTrigger>
-                          <DialogContent className="sm:max-w-[600px]"onInteractOutside={(e) => e.preventDefault()} >
+                          <DialogContent className="sm:max-w-[600px]" onInteractOutside={(e) => e.preventDefault()}>
                             <DialogHeader>
                               <DialogTitle>Submit Your Resume</DialogTitle>
                             </DialogHeader>
@@ -419,7 +384,7 @@ const clearForm = () => {
                                 <Button
                                   type="button"
                                   variant="outline"
-                                  onClick={() =>close()}
+                                  onClick={() => close()}
                                   disabled={loading}
                                 >
                                   Cancel
@@ -437,6 +402,139 @@ const clearForm = () => {
                 </Card>
               ))}
             </div>
+
+
+            {/* Position Details Dialog */}
+            <Dialog open={openDetailsDialog} onOpenChange={setOpenDetailsDialog}>
+              <DialogContent
+                className="sm:max-w-4xl w-[calc(100%-2rem)] max-h-[90dvh] flex flex-col p-0"
+              >
+                {selectedPosition && (
+                  <>
+                    {/* Header - Fixed */}
+                    <div className="flex-shrink-0 p-4 border-b bg-white h-[10%]">
+                      <DialogHeader>
+                        <DialogTitle className="text-2xl break-words">
+                          {selectedPosition.title}
+                        </DialogTitle>
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          <Badge variant="secondary">{selectedPosition.department}</Badge>
+                          <Badge variant="outline">{selectedPosition.type}</Badge>
+                          {selectedPosition.experience && (
+                            <Badge variant="outline" className="flex items-center">
+                              <Award className="h-3 w-3 mr-1" />
+                              {selectedPosition.experience}
+                            </Badge>
+                          )}
+                        </div>
+                      </DialogHeader>
+                    </div>
+
+                    {/* Scrollable Content */}
+                    <div
+                      className="flex-1 overflow-y-auto p-4 space-y-6 custom-scrollbar break-all"
+                      style={{ height: "80%" }}
+                    >
+                      {/* Location / Salary / Posted Date */}
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                        <div className="flex items-center break-words">
+                          <MapPin className="h-4 w-4 mr-2 text-blue-600 flex-shrink-0" />
+                          {selectedPosition.location}
+                        </div>
+                        <div className="flex items-center break-words">
+                          <DollarSign className="h-4 w-4 mr-2 text-green-600 flex-shrink-0" />
+                          {selectedPosition.salary}
+                        </div>
+                        <div className="flex items-center break-words">
+                          <Clock className="h-4 w-4 mr-2 text-orange-600 flex-shrink-0" />
+                          Posted on{" "}
+                          {new Date(selectedPosition.updatedAt).toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                          })}
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      {selectedPosition.description && (
+                        <div>
+                          <h4 className="font-semibold text-lg text-gray-900 mb-2 flex items-center">
+                            <FileText className="h-4 w-4 mr-2 flex-shrink-0 text-gray-700" />
+                            Job Description
+                          </h4>
+                          <div className="space-y-2 text-gray-600">
+                            {selectedPosition.description
+                              .split("\n")
+                              .map(
+                                (item, idx) =>
+                                  item.trim() && (
+                                    <p key={idx} className="whitespace-pre-wrap leading-relaxed">
+                                      {item}
+                                    </p>
+                                  )
+                              )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Responsibilities */}
+                      {selectedPosition.responsibilities && (
+                        <div>
+                          <h4 className="font-semibold text-lg text-gray-900 mb-2 flex items-center">
+                            <ListChecks className="h-4 w-4 mr-2 flex-shrink-0 text-gray-700" />
+                            Key Responsibilities
+                          </h4>
+                          <ul className="list-disc pl-5 space-y-1 text-gray-600">
+                            {selectedPosition.responsibilities
+                              .split("\n")
+                              .map((item, idx) => item.trim() && <li key={idx}>{item}</li>)}
+                          </ul>
+                        </div>
+                      )}
+
+
+
+                      {/* Requirements */}
+                      {selectedPosition.requirements?.length > 0 && (
+                        <div>
+                          <h4 className="font-semibold text-lg text-gray-900 mb-2 flex items-center">
+                            <Users className="h-4 w-4 mr-2 flex-shrink-0 text-gray-700" />
+                            Requirements
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {selectedPosition.requirements.map((req, idx) => (
+                              <Badge
+                                key={idx}
+                                variant="outline"
+                                className="max-w-full break-words whitespace-normal"
+                              >
+                                {req}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+
+                    {/* Footer - Fixed */}
+                    <div className="flex-shrink-0 p-4 border-t bg-white h-[10%] flex justify-end items-center">
+                      <Button
+                        className="bg-gradient-to-r from-blue-600 to-purple-600"
+                        size="lg"
+                        onClick={() => {
+                          setOpenDetailsDialog(false);
+                          setOpenApplyDialog(true);
+                        }}
+                      >
+                        Apply Now <ArrowRight className="w-5 h-5 ml-2" />
+                      </Button>
+                    </div>
+                  </>
+                )}
+              </DialogContent>
+            </Dialog>
 
             <div className="text-center mt-12">
               <p className="text-gray-600 mb-4">Don't see a position that fits? We're always looking for talented people!</p>

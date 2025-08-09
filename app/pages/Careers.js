@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import PositionsPage from '@/components/positions'
 import Link from 'next/link';
+import { setGlobalLoading } from '@/components/ui/loader';
 import { 
   MapPin, 
   Clock, 
