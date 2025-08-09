@@ -3,10 +3,11 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Briefcase } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import path from 'node:path';
+import { HireDeveloperModal } from '@/components/HireDeveloperModal';
+import { showToast } from './ui/toast';
 
 interface NavItem {
   name: string;
@@ -17,9 +18,13 @@ interface NavItem {
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isHireOpen, setIsHireOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHireModalOpen, setIsHireModalOpen] = useState(false);
+  const [selectedDeveloper, setSelectedDeveloper] = useState('');
   const pathname = usePathname();
   const servicesButtonRef = useRef<HTMLButtonElement>(null);
+  const hireButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const closeTimerRef = useRef<NodeJS.Timeout>();
 
@@ -34,13 +39,26 @@ export default function Header() {
     { name: "Custom Software", href: "/services/custom-software-development" },
   ];
 
+  // Developer types for Hire dropdown
+  const developerTypes = [
+    'iOS Developer',
+    'Android Developer',
+    'React Native Developer',
+    'Flutter Developer',
+    'Node.js Developer',
+    'Python Developer',
+    'UI/UX Designer',
+    'Full Stack Developer',
+    'Laravel Developer',
+    'Angular Developer'
+  ];
+
   // Navigation links
   const navLinks: NavItem[] = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about-us" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Careers", href: "/careers" },
-    { name: "HireUs", href: "/hire-us" },
     { name: "Contact", href: "/contact-us" },
   ];
 
@@ -66,7 +84,7 @@ export default function Header() {
   useEffect(() => {
     setIsMenuOpen(false);
     setIsServicesOpen(false);
-    console.log(pathname);
+    setIsHireOpen(false);
   }, [pathname]);
 
   // Lock body scroll when mobile menu is open
@@ -111,22 +129,46 @@ export default function Header() {
     }
   }, [isMenuOpen]);
 
-  // Keyboard navigation for services dropdown
-  const handleServicesKeyDown = (e: React.KeyboardEvent) => {
+  // Toggle functions with mutual exclusivity
+  const toggleServices = (open: boolean) => {
+    setIsServicesOpen(open);
+    if (open) setIsHireOpen(false);
+  };
+
+  const toggleHire = (open: boolean) => {
+    setIsHireOpen(open);
+    if (open) setIsServicesOpen(false);
+  };
+
+  // Keyboard navigation for dropdowns
+  const handleDropdownKeyDown = (e: React.KeyboardEvent, dropdownType: 'services' | 'hire') => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      setIsServicesOpen(!isServicesOpen);
-    } else if (e.key === 'Escape' && isServicesOpen) {
-      setIsServicesOpen(false);
-      servicesButtonRef.current?.focus();
+      if (dropdownType === 'services') {
+        toggleServices(!isServicesOpen);
+      } else {
+        toggleHire(!isHireOpen);
+      }
+    } else if (e.key === 'Escape') {
+      if (dropdownType === 'services' && isServicesOpen) {
+        toggleServices(false);
+        servicesButtonRef.current?.focus();
+      } else if (dropdownType === 'hire' && isHireOpen) {
+        toggleHire(false);
+        hireButtonRef.current?.focus();
+      }
     }
   };
 
   // Close dropdown after delay
-  const startCloseTimer = () => {
+  const startCloseTimer = (dropdownType: 'services' | 'hire') => {
     closeTimerRef.current = setTimeout(() => {
-      setIsServicesOpen(false);
-    }, 200);
+      if (dropdownType === 'services') {
+        toggleServices(false);
+      } else {
+        toggleHire(false);
+      }
+    }, 100);
   };
 
   // Cancel close timer
@@ -134,6 +176,38 @@ export default function Header() {
     if (closeTimerRef.current) {
       clearTimeout(closeTimerRef.current);
     }
+  };
+
+  const handleHireDeveloper = async (formData: any) => {
+    console.log(formData);
+    try {
+      const response = await fetch('/api/hire', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          selectedDeveloper: selectedDeveloper || formData.developerType
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Submission failed');
+      }
+      
+      showToast('Success', 'Thanks! We’ve received your hiring request and will contact you shortly', 'success');
+      setIsHireModalOpen(false);
+    } catch (error) {
+      console.error('Submission error:', error);
+      throw error;
+    }
+  };
+
+  const openHireModal = (developer: string = '') => {
+    setSelectedDeveloper(developer);
+    setIsHireModalOpen(true);
+    toggleHire(false);
   };
 
   return (
@@ -150,10 +224,10 @@ export default function Header() {
             <Image
               src="/assets/pickzy_logo.png"
               alt="PickZy Logo"
-              width={150}  // Set appropriate width
-              height={60}  // Set appropriate height
-              className="h-10 w-auto"  // Adjust as needed
-              priority  // Optional: if this is above the fold
+              width={150}
+              height={60}
+              className="h-10 w-auto"
+              priority
             />
           </Link>
 
@@ -182,13 +256,13 @@ export default function Header() {
                     ? 'text-blue-600' 
                     : 'text-gray-900 hover:text-blue-600'
                 }`}
-                onClick={() => setIsServicesOpen(!isServicesOpen)}
-                onKeyDown={handleServicesKeyDown}
+                onClick={() => toggleServices(!isServicesOpen)}
+                onKeyDown={(e) => handleDropdownKeyDown(e, 'services')}
                 onMouseEnter={() => {
                   cancelCloseTimer();
-                  setIsServicesOpen(true);
+                  toggleServices(true);
                 }}
-                onMouseLeave={startCloseTimer}
+                onMouseLeave={() => startCloseTimer('services')}
                 aria-expanded={isServicesOpen}
                 aria-haspopup="true"
                 aria-controls="services-menu"
@@ -206,7 +280,7 @@ export default function Header() {
                   isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-1'
                 }`}
                 onMouseEnter={cancelCloseTimer}
-                onMouseLeave={startCloseTimer}
+                onMouseLeave={() => startCloseTimer('services')}
                 role="menu"
                 aria-labelledby="services-button"
                 aria-hidden={!isServicesOpen}
@@ -224,6 +298,54 @@ export default function Header() {
                   >
                     {service.name}
                   </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Hire Us Dropdown */}
+            <div className="relative group">
+              <button 
+                ref={hireButtonRef}
+                className="flex items-center font-medium text-gray-600 hover:text-blue-600"
+                onClick={() => toggleHire(!isHireOpen)}
+                onKeyDown={(e) => handleDropdownKeyDown(e, 'hire')}
+                onMouseEnter={() => {
+                  cancelCloseTimer();
+                  toggleHire(true);
+                }}
+                onMouseLeave={() => startCloseTimer('hire')}
+                aria-expanded={isHireOpen}
+                aria-haspopup="true"
+                aria-controls="hire-menu"
+                id="hire-button"
+              >
+               
+                Hire Us
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+                  isHireOpen ? 'rotate-180' : ''
+                }`} />
+              </button>
+              
+              <div 
+                id="hire-menu"
+                className={`absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border py-2 transition-all duration-200 ease-out ${
+                  isHireOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-1'
+                }`}
+                onMouseEnter={cancelCloseTimer}
+                onMouseLeave={() => startCloseTimer('hire')}
+                role="menu"
+                aria-labelledby="hire-button"
+                aria-hidden={!isHireOpen}
+              >
+                {developerTypes.map((type) => (
+                  <button
+                    key={type}
+                    onClick={() => openHireModal(type)}
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                    role="menuitem"
+                  >
+                    {type}
+                  </button>
                 ))}
               </div>
             </div>
@@ -253,7 +375,7 @@ export default function Header() {
         {/* Mobile Menu */}
         <div 
           ref={mobileMenuRef}
-          className={`lg:hidden transition-all duration-300 ease-out overflow-hidden ${
+          className={`lg:hidden transition-all duration-300 ease-out overflow-hidden z-50 sticky top-0 ${
             isMenuOpen ? 'max-h-screen' : 'max-h-0'
           }`}
           aria-hidden={!isMenuOpen}
@@ -269,6 +391,7 @@ export default function Header() {
                     ? 'bg-blue-50 text-blue-600'
                     : 'text-gray-600 hover:bg-gray-50'
                 }`}
+                onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}
               </Link>
@@ -277,8 +400,8 @@ export default function Header() {
             {/* Mobile Services Dropdown */}
             <div className="px-3 py-2">
               <button
-                onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className={`w-full flex justify-between items-center px-3 py-2 text-base font-medium rounded-md ${
+                onClick={() => toggleServices(!isServicesOpen)}
+                className={`w-full flex justify-between items-center  py-2 text-base font-medium rounded-md ${
                   pathname.startsWith('/services')
                     ? 'bg-blue-50 text-blue-600'
                     : 'text-gray-600 hover:bg-gray-50'
@@ -308,25 +431,47 @@ export default function Header() {
                         ? 'bg-blue-50 text-blue-600'
                         : 'text-gray-600 hover:bg-gray-50'
                     }`}
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     {service.name}
                   </Link>
                 ))}
               </div>
             </div>
+
+            {/* Mobile Hire Us Button */}
+            <button
+              onClick={() => {
+                openHireModal();
+                setIsMenuOpen(false);
+              }}
+              className="flex items-center w-full px-3 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50"
+            >
+             
+              Hire Us
+            </button>
             
             {/* Mobile CTA Buttons */}
             <div className="px-3 pt-2 space-y-2 border-t">
               <Button variant="outline" className="w-full" asChild>
-                <Link href="/contact-us">Get Quote</Link>
+                <Link href="/contact-us" onClick={() => setIsMenuOpen(false)}>Get Quote</Link>
               </Button>
               <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600" asChild>
-                <Link href="/contact-us">Start Project</Link>
+                <Link href="/contact-us" onClick={() => setIsMenuOpen(false)}>Start Project</Link>
               </Button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Hire Developer Modal */}
+      <HireDeveloperModal
+        developerTypes={developerTypes}
+        defaultDeveloper={selectedDeveloper}
+        open={isHireModalOpen}
+        onOpenChange={setIsHireModalOpen}
+        onSubmit={handleHireDeveloper}
+      />
     </header>
   );
 }

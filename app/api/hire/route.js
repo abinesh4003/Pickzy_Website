@@ -21,7 +21,8 @@ export async function POST(request) {
       developerType,
       developersNeeded,
       duration,
-      requirements
+      requirements,
+      workType
     } = formData;
 
 
@@ -60,6 +61,7 @@ export async function POST(request) {
         Phone: ${phone}
         Developer Type: ${developerType}
         Developers Needed: ${developersNeeded}
+        Work Type: ${workType}
         Duration: ${duration}
         Requirements: ${requirements}
       `,
@@ -69,6 +71,7 @@ export async function POST(request) {
         <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>Developer Type:</strong> ${developerType}</p>
         <p><strong>Developers Needed:</strong> ${developersNeeded}</p>
+        <p><strong>Work Type:</strong> ${workType}</p>
         <p><strong>Duration:</strong> ${duration}</p>
         <p><strong>Requirements:</strong> ${requirements}</p>
       `,
