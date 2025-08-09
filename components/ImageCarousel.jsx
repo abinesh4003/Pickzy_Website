@@ -68,7 +68,7 @@ const ImageCarousel = () => {
           <Award className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8 text-yellow-300 flex-shrink-0" />
           <div>
             <div className="text-xs sm:text-sm md:text-base font-semibold text-white">Top Rated</div>
-            <div className="text-[10px] sm:text-xs md:text-sm text-white/80">Clutch 2024</div>
+            <div className="text-[10px] sm:text-xs md:text-sm text-white/80">Clutch 2025</div>
           </div>
         </div>
       </div>

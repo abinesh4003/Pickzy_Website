@@ -82,7 +82,7 @@ export function ResumeSubmissionDialog() {
         <DialogHeader>
           <DialogTitle>Submit Your Resume</DialogTitle>
         </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4 rounded-none">
                 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -93,6 +93,7 @@ export function ResumeSubmissionDialog() {
                 value={formData.name}
                 onChange={handleChange}
                 required
+                className="rounded-none"
               />
             </div>
             <div>
@@ -104,6 +105,7 @@ export function ResumeSubmissionDialog() {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                className="rounded-none"
               />
             </div>
           </div>
@@ -117,6 +119,7 @@ export function ResumeSubmissionDialog() {
                 type="tel"
                 value={formData.phone}
                 onChange={handleChange}
+                className="rounded-none"
               />
             </div>
             <div>
@@ -126,6 +129,7 @@ export function ResumeSubmissionDialog() {
                 name="position"
                 value={formData.position}
                 onChange={handleChange}
+                className="rounded-none"
               />
             </div>
           </div>
@@ -138,34 +142,52 @@ export function ResumeSubmissionDialog() {
               value={formData.message}
               onChange={handleChange}
               rows={4}
+              className="rounded-none"
             />
           </div>
 
-          <div>
-            <Label htmlFor="resume">Resume *</Label>
-            <Input
-              id="resume"
-              name="resume"
-              type="file"
-              accept=".pdf,.doc,.docx"
-              onChange={handleFileChange}
-              required
-            />
-            <p className="text-sm text-muted-foreground mt-1">
-              Accepted formats: PDF, DOC, DOCX (Max 5MB)
-            </p>
-          </div>
+         <div>
+                                <Label htmlFor="resume">Resume *</Label>
+                                <div className="flex items-center gap-2">
+                                  <Input
+                                    readOnly
+                                    value={formData.resume?.name || "No file chosen"}
+                                    className="flex-1 bg-white text-gray-700 cursor-default rounded-none"
+                                  />
+                                  <Button
+                                    type="button"
+                                    variant="default"
+                                    className="bg-gray-200 rounded-none hover:bg-gray-100 border border-gray-300 text-black"
+                                    onClick={() => document.getElementById("resume")?.click()}
+                                  >
+                                    Choose File
+                                  </Button>
+                                </div>
+                                <input
+                                  id="resume"
+                                  name="resume"
+                                  type="file"
+                                  accept=".pdf,.doc,.docx"
+                                  className="hidden rounded-none"
+                                  onChange={handleFileChange}
+                                  required
+                                />
+                                <p className="text-sm text-muted-foreground mt-1 rounded-none">
+                                  Accepted formats: PDF, DOC, DOCX (Max 5MB)
+                                </p>
+                              </div>
 
-          <div className="flex justify-end gap-2 pt-4">
+          <div className="flex justify-end gap-2 pt-4 rounded-none">
             <Button
               type="button"
               variant="outline"
               onClick={() => setOpen(false)}
               disabled={loading}
+              className="rounded-none"
             >
               Cancel
             </Button>
-            <Button type="submit" disabled={loading}>
+            <Button type="submit" disabled={loading} className="rounded-none">
               {loading ? 'Submitting...' : 'Submit Resume'}
             </Button>
           </div>

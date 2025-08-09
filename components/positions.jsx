@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { MapPin, DollarSign, Clock, ArrowRight, Briefcase, BarChart2, Award, Users, Eye, FileText, ListChecks, Gift ,Info} from 'lucide-react';
+import { MapPin, DollarSign, Clock, ArrowRight, Briefcase, BarChart2, Award, Users, Eye, FileText, ListChecks, Gift, Info } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -75,8 +75,8 @@ export default function PositionsPage() {
 
   const handleSubmit = async (e, positionId) => {
     e.preventDefault();
-    setLoading(true);
-
+    setOpenApplyDialog(false);
+     showToast('Success', 'Resume submitted successfully, Our team will get back to you soon!', 'success');
     try {
       const formPayload = new FormData();
       formPayload.append('name', formData.name);
@@ -93,22 +93,23 @@ export default function PositionsPage() {
         body: formPayload,
       });
 
+         clearForm();
       if (!response.ok) {
-        showToast('Error', 'Failed to submit resume', 'error');
+        // showToast('Error', 'Failed to submit resume', 'error');
         throw new Error('Failed to submit resume');
       }
 
-      setOpenApplyDialog(false);
-      showToast('Success', 'Resume submitted successfully, Our team will get back to you soon!', 'success');
+     
+    
 
       if (positionId) {
         await handleApplySubmit();
       }
-      clearForm();
+   
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
@@ -317,6 +318,7 @@ export default function PositionsPage() {
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
+                                    className="rounded-none"
                                   />
                                 </div>
                                 <div>
@@ -328,6 +330,7 @@ export default function PositionsPage() {
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
+                                    className="rounded-none"
                                   />
                                 </div>
                               </div>
@@ -341,6 +344,7 @@ export default function PositionsPage() {
                                     type="tel"
                                     value={formData.phone}
                                     onChange={handleChange}
+                                    className="rounded-none"
                                   />
                                 </div>
                                 <div>
@@ -350,6 +354,7 @@ export default function PositionsPage() {
                                     name="position"
                                     value={formData.position}
                                     onChange={handleChange}
+                                    className="rounded-none"
                                   />
                                 </div>
                               </div>
@@ -362,16 +367,33 @@ export default function PositionsPage() {
                                   value={formData.message}
                                   onChange={handleChange}
                                   rows={4}
+                                  className="rounded-none"
                                 />
                               </div>
 
                               <div>
                                 <Label htmlFor="resume">Resume *</Label>
-                                <Input
+                                <div className="flex items-center gap-2">
+                                  <Input
+                                    readOnly
+                                    value={formData.resume?.name || "No file chosen"}
+                                    className="flex-1 bg-white text-gray-700 cursor-default rounded-none"
+                                  />
+                                  <Button
+                                    type="button"
+                                    variant="default"
+                                    className="bg-gray-200 rounded-none hover:bg-gray-100 border border-gray-300 text-black"
+                                    onClick={() => document.getElementById("resume")?.click()}
+                                  >
+                                    Choose File
+                                  </Button>
+                                </div>
+                                <input
                                   id="resume"
                                   name="resume"
                                   type="file"
                                   accept=".pdf,.doc,.docx"
+                                  className="hidden"
                                   onChange={handleFileChange}
                                   required
                                 />
@@ -379,17 +401,17 @@ export default function PositionsPage() {
                                   Accepted formats: PDF, DOC, DOCX (Max 5MB)
                                 </p>
                               </div>
-
                               <div className="flex justify-end gap-2 pt-4">
                                 <Button
                                   type="button"
                                   variant="outline"
                                   onClick={() => close()}
                                   disabled={loading}
+                                  className='rounded-none'
                                 >
                                   Cancel
                                 </Button>
-                                <Button type="submit" disabled={loading}>
+                                <Button type="submit" disabled={loading} className='rounded-none'>
                                   {loading ? 'Submitting...' : 'Submit Resume'}
                                 </Button>
                               </div>
@@ -441,10 +463,7 @@ export default function PositionsPage() {
                           <MapPin className="h-4 w-4 mr-2 text-blue-600 flex-shrink-0" />
                           {selectedPosition.location}
                         </div>
-                        <div className="flex items-center break-words">
-                          <DollarSign className="h-4 w-4 mr-2 text-green-600 flex-shrink-0" />
-                          {selectedPosition.salary}
-                        </div>
+
                         <div className="flex items-center break-words">
                           <Clock className="h-4 w-4 mr-2 text-orange-600 flex-shrink-0" />
                           Posted on{" "}

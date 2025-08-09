@@ -156,15 +156,15 @@ export default function Home() {
 
               {/* Heading */}
               <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-5 leading-tight" data-aos="fade-up">
-                Custom-Built Software
+            Your Software Development
                 <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent block mt-2 sm:mt-3">
-                  That Drives Results
+                 Partner
                 </span>
               </h1>
 
               {/* Description */}
               <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed max-w-lg" data-aos="fade-left">
-                We build custom mobile apps, web platforms, and digital solutions to accelerate your growth.
+              We are one of the Top Rated Mobile Application Development Company in India
               </p>
 
               {/* Buttons */}
