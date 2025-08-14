@@ -8,6 +8,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ChevronDown } from 'lucide-react';
 import ImageCarousel from '@/components/ImageCarousel';
 import AnimatedCounter from '@/components/AnimatedCounter'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { useState } from 'react';
 
 import {
   ArrowRight,
@@ -33,6 +35,11 @@ import {
 
 
 export default function Home() {
+   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+
 
 
   const services = [
@@ -97,38 +104,95 @@ export default function Home() {
     }
   ];
 
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "CEO, InnovateCorp",
-      content: "PickZy transformed our business with their exceptional software solutions. The team's expertise and dedication exceeded our expectations.",
-      rating: 5,
-      image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400"
-    },
-    {
-      name: "Michael Chen",
-      role: "CTO, StartupXYZ",
-      content: "Outstanding development team that delivered our mobile app ahead of schedule. Their technical skills and communication are top-notch.",
-      rating: 5,
-      image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400"
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "Founder, TechStart",
-      content: "The cloud migration project was seamless. PickZy's expertise saved us time and money while improving our system performance significantly.",
-      rating: 5,
-      image: "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=400"
-    }
-  ];
+ const testimonials = [
+  {
+    name: "Dan",
+    role: "President at DVO, United States",
+    content: "Over the years, my company has worked with quite a few different software development firms in India. PickZy is definitely the best. The software engineers at PickZy are more experienced and capable than any other firm. But, the thing we value most about PickZy is the get-the-job-done mentality instilled by the company President. PickZy has gone above and beyond the call of duty to help us meet really tight deadlines. They work odd hours to accomodate our needs. And, they do what it takes to get the job done. I'm SO glad we discovered PickZy! In a nutshell, PickZy does a really good job of trying to understand the big picture and deliver solutions. Rather than simply providing a high quality software development service, PickZy strives to understand your goals and objectives and help you achieve them. They're more of a software development partner. I highly recommend PickZy Software.",
+    rating: 5,
+    image: "/client/Dan DVO.png"
+  },
+  {
+    name: "Steve Lambert",
+    role: "United States",
+    content: "PickZy continues assisted me with Android development and did such an excellent job that we chose them to assist us with an addition to our existing website. They did a great job, maintained good communication, and delivered exactly what we asked for in a timely manner. Yet another excellent job by PickZy Software! I'm so impressed that we're now moving onto developing a Windows Desktop platform app that's based off the Android app that they developed.",
+    rating: 5,
+    image: "/client/Equal-I.png"
+  },
+  {
+    name: "Douglas Johnson",
+    role: "United States",
+    content: "The project has been in the App store since May, 2014 and has been running with very few bugs (https://itunes.apple.com/us/app/art-models/id860168891). Any problems we have found have been fixed quickly. Any improvements we have asked for were delivered quickly and exactly as designed. We were very impressed with the speed with which you were able to get the cryptographic functions of the app written in Objective C to interoperate with our back end code written in C#. That seemed like it was going to be a difficult task. Everyone at PickZy has been easy to communicate with and all business transactions (delivering code, accepting payments, etc.) have been very fair. Our customers have liked the app and it has gotten good reviews in the App Store.",
+    rating: 5,
+    image: "/client/Art Model.jpg"
+  },
+  {
+    name: "Waheed Iqbal",
+    role: "CEO, Pakistan",
+    content: "I know Ratheesh for the last 6 months.This guy is amazing with respect to his in-depth technical knowledge and his problem solving skills. He has vast knowledge of Software Development, with brilliant presentation skills and extremely friendly and cooperative attitude for his customers.",
+    rating: 5,
+    image: "/client/Health mirror.jpg"
+  },
+  {
+    name: "Douglas Campbell",
+    role: "United States",
+    content: "Management and Team Members at PickZy Software LTD were knowledgeable and creative throughout the project. I will continue working with them and would recommend them for your outsourcing needs. Thumbs -Up",
+    rating: 5,
+    image: "/client/dummy.png"
+  },
+  {
+    name: "Felix Santos",
+    role: "United States",
+    content: "A++ I haven't met anyone like pickzysoftware. Not only they're on top of everything, but their attention to detail is beyond my expectation. I will def. work with them again.",
+    rating: 5,
+    image: "/client/dummy.png"
+  },
+  {
+    name: "Stavarengo",
+    role: "United States",
+    content: "I approached PickZy to get done some simple improvements in our iOS app. They were highly professional and gave me fast feedbacks awalys I asked for.",
+    rating: 5,
+    image: "/client/dummy.png"
+  },
+  {
+    name: "Bryan Barclay",
+    role: "United States",
+    content: "Incredible job! As always, the PickZy team always goes above and beyond my expectations. I have them completing another job for me now as we speak and Im getting ready to hire them for another. This is a top notch team of experts that can complete any task and they are very easy to communicate with.",
+    rating: 5,
+    image: "/client/dummy.png"
+  },
+  {
+    name: "Bryan Barclay",
+    role: "United States",
+    content: "Another great job completed promptly. Already hired for the next one and working out the details for another future job now.",
+    rating: 5,
+    image: "/client/dummy.png"
+  }
+];
+
+  const handleSeeMore = (testimonial) => {
+    setSelectedTestimonial(testimonial);
+    setIsModalOpen(true);
+  };
+
+
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen relative"
+      style={{
+        backgroundImage: "url('/assets/frame.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
 
+    >
+    <div className="absolute inset-0 bg-black/10"></div>
 
        
       {/* Hero Section */}
 
-
+  <div className="relative z-10">
       <section className="relative flex items-center justify-center min-h-[90vh] sm:min-h-[calc(100vh-var(--navbar-height))] w-full overflow-hidden">
         {/* Background Layers - Contained within hero section */}
         <div className="absolute inset-0 z-0">
@@ -282,17 +346,17 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { value: "300+", label: "Projects Completed" }, // Removed '+' here
-              { value: "200+", label: "Happy Clients" },     // Removed '+' here
-              { value: "13+", label: "Years Experience" },   // Removed '+' here
-              { value: "24/7", label: "Support Available" } // Non-numeric stays the same
+              { value: "300+", label: "Projects Completed" }, 
+              { value: "200+", label: "Happy Clients" },     
+              { value: "13+", label: "Years Experience" },  
+              { value: "24/7", label: "Support Available" } 
             ].map((stat, index) => (
               <div
                 key={index}
                 data-aos="zoom-in"
                
                 data-aos-mirror="true"
-                className="text-center p-4" // Added some padding
+                className="text-center p-4" 
               >
                 <AnimatedCounter value={stat.value} duration={4} classname="text-4xl font-bold text-white"/>
                 <div className="text-blue-100 mt-2">{stat.label}</div>
@@ -303,14 +367,13 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white/60 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className="text-center mb-16"
-            data-aos="fade-up"
-              
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-aos="fade-right">What Our Clients Say</h2>
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-aos="fade-right">
+              WHAT OUR CLIENTS SAY
+            </h2>
+            <div className="separator mx-auto w-20 h-1 bg-blue-500 mb-6"></div>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto" data-aos="fade-left">
               Don't just take our word for it. Here's what our satisfied clients have to say about our services.
             </p>
@@ -320,19 +383,26 @@ export default function Home() {
             {testimonials.map((testimonial, index) => (
               <Card
                 key={index}
-                className="text-center shadow-lg border-0"
+                className="text-center shadow-lg border-0 hover:shadow-xl transition-shadow duration-300"
                 data-aos="fade-up"
-           
                 data-aos-mirror="true"
               >
-                <CardContent className="p-6">
+                <CardContent className="p-6 h-full flex flex-col">
                   <div className="flex justify-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-gray-600 mb-6 italic">"{testimonial.content}"</p>
-                  <div className="flex items-center justify-center space-x-3">
+                  <p className="text-gray-600 mb-6 italic flex-grow line-clamp-5">
+                    "{testimonial.content}"
+                  </p>
+                  <button
+                    onClick={() => handleSeeMore(testimonial)}
+                    className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-auto"
+                  >
+                    See More
+                  </button>
+                  <div className="flex items-center justify-center space-x-3 mt-4">
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
@@ -349,6 +419,37 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonial Modal */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="max-w-2xl">
+          {selectedTestimonial && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl">Client Testimonial</DialogTitle>
+              </DialogHeader>
+              <div className="flex justify-center mb-4">
+                {[...Array(selectedTestimonial.rating)].map((_, i) => (
+                  <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-gray-700 mb-6 italic">"{selectedTestimonial.content}"</p>
+              <div className="flex items-center space-x-3 mt-6">
+                <img
+                  src={selectedTestimonial.image}
+                  alt={selectedTestimonial.name}
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">{selectedTestimonial.name}</div>
+                  <div className="text-sm text-gray-600">{selectedTestimonial.role}</div>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
 
       {/* CTA Section */}
       <section className="py-20 bg-gray-50">
@@ -380,6 +481,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+    </div>
 
       <Footer />
     </div>
