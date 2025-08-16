@@ -28,16 +28,79 @@ export default function PositionsPage() {
     message: '',
     resume: null
   });
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    resume: ''
+  });
+
+  const validateField = (name, value) => {
+    let error = '';
+    
+    switch (name) {
+      case 'name':
+        if (!value.trim()) error = 'Name is required';
+        else if (value.length < 2) error = 'Name must be at least 2 characters';
+        break;
+      case 'email':
+        if (!value.trim()) error = 'Email is required';
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = 'Please enter a valid email';
+        break;
+      case 'phone':
+        if (value && !/^[\d\s+-]{10,15}$/.test(value)) error = 'Please enter a valid phone number';
+        break;
+      case 'resume':
+        if (!value) error = 'Resume is required';
+        else if (value.size > 5 * 1024 * 1024) error = 'File size must be less than 5MB';
+        else if (!['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(value.type)) {
+          error = 'Only PDF, DOC, and DOCX files are allowed';
+        }
+        break;
+      default:
+        break;
+    }
+    
+    return error;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Validate on change
+    if (name in errors) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: validateField(name, value)
+      }));
+    }
   };
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
-      setFormData(prev => ({ ...prev, resume: e.target.files[0] }));
+      const file = e.target.files[0];
+      setFormData(prev => ({ ...prev, resume: file }));
+      
+      // Validate file
+      setErrors(prev => ({
+        ...prev,
+        resume: validateField('resume', file)
+      }));
     }
+  };
+
+  const validateForm = () => {
+    const newErrors = {
+      name: validateField('name', formData.name),
+      email: validateField('email', formData.email),
+      phone: validateField('phone', formData.phone),
+      resume: validateField('resume', formData.resume)
+    };
+    
+    setErrors(newErrors);
+    
+    return !Object.values(newErrors).some(error => error);
   };
 
   const handleViewSubmit = async (position) => {
@@ -75,8 +138,18 @@ export default function PositionsPage() {
 
   const handleSubmit = async (e, positionId) => {
     e.preventDefault();
-    setOpenApplyDialog(false);
-     showToast('Success', 'Resume submitted successfully, Our team will get back to you soon!', 'success');
+    e.stopPropagation();
+    
+    // Validate form
+    if (!validateForm()) {
+      console.error('Form validation failed');
+      showToast('Validation Error', 'Please fix the errors in the form', 'error');
+      return;
+    }
+      showToast('Success', 'Resume submitted successfully! Our team will get back to you soon.', 'success');
+      setOpenApplyDialog(false);
+   
+      
     try {
       const formPayload = new FormData();
       formPayload.append('name', formData.name);
@@ -92,30 +165,34 @@ export default function PositionsPage() {
         method: 'POST',
         body: formPayload,
       });
-
-         clearForm();
+       clearForm();
       if (!response.ok) {
-        // showToast('Error', 'Failed to submit resume', 'error');
         throw new Error('Failed to submit resume');
       }
 
      
-    
-
+      
+   
       if (positionId) {
         await handleApplySubmit();
       }
-   
     } catch (error) {
       console.error(error);
+      
     } finally {
-      // setLoading(false);
+     
     }
   };
 
   const close = () => {
     setOpenApplyDialog(false);
     clearForm();
+    setErrors({
+      name: '',
+      email: '',
+      phone: '',
+      resume: ''
+    });
   };
 
   const clearForm = () => {
@@ -148,14 +225,11 @@ export default function PositionsPage() {
         }
 
         const result = await response.json();
-
-        console.log(result);
         const formattedPositions = Array.isArray(result.data)
           ? result.data.filter((position) => position.status.trim() === "active")
           : [];
 
         setPositions(formattedPositions);
-        console.log("formattedPositions:", formattedPositions);
       } catch (err) {
         console.error("Failed to fetch positions:", err);
         setError(err.message || 'Failed to load positions');
@@ -272,10 +346,8 @@ export default function PositionsPage() {
                             {position.location}
                           </div>
                           <div className="flex items-center text-sm text-gray-600">
-                            {/* {experience/*  */}
                             <Briefcase className="h-4 w-4 mr-2 text-green-600" />
                             {position.experience}
-
                           </div>
                           <div className="flex items-center text-sm text-gray-600">
                             <Clock className="h-4 w-4 mr-2 text-orange-600" />
@@ -317,9 +389,10 @@ export default function PositionsPage() {
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    required
+                                  
                                     className="rounded-none"
                                   />
+                                  {errors.name && <p className="text-sm text-red-500 mt-1">{errors.name}</p>}
                                 </div>
                                 <div>
                                   <Label htmlFor="email">Email *</Label>
@@ -329,9 +402,10 @@ export default function PositionsPage() {
                                     type="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    required
+                                    
                                     className="rounded-none"
                                   />
+                                  {errors.email && <p className="text-sm text-red-500 mt-1">{errors.email}</p>}
                                 </div>
                               </div>
 
@@ -346,6 +420,7 @@ export default function PositionsPage() {
                                     onChange={handleChange}
                                     className="rounded-none"
                                   />
+                                  {errors.phone && <p className="text-sm text-red-500 mt-1">{errors.phone}</p>}
                                 </div>
                                 <div>
                                   <Label htmlFor="position">Position Interested In</Label>
@@ -355,6 +430,7 @@ export default function PositionsPage() {
                                     value={formData.position}
                                     onChange={handleChange}
                                     className="rounded-none"
+                                    readOnly
                                   />
                                 </div>
                               </div>
@@ -395,8 +471,9 @@ export default function PositionsPage() {
                                   accept=".pdf,.doc,.docx"
                                   className="hidden"
                                   onChange={handleFileChange}
-                                  required
+                                  
                                 />
+                                {errors.resume && <p className="text-sm text-red-500 mt-1">{errors.resume}</p>}
                                 <p className="text-sm text-muted-foreground mt-1">
                                   Accepted formats: PDF, DOC, DOCX (Max 5MB)
                                 </p>
@@ -424,7 +501,6 @@ export default function PositionsPage() {
                 </Card>
               ))}
             </div>
-
 
             {/* Position Details Dialog */}
             <Dialog open={openDetailsDialog} onOpenChange={setOpenDetailsDialog}>
@@ -512,8 +588,6 @@ export default function PositionsPage() {
                         </div>
                       )}
 
-
-
                       {/* Requirements */}
                       {selectedPosition.requirements?.length > 0 && (
                         <div>
@@ -535,7 +609,6 @@ export default function PositionsPage() {
                         </div>
                       )}
                     </div>
-
 
                     {/* Footer - Fixed */}
                     <div className="flex-shrink-0 p-4 border-t bg-white h-[10%] flex justify-end items-center">

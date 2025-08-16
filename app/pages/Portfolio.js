@@ -1032,13 +1032,13 @@ const filters = [
       {/* Projects Grid */}
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div 
+           key={activeFilter}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredProjects.map((project, index) => (
               <div
                 key={project.id}
                 className="group relative"
-                data-aos="fade-up"
-           
               >
                 <Card
                   className="h-full cursor-pointer overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-gray-200"
@@ -1102,7 +1102,6 @@ const filters = [
           </div>
         </div>
       </section>
-
 
 
       {/* Project Modal */}
