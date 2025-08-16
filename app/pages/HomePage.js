@@ -215,7 +215,7 @@ export default function Home() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/80 px-3 py-1 rounded-full mb-4 sm:mb-5 md:mb-6 border border-white/20 text-xs sm:text-sm">
                 <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-300" />
-                <span>Innovating Since 2015</span>
+                <span>Innovating Since 2011</span>
               </div>
 
               {/* Heading */}
