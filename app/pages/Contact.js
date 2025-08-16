@@ -9,6 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { useState, useEffect } from 'react';
 import ContactForm from '@/components/ContactForm';
+import ScheduleCallButton from '@/components/ScheduleCallButton';
 import Link from 'next/link';
 import { 
   Mail, 
@@ -451,26 +452,7 @@ const testimonials = [
         ))}
       </div>
 
-      <div 
-        className="text-center mt-12"
-        data-aos="fade-up"
-      >
-        <p 
-          className="text-gray-600 mb-4"
-          data-aos="fade-up"
-            
-        >
-          Still have questions?
-        </p>
-        <Button 
-          className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-          data-aos="fade-up"
-           
-        >
-          Schedule a Call
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
-      </div>
+     <ScheduleCallButton />
     </div>
   </section>
 
