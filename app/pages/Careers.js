@@ -292,7 +292,7 @@ export default function Careers() {
     </div>
   </section>
 
-  <Footer />
+   
    
 </div>
   );

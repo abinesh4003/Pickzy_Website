@@ -440,7 +440,7 @@ export default function DesignAndMarkup() {
           </div>
         </section>
 
-        <Footer />
+         
       </div>
     );
 }

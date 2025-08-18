@@ -381,7 +381,7 @@ export default function CustomSoftwareDevelopment() {
         </div>
       </section>
 
-      <Footer />
+       
     </div>
   );
 }

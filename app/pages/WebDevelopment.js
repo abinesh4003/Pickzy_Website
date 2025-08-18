@@ -502,7 +502,7 @@ export default function WebDevelopment() {
         </div>
       </section>
 
-      <Footer />
+       
     </div>
   );
 }

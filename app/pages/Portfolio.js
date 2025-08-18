@@ -1279,7 +1279,7 @@ const filters = [
         </div>
       </section>
 
-      <Footer />
+       
     </div>
   );
 }

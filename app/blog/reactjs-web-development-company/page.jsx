@@ -355,7 +355,7 @@ const ReactJsBlogPost = () => {
         </article>
       </main>
 
-      <Footer />
+       
 
     
     </>

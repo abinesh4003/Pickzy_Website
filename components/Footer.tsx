@@ -64,22 +64,22 @@ export default function Footer() {
             {/* Contact - Column 5 */}
             <div className="foot_sstyle fm5 space-y-3">
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <div className="flex items-center space-x-3">
+              <Link href="mailto:sales@pickzy.com" className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors text-sm">
                 <Mail className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-400 text-sm">sales@pickzy.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
+                <span>sales@pickzy.com</span>
+              </Link>
+              <Link href="tel:+914445014466" className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors text-sm">
                 <Phone className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-400 text-sm">+91 44 4501 4466</span>
-              </div>
-              <div className="flex items-start space-x-3">
+                <span>+91 44 4501 4466</span>
+              </Link>
+              <Link href="https://www.google.com/maps/place/JVL+Plaza,+6th+Floor,+Anna+Salai,+Teynampet,+Chennai+600018/@13.0562959,80.2555586,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae1739523378f7:0x5dd29f209507582f!8m2!3d13.0562959!4d80.2577473" className="flex items-start space-x-3 text-gray-400 hover:text-white transition-colors text-sm" target="_blank" rel="noopener noreferrer">
                 <MapPin className="h-4 w-4 text-blue-400 mt-1" />
-                <span className="text-gray-400 text-sm">
+                <span>
                   JVL Plaza, 6th Floor,<br />
                   Anna Salai, Teynampet,<br />
                   Chennai 600018
                 </span>
-              </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -107,7 +107,6 @@ export default function Footer() {
                   height={48} 
                   className="h-10 w-auto ml-6"
                 />
-
               </div>
             </div>
           </div>

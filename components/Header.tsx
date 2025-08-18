@@ -211,7 +211,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`sticky top-0 bg-transparent w-full transition-all duration-300 z-50 ${
+    <header className={`sticky top-0 bg-transparent max-w-full transition-all duration-300 z-50 ${
       isScrolled 
         ? 'bg-white/70 backdrop-blur-sm border-b shadow-sm' 
         : 'bg-white/70 backdrop-blur-sm border-b border-transparent'

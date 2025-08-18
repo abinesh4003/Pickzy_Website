@@ -526,7 +526,7 @@ export default function MobileDevelopment() {
     </div>
   </div>
 </section>
-      <Footer />
+       
     </div>
   );
 }

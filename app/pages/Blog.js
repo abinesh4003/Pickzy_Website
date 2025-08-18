@@ -619,7 +619,7 @@ const handleChange = (e) => {
 
 
 
-  <Footer />
+   
 </div>
   );
 }

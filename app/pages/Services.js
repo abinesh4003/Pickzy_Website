@@ -432,7 +432,7 @@ export default function Services() {
     </div>
   </section>
 
-  <Footer />
+   
 </div>
   );
 }

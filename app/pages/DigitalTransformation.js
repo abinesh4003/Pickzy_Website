@@ -219,7 +219,7 @@ const whyUs = [
         </div>
       </section>
 
-      <Footer />
+       
     </div>
   );
 }

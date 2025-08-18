@@ -497,7 +497,7 @@ const testimonials = [
 </section>
 
 
-  <Footer />
+   
 </div>
   );
 }

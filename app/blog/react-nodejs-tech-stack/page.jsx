@@ -428,7 +428,7 @@ const FullstackBlogPost = () => {
         </article>
       </main>
 
-      <Footer />
+       
 
     
     </>

@@ -525,7 +525,7 @@ export default function InternetMarketing() {
         </div>
       </section>
 
-      <Footer />
+       
     </div>
   );
 }

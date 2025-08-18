@@ -223,7 +223,7 @@ export default function About() {
             <div className="space-y-12">
               {milestones.map((milestone, index) => (
                 <div key={index} className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}  >
-                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
+                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-left' : 'pl-8 text-left'}`}>
                     <Card className="p-6 border-0 shadow-lg">
                       <div className="text-2xl font-bold text-blue-600 mb-2">{milestone.year}</div>
                       <h3 className="text-xl font-semibold mb-2">{milestone.title}</h3>
@@ -349,7 +349,7 @@ export default function About() {
     </div>
   </section>
 
-  <Footer />
+   
 </div>
   );
 }

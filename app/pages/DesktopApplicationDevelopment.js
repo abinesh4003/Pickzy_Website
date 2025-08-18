@@ -571,7 +571,7 @@ export default function DesktopApplicationDevelopment() {
         </div>
       </section>
 
-      <Footer />
+       
     </div>
   );
 }
