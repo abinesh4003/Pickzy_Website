@@ -53,9 +53,8 @@ export default function Header() {
     'Angular Developer'
   ];
 
-  // Navigation links
+  // Navigation links - Reordered as requested
   const navLinks: NavItem[] = [
-   
     { name: "About", href: "/about-us" },
     { name: "Our Works", href: "/portfolio" },
     { name: "Careers", href: "/careers" },
@@ -196,7 +195,7 @@ export default function Header() {
         throw new Error('Submission failed');
       }
       
-      showToast('Success', 'Thanks! We’ve received your hiring request and will contact you shortly', 'success');
+      showToast("Success", "Thanks! We have received your hiring request and will contact you shortly", "success");
       setIsHireModalOpen(false);
     } catch (error) {
       console.error('Submission error:', error);
@@ -233,21 +232,19 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`block px-3 py-2 text-base font-medium rounded-md ${
-                  pathname === link.href
-                    ? ' text-blue-600'
-                    : 'text-gray-600 hover:bg-gray-50'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {/* 1. About */}
+            <Link
+              href="/about-us"
+              className={`block px-3 py-2 text-base font-medium rounded-md ${
+                pathname === "/about-us"
+                  ? ' text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              About
+            </Link>
             
-            {/* Services Dropdown */}
+            {/* 2. Services Dropdown */}
             <div className="relative group">
               <button 
                 ref={servicesButtonRef}
@@ -302,7 +299,7 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Hire Us Dropdown */}
+            {/* 3. Hire Us Dropdown */}
             <div className="relative group">
               <button 
                 ref={hireButtonRef}
@@ -349,6 +346,42 @@ export default function Header() {
                 ))}
               </div>
             </div>
+
+            {/* 4. Our Works */}
+            <Link
+              href="/portfolio"
+              className={`block px-3 py-2 text-base font-medium rounded-md ${
+                pathname === "/portfolio"
+                  ? ' text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              Our Works
+            </Link>
+
+            {/* 5. Careers */}
+            <Link
+              href="/careers"
+              className={`block px-3 py-2 text-base font-medium rounded-md ${
+                pathname === "/careers"
+                  ? ' text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              Careers
+            </Link>
+
+            {/* 6. Contact */}
+            <Link
+              href="/contact-us"
+              className={`block px-3 py-2 text-base font-medium rounded-md ${
+                pathname === "/contact-us"
+                  ? ' text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              Contact
+            </Link>
           </nav>
 
           {/* Desktop CTA Buttons */}
@@ -382,22 +415,20 @@ export default function Header() {
           aria-modal="true"
         >
           <div className="px-2 pt-2 pb-4 space-y-1 bg-white border-t">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`block px-3 py-2 text-base font-medium rounded-md ${
-                  pathname === link.href
-                    ? 'bg-blue-50 text-blue-600'
-                    : 'text-gray-600 hover:bg-gray-50'
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {/* 1. About */}
+            <Link
+              href="/about-us"
+              className={`block px-3 py-2 text-base font-medium rounded-md ${
+                pathname === "/about-us"
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About
+            </Link>
             
-            {/* Mobile Services Dropdown */}
+            {/* 2. Mobile Services Dropdown */}
             <div className="px-3 py-2">
               <button
                 onClick={() => toggleServices(!isServicesOpen)}
@@ -439,7 +470,7 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Mobile Hire Us Button */}
+            {/* 3. Mobile Hire Us Button */}
             <button
               onClick={() => {
                 openHireModal();
@@ -450,6 +481,45 @@ export default function Header() {
              
               Hire Us
             </button>
+
+            {/* 4. Our Works */}
+            <Link
+              href="/portfolio"
+              className={`block px-3 py-2 text-base font-medium rounded-md ${
+                pathname === "/portfolio"
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Our Works
+            </Link>
+
+            {/* 5. Careers */}
+            <Link
+              href="/careers"
+              className={`block px-3 py-2 text-base font-medium rounded-md ${
+                pathname === "/careers"
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Careers
+            </Link>
+
+            {/* 6. Contact */}
+            <Link
+              href="/contact-us"
+              className={`block px-3 py-2 text-base font-medium rounded-md ${
+                pathname === "/contact-us"
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact
+            </Link>
             
             {/* Mobile CTA Buttons */}
             <div className="px-3 pt-2 space-y-2 border-t">
