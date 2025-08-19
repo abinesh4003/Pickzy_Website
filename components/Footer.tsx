@@ -32,11 +32,11 @@ export default function Footer() {
             {/* Technologies - Column 3 */}
             <div className="foot_sstyle fm3 space-y-3">
               <h3 className="text-lg font-semibold mb-4">Technologies</h3>
-              <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">Microsoft .Net</Link></p>
-              <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">Java Development</Link></p>
-              <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">Python</Link></p>
-              <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">Node.js</Link></p>
-              <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">React/Angular</Link></p>
+              <p><Link href="/contact-us" className="text-gray-400 hover:text-white transition-colors text-sm block">Microsoft .Net</Link></p>
+              <p><Link href="/contact-us" className="text-gray-400 hover:text-white transition-colors text-sm block">Java Development</Link></p>
+              <p><Link href="/contact-us" className="text-gray-400 hover:text-white transition-colors text-sm block">Python</Link></p>
+              <p><Link href="/contact-us" className="text-gray-400 hover:text-white transition-colors text-sm block">Node.js</Link></p>
+              <p><Link href="/contact-us" className="text-gray-400 hover:text-white transition-colors text-sm block">React/Angular</Link></p>
             </div>
 
             {/* Policies - Column 4 */}
