@@ -32,10 +32,6 @@ const filters = [
     { id: 'all', label: 'All', icon: <ArrowRightLeft className="w-4 h-4" /> },
     { id: 'web-development', label: 'Web Development', icon: <Globe className="w-4 h-4" /> },
     { id: 'mobile-development', label: 'Mobile Development', icon: <Smartphone className="w-4 h-4" /> },
-    { id: 'healthcare', label: 'Healthcare', icon: <Plug className="w-4 h-4" /> },
-    { id: 'enterprise', label: 'Enterprise', icon: <Monitor className="w-4 h-4" /> },
-    { id: 'education', label: 'Education', icon: <ArrowRightLeft className="w-4 h-4" /> },
-    { id: 'finance', label: 'Finance', icon: <ArrowRightLeft className="w-4 h-4" /> },
     { id: 'saas', label: 'SaaS', icon: <ArrowRightLeft className="w-4 h-4" /> },   
     { id: 'iot', label: 'IoT', icon: <ArrowRightLeft className="w-4 h-4" /> }, // Added IoT filter
     { id: 'cross-platform', label: 'Cross Platform', icon: <ArrowRightLeft className="w-4 h-4" /> } // Added Cross Platform filter
@@ -341,7 +337,7 @@ const filters = [
   {
     id: 'trigger-demo12',
     title: 'BLASTER',
-    category: 'education',
+    category: 'mobile-development',
     type: 'Desktop',
     description: 'Blaster Student assures to make things easier for the school authorities and rescue teams by providing a quick and comprehensive control over the count and details of survivors.',
     image: '/images/portfolio-images/blaster_front.jpg',
@@ -377,7 +373,7 @@ const filters = [
   {
     id: 'trigger-demo14',
     title: 'COMPUTER DOCTOR',
-    category: 'enterprise',
+    category: 'web-development',
     type: 'Desktop',
     description: 'Computer Doctor is a .NET web Application handles Inventory management process, Customer details, Purchase and sales order, Invoice Generation, Payment Tracking and Appointment scheduling.',
     image: '/images/portfolio-images/cd-home banner.jpg',
@@ -395,7 +391,7 @@ const filters = [
   {
     id: 'trigger-demo35',
     title: 'Super Market Billing Software',
-    category: 'enterprise',
+    category: 'web-development',
     type: 'Desktop',
     description: 'Our software gives you complete control over your business and is in perfect compliance with the industry standards. Our software fully understands the need for convenience and efficiency in any industry.',
     image: '/images/portfolio-images/billing software-pop-up.jpg',
@@ -521,7 +517,7 @@ const filters = [
   {
     id: 'trigger-demo30',
     title: 'EHR EVOLUTION',
-    category: 'healthcare',
+    category: 'web-development',
     type: 'Web',
     description: 'A single platform that unifies clinical, operational, and financial data to drive improvements using real time information.',
     image: '/images/portfolio-images/EHR.jpg',
@@ -539,7 +535,7 @@ const filters = [
   {
     id: 'trigger-demo31',
     title: 'T5 DATA CENTERS',
-    category: 'enterprise',
+    category: 'saas',
     type: 'Web',
     description: 'T5 Data Centers, innovators in providing secure, customizable, hyperscale computing environments for enterprise companies.',
     image: '/images/portfolio-images/T5-Data-Centers.jpg',
@@ -799,7 +795,7 @@ const filters = [
 {
   id: 'health-mirror',
   title: "Health Mirror",
-  category: "healthcare",
+  category: "mobile-development",
   type: "healthcare platform",
   description: "An interactive patient engagement platform that delivers personalized, multimedia health education at every stage of care—before, during, and after clinical visits—to improve outcomes and adherence.",
   image: "/images/portfolio-images/health_mirror_front.png",
@@ -828,7 +824,7 @@ const filters = [
 {
   id: 'meditation-app',
   title: "Meditation App",
-  category: "healthcare",
+  category: "mobile-development",
   type: "healthcare platform",
   description: "A precision-engineered brainwave entrainment app featuring 75+ scientifically-backed meditation programs using Isochronic Tones and Binaural Beats for stress relief, focus, and sleep enhancement.",
   image: "/images/portfolio-images/meditation_app.jpg",
