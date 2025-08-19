@@ -57,7 +57,7 @@ export default function Header() {
   const navLinks: NavItem[] = [
    
     { name: "About", href: "/about-us" },
-    { name: "Portfolio", href: "/portfolio" },
+    { name: "Our Works", href: "/portfolio" },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact-us" },
   ];
