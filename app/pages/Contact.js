@@ -7,9 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ContactForm from '@/components/ContactForm';
 import ScheduleCallButton from '@/components/ScheduleCallButton';
+
 import Link from 'next/link';
 import { 
   Mail, 
@@ -80,111 +81,127 @@ const contactInfo = [
   ];
   // Replace the existing Client Testimonial card with this component
 const TestimonialCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState('right');
-  const [isAnimating, setIsAnimating] = useState(false);
+ const [currentIndex, setCurrentIndex] = useState(0);
+  const [startX, setStartX] = useState(null);
+  const carouselRef = useRef(null);
 
 const testimonials = [
   {
     name: "Dan",
     role: "President at DVO, United States",
-    content: "Over the years, my company has worked with quite a few different software development firms in India. PickZy is definitely the best. The software engineers at PickZy are more experienced and capable than any other firm. But, the thing we value most about PickZy is the get-the-job-done mentality instilled by the company President. PickZy has gone above and beyond the call of duty to help us meet really tight deadlines. They work odd hours to accomodate our needs. And, they do what it takes to get the job done. I'm SO glad we discovered PickZy! In a nutshell, PickZy does a really good job of trying to understand the big picture and deliver solutions. Rather than simply providing a high quality software development service, PickZy strives to understand your goals and objectives and help you achieve them. They're more of a software development partner. I highly recommend PickZy Software.",
+    content: "PickZy stands out among Indian software firms. Their engineers are highly skilled with a get-it-done attitude. They've helped us meet tight deadlines, working odd hours when needed. More than a vendor, they're true partners who understand our goals.",
     rating: 5,
     image: "/client/Dan DVO.png"
   },
   {
     name: "Steve Lambert",
     role: "United States",
-    content: "PickZy continues assisted me with Android development and did such an excellent job that we chose them to assist us with an addition to our existing website. They did a great job, maintained good communication, and delivered exactly what we asked for in a timely manner. Yet another excellent job by PickZy Software! I'm so impressed that we're now moving onto developing a Windows Desktop platform app that's based off the Android app that they developed.",
+    content: "PickZy excelled in Android development, leading us to hire them for website work. Great communication and timely delivery. So impressed, we're now developing a Windows app based on their Android work.",
     rating: 5,
     image: "/client/Equal-I.png"
   },
   {
     name: "Douglas Johnson",
     role: "United States",
-    content: "The project has been in the App store since May, 2014 and has been running with very few bugs (https://itunes.apple.com/us/app/art-models/id860168891). Any problems we have found have been fixed quickly. Any improvements we have asked for were delivered quickly and exactly as designed. We were very impressed with the speed with which you were able to get the cryptographic functions of the app written in Objective C to interoperate with our back end code written in C#. That seemed like it was going to be a difficult task. Everyone at PickZy has been easy to communicate with and all business transactions (delivering code, accepting payments, etc.) have been very fair. Our customers have liked the app and it has gotten good reviews in the App Store.",
+    content: "Our app has run smoothly since 2014 with few bugs. Issues were fixed quickly, improvements delivered as designed. Impressed with their Objective C/C# integration skills. Great communication and fair business practices.",
     rating: 5,
     image: "/client/Art Model.jpg"
   },
   {
     name: "Waheed Iqbal",
     role: "CEO, Pakistan",
-    content: "I know Ratheesh for the last 6 months.This guy is amazing with respect to his in-depth technical knowledge and his problem solving skills. He has vast knowledge of Software Development, with brilliant presentation skills and extremely friendly and cooperative attitude for his customers.",
+    content: "Ratheesh has amazing technical knowledge and problem-solving skills. His software expertise, presentation abilities, and customer-focused attitude make him exceptional to work with.",
     rating: 5,
     image: "/client/Health mirror.jpg"
   },
   {
     name: "Douglas Campbell",
     role: "United States",
-    content: "Management and Team Members at PickZy Software LTD were knowledgeable and creative throughout the project. I will continue working with them and would recommend them for your outsourcing needs. Thumbs -Up",
+    content: "PickZy's team was knowledgeable and creative throughout our project. I'll continue working with them and highly recommend them for outsourcing needs. Thumbs up!",
     rating: 5,
     image: "/client/dummy.png"
   },
   {
     name: "Felix Santos",
     role: "United States",
-    content: "A++ I haven't met anyone like pickzysoftware. Not only they're on top of everything, but their attention to detail is beyond my expectation. I will def. work with them again.",
+    content: "A++ service. PickZy exceeds expectations with their attention to detail and responsiveness. Top-notch performance that I'll definitely use again for future projects.",
     rating: 5,
     image: "/client/dummy.png"
   },
   {
     name: "Stavarengo",
     role: "United States",
-    content: "I approached PickZy to get done some simple improvements in our iOS app. They were highly professional and gave me fast feedbacks awalys I asked for.",
+    content: "PickZy handled iOS app improvements professionally with fast feedback. Highly recommend their services for mobile development needs.",
     rating: 5,
     image: "/client/dummy.png"
   },
   {
     name: "Bryan Barclay",
     role: "United States",
-    content: "Incredible job! As always, the PickZy team always goes above and beyond my expectations. I have them completing another job for me now as we speak and Im getting ready to hire them for another. This is a top notch team of experts that can complete any task and they are very easy to communicate with.",
+    content: "PickZy consistently exceeds expectations. They're currently handling multiple projects for me - a top-notch team that's easy to communicate with and completes any task expertly.",
     rating: 5,
     image: "/client/dummy.png"
   },
   {
     name: "Bryan Barclay",
     role: "United States",
-    content: "Another great job completed promptly. Already hired for the next one and working out the details for another future job now.",
+    content: "Another excellent job completed promptly. Already engaged for the next project and planning future work with this reliable team.",
     rating: 5,
     image: "/client/dummy.png"
   }
 ];
+const handleTouchStart = (e) => {
+    setStartX(e.touches[0].clientX);
+  };
 
-   useEffect(() => {
-    const interval = setInterval(() => {
-      setDirection('right');
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-      setIsAnimating(true);
-    }, 4000); 
+  const handleTouchMove = (e) => {
+    if (!startX) return;
+    const currentX = e.touches[0].clientX;
+    const diff = startX - currentX;
+    
+    if (diff > 5) {
+      // Swipe left - go next
+      handleNext();
+    } else if (diff < -5) {
+      // Swipe right - go previous
+      handlePrev();
+    }
+    setStartX(null);
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
 
-  const handleDotClick = (index) => {
-    setDirection(index > currentIndex ? 'right' : 'left');
-    setCurrentIndex(index);
-    setIsAnimating(true);
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   return (
-    <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-purple-50 overflow-hidden" data-aos="fade-left">
-      <CardContent className="p-6 relative h-[300px]"> {/* Set a fixed height */}
-        {/* Testimonial content with sliding animation */}
-        <div className="absolute inset-0 p-6">
+    <Card 
+      className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-purple-50 overflow-hidden" 
+      data-aos="fade-left"
+      ref={carouselRef}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+    >
+      <CardContent className="p-6 relative h-[400px]">
+        {/* Testimonial content */}
+        <div className="absolute inset-0 p-6 h-full">
           {testimonials.map((testimonial, index) => (
             <div 
-             key={index}
-  className={`absolute inset-0 p-6 transition-transform duration-500 ease-in-out ${
-    index === currentIndex ? 'translate-x-0' : 
-    (index < currentIndex ? '-translate-x-full' : 'translate-x-full')
-  }`}
+              key={index}
+              className={`absolute inset-0 p-6 transition-transform duration-300 ease-in-out h-full flex flex-col justify-between ${
+                index === currentIndex ? 'translate-x-0' : 
+                (index < currentIndex ? '-translate-x-full' : 'translate-x-full')
+              }`}
             >
               <div className="flex items-center mb-4" data-aos="fade-up">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
-              <p className="text-gray-700 mb-4 italic" data-aos="fade-up">
+              <p className="text-gray-700 mb-4 italic px-8" data-aos="fade-up">
                 "{testimonial.content.length > 200 ? testimonial.content.slice(0, 300) + '...' : testimonial.content}"
               </p>
               <div className="flex items-center space-x-3" data-aos="fade-up">
@@ -214,22 +231,41 @@ const testimonials = [
           {testimonials.map((_, index) => (
             <button
               key={index}
-              onClick={() => handleDotClick(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${currentIndex === index ? 'bg-blue-600 w-4' : 'bg-gray-300'}`}
+              onClick={() => setCurrentIndex(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                currentIndex === index ? 'bg-blue-600 w-4' : 'bg-gray-300'
+              }`}
               aria-label={`View testimonial ${index + 1}`}
             />
           ))}
         </div>
+
+        {/* Manual navigation arrows */}
+        <button 
+          onClick={handlePrev}
+          className="absolute left-2 top-1/2 -translate-y-1/2 backdrop-blur p-2 rounded-full bg-transparent shadow-md hover:bg-white"
+          aria-label="Previous testimonial"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+        </button>
+        <button 
+          onClick={handleNext}
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent p-2 rounded-full shadow-md hover:bg-white backdrop-blur-xl"
+          aria-label="Next testimonial"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </button>
       </CardContent>
     </Card>
   );
 };
 
-
-
-
   return (
- <div className="min-h-screen bg-white">
+ <div className="min-h-screen bg-white overflow-x-hidden">
    
 
   {/* Hero Section */}

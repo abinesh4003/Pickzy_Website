@@ -137,16 +137,20 @@ export default function DesignAndMarkup() {
           From Figma to Functional – We bring your UI/UX designs to life with clean, responsive HTML, CSS, and modern frontend tech.
         </p>
         <div className="flex flex-col xs:flex-row gap-3 sm:gap-4" data-aos="fade-up">
+          <Link href="/careers">
           <Button size="lg" className="bg-blue-600 hover:bg-blue-700 w-full xs:w-auto">
-          <Link href="/careers">Let's Work Together</Link>
+          Let's Work Together
           </Button>
+          </Link>
+            <Link href="/contact-us">
           <Button 
             size="lg" 
             variant="outline" 
             className="border-blue-600 text-blue-600 hover:bg-blue-50 w-full xs:w-auto"
           >
-            <Link href="/contact-us">Get a Free Quote</Link>
+          Get a Free quote
           </Button>
+          </Link>
         </div>
       </div>
 
@@ -439,12 +443,16 @@ export default function DesignAndMarkup() {
               data-aos="fade-up"
                
             >
+              <Link href="/contact-us">
               <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
                 Request a Quote
               </Button>
+              </Link>
+              <Link href="/contact-us">
               <Button size="lg" variant="outline" className="text-blue-900 border-white hover:bg-white hover:text-blue-600">
                 <Link href="/contact-us">Book a Free Consultation</Link>
               </Button>
+              </Link>
             </div>
           </div>
         </section>

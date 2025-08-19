@@ -170,12 +170,16 @@ export default function WebDevelopment() {
                 data-aos="fade-up"
                  
               >
+                  <Link href="/contact-us">
                 <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700">
-                  <Link href="/contact-us">Get Started</Link>
+                Get Started
                 </Button>
+                </Link>
+                 <Link href="/portfolio" >
                 <Button variant="outline" className="border-gray-300 hover:bg-gray-50">
-                  <Link href="/portfolio" >View Portfolio</Link>
+                 View Portfolio
                 </Button>
+                </Link>
               </div>
             </div>
 
@@ -492,12 +496,16 @@ export default function WebDevelopment() {
             data-aos="fade-up"
              
           >
+            <Link href="/contact-us">
             <Button size="lg" className="bg-white text-black hover:bg-gray-100">
               Get a Free Quote
             </Button>
+            </Link>
+             <Link href="/contact-us">
             <Button size="lg" variant="outline" className="border-white hover:bg-white hover:text-blue-600">
-              <Link href="/contact-us">Contact Us Now</Link>
+             Contact Us now
             </Button>
+            </Link>
           </div>
         </div>
       </section>

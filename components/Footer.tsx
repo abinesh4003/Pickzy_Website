@@ -24,7 +24,7 @@ export default function Footer() {
               <h3 className="text-lg font-semibold mb-4">Mobile Services</h3>
               <p><Link href="/services/mobile-development" className="text-gray-400 hover:text-white transition-colors text-sm block">Mobile Development</Link></p>
               <p><Link href="/services/web-development" className="text-gray-400 hover:text-white transition-colors text-sm block">Web Development</Link></p>
-              <p><Link href="/services/internet-marketing" className="text-gray-400 hover:text-white transition-colors text-sm block">Cloud Solutions</Link></p>
+              <p><Link href="/services/cloud" className="text-gray-400 hover:text-white transition-colors text-sm block">Cloud Solutions</Link></p>
               <p><Link href="/services/digital-transformation" className="text-gray-400 hover:text-white transition-colors text-sm block">Digital Transformation</Link></p>
               <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">All Services</Link></p>
             </div>
@@ -100,13 +100,14 @@ export default function Footer() {
                   height={70} 
                   className="h-12 w-auto ml-6"
                 />
+               <Link href="/" className="flex items-center">
                 <Image 
                   src="/assets/pickzy_logo.png" 
                   alt="PickZy Logo" 
                   width={120} 
                   height={48} 
                   className="h-10 w-auto ml-6"
-                />
+                /></Link>
               </div>
             </div>
           </div>

@@ -94,12 +94,16 @@ const whyUs = [
               Unlock efficiency, innovation, and growth with our end-to-end digital transformation solutions.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link href="/contact-us">
               <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-100 px-8 py-6 text-lg font-semibold">
                 Get a Free Consultation
               </Button>
+              </Link>
+              <Link href="/services">
               <Button size="lg" variant="outline" className="text-blue-900 border-white hover:bg-white hover:text-blue-900 px-8 py-6 text-lg font-semibold">
                 Explore Our Services
               </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -209,12 +213,16 @@ const whyUs = [
             Let's discuss how we can modernize your operations and deliver impactful results with digital transformation.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link rel="stylesheet" href="/contact-us" >
             <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-100 px-8 py-6 text-lg font-semibold">
               Schedule a Free Call
             </Button>
+            </Link>
+                 <Link rel="stylesheet" href="/contact-us" >
             <Button size="lg" variant="outline" className="text-blue-900 border-white hover:bg-white hover:text-blue-900 px-8 py-6 text-lg font-semibold">
-              <Link rel="stylesheet" href="/contact-us" >Start Your Project</Link>
+         Start Your Project
             </Button>
+            </Link>
           </div>
         </div>
       </section>

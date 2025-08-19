@@ -153,12 +153,16 @@ export default function CloudServices() {
                 Transform your business with scalable, secure, and cost-optimized cloud infrastructure tailored to your needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/contact-us">
                 <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg">
                   Get Cloud Assessment
                 </Button>
+                </Link>
+                <Link href="#cloud-case-studies">
                 <Button size="lg" variant="outline" className="border-gray-300 hover:bg-white/90 shadow-sm">
                   View Case Studies
                 </Button>
+                </Link>
               </div>
               
               {/* Trust indicators */}
@@ -202,7 +206,7 @@ export default function CloudServices() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" id="cloud-case-studies">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">

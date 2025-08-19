@@ -103,12 +103,12 @@ export default function MobileDevelopment() {
        
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
+      <section className="relative  pb-24 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen flex items-center">
         <div className="absolute inset-0 opacity-20 ">
-          <div className="absolute inset-0 bg-[url('/service/mobile/hero_back.jpg')] bg-[length:1200px] bg-center mix-blend-overlay"></div>
+          <div className="absolute inset-0 bg-[url('/service/mobile/hero_back.jpg')] bg-cover bg-[length:1200px] bg-center mix-blend-overlay"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className=" mx-auto p-4 sm:px-6 md:px-8 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Text Content */}
             <div className="relative z-10" data-aos="fade-right">
@@ -119,12 +119,16 @@ export default function MobileDevelopment() {
                 We build scalable, high-performance mobile applications that drive engagement and business growth for startups and enterprises.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
+                 <Link href="/contact-us">
                 <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg">
-                 <Link href="/contact-us">Get Started</Link>
+                Get Started
                 </Button>
+                </Link>
+                <Link href="#case-studies">
                 <Button size="lg" variant="outline" className="border-gray-300 hover:bg-white/90 shadow-sm">
-                 <Link href="#case-studies">View Case Studies</Link>
+                 View Case studies
                 </Button>
+                </Link>
               </div>
               
               {/* Trust indicators */}
@@ -506,6 +510,7 @@ export default function MobileDevelopment() {
       Let's discuss your mobile strategy and create an app that stands out in the marketplace.
     </p>
     <div className="flex flex-col sm:flex-row justify-center gap-4">
+      <Link href="/contact-us">
       <Button 
         size="lg" 
         className="bg-white text-blue-600 hover:bg-gray-100"
@@ -514,6 +519,8 @@ export default function MobileDevelopment() {
       >
         Start Your Project
       </Button>
+      </Link>
+       <Link href="/contact-us">
       <Button 
         size="lg" 
         variant="outline" 
@@ -521,8 +528,9 @@ export default function MobileDevelopment() {
         data-aos="zoom-in"
          
       >
-        <Link href="/contact-us">Book Consultation</Link>
+       Book Consultation
       </Button>
+      </Link>
     </div>
   </div>
 </section>

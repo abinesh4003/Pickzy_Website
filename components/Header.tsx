@@ -222,7 +222,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0" aria-label="PickZy Home">
             <Image
-              src="/assets/pickzy_logo.png"
+              src="/assets/pickzy_logo1.png"
               alt="PickZy Logo"
               width={150}
               height={60}

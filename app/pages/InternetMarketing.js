@@ -145,12 +145,16 @@ export default function InternetMarketing() {
                 data-aos="fade-up"
                  
               >
+                <Link href="/contact-us">
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-sm">
                   Get a Free Consultation
                 </Button>
+                </Link>
+                <Link href="/services">
                 <Button size="lg" variant="outline" className="text-gray-700 hover:bg-gray-50 border-gray-300 hover:border-gray-400 shadow-sm">
                   Explore Services <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
+                </Link>
               </div>
             </div>
             
@@ -515,12 +519,16 @@ export default function InternetMarketing() {
             data-aos="fade-up"
              
           >
+            <Link href="/contact-us">
             <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-100 font-semibold">
               Request a Quote
             </Button>
+            </Link>
+            <Link href="/contact-us">
             <Button size="lg" variant="outline" className="text-blue-600 border-white hover:bg-white hover:text-blue-600">
-              <Link href="/contact-us">Schedule a Free Call</Link>
+              Schedule a Free Call
             </Button>
+            </Link>
           </div>
         </div>
       </section>

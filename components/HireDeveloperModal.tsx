@@ -108,8 +108,8 @@ export function HireDeveloperModal({
               <p className="text-gray-500">sales@pickzy.com</p>
             </div>
             <div className='flex flex-col items-center justify-center p-2 bg-gray-50 rounded-md text-xs'>
-              <Phone className='w-4 h-4 text-blue-600 mb-1' />
-              <p className="font-medium">Skype</p>
+              <Users className='w-4 h-4 text-blue-600 mb-1' />
+              <p className="font-medium">Teams</p>
               <p className="text-gray-500">macratheesh</p>
             </div>
           </div>
