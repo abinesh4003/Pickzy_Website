@@ -30,7 +30,9 @@ import {
   PlayCircle,
   Sparkles,
   Car,
-  Check 
+  Check,
+  PenTool,
+  Megaphone 
 } from 'lucide-react';
 
 
@@ -61,24 +63,25 @@ export default function Home() {
       description: "Modern, responsive websites and web applications optimized for performance.",
       link: "/services/web-development"
     },
+     {
+    icon: <PenTool className="w-8 h-8 text-pink-600" />,
+    title: "UI/UX Design",
+    description: "User-centered interfaces and experiences that drive engagement and conversions.",
+    link: "/services/design-and-markup"
+  },
     {
       icon: <Database className="w-8 h-8 text-orange-600" />,
       title: "Cloud Solutions",
       description: "Scalable cloud infrastructure and migration services for modern businesses.",
-      link: "/services/cloud-solutions"
+      link: "/services/cloud"
     },
-    {
-      icon: <Shield className="w-8 h-8 text-red-600" />,
-      title: "Cybersecurity",
-      description: "Comprehensive security solutions to protect your digital assets and data.",
-      link: "/services"
-    },
-    {
-      icon: <Zap className="w-8 h-8 text-yellow-600" />,
-      title: "Digital Transformation",
-      description: "Strategic consulting to modernize your business processes and technology.",
-      link: "/services/digital-transformation"
-    }
+   
+     {
+    icon: <Megaphone className="w-8 h-8 text-blue-400" />,
+    title: "Internet Marketing",
+    description: "SEO, PPC, and social media strategies to grow your online presence.",
+    link: "/services/internet-marketing"
+  },
   ];
 
   const features = [
@@ -187,7 +190,7 @@ export default function Home() {
       }}
 
     >
-    <div className="absolute inset-0 bg-black/10"></div>
+    <div className="absolute inset-0 bg-black/0"></div>
 
        
       {/* Hero Section */}

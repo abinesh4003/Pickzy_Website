@@ -79,7 +79,7 @@ export default function MobileDevelopment() {
   ];
 
   const technologies = [
-    { name: "Kotlin/Swift", icon: <SmartphoneCharging className="h-5 w-5" /> },
+    { name: "Kotlin/ Swift", icon: <SmartphoneCharging className="h-5 w-5" /> },
     { name: "Flutter", icon: <CpuIcon className="h-5 w-5" /> },
     { name: "React Native", icon: <Code className="h-5 w-5" /> },
     { name: "Firebase", icon: <Cloud className="h-5 w-5" /> },
@@ -120,10 +120,10 @@ export default function MobileDevelopment() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg">
-                  Get Started
+                 <Link href="/contact-us">Get Started</Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-gray-300 hover:bg-white/90 shadow-sm">
-                  View Case Studies
+                 <Link href="#case-studies">View Case Studies</Link>
                 </Button>
               </div>
               
@@ -204,7 +204,7 @@ export default function MobileDevelopment() {
       </section>
 
       {/* Overview Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white" id="case-studies">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gray-50 rounded-xl p-8 md:p-12" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -235,7 +235,7 @@ export default function MobileDevelopment() {
                 <h3 className="text-xl font-semibold mb-4 text-gray-800">Our Expertise Includes:</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {technologies.map((tech, index) => (
-                    <div key={index} className="flex items-center space-x-2">
+                    <div key={index} className="flex items-center space-x-2 break-words">
                       <div className="text-blue-500">{tech.icon}</div>
                       <span className="text-gray-700">{tech.name}</span>
                     </div>

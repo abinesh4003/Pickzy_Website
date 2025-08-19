@@ -129,7 +129,7 @@ export default function DesktopApplicationDevelopment() {
                  
               >
                 <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg">
-                  Request Free Consultation
+                 <Link href="/contact-us">Request Free Consultation</Link>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
@@ -141,7 +141,7 @@ export default function DesktopApplicationDevelopment() {
                   data-aos="fade-up"
                    
                 >
-                  View Case Studies
+                <Link href="#desktop-casestudies"> View Case Studies</Link>
                 </Button>
               </div>
               
@@ -200,7 +200,7 @@ export default function DesktopApplicationDevelopment() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" id="desktop-casestudies">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             className="text-center mb-16"
@@ -562,7 +562,7 @@ export default function DesktopApplicationDevelopment() {
              
           >
             <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8">
-              Contact Our Team
+             <Link href="/contact-us"> Contact Our Team</Link>
             </Button>
             <Button size="lg" variant="outline" className="border-white text-blue-900 hover:bg-white hover:text-blue-600 px-8">
               <Link href="/contact-us">Schedule a Free Demo</Link>

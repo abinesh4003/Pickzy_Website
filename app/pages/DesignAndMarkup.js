@@ -122,42 +122,51 @@ export default function DesignAndMarkup() {
     <div className="min-h-screen bg-white">
        
       
-      {/* Hero Section */}
-      <section className="pt-28 pb-20 bg-gradient-to-br from-blue-50 to-indigo-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2" data-aos="fade-right">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Pixel-Perfect Designs, <span className="text-blue-600">Hand-Coded Markup</span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-8" data-aos="fade-up"   >
-                From Figma to Functional – We bring your UI/UX designs to life with clean, responsive HTML, CSS, and modern frontend tech.
-              </p>
-              <div className="flex gap-4" data-aos="fade-up"  >
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                  Let's Work Together
-                </Button>
-                <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                  Get a Free Quote
-                </Button>
-              </div>
-            </div>
-            <div className="lg:w-1/2 mt-10 lg:mt-0" data-aos="fade-left">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-blue-100 rounded-xl opacity-75 blur-lg"></div>
-                <div className="relative bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100">
-                  <img 
-                    src="https://img.freepik.com/free-vector/gradient-ui-ux-elements-background_23-2149056159.jpg?semt=ais_hybrid&w=740" 
-                    alt="Design to code transformation" 
-                    className="w-full h-auto"
-                  />
-                </div>
-              </div>
-            </div>
+  {/* Hero Section */}
+<section 
+  className=" pb-8 md:pb-8 lg:pb-20 min-h-screen flex items-center pt-8 bg-gradient-to-br from-blue-50 to-indigo-50"
+>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      {/* Text Content */}
+      <div className="w-full lg:w-1/2 order-2 lg:order-1 mt-8 lg:mt-0" data-aos="fade-right">
+        <h1 className="text-3xl xs:text-4xl sm:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-snug sm:leading-tight">
+          Pixel-Perfect Designs, <span className="text-blue-600">Hand-Coded Markup</span>
+        </h1>
+        <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8" data-aos="fade-up">
+          From Figma to Functional – We bring your UI/UX designs to life with clean, responsive HTML, CSS, and modern frontend tech.
+        </p>
+        <div className="flex flex-col xs:flex-row gap-3 sm:gap-4" data-aos="fade-up">
+          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 w-full xs:w-auto">
+          <Link href="/careers">Let's Work Together</Link>
+          </Button>
+          <Button 
+            size="lg" 
+            variant="outline" 
+            className="border-blue-600 text-blue-600 hover:bg-blue-50 w-full xs:w-auto"
+          >
+            <Link href="/contact-us">Get a Free Quote</Link>
+          </Button>
+        </div>
+      </div>
+
+      {/* Image Content */}
+      <div className="w-full lg:w-1/2 order-1 lg:order-2" data-aos="fade-left">
+        <div className="relative">
+          <div className="absolute -inset-2 sm:-inset-3 md:-inset-4 bg-blue-100 rounded-xl opacity-75 blur-lg"></div>
+          <div className="relative bg-white rounded-xl shadow-lg md:shadow-xl overflow-hidden border border-gray-100">
+            <img 
+              src="https://img.freepik.com/free-vector/gradient-ui-ux-elements-background_23-2149056159.jpg?semt=ais_hybrid&w=740" 
+              alt="Design to code transformation" 
+              className="w-full h-auto object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
-      </section>
-
+      </div>
+    </div>
+  </div>
+</section> 
       {/* Why It Matters Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function PrivacyPage() {
   return (
     <div className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 min-h-screen">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* Enhanced Breadcrumb Navigation */}
         <div className="mb-8">
           <nav className="flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">
@@ -252,11 +252,11 @@ export default function PrivacyPage() {
               }
             ].map((section, index) => (
               <section key={index} className="pt-8 first:pt-0">
-                <div className="flex items-start">
-                  <div className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 font-medium rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                <div className="flex flex-col sm:flex-row sm:items-start">
+                  <div className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 font-medium rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 sm:mt-0 flex-shrink-0">
                     {section.icon}
                   </div>
-                  <div className="flex-1">
+                  <div className="sm:flex-1 sm:pl-4">
                     <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{section.title}</h2>
                     <div className="prose prose-gray dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
                       {section.content}

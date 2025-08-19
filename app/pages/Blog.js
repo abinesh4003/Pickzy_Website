@@ -27,6 +27,7 @@ export default function Blog() {
     details: ''
   });
 
+  const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const featuredPost = {
@@ -207,6 +208,22 @@ const handleChange = (e) => {
     }
   };
 
+  const handleSubscribe=()=>{
+     // Email validation
+    if (!email.trim()) {
+      showToast('Error', 'Email is required', 'error');
+      return ;
+    }else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showToast('Error', 'Please enter a valid email', 'error');
+      return;
+    }
+
+
+    // Simulate subscription logic
+    showToast('Success', 'Thank you for subscribing!', 'success');
+    setEmail('');
+  }
+
   return (
   <div className="min-h-screen bg-white">
    
@@ -300,7 +317,7 @@ const handleChange = (e) => {
 
   
 
-  {/* Categories Filter */}
+  {/* Categories Filter
   <section className="py-8 bg-gray-50 border-y">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div 
@@ -320,9 +337,9 @@ const handleChange = (e) => {
         ))}
       </div>
     </div>
-  </section>
+  </section> */}
 
-  {/* Blog Posts Grid */}
+  {/* Blog Posts Grid
   <section className="py-20 bg-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div 
@@ -408,7 +425,7 @@ const handleChange = (e) => {
         </Button>
       </div>
     </div>
-  </section>
+  </section> */}
 
 
 
@@ -595,13 +612,16 @@ const handleChange = (e) => {
         <input 
           type="email" 
           placeholder="Enter your email"
+          value={email}
           className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+          onChange={(e) => setEmail(e.target.value)}
         />
         <Button 
           size="lg" 
           variant="secondary" 
           className="px-8"
           data-aos="zoom-in"
+          onClick={handleSubscribe}
            
         >
           Subscribe

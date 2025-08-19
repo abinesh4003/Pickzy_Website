@@ -275,7 +275,7 @@ export default function Careers() {
           data-aos="zoom-in"
            
         >
-          View Open Positions
+         <Link href="#positions">View Open Positions</Link>
           <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
         <Button 

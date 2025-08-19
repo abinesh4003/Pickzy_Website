@@ -224,10 +224,10 @@ export default function About() {
               {milestones.map((milestone, index) => (
                 <div key={index} className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}  >
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-left' : 'pl-8 text-left'}`}>
-                    <Card className="p-6 border-0 shadow-lg">
-                      <div className="text-2xl font-bold text-blue-600 mb-2">{milestone.year}</div>
-                      <h3 className="text-xl font-semibold mb-2">{milestone.title}</h3>
-                      <p className="text-gray-600">{milestone.description}</p>
+                    <Card className="p-4 border-0 shadow-lg ">
+                      <div className="text-2xl font-bold text-blue-600 mb-2 md:text-3xl">{milestone.year}</div>
+                      <h3 className="text-md md:text-xl font-semibold mb-2">{milestone.title}</h3>
+                      <p className="text-gray-600 text-xs md:text-base">{milestone.description}</p>
                     </Card>
                   </div>
                   <div className="relative z-10">

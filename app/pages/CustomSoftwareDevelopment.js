@@ -10,26 +10,28 @@ import Image from 'next/image';
 
 export default function CustomSoftwareDevelopment() {
   // Hero section image from Pexels
-  const heroImage = "https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg";
+  const heroImage = "/service/custom/hero.jpg";
 
   // Feature images from Pexels
   const featureImages = [
-    "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
-    "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
-    "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
-    "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg",
-    "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg",
-    "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg"
+    "/service/custom/feature1.jpg",
+     "/service/custom/feature2.jpg",
+      "/service/custom/feature3.jpg",
+       "/service/custom/feature4.jpg",
+        "/service/custom/feature5.jpg",
+         "/service/custom/feature6.jpg",
+
+   
   ];
 
   // Process images from Pexels
   const processImages = [
-    "https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg",
-    "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg",
-    "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg",
-    "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg",
-    "https://images.pexels.com/photos/3182781/pexels-photo-3182781.jpeg",
-    "https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg"
+    "/service/custom/process1.jpg",
+    "/service/custom/process2.jpg",
+    "/service/custom/process3.jpg",
+    "/service/custom/process4.jpg",
+    "/service/custom/process5.jpg",
+    "/service/custom/process6.jpg"
   ];
 
   const features = [
@@ -141,7 +143,7 @@ export default function CustomSoftwareDevelopment() {
   {/* Background Image with overlay */}
   <div className="absolute inset-0 z-0">
     <Image
-      src="https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg"
+      src="/service/custom/hero.jpg"
       alt="Software development background"
       fill
       className="object-cover"
@@ -182,7 +184,7 @@ export default function CustomSoftwareDevelopment() {
       {/* Image Content - Optional foreground image */}
       <div className="relative rounded-xl overflow-hidden shadow-2xl">
         <Image
-          src="https://images.pexels.com/photos/1181275/pexels-photo-1181275.jpeg"
+          src="/service/custom/hero1.jpg"
           alt="Custom software development"
           width={800}
           height={600}
@@ -316,7 +318,7 @@ export default function CustomSoftwareDevelopment() {
             {/* Image */}
             <div className="relative rounded-xl overflow-hidden shadow-xl h-96">
               <Image
-                src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg"
+                src="/service/custom/hero2.jpg"
                 alt="Technology stack"
                 fill
                 className="object-cover"

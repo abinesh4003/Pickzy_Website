@@ -35,7 +35,6 @@ const filters = [
     { id: 'healthcare', label: 'Healthcare', icon: <Plug className="w-4 h-4" /> },
     { id: 'enterprise', label: 'Enterprise', icon: <Monitor className="w-4 h-4" /> },
     { id: 'education', label: 'Education', icon: <ArrowRightLeft className="w-4 h-4" /> },
-    { id: 'real-estate', label: 'Real Estate', icon: <ArrowRightLeft className="w-4 h-4" /> },
     { id: 'finance', label: 'Finance', icon: <ArrowRightLeft className="w-4 h-4" /> },
     { id: 'saas', label: 'SaaS', icon: <ArrowRightLeft className="w-4 h-4" /> },   
     { id: 'iot', label: 'IoT', icon: <ArrowRightLeft className="w-4 h-4" /> }, // Added IoT filter
@@ -274,7 +273,7 @@ const filters = [
     type: 'Web',
     description: 'Health conscious individuals head straight to Forager Pro for planning their daily meals. Losing weight can be a daunting task, especially when you have no idea if your dietary habits are healthy or not.',
     image: '/images/portfolio-images/Forager-web.jpg',
-    modalImage: '/images/portfolio-images/Forager-Web.jpg',
+    modalImage: '/images/portfolio-images/Forager-web.jpg',
     tech: ["React", "Node.js", "MongoDB", "Nutrition API"],
     features: [
       "Web-based meal planning",
@@ -288,7 +287,7 @@ const filters = [
   {
     id: 'trigger-demo9',
     title: 'COCAVE',
-    category: 'ios-app',
+    category: 'mobile-development',
     type: 'Mobile',
     description: 'Why spoil your health with chemical based personal care products where Global Goods Biz. (Cocave) provides you organic solutions.',
     image: '/images/portfolio-images/coc_front.jpg',
@@ -306,7 +305,7 @@ const filters = [
   {
     id: 'trigger-demo10',
     title: 'GYM LINK',
-    category: 'ios-app',
+    category: 'mobile-development',
     type: 'Mobile',
     description: 'Find your perfect personal trainer with Gym Link. Search for personal trainers located close to your home, office or favourite hangout.',
     image: '/images/portfolio-images/gym_front.jpg',
@@ -324,7 +323,7 @@ const filters = [
   {
     id: 'trigger-demo11',
     title: 'BLASTER',
-    category: 'ios-app',
+    category: 'mobile-development',
     type: 'Mobile',
     description: 'Blaster Student assures to make things easier for the school authorities and rescue teams by providing a quick and comprehensive control over the count and details of survivors.',
     image: '/images/portfolio-images/blaster.jpg',
@@ -360,7 +359,7 @@ const filters = [
   {
     id: 'trigger-demo13',
     title: 'NCC Video Connect',
-    category: 'ios-app',
+    category: 'mobile-development',
     type: 'Mobile',
     description: 'NCC Video Connect is the nation\'s most advanced insurance claim solution provider. The app allows our users to communicate immediate loss information from the field directly to our clients.',
     image: '/images/portfolio-images/ncc-front.png',
@@ -378,7 +377,7 @@ const filters = [
   {
     id: 'trigger-demo14',
     title: 'COMPUTER DOCTOR',
-    category: 'windows-port',
+    category: 'enterprise',
     type: 'Desktop',
     description: 'Computer Doctor is a .NET web Application handles Inventory management process, Customer details, Purchase and sales order, Invoice Generation, Payment Tracking and Appointment scheduling.',
     image: '/images/portfolio-images/cd-home banner.jpg',
@@ -396,7 +395,7 @@ const filters = [
   {
     id: 'trigger-demo35',
     title: 'Super Market Billing Software',
-    category: 'windows-port',
+    category: 'enterprise',
     type: 'Desktop',
     description: 'Our software gives you complete control over your business and is in perfect compliance with the industry standards. Our software fully understands the need for convenience and efficiency in any industry.',
     image: '/images/portfolio-images/billing software-pop-up.jpg',
@@ -414,7 +413,7 @@ const filters = [
   {
     id: 'trigger-demo23',
     title: 'HIIT',
-    category: 'ios-app',
+    category: 'mobile-development',
     type: 'Mobile',
     description: 'Welcome to this easy to use HIIT & Tabata Workout Timer giving you the possibility to measure your training and achieve even better results.',
     image: '/images/portfolio-images/HIIT.jpg',
@@ -432,7 +431,7 @@ const filters = [
   {
     id: 'trigger-demo25',
     title: 'TO SHARE',
-    category: 'ios-app',
+    category: 'mobile-development',
     type: 'Mobile',
     description: 'This app helps to share the play time or usage time equally between the kids or teenage who interested to share usage of one IPAD/IPHONE.',
     image: '/images/portfolio-images/To-Share.jpg',
@@ -450,7 +449,7 @@ const filters = [
   {
     id: 'trigger-demo26',
     title: 'ECOMMERCE MAGAZIN',
-    category: 'ios-app',
+    category: 'mobile-development',
     type: 'Mobile',
     description: 'Its an e-commerce magazine. Our intuitive help section is the one-stop destination to manage your account, email preferences and magazine subscription.',
     image: '/images/portfolio-images/ecommerce-magazin.jpg',
@@ -468,7 +467,7 @@ const filters = [
   {
     id: 'trigger-demo27',
     title: 'FLURV',
-    category: 'ios-app',
+    category: 'mobile-development',
     type: 'Mobile',
     description: 'Flurv is the global network for meeting new people. Instantly meet people near you or around the world! See who is broadcasting in Live.',
     image: '/images/portfolio-images/flurv.jpg',
@@ -486,7 +485,7 @@ const filters = [
   {
     id: 'trigger-demo28',
     title: 'CITY LIMOUSINE',
-    category: 'web-application',
+    category: 'web-development',
     type: 'Web',
     description: 'Our chauffeured car services offering you the most comfortable way of travelling in Paris. We can adjust to your needs with our luxury vehicles.',
     image: '/images/portfolio-images/City-Limousine.jpg',
@@ -504,7 +503,7 @@ const filters = [
   {
     id: 'trigger-demo29',
     title: 'CLASSIC VACATIONS',
-    category: 'web-application',
+    category: 'web-development',
     type: 'Web',
     description: 'A premier provider of vacations for discerning travelers, Classic Vacations offers a full line of luxury accommodations, first class and private transportation options.',
     image: '/images/portfolio-images/Classic-Vacations-pop-up.jpg',
@@ -558,7 +557,7 @@ const filters = [
   {
     id: 'trigger-demo32',
     title: 'WI SPA USA',
-    category: 'web-application',
+    category: 'web-development',
     type: 'Web',
     description: 'Get away from the city for an hour. Or stay away for a day. Just minutes from Hollywood and downtown. Wi Spa is a convenient and affordable place to de-stress and be pampered.',
     image: '/images/portfolio-images/WiSpa.jpg',
@@ -576,7 +575,7 @@ const filters = [
   {
     id: 'trigger-demo33',
     title: 'PLE',
-    category: 'web-application',
+    category: 'web-development',
     type: 'Web',
     description: 'Traveling through a large, busy airport can be a harrowing experience. Booking one of our airport pickup and transfers to Le bourget or other Paris airport transfer in advance takes a big problem off your mind.',
     image: '/images/portfolio-images/Parislimo-express-pop-up.jpg',
@@ -738,7 +737,7 @@ const filters = [
   {
   id: 'face-guru-dox-sales',
   title: "Face Guru, Face Dox & Sales Guru",
-  category: "marketing-analytics",
+  category: "saas",
   type: "SaaS",
   description: "AI-powered marketing, analytics, and collaboration suite leveraging big data and facial recognition to optimize sales, customer profiling, and targeted outreach for enterprises.",
   image: "/images/portfolio-images/faceguru_model.jpg ",
@@ -770,7 +769,7 @@ const filters = [
 {
   id: 'cookn',
   title: "COOK'N",
-  category: "food-tech",
+  category: "web-development",
   type: "Web & Mobile App",
   description: "A recipe discovery and organization platform for food enthusiasts, enabling users to compile, save, and discover new recipes from across the web in one centralized hub.",
   image: "/images/portfolio-images/cookn_app.jpg",
@@ -800,8 +799,8 @@ const filters = [
 {
   id: 'health-mirror',
   title: "Health Mirror",
-  category: "health-tech",
-  type: "Cloud-Based SaaS",
+  category: "healthcare",
+  type: "healthcare platform",
   description: "An interactive patient engagement platform that delivers personalized, multimedia health education at every stage of care—before, during, and after clinical visits—to improve outcomes and adherence.",
   image: "/images/portfolio-images/health_mirror_front.png",
   modalImage: "/images/portfolio-images/Health-Mirror.jpg",
@@ -829,8 +828,8 @@ const filters = [
 {
   id: 'meditation-app',
   title: "Meditation App",
-  category: "health-wellness",
-  type: "Mobile Application",
+  category: "healthcare",
+  type: "healthcare platform",
   description: "A precision-engineered brainwave entrainment app featuring 75+ scientifically-backed meditation programs using Isochronic Tones and Binaural Beats for stress relief, focus, and sleep enhancement.",
   image: "/images/portfolio-images/meditation_app.jpg",
   modalImage: "/images/portfolio-images/meditation-view.jpg",
@@ -858,7 +857,7 @@ const filters = [
 {
   id: 'photo-lasso',
   title: "Photo Lasso",
-  category: "photo-editing",
+  category: "mobile-development",
   type: "Mobile Application",
   description: "An intuitive photo editing app that transforms images with powerful yet simple tools including filters, color adjustments, and AI-enhanced effects.",
   image: "/images/portfolio-images/photo-lasso.jpg",
@@ -888,7 +887,7 @@ const filters = [
 {
   id: 'tix-alert',
   title: "TIX ALERT",
-  category: "smart-city-mobility",
+  category: "mobile-development",
   type: "Mobile Application",
   description: "A parking intelligence app that helps drivers avoid tickets by identifying restricted zones, disabled parking, and available parking spots in real-time across urban areas.",
   image: "/images/portfolio-images/tix_front.jpg",
@@ -918,7 +917,7 @@ const filters = [
 {
   id: 'fajr-wakeup',
   title: "Fajr WakeUp",
-  category: "religious-tech",
+  category: "mobile-development",
   type: "Android Application",
   description: "A comprehensive Islamic prayer companion app featuring synchronized prayer alarms, community features, and spiritual reminders with push notifications.",
   image: "/images/portfolio-images/fajr-wakeup-main.jpg",
@@ -1067,9 +1066,7 @@ const filters = [
                   <CardContent className="p-5">
                     <div className="flex justify-between items-start gap-2 mb-3">
                       <h3 className="text-lg font-semibold line-clamp-1">{project.title}</h3>
-                      <Badge variant="outline" className="text-xs">
-                        {project.type}
-                      </Badge>
+                      
                     </div>
 
                     <p className="text-sm text-gray-600 line-clamp-2 mb-4">
