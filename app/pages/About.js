@@ -111,7 +111,7 @@ export default function About() {
    <div className="min-h-screen bg-white">
    
 {/* Hero Section */}
-  <section className="pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">
+  <section className="pt-8 md:pt-12 lg:pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-8 md:py-12 lg:py-16 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-down"  >
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
@@ -123,7 +123,7 @@ export default function About() {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Journey</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center md:text-left">Our Journey</h2>
               <p className="text-lg text-gray-600 mb-6">
                 From a small team of passionate developers, we’ve grown into a medium-sized firm known for delivering flawless, on-time IT solutions.
               </p>
@@ -149,7 +149,7 @@ export default function About() {
       </section>
 
        {/* Mission & Vision */}
-      <section className="py-20 bg-white">
+      <section className="py-4 md:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12" data-aos="fade-up">
             <Card className="p-8 border-0 shadow-lg" data-aos="flip-left"   >
@@ -176,7 +176,7 @@ export default function About() {
 
 
   {/* Values */}
-  <section className="py-20 bg-gray-50">
+  <section className="py-8 md:py-16 lg:py-20 bg-gray-50">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div 
         className="text-center mb-16"
@@ -242,7 +242,7 @@ export default function About() {
       </section>
 
   {/* Team */}
-  <section className="py-20 bg-gray-50">
+  <section className="py-8 md:py-16 lg:py-20 bg-gray-50">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div 
         className="text-center mb-16"

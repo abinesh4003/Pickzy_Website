@@ -111,7 +111,7 @@ export default function InternetMarketing() {
        
       
       {/* Hero Section */}
-      <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 bg-white">
+      <section className="relative  pt-8 pb-20 md:pt-32 md:pb-28 bg-white">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 bg-[url('/patterns/subtle-pattern.png')] opacity-5"></div>
         

@@ -64,10 +64,23 @@ export function ResumeSubmissionDialog() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    // Clear error when user types
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+    
+    if(name=='phone'){
+      // Remove any non-numeric characters
+      const numericValue = value.replace(/[^0-9]/g, '');
+      setFormData(prev => ({ ...prev, [name]: numericValue }));
+    }
+    else{
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
+
+    
+     // Validate on change
+    if (name in errors) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: validateField(name, value)
+      }));
     }
   };
 
@@ -128,130 +141,134 @@ export function ResumeSubmissionDialog() {
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline" size="lg">
-          Send Us Your Resume
+  <Dialog open={open} onOpenChange={setOpen}>
+  <DialogTrigger asChild>
+    <Button variant="outline" size="sm" className="text-xs sm:text-sm h-8 px-3">
+      Send Us Your Resume
+    </Button>
+  </DialogTrigger>
+  <DialogContent className="max-w-[95vw] max-h-[90vh] overflow-y-auto sm:max-w-[500px] p-3 sm:p-4">
+    <DialogHeader className="mb-2">
+      <DialogTitle className="text-base sm:text-lg">Submit Your Resume</DialogTitle>
+    </DialogHeader>
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
+        <div className="space-y-1">
+          <Label htmlFor="name" className="text-xs sm:text-sm">Full Name *</Label>
+          <Input
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className={`h-7 text-xs sm:text-sm px-2 rounded-sm ${errors.name ? 'border-red-500' : ''}`}
+          />
+          {errors.name && <p className="text-red-500 text-xs mt-0.5">{errors.name}</p>}
+        </div>
+        <div className="space-y-1">
+          <Label htmlFor="email" className="text-xs sm:text-sm">Email *</Label>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            className={`h-7 text-xs sm:text-sm px-2 rounded-sm ${errors.email ? 'border-red-500' : ''}`}
+          />
+          {errors.email && <p className="text-red-500 text-xs mt-0.5">{errors.email}</p>}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
+        <div className="space-y-1">
+          <Label htmlFor="phone" className="text-xs sm:text-sm">Phone Number</Label>
+          <Input
+            id="phone"
+            name="phone"
+            type="tel"
+            value={formData.phone}
+            onChange={handleChange}
+            className={`h-7 text-xs sm:text-sm px-2 rounded-sm ${errors.phone ? 'border-red-500' : ''}`}
+          />
+          {errors.phone && <p className="text-red-500 text-xs mt-0.5">{errors.phone}</p>}
+        </div>
+        <div className="space-y-1">
+          <Label htmlFor="position" className="text-xs sm:text-sm">Position Interested In</Label>
+          <Input
+            id="position"
+            name="position"
+            value={formData.position}
+            onChange={handleChange}
+            className="h-7 text-xs sm:text-sm px-2 rounded-sm"
+          />
+        </div>
+      </div>
+
+      <div className="space-y-1">
+        <Label htmlFor="message" className="text-xs sm:text-sm">Cover Letter (Optional)</Label>
+        <textarea 
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          rows={3}
+          className={`text-xs sm:text-sm border p-2 rounded-sm border-gray-300 focus:border-gray-400 p-2 h-[50px] w-full `}
+        />
+      </div>
+
+      <div className="space-y-1">
+        <Label htmlFor="resume" className="text-xs sm:text-sm">Resume *</Label>
+        <div className="flex flex-col xs:flex-row items-stretch gap-1.5 sm:gap-2">
+          <Input
+            readOnly
+            value={formData.resume?.name || "No file chosen"}
+            className={`flex-1 bg-white text-gray-700 cursor-default text-xs sm:text-sm h-7 px-2 rounded-sm ${errors.resume ? 'border-red-500' : ''}`}
+          />
+          <Button
+            type="button"
+            variant="default"
+            className="bg-gray-200 hover:bg-gray-100 border border-gray-300 text-black text-xs sm:text-sm h-7 px-2 rounded-sm"
+            onClick={() => document.getElementById("resume")?.click()}
+          >
+            Choose File
+          </Button>
+        </div>
+        <input
+          id="resume"
+          name="resume"
+          type="file"
+          accept=".pdf,.doc,.docx"
+          className="hidden"
+          onChange={handleFileChange}
+        />
+        {errors.resume && <p className="text-red-500 text-xs mt-0.5">{errors.resume}</p>}
+        <p className="text-xs text-muted-foreground mt-0.5">
+          Accepted formats: PDF, DOC, DOCX (Max 5MB)
+        </p>
+      </div>
+
+      <div className="flex flex-col xs:flex-row justify-end gap-1.5 sm:gap-2 pt-2">
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => {
+            setOpen(false);
+            setErrors({});
+          }}
+          disabled={loading}
+          className="text-xs sm:text-sm h-7 px-3 rounded-sm"
+        >
+          Cancel
         </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px]">
-        <DialogHeader>
-          <DialogTitle>Submit Your Resume</DialogTitle>
-        </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="name">Full Name *</Label>
-              <Input
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className={`rounded-none ${errors.name ? 'border-red-500' : ''}`}
-              />
-              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
-            </div>
-            <div>
-              <Label htmlFor="email">Email *</Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={`rounded-none ${errors.email ? 'border-red-500' : ''}`}
-              />
-              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="phone">Phone Number</Label>
-              <Input
-                id="phone"
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleChange}
-                className={`rounded-none ${errors.phone ? 'border-red-500' : ''}`}
-              />
-              {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
-            </div>
-            <div>
-              <Label htmlFor="position">Position Interested In</Label>
-              <Input
-                id="position"
-                name="position"
-                value={formData.position}
-                onChange={handleChange}
-                className="rounded-none"
-              />
-            </div>
-          </div>
-
-          <div>
-            <Label htmlFor="message">Cover Letter (Optional)</Label>
-            <Textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows={4}
-              className="rounded-none"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="resume">Resume *</Label>
-            <div className="flex items-center gap-2">
-              <Input
-                readOnly
-                value={formData.resume?.name || "No file chosen"}
-                className={`flex-1 bg-white text-gray-700 cursor-default rounded-none ${errors.resume ? 'border-red-500' : ''}`}
-              />
-              <Button
-                type="button"
-                variant="default"
-                className="bg-gray-200 rounded-none hover:bg-gray-100 border border-gray-300 text-black"
-                onClick={() => document.getElementById("resume")?.click()}
-              >
-                Choose File
-              </Button>
-            </div>
-            <input
-              id="resume"
-              name="resume"
-              type="file"
-              accept=".pdf,.doc,.docx"
-              className="hidden"
-              onChange={handleFileChange}
-            />
-            {errors.resume && <p className="text-red-500 text-xs mt-1">{errors.resume}</p>}
-            <p className="text-sm text-muted-foreground mt-1">
-              Accepted formats: PDF, DOC, DOCX (Max 5MB)
-            </p>
-          </div>
-
-          <div className="flex justify-end gap-2 pt-4">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => {
-                setOpen(false);
-                setErrors({});
-              }}
-              disabled={loading}
-              className="rounded-none"
-            >
-              Cancel
-            </Button>
-            <Button type="submit" disabled={loading} className="rounded-none">
-              {loading ? 'Submitting...' : 'Submit Resume'}
-            </Button>
-          </div>
-        </form>
-      </DialogContent>
-    </Dialog>
+        <Button 
+          type="submit" 
+          disabled={loading} 
+          className="text-xs sm:text-sm h-7 px-3 rounded-sm"
+        >
+          {loading ? 'Submitting...' : 'Submit Resume'}
+        </Button>
+      </div>
+    </form>
+  </DialogContent>
+</Dialog>
   );
 }

@@ -83,7 +83,7 @@ const whyUs = [
        
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-28 bg-gradient-to-br from-blue-900 to-purple-800 text-white overflow-hidden">
+      <section className="relative pt-8 md:pt-12 lg:pt-16 pb-28 bg-gradient-to-br from-blue-900 to-purple-800 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[url('https://example.com/tech-pattern.svg')]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">

@@ -180,22 +180,19 @@ export default function Home() {
 
 
 
-  return (
-    <div className="min-h-screen relative "
+ return (
+    <div className="min-h-screen relative"
       style={{
         backgroundImage: "url('/assets/frame.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
       }}
-
     >
     <div className="absolute inset-0 bg-black/0"></div>
-
        
       {/* Hero Section */}
-
-  <div className="relative z-10">
+      <div className="relative z-10">
       <section className="relative flex items-center justify-center min-h-[90vh] sm:min-h-[calc(100vh-var(--navbar-height))] w-full overflow-hidden">
         {/* Background Layers - Contained within hero section */}
         <div className="absolute inset-0 z-0">
@@ -211,41 +208,40 @@ export default function Home() {
         </div>
 
         {/* Hero Content - Container with safe padding */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20 xl:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 sm:gap-2 items-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 lg:py-20 xl:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 sm:gap-2 items-center">
             {/* Left Column - Text */}
             <div className="order-1 lg:order-1">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/80 px-3 py-1 rounded-full mb-4 sm:mb-5 md:mb-6 border border-white/20 text-xs sm:text-sm">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/80 px-3 py-1 rounded-full mb-3 sm:mb-5 md:mb-6 border border-white/20 text-xs sm:text-sm">
                 <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-300" />
                 <span>Innovating Since 2011</span>
               </div>
 
               {/* Heading */}
-              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-5 leading-tight" data-aos="fade-up">
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-5 leading-tight" data-aos="fade-up">
             Your Software Development
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent block mt-2 sm:mt-3">
+                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent block mt-1 sm:mt-3">
                  Partner
                 </span>
               </h1>
 
               {/* Description */}
-              <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed max-w-lg" data-aos="fade-left">
+              <p className="text-base sm:text-lg md:text-xl text-white/90 mb-4 sm:mb-8 leading-relaxed max-w-lg" data-aos="fade-left">
               We are one of the Top Rated Mobile Application Development Company in India
               </p>
 
               {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 mb-6 sm:mb-8" >
+              <div className="flex flex-col sm:flex-row gap-2 mb-4 sm:mb-8" >
                 <Button
-                  className="text-sm sm:text-base px-5 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
+                  className="text-sm sm:text-base px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
                   asChild
-
                 >
                   <Link href="/contact-us">Get in Touch</Link>
                 </Button>
                 <Button
                   variant="outline"
-                  className="text-sm sm:text-base px-5 py-2.5 sm:px-6 sm:py-3 border-white/30 hover:bg-white/10 hover:text-white"
+                  className="text-sm sm:text-base px-4 py-2 sm:px-6 sm:py-3 border-white/30 hover:bg-white/10 hover:text-white"
                   asChild
                 >
                   <Link href="/portfolio">View Portfolio</Link>
@@ -253,10 +249,10 @@ export default function Home() {
               </div>
 
               {/* Features */}
-              <div className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm text-white/80">
+              <div className="flex flex-wrap gap-1 sm:gap-3 text-xs sm:text-sm text-white/80">
                 {["Industry-leading Quality", "Dedicated Support", "Agile Development"].map((feature, i) => (
-                  <div key={i} className="flex items-center bg-white/5 backdrop-blur-sm px-3 py-1.5 rounded-md">
-                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-400 mr-2" />
+                  <div key={i} className="flex items-center bg-white/5 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-1.5 rounded-md">
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-400 mr-1 sm:mr-2" />
                     <span>{feature}</span>
                   </div>
                 ))}
@@ -264,16 +260,16 @@ export default function Home() {
             </div>
 
             {/* Right Column - Image */}
-            <div className="order-2 lg:order-2 mt-8 sm:mt-10 md:mt-0">
+            <div className="order-2 lg:order-2 mt-4 sm:mt-10 md:mt-0">
               <div className="relative">
                 <ImageCarousel />
                 {/* Tech Logos */}
-                <div className="absolute -bottom-4 right-0 flex gap-2 bg-white/10 backdrop-blur-sm p-2 rounded-full border border-white/20">
+                <div className="absolute -bottom-4 right-0 flex gap-2 bg-white/10 backdrop-blur-sm p-1 sm:p-2 rounded-full border border-white/20">
                   {["react", "nodejs", "nextjs"].map((tech) => (
                     <img
                       key={tech}
                       src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech}/${tech}-original.svg`}
-                      className="h-5 w-5 sm:h-6 sm:w-6"
+                      className="h-4 w-4 sm:h-6 sm:w-6"
                       alt={tech}
                     />
                   ))}
@@ -284,47 +280,43 @@ export default function Home() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 lg:hidden">
-          <ChevronDown className="h-6 w-6 text-white animate-bounce" />
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 lg:hidden">
+          <ChevronDown className="h-5 w-5 text-white animate-bounce" />
         </div>
       </section>
 
-
-
       {/* Services Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-16"
             data-aos="fade-up"
-              
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Our Services</h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
               From mobile app to smart websites, bold design to digital marketing, we build everything your business need to stand out and scale fast
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service, index) => (
               <Card
                 key={index}
                 className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg"
                 data-aos="fade-up"
-              
                 data-aos-mirror="true"
               >
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 p-3 bg-gray-50 rounded-full w-fit group-hover:bg-gradient-to-r group-hover:from-blue-50 group-hover:to-purple-50 transition-all duration-300">
+                <CardHeader className="text-center pb-3 sm:pb-4">
+                  <div className="mx-auto mb-3 sm:mb-4 p-2 sm:p-3 bg-gray-50 rounded-full w-fit group-hover:bg-gradient-to-r group-hover:from-blue-50 group-hover:to-purple-50 transition-all duration-300">
                     {service.icon}
                   </div>
-                  <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
-                  <CardDescription className="text-gray-600">
+                  <CardTitle className="text-lg sm:text-xl mb-1 sm:mb-2">{service.title}</CardTitle>
+                  <CardDescription className="text-gray-600 text-sm sm:text-base">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <Button variant="outline" className="group-hover:bg-blue-600 group-hover:text-white transition-all duration-300" asChild>
+                  <Button variant="outline" className="group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 text-sm sm:text-base" asChild>
                     <Link href={service.link}>Learn More</Link>
                   </Button>
                 </CardContent>
@@ -333,11 +325,10 @@ export default function Home() {
           </div>
 
           <div
-            className="text-center mt-12"
+            className="text-center mt-8 sm:mt-12"
             data-aos="fade-up"
-             
           >
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" asChild>
+            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-sm sm:text-base" asChild>
               <Link href="/services">View All Services</Link>
             </Button>
           </div>
@@ -345,9 +336,9 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="py-12 sm:py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-center">
             {[
               { value: "300+", label: "Projects Completed" }, 
               { value: "200+", label: "Happy Clients" },     
@@ -357,12 +348,11 @@ export default function Home() {
               <div
                 key={index}
                 data-aos="zoom-in"
-               
                 data-aos-mirror="true"
-                className="text-center p-4" 
+                className="text-center p-3 sm:p-4" 
               >
-                <AnimatedCounter value={stat.value} duration={4} classname="text-4xl font-bold text-white"/>
-                <div className="text-blue-100 mt-2">{stat.label}</div>
+                <AnimatedCounter value={stat.value} duration={4} classname="text-2xl sm:text-4xl font-bold text-white"/>
+                <div className="text-blue-100 mt-1 sm:mt-2 text-xs sm:text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -370,19 +360,19 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-white/60 ">
+      <section className="py-12 sm:py-20 bg-white/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-aos="fade-right">
+          <div className="text-center mb-10 sm:mb-16" data-aos="fade-up">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4" data-aos="fade-right">
               WHAT OUR CLIENTS SAY
             </h2>
-            <div className="separator mx-auto w-20 h-1 bg-blue-500 mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto" data-aos="fade-left">
+            <div className="separator mx-auto w-16 sm:w-20 h-1 bg-blue-500 mb-4 sm:mb-6"></div>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto" data-aos="fade-left">
               Don't just take our word for it. Here's what our satisfied clients have to say about our services.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
             {testimonials.map((testimonial, index) => (
               <Card
                 key={index}
@@ -390,30 +380,30 @@ export default function Home() {
                 data-aos="fade-up"
                 data-aos-mirror="true"
               >
-                <CardContent className="p-6 h-full flex flex-col">
-                  <div className="flex justify-center mb-4">
+                <CardContent className="p-4 sm:p-6 h-full flex flex-col">
+                  <div className="flex justify-center mb-3 sm:mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="h-4 w-4 sm:h-5 sm:w-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-gray-600 mb-6 italic flex-grow line-clamp-5">
+                  <p className="text-gray-600 mb-4 sm:mb-6 italic flex-grow line-clamp-5 text-sm sm:text-base">
                     "{testimonial.content}"
                   </p>
                   <button
                     onClick={() => handleSeeMore(testimonial)}
-                    className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-auto"
+                    className="text-blue-600 hover:text-blue-800 text-xs sm:text-sm font-medium mt-auto"
                   >
                     See More
                   </button>
-                  <div className="flex items-center justify-center space-x-3 mt-4">
+                  <div className="flex items-center justify-center space-x-2 sm:space-x-3 mt-3 sm:mt-4">
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
                     />
                     <div className="text-left">
-                      <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                      <div className="text-sm text-gray-600">{testimonial.role}</div>
+                      <div className="font-semibold text-gray-900 text-sm sm:text-base">{testimonial.name}</div>
+                      <div className="text-xs sm:text-sm text-gray-600">{testimonial.role}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -423,71 +413,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonial Modal */}
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-2xl">
-          {selectedTestimonial && (
-            <>
-              <DialogHeader>
-                <DialogTitle className="text-2xl">Client Testimonial</DialogTitle>
-              </DialogHeader>
-              <div className="flex justify-center mb-4">
-                {[...Array(selectedTestimonial.rating)].map((_, i) => (
-                  <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <p className="text-gray-700 mb-6 italic">"{selectedTestimonial.content}"</p>
-              <div className="flex items-center space-x-3 mt-6">
-                <img
-                  src={selectedTestimonial.image}
-                  alt={selectedTestimonial.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <div className="font-semibold text-gray-900">{selectedTestimonial.name}</div>
-                  <div className="text-sm text-gray-600">{selectedTestimonial.role}</div>
-                </div>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
-
-
       {/* CTA Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 sm:py-20 bg-gray-50">
         <div
           className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
           data-aos="zoom-in"
           data-aos-mirror="true"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8">
             Let's discuss your project and explore how we can help you achieve your goals with innovative software solutions.
           </p>
           <div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 justify-center"
             data-aos="fade-up"
-             
           >
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-3" asChild>
+            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6 py-2 sm:px-8 sm:py-3 text-sm sm:text-base" asChild>
               <Link href="/contact-us">
                 Get Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-1 sm:ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="px-8 py-3" asChild>
+            <Button size="lg" variant="outline" className="px-6 py-2 sm:px-8 sm:py-3 text-sm sm:text-base" asChild>
               <Link href="/portfolio">View Portfolio</Link>
             </Button>
           </div>
         </div>
       </section>
-
     </div>
-
-       
     </div>
   );
 }

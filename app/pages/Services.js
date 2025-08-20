@@ -120,11 +120,11 @@ const services = [
 
   {/* Hero Section */}
   <section 
-    className="pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20"
+    className="pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-4 md:py-8 lg:py-12 "
     data-aos="fade"
   >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
+      <div className="text-center ">
         <h1 
           className="text-4xl md:text-6xl font-bold text-gray-900 mb-6" 
           data-aos="fade-right"
@@ -145,7 +145,7 @@ const services = [
 
   {/* Services Grid */}
   <section 
-    className="py-20 bg-white"
+    className="py-8 md:py-12 lg:py-16 bg-white"
     data-aos="fade-up"
   >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -289,7 +289,7 @@ const services = [
 
   {/* Why Choose Us */}
   <section 
-    className="py-20 bg-white"
+    className="py-8 md:py-12 lg:py-16 bg-white"
     data-aos="fade-up"
   >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

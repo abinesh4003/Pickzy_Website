@@ -96,7 +96,7 @@ export default function DesktopApplicationDevelopment() {
 <div className="min-h-screen bg-white">
   {/* Hero Section */}
   <section 
-    className="relative pt-20 md:pt-32 pb-16 md:pb-24 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50"
+    className="relative pt-12 md:pt-32 pb-10 md:pb-24 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50"
     data-aos="fade-in"
   >
     {/* Background pattern */}
@@ -105,29 +105,29 @@ export default function DesktopApplicationDevelopment() {
     </div>
     
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
+      <div className="grid lg:grid-cols-2 gap-6 md:gap-16 items-center">
         {/* Text content */}
         <div className="relative z-10 order-2 lg:order-1">
           <h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight text-center lg:text-left"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 md:mb-6 leading-tight text-center lg:text-left"
             data-aos="fade-up"
           >
             Custom <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">Desktop Apps</span> Built for Performance
           </h1>
           <p 
-            className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 text-center lg:text-left max-w-xl mx-auto lg:mx-0"
+            className="text-base md:text-xl text-gray-600 mb-4 md:mb-8 text-center lg:text-left max-w-xl mx-auto lg:mx-0"
             data-aos="fade-up"
           >
             We develop secure, high-performance desktop applications for Windows, macOS, and Linux using modern frameworks like Electron, .NET MAUI, and Flutter Desktop.
           </p>
           <div 
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+            className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center lg:justify-start"
             data-aos="fade-up"
           >
             <Link href="/contact-us">
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg w-full sm:w-auto">
+              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg w-full sm:w-auto text-sm md:text-base">
                 Request Free Consultation
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5 ml-1 md:ml-2" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </Button>
@@ -136,7 +136,7 @@ export default function DesktopApplicationDevelopment() {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-gray-300 hover:bg-white/90 shadow-sm w-full sm:w-auto"
+                className="border-gray-300 hover:bg-white/90 shadow-sm w-full sm:w-auto text-sm md:text-base"
                 data-aos="fade-up"
               >
                 View Case Studies
@@ -146,15 +146,15 @@ export default function DesktopApplicationDevelopment() {
           
           {/* Tech stack logos */}
           <div 
-            className="mt-8 md:mt-12"
+            className="mt-6 md:mt-12"
             data-aos="fade-up"
           >
-            <p className="text-sm text-gray-500 mb-4 text-center lg:text-left">Built with modern technologies:</p>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6 items-center">
-              <img src="/service/desktop/p1.png" alt="Electron" className="h-6 md:h-8 w-auto max-w-[80px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
-              <img src="/service/desktop/p2.png" alt=".NET" className="h-6 md:h-8 w-auto max-w-[80px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
-              <img src="/service/desktop/p3.jpg" alt="Flutter" className="h-6 md:h-8 w-auto max-w-[80px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
-              <img src="/service/desktop/p4.webp" alt="Java" className="h-6 md:h-8 w-auto max-w-[80px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
+            <p className="text-xs md:text-sm text-gray-500 mb-3 md:mb-4 text-center lg:text-left">Built with modern technologies:</p>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-6 items-center">
+              <img src="/service/desktop/p1.png" alt="Electron" className="h-5 md:h-8 w-auto max-w-[70px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
+              <img src="/service/desktop/p2.png" alt=".NET" className="h-5 md:h-8 w-auto max-w-[70px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
+              <img src="/service/desktop/p3.jpg" alt="Flutter" className="h-5 md:h-8 w-auto max-w-[70px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
+              <img src="/service/desktop/p4.webp" alt="Java" className="h-5 md:h-8 w-auto max-w-[70px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
             </div>
           </div>
         </div>
@@ -162,7 +162,7 @@ export default function DesktopApplicationDevelopment() {
         {/* Image/illustration */}
         <div className="relative order-1 lg:order-2">
           <div 
-            className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl border border-gray-100"
+            className="relative rounded-lg md:rounded-2xl overflow-hidden shadow-lg md:shadow-2xl border border-gray-100"
             data-aos="fade-left"
           >
             <img 
@@ -171,23 +171,23 @@ export default function DesktopApplicationDevelopment() {
               className="w-full h-auto"
             />
             {/* Floating UI elements */}
-            <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-16 h-16 md:w-32 md:h-32 bg-purple-500/10 rounded-full blur-xl"></div>
-            <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-20 h-20 md:w-40 md:h-40 bg-blue-500/10 rounded-full blur-xl"></div>
+            <div className="absolute -bottom-3 -left-3 md:-bottom-6 md:-left-6 w-12 h-12 md:w-32 md:h-32 bg-purple-500/10 rounded-full blur-xl"></div>
+            <div className="absolute -top-3 -right-3 md:-top-6 md:-right-6 w-16 h-16 md:w-40 md:h-40 bg-blue-500/10 rounded-full blur-xl"></div>
           </div>
           
           {/* Floating badge */}
           <div 
-            className="absolute -bottom-4 -right-4 md:-bottom-8 md:-right-8 bg-white px-3 py-2 md:px-4 md:py-3 rounded-lg md:rounded-xl shadow-lg border border-gray-100 flex items-center"
+            className="absolute -bottom-3 -right-3 md:-bottom-8 md:-right-5 bg-white px-2 py-1 md:px-4 md:py-3 rounded-md md:rounded-xl shadow-md md:shadow-lg border border-gray-100 flex items-center"
             data-aos="zoom-in"
           >
-            <div className="bg-green-100 p-1 md:p-2 rounded md:rounded-lg mr-2 md:mr-3">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="bg-green-100 p-1 md:p-2 rounded md:rounded-lg mr-1 md:mr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 md:h-6 md:w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
             <div>
               <p className="font-semibold text-gray-900 text-xs md:text-sm">Trusted by 250+</p>
-              <p className="text-[10px] md:text-sm text-gray-500">Businesses worldwide</p>
+              <p className="text-[9px] md:text-sm text-gray-500">Businesses worldwide</p>
             </div>
           </div>
         </div>
@@ -197,37 +197,36 @@ export default function DesktopApplicationDevelopment() {
 
 
       {/* Benefits Section */}
-      <section className="py-20 bg-white" id="desktop-casestudies">
+      <section className="py-12 md:py-20 bg-white" id="desktop-casestudies">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             data-aos="fade-up"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
   Why Choose <span className="text-blue-600">Desktop Applications</span> in 2025?
 </h2>
-<div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
+<div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto mb-6 md:mb-8"></div>
 
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8">
             {benefits.map((benefit, index) => (
               <Card 
                 key={index} 
-                className="hover:shadow-lg transition-all duration-300"
+                className="hover:shadow-lg transition-all duration-300 p-4 md:p-6"
                 data-aos="fade-up"
-                 
               >
-                <CardHeader>
-                  <div className="flex items-center mb-4">
-                    <div className="p-2 mr-4 rounded-full bg-blue-50">
+                <CardHeader className="p-2 md:p-4">
+                  <div className="flex items-center mb-3 md:mb-4">
+                    <div className="p-1 md:p-2 mr-3 md:mr-4 rounded-full bg-blue-50">
                       {benefit.icon}
                     </div>
-                    <CardTitle className="text-lg">{benefit.title}</CardTitle>
+                    <CardTitle className="text-base md:text-lg">{benefit.title}</CardTitle>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">{benefit.description}</p>
+                <CardContent className="p-2 md:p-4 pt-0">
+                  <p className="text-sm md:text-gray-600">{benefit.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -236,35 +235,33 @@ export default function DesktopApplicationDevelopment() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             data-aos="fade-up"
           >
-           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
   End-to-End <span className="text-blue-600">Desktop App</span> Development
 </h2>
-<div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
+<div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto mb-6 md:mb-8"></div>
             <p 
-              className="text-xl text-gray-600 max-w-2xl mx-auto"
+              className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-                
             >
               We handle the full lifecycle—from ideation to deployment—whether you need a lightweight utility app or a full-featured enterprise-grade platform.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {services.map((service, index) => (
               <div 
                 key={index} 
-                className="p-6 border border-gray-100 rounded-lg hover:shadow-md transition-all bg-white"
+                className="p-4 md:p-6 border border-gray-100 rounded-lg hover:shadow-md transition-all bg-white"
                 data-aos="fade-up"
-                 
               >
-                <h3 className="text-lg font-semibold mb-3">{service.title}</h3>
-                <p className="text-gray-600 text-sm">{service.technologies}</p>
+                <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">{service.title}</h3>
+                <p className="text-gray-600 text-xs md:text-sm">{service.technologies}</p>
               </div>
             ))}
           </div>
@@ -272,75 +269,71 @@ export default function DesktopApplicationDevelopment() {
       </section>
 
       {/* Technologies Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             data-aos="fade-up"
           >
-<h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+<h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
   Modern Tech Stack for <span className="text-blue-600">Modern Desktop</span> Software
 </h2>
-<div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
+<div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto mb-6 md:mb-8"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8">
             <div 
-              className="p-6 border border-gray-100 rounded-lg bg-gray-50"
+              className="p-4 md:p-6 border border-gray-100 rounded-lg bg-gray-50"
               data-aos="fade-up"
-                
             >
-              <h3 className="text-lg font-semibold mb-4 flex items-center">
-                <Code className="h-5 w-5 mr-2 text-blue-600" /> Languages
+              <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4 flex items-center">
+                <Code className="h-4 w-4 md:h-5 md:w-5 mr-2 text-blue-600" /> Languages
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-1 md:space-y-2">
                 {technologies.languages.map((lang, i) => (
-                  <span key={i} className='text-gray-600 flex'><ArrowBigRight className="h-5 w-5 mr-2 text-blue-600" /> {lang}</span>
+                  <span key={i} className='text-sm md:text-gray-600 flex'><ArrowBigRight className="h-4 w-4 md:h-5 md:w-5 mr-1 md:mr-2 text-blue-600" /> {lang}</span>
                 ))}
               </ul>
             </div>
             
             <div 
-              className="p-6 border border-gray-100 rounded-lg bg-gray-50"
+              className="p-4 md:p-6 border border-gray-100 rounded-lg bg-gray-50"
               data-aos="fade-up"
-               
             >
-              <h3 className="text-lg font-semibold mb-4 flex items-center">
-                <Layers className="h-5 w-5 mr-2 text-purple-600" /> Frameworks
+              <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4 flex items-center">
+                <Layers className="h-4 w-4 md:h-5 md:w-5 mr-2 text-purple-600" /> Frameworks
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-1 md:space-y-2">
                 {technologies.frameworks.map((framework, i) => (
-                  <span key={i} className='text-gray-600 flex'><ArrowBigRight className="h-5 w-5 mr-2 text-purple-600" /> {framework}</span>
+                  <span key={i} className='text-sm md:text-gray-600 flex'><ArrowBigRight className="h-4 w-4 md:h-5 md:w-5 mr-1 md:mr-2 text-purple-600" /> {framework}</span>
                 ))}
               </ul>
             </div>
             
             <div 
-              className="p-6 border border-gray-100 rounded-lg bg-gray-50"
+              className="p-4 md:p-6 border border-gray-100 rounded-lg bg-gray-50"
               data-aos="fade-up"
-               
             >
-              <h3 className="text-lg font-semibold mb-4 flex items-center">
-                <Database className="h-5 w-5 mr-2 text-green-600" /> Databases
+              <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4 flex items-center">
+                <Database className="h-4 w-4 md:h-5 md:w-5 mr-2 text-green-600" /> Databases
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-1 md:space-y-2">
                 {technologies.databases.map((db, i) => (
-                  <span key={i} className='text-gray-600 flex'><ArrowBigRight className="h-5 w-5 mr-2 text-green-600" /> {db}</span>
+                  <span key={i} className='text-sm md:text-gray-600 flex'><ArrowBigRight className="h-4 w-4 md:h-5 md:w-5 mr-1 md:mr-2 text-green-600" /> {db}</span>
                 ))}
               </ul>
             </div>
             
             <div 
-              className="p-6 border border-gray-100 rounded-lg bg-gray-50"
+              className="p-4 md:p-6 border border-gray-100 rounded-lg bg-gray-50"
               data-aos="fade-up"
-               
             >
-              <h3 className="text-lg font-semibold mb-4 flex items-center">
-                <Package className="h-5 w-5 mr-2 text-orange-600" /> Packaging
+              <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4 flex items-center">
+                <Package className="h-4 w-4 md:h-5 md:w-5 mr-2 text-orange-600" /> Packaging
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-1 md:space-y-2">
                 {technologies.packaging.map((tool, i) => (
-                  <span key={i} className='text-gray-600 flex'><ArrowBigRight className="h-5 w-5 mr-2 text-orange-600" /> {tool}</span>
+                  <span key={i} className='text-sm md:text-gray-600 flex'><ArrowBigRight className="h-4 w-4 md:h-5 md:w-5 mr-1 md:mr-2 text-orange-600" /> {tool}</span>
                 ))}
               </ul>
             </div>
@@ -349,31 +342,30 @@ export default function DesktopApplicationDevelopment() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             data-aos="fade-up"
           >
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
   Apps We <span className="text-blue-600">Build</span>
 </h2>
-<div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
+<div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto mb-6 md:mb-8"></div>
 
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {useCases.map((useCase, index) => (
               <div 
                 key={index} 
-                className="p-6 border border-gray-100 rounded-lg hover:shadow-md transition-all bg-white flex items-center"
+                className="p-4 md:p-6 border border-gray-100 rounded-lg hover:shadow-md transition-all bg-white flex items-center"
                 data-aos="fade-up"
-                 
               >
-                <div className="p-2 mr-4 rounded-full bg-blue-50">
+                <div className="p-1 md:p-2 mr-3 md:mr-4 rounded-full bg-blue-50">
                   {useCase.icon}
                 </div>
-                <h3 className="text-lg font-semibold">{useCase.name}</h3>
+                <h3 className="text-base md:text-lg font-semibold">{useCase.name}</h3>
               </div>
             ))}
           </div>
@@ -381,30 +373,29 @@ export default function DesktopApplicationDevelopment() {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             data-aos="fade-up"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
   From <span className="text-blue-600">Idea</span> to <span className="text-blue-600">Install</span>
 </h2>
-<div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
+<div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto mb-6 md:mb-8"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">
             {processSteps.map((step, index) => (
               <div 
                 key={index} 
                 className="text-center"
                 data-aos="fade-up"
-                 
               >
-                <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                <div className="bg-blue-100 w-12 h-12 md:w-16 md:h-16 mx-auto rounded-full flex items-center justify-center mb-3 md:mb-4">
                   {step.icon}
                 </div>
-                <h3 className="text-lg font-semibold">{step.title}</h3>
+                <h3 className="text-sm md:text-lg font-semibold">{step.title}</h3>
               </div>
             ))}
           </div>
@@ -412,38 +403,36 @@ export default function DesktopApplicationDevelopment() {
       </section>
 
       {/* Why Us Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             data-aos="fade-up"
           >
             <span 
-              className="inline-block px-3 py-1 text-sm font-medium text-blue-600 bg-blue-50 rounded-full mb-4"
+              className="inline-block px-2 py-1 text-xs md:text-sm font-medium text-blue-600 bg-blue-50 rounded-full mb-3 md:mb-4"
               data-aos="fade-up"
-                
             >
               Why Choose Us
             </span>
-        <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
   The Right <span className="text-blue-600">Partner</span> for Your Desktop Application
 </h2>
-<div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
+<div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto mb-6 md:mb-8"></div>
 
             <p 
-              className="text-xl text-gray-600 max-w-2xl mx-auto"
+              className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
               data-aos="fade-up"
-               
             >
               We don't just build apps - we create solutions that drive your business forward.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8">
             {[
               {
                 icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 ),
@@ -454,7 +443,7 @@ export default function DesktopApplicationDevelopment() {
               },
               {
                 icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 ),
@@ -465,8 +454,8 @@ export default function DesktopApplicationDevelopment() {
               },
               {
                 icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 01112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 ),
                 bg: "bg-green-100",
@@ -476,7 +465,7 @@ export default function DesktopApplicationDevelopment() {
               },
               {
                 icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 ),
@@ -488,48 +477,44 @@ export default function DesktopApplicationDevelopment() {
             ].map((item, index) => (
               <div 
                 key={index}
-                className="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-all duration-300 border border-gray-100"
+                className="bg-gray-50 p-5 md:p-8 rounded-lg md:rounded-xl hover:shadow-lg transition-all duration-300 border border-gray-100"
                 data-aos="fade-up"
-                 
               >
-                <div className={`w-12 h-12 ${item.bg} rounded-lg flex items-center justify-center mb-6`}>
+                <div className={`w-10 h-10 md:w-12 md:h-12 ${item.bg} rounded-lg flex items-center justify-center mb-4 md:mb-6`}>
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                <p className="text-gray-600">{item.content}</p>
+                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3">{item.title}</h3>
+                <p className="text-sm md:text-gray-600">{item.content}</p>
               </div>
             ))}
           </div>
 
           {/* Trust indicators */}
           <div 
-            className="mt-20 pt-10 border-t border-gray-200"
+            className="mt-12 md:mt-20 pt-8 md:pt-10 border-t border-gray-200"
             data-aos="fade-up"
           >
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6 md:gap-8">
               <div 
                 className="text-center"
                 data-aos="fade-up"
-                  
               >
-                <div className="text-4xl font-bold text-blue-600 mb-2">10+</div>
-                <p className="text-gray-600 font-medium">Years in Desktop Development</p>
+                <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-1 md:mb-2">10+</div>
+                <p className="text-sm md:text-gray-600 font-medium">Years in Desktop Development</p>
               </div>
               <div 
                 className="text-center"
                 data-aos="fade-up"
-                 
               >
-                <div className="text-4xl font-bold text-purple-600 mb-2">250+</div>
-                <p className="text-gray-600 font-medium">Successful Projects Delivered</p>
+                <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-1 md:mb-2">250+</div>
+                <p className="text-sm md:text-gray-600 font-medium">Successful Projects Delivered</p>
               </div>
               <div 
                 className="text-center"
                 data-aos="fade-up"
-                 
               >
-                <div className="text-4xl font-bold text-green-600 mb-2">99%</div>
-                <p className="text-gray-600 font-medium">Client Satisfaction Rate</p>
+                <div className="text-3xl md:text-4xl font-bold text-green-600 mb-1 md:mb-2">99%</div>
+                <p className="text-sm md:text-gray-600 font-medium">Client Satisfaction Rate</p>
               </div>
             </div>
           </div>
@@ -538,37 +523,33 @@ export default function DesktopApplicationDevelopment() {
 
       {/* CTA Section */}
       <section 
-        className="py-20 bg-gradient-to-br from-blue-600 to-purple-600"
+        className="py-12 md:py-20 bg-gradient-to-br from-blue-600 to-purple-600"
         data-aos="fade-in"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-         <h2 className="text-3xl font-bold text-white mb-6 text-center">
+         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 text-center">
   Let's Build Your <span className="text-blue-200">Desktop App</span>
 </h2>
-<div className="w-24 h-1 bg-blue-200 mx-auto mb-8"></div>
+<div className="w-20 md:w-24 h-1 bg-blue-200 mx-auto mb-6 md:mb-8"></div>
           <p 
-            className="text-xl text-blue-100 mb-8"
+            className="text-lg md:text-xl text-blue-100 mb-6 md:mb-8"
             data-aos="fade-up"
-              
           >
             Have an idea for a desktop application? We're ready to build it with precision and performance.
           </p>
           <div 
-            className="space-y-4 sm:space-y-0 sm:space-x-4"
+            className="flex flex-col sm:flex-row gap-3 justify-center"
             data-aos="fade-up"
-             
           >
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8">
+            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-6 md:px-8 text-sm md:text-base">
              <Link href="/contact-us"> Contact Our Team</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-blue-900 hover:bg-white hover:text-blue-600 px-8">
+            <Button size="lg" variant="outline" className="border-white text-blue hover:bg-white hover:text-blue-600 px-6 md:px-8 text-sm md:text-base mt-2 sm:mt-0 sm:ml-4">
               <Link href="/contact-us">Schedule a Free Demo</Link>
             </Button>
           </div>
         </div>
       </section>
-
-       
     </div>
   );
 }
