@@ -84,21 +84,18 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Footer */}
+     {/* Bottom Footer */}
         <div className="footer_bot pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="footer_copy text-gray-400 text-sm mb-4 md:mb-0">
-              PickZy Software Pvt Ltd © 2011-{new Date().getFullYear()} | All rights reserved
-            </div>
-            
-            <div className="footer_sm">
-              <div className="foot_logo flex items-center space-x-6">
+          <div className="flex flex-col md:flex-row items-center justify-between md:flex-row-reverse">
+          
+            <div className="footer_sm flex items-center justify-around md:justify-around gap-4 md:gap-6">
+             
                  <Image 
                   src="/assets/footer_logo.png" 
                   alt="PickZy Logo" 
                   width={180} 
                   height={70} 
-                  className="h-12 w-auto ml-6"
+                  className="h-12 w-auto"
                 />
                <Link href="/" className="flex items-center">
                 <Image 
@@ -106,13 +103,16 @@ export default function Footer() {
                   alt="PickZy Logo" 
                   width={120} 
                   height={48} 
-                  className="h-10 w-auto ml-6"
+                  className="h-10 w-auto "
                 /></Link>
-              </div>
+            </div>
+              <div className="footer_copy text-center text-gray-400 text-sm mt-4 md:mb-0">
+              PickZy Software Pvt Ltd © 2011-{new Date().getFullYear()} | All rights reserved
             </div>
           </div>
         </div>
       </div>
     </section>
+   
   );
 }

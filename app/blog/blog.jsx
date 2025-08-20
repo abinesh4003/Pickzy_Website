@@ -52,7 +52,7 @@ const PickzyInteractive = () => {
             <div className="w-20 h-1 bg-indigo-600 mx-auto"></div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Post 1 */}
             <div 
               className="blog-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300"
@@ -83,11 +83,10 @@ const PickzyInteractive = () => {
                 <p className="text-gray-600 mb-4">Discover why React.js continues to dominate frontend development with its component-based architecture and virtual DOM.</p>
                 <div className="flex justify-between items-center">
                   <Link href="blog/reactjs-web-development-company" className="text-indigo-600 font-semibold hover:underline flex items-center gap-1">
-                    Read More <ArrowRight className="w-4 h-4" />
+                    ReadMore <ArrowRight className="w-4 h-4" />
                   </Link>
                   <div className="flex space-x-2">
-                    <span className="tag bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs hover:bg-indigo-600 hover:text-white transition">#React</span>
-                    <span className="tag bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs hover:bg-indigo-600 hover:text-white transition">#Frontend</span>
+                    <span className="tag bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs hover:bg-indigo-600 hover:text-white transition">#React.js</span>
                   </div>
                 </div>
               </div>
@@ -123,11 +122,10 @@ const PickzyInteractive = () => {
                 <p className="text-gray-600 mb-4">Explore how Node.js enables high-performance, scalable backend solutions with its non-blocking I/O model.</p>
                 <div className="flex justify-between items-center">
                   <Link href="blog/nodejs-backend-development" className="text-indigo-600 font-semibold hover:underline flex items-center gap-1">
-                    Read More <ArrowRight className="w-4 h-4" />
+                    ReadMore <ArrowRight className="w-4 h-4" />
                   </Link>
                   <div className="flex space-x-2">
                     <span className="tag bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs hover:bg-indigo-600 hover:text-white transition">#Node.js</span>
-                    <span className="tag bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs hover:bg-indigo-600 hover:text-white transition">#Backend</span>
                   </div>
                 </div>
               </div>
@@ -163,11 +161,10 @@ const PickzyInteractive = () => {
                 <p className="text-gray-600 mb-4">Learn how combining React and Node.js creates a powerful fullstack solution for high-performance web applications.</p>
                 <div className="flex justify-between items-center">
                   <Link href="blog/react-nodejs-tech-stack" className="text-indigo-600 font-semibold hover:underline flex items-center gap-1">
-                    Read More <ArrowRight className="w-4 h-4" />
+                    ReadMore <ArrowRight className="w-4 h-4" />
                   </Link>
                   <div className="flex space-x-2">
-                    <span className="tag bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs hover:bg-indigo-600 hover:text-white transition">#React</span>
-                    <span className="tag bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs hover:bg-indigo-600 hover:text-white transition">#Node.js</span>
+                    <span className="tag bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs hover:bg-indigo-600 hover:text-white transition">#Fullstack</span>
                   </div>
                 </div>
               </div>

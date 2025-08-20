@@ -42,13 +42,24 @@ export function HireDeveloperModal({
    }
   }, [developerTypes, defaultDeveloper, open, onOpenChange, onSubmit])
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
+ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const { name, value } = e.target
+  
+  // For phone field, only allow numbers
+  if (name === 'phone') {
+    // Remove any non-numeric characters
+    const numericValue = value.replace(/[^0-9]/g, '')
+    setFormData(prev => ({
+      ...prev,
+      [name]: numericValue
+    }))
+  } else {
     setFormData(prev => ({
       ...prev,
       [name]: value
     }))
   }
+}
 
   const handleSelectChange = (name: string, value: string) => {
     setFormData(prev => ({
@@ -153,13 +164,17 @@ export function HireDeveloperModal({
             <div className="relative">
               <Phone className="absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input 
-                id="phone" 
-                name="phone" 
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="+1 (555) 000-0000" 
-                className="pl-8 h-9" 
-              />
+  id="phone" 
+  name="phone" 
+  value={formData.phone}
+  type="tel"
+  inputMode="numeric"  // Add this line
+  pattern="[0-9]*"     // Add this line for better mobile support
+  onChange={handleChange}
+  placeholder="+1 (555) 000-0000" 
+  className="pl-8 h-9" 
+  maxLength={13}
+/>
             </div>
           </div>
 

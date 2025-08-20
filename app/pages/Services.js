@@ -1,7 +1,4 @@
 "use client";
-
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -15,95 +12,84 @@ import {
   Zap,
   CheckCircle,
   ArrowRight,
-  Palette,
+  TrendingUp
+  ,Palette,
   Search,
+  Cloud,
   BarChart,
+  Monitor,
   Cog
 } from 'lucide-react';
 
 export default function Services() {
-  const services = [
-    {
-      icon: <Code className="w-12 h-12 text-blue-600" />,
-      title: "Custom Software Development",
-      description: "Tailored software solutions built to meet your specific business requirements and scale with your growth.",
-      features: ["Full-stack development", "API integration", "Legacy system modernization", "Microservices architecture"],
-      technologies: ["React", "Node.js", "Python", "Java", ".NET"],
-      link: "/services/custom-software-development"
-    },
-    {
-      icon: <Smartphone className="w-12 h-12 text-purple-600" />,
-      title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.",
-      features: ["iOS & Android apps", "React Native", "Progressive Web Apps", "App Store optimization"],
-      technologies: ["React Native", "Flutter", "Swift", "Kotlin"],
-      link: "/services/mobile-development"
-    },
-    {
-      icon: <Globe className="w-12 h-12 text-green-600" />,
-      title: "Web Development",
-      description: "Modern, responsive websites and web applications optimized for performance and user engagement.",
-      features: ["Responsive design", "E-commerce solutions", "CMS development", "Performance optimization"],
-      technologies: ["Next.js", "React", "Vue.js", "WordPress"],
-      link: "/services/web-development"
-    },
-    {
-      icon: <Database className="w-12 h-12 text-orange-600" />,
-      title: "Cloud Solutions",
-      description: "Scalable cloud infrastructure and migration services to optimize your operations and reduce costs.",
-      features: ["Cloud migration", "DevOps & CI/CD", "Database optimization", "Auto-scaling solutions"],
-      technologies: ["AWS", "Azure", "Google Cloud", "Docker"],
-      link: "/services/cloud-solutions"
-    },
-    {
-      icon: <Shield className="w-12 h-12 text-red-600" />,
-      title: "Cybersecurity",
-      description: "Comprehensive security solutions to protect your digital assets and ensure compliance with industry standards.",
-      features: ["Security audits", "Penetration testing", "Compliance consulting", "Incident response"],
-      technologies: ["OWASP", "ISO 27001", "GDPR", "SOC 2"],
-      link: "/services"
-    },
-    {
-      icon: <Zap className="w-12 h-12 text-yellow-600" />,
-      title: "Digital Transformation",
-      description: "Strategic consulting to modernize your business processes and technology stack for the digital age.",
-      features: ["Process automation", "AI/ML integration", "Digital strategy", "Change management"],
-      technologies: ["AI/ML", "RPA", "IoT", "Blockchain"],
-      link: "/services/digital-transformation"
-    },
-    {
-      icon: <Palette className="w-12 h-12 text-pink-600" />,
-      title: "UI/UX Design",
-      description: "User-centered design solutions that create intuitive and engaging experiences for your customers.",
-      features: ["User research", "Wireframing", "Prototyping", "Design systems"],
-      technologies: ["Figma", "Adobe XD", "Sketch", "InVision"],
-      link: "/services"
-    },
-    {
-      icon: <Search className="w-12 h-12 text-indigo-600" />,
-      title: "SEO & Digital Marketing",
-      description: "Comprehensive digital marketing strategies to increase your online visibility and drive business growth.",
-      features: ["SEO optimization", "Content marketing", "Social media", "PPC campaigns"],
-      technologies: ["Google Analytics", "SEMrush", "HubSpot", "Mailchimp"],
-      link: "/services"
-    },
-    {
-      icon: <BarChart className="w-12 h-12 text-teal-600" />,
-      title: "Data Analytics",
-      description: "Transform your data into actionable insights with advanced analytics and business intelligence solutions.",
-      features: ["Data visualization", "Business intelligence", "Predictive analytics", "Real-time dashboards"],
-      technologies: ["Tableau", "Power BI", "Python", "R"],
-      link: "/services"
-    },
-    {
-      icon: <Cog className="w-12 h-12 text-gray-600" />,
-      title: "IT Consulting",
-      description: "Strategic technology consulting to help you make informed decisions about your IT infrastructure.",
-      features: ["Technology assessment", "Architecture planning", "Vendor selection", "Project management"],
-      technologies: ["ITIL", "Agile", "Scrum", "PMI"],
-      link: "/services"
-    }
-  ];
+
+
+const services = [
+  {
+    icon: <Globe className="w-12 h-12 text-blue-600" />,
+    title: "Web Development",
+    description: "Modern, responsive websites and web applications optimized for performance and user engagement.",
+    features: ["Responsive design", "E-commerce solutions", "CMS development", "Performance optimization"],
+    technologies: ["Next.js", "React", "Vue.js", "WordPress"],
+    link: "/services/web-development"
+  },
+  {
+    icon: <Smartphone className="w-12 h-12 text-purple-600" />,
+    title: "Mobile Apps",
+    description: "Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.",
+    features: ["iOS & Android apps", "React Native", "Progressive Web Apps", "App Store optimization"],
+    technologies: ["React Native", "Flutter", "Swift", "Kotlin"],
+    link: "/services/mobile-development"
+  },
+  {
+    icon: <Monitor className="w-12 h-12 text-green-600" />,
+    title: "Desktop Apps",
+    description: "Robust desktop applications for Windows, macOS, and Linux with native performance and integration.",
+    features: ["Cross-platform development", "Native performance", "System integration", "Offline capabilities"],
+    technologies: ["Electron", ".NET", "Java", "C++"],
+    link: "/services/desktop-application-development"
+  },
+  {
+    icon: <Palette className="w-12 h-12 text-pink-600" />,
+    title: "Design & MarkUp",
+    description: "User-centered design solutions that create intuitive and engaging experiences for your customers.",
+    features: ["User research", "Wireframing", "Prototyping", "Design systems", "HTML/CSS markup"],
+    technologies: ["Figma", "Adobe XD", "Sketch", "HTML5", "CSS3"],
+    link: "/services/design-and-markup"
+  },
+  {
+    icon: <TrendingUp className="w-12 h-12 text-orange-600" />,
+    title: "Internet Marketing",
+    description: "Comprehensive digital marketing strategies to increase your online visibility and drive business growth.",
+    features: ["SEO optimization", "Content marketing", "Social media", "PPC campaigns", "Analytics"],
+    technologies: ["Google Analytics", "SEMrush", "HubSpot", "Mailchimp", "Google Ads"],
+    link: "/services/internet-marketing"
+  },
+  {
+    icon: <Code className="w-12 h-12 text-red-600" />,
+    title: "Digital Transformation",
+    description: "Strategic consulting to modernize your business processes and technology stack for the digital age.",
+    features: ["Process automation", "AI/ML integration", "Digital strategy", "Change management"],
+    technologies: ["AI/ML", "RPA", "IoT", "Cloud technologies"],
+    link: "/services/digital-transformation"
+  },
+  {
+    icon: <Code className="w-12 h-12 text-indigo-600" />,
+    title: "Custom Software",
+    description: "Tailored software solutions built to meet your specific business requirements and scale with your growth.",
+    features: ["Full-stack development", "API integration", "Legacy system modernization", "Microservices architecture"],
+    technologies: ["React", "Node.js", "Python", "Java", ".NET"],
+    link: "/services/custom-software-development"
+  },
+  {
+    icon: <Cloud className="w-12 h-12 text-teal-600" />,
+    title: "Cloud Solutions",
+    description: "Scalable cloud infrastructure and migration services to optimize your operations and reduce costs.",
+    features: ["Cloud migration", "DevOps & CI/CD", "Database optimization", "Auto-scaling solutions"],
+    technologies: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes"],
+    link: "/services/cloud"
+  }
+];
 
   const process = [
     {

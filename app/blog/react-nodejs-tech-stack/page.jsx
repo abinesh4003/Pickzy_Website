@@ -347,7 +347,7 @@ const FullstackBlogPost = () => {
                 <h3 className="text-xl font-bold mb-2">Need Fullstack MERN Developers?</h3>
                 <p className="mb-6 opacity-90">Our team specializes in building performant, scalable applications with React.js and Node.js.</p>
                 <Link 
-                  href="#contact" 
+                  href="/contact-us" 
                   className="inline-flex items-center justify-center bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition shadow hover:shadow-md"
                 >
                   Get a free consultation
@@ -379,17 +379,17 @@ const FullstackBlogPost = () => {
                 </div>
               </div>
 
-              {/* Social Share */}
+             {/* Social Share */}
               <div 
                 className="mt-8" 
                 data-aos="fade-up" 
                   
-             
+                 
               >
                 <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">Share this article:</h4>
                 <div className="flex gap-3">
                   <Link 
-                    href="#" 
+                    href="https://www.facebook.com/pickzy" 
                     className="social-share-button bg-blue-600 hover:bg-blue-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition shadow hover:shadow-md"
                     aria-label="Share on Facebook"
                   >
@@ -398,7 +398,7 @@ const FullstackBlogPost = () => {
                     </svg>
                   </Link>
                   <Link 
-                    href="#" 
+                    href="https://x.com/PickZySoftware" 
                     className="social-share-button bg-blue-400 hover:bg-blue-500 text-white w-10 h-10 rounded-full flex items-center justify-center transition shadow hover:shadow-md"
                     aria-label="Share on Twitter"
                   >
@@ -407,7 +407,7 @@ const FullstackBlogPost = () => {
                     </svg>
                   </Link>
                   <Link 
-                    href="#" 
+                    href="https://www.linkedin.com/company/pickzy-interactive-private-limited/" 
                     className="social-share-button bg-blue-700 hover:bg-blue-800 text-white w-10 h-10 rounded-full flex items-center justify-center transition shadow hover:shadow-md"
                     aria-label="Share on LinkedIn"
                   >

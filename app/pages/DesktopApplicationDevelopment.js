@@ -93,115 +93,108 @@ export default function DesktopApplicationDevelopment() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-       
-      
-      {/* Hero Section */}
-      <section 
-        className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50"
-        data-aos="fade-in"
-      >
-        {/* Background pattern */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <div className="absolute inset-0 bg-[url('/service/desktop/hero.png')] bg-center bg-no-repeat bg-cover [mask-image:linear-gradient(to_bottom,rgba(37, 37, 37, 1),transparent)]"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Text content */}
-            <div className="relative z-10">
-              <h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
-                data-aos="fade-up"
-              >
-                Custom <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Desktop Apps</span> Built for Performance
-              </h1>
-              <p 
-                className="text-xl text-gray-600 mb-8"
-                data-aos="fade-up"
-                  
-              >
-                We develop secure, high-performance desktop applications for Windows, macOS, and Linux using modern frameworks like Electron, .NET MAUI, and Flutter Desktop.
-              </p>
-              <div 
-                className="flex flex-col sm:flex-row gap-4"
-                data-aos="fade-up"
-                 
-              >
-                 <Link href="/contact-us">
-                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg">
+<div className="min-h-screen bg-white">
+  {/* Hero Section */}
+  <section 
+    className="relative pt-20 md:pt-32 pb-16 md:pb-24 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50"
+    data-aos="fade-in"
+  >
+    {/* Background pattern */}
+    <div className="absolute top-0 left-0 w-full h-full opacity-10">
+      <div className="absolute inset-0 bg-[url('/service/desktop/hero.png')] bg-center bg-no-repeat bg-cover [mask-image:linear-gradient(to_bottom,rgba(37, 37, 37, 1),transparent)]"></div>
+    </div>
+    
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
+        {/* Text content */}
+        <div className="relative z-10 order-2 lg:order-1">
+          <h1 
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight text-center lg:text-left"
+            data-aos="fade-up"
+          >
+            Custom <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">Desktop Apps</span> Built for Performance
+          </h1>
+          <p 
+            className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 text-center lg:text-left max-w-xl mx-auto lg:mx-0"
+            data-aos="fade-up"
+          >
+            We develop secure, high-performance desktop applications for Windows, macOS, and Linux using modern frameworks like Electron, .NET MAUI, and Flutter Desktop.
+          </p>
+          <div 
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+            data-aos="fade-up"
+          >
+            <Link href="/contact-us">
+              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg w-full sm:w-auto">
                 Request Free Consultation
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </Button>
-                </Link>
-                  <Link href="#desktop-casestudies"> 
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-gray-300 hover:bg-white/90 shadow-sm"
-                  data-aos="fade-up"
-                   
-                >
-              View Case Studies
-                </Button>
-                </Link>
-              </div>
-              
-              {/* Tech stack logos */}
-              <div 
-                className="mt-12"
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </Button>
+            </Link>
+            <Link href="#desktop-casestudies"> 
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-gray-300 hover:bg-white/90 shadow-sm w-full sm:w-auto"
                 data-aos="fade-up"
-                 
               >
-                <p className="text-sm text-gray-500 mb-4">Built with modern technologies:</p>
-                <div className="flex flex-wrap gap-6 items-center">
-                  <img src="/service/desktop/p1.png" alt="Electron" className="h-8 opacity-80 hover:opacity-100 transition-opacity" />
-                  <img src="/service/desktop/p2.png" alt=".NET" className="h-8 opacity-80 hover:opacity-100 transition-opacity" />
-                  <img src="/service/desktop/p3.jpg" alt="Flutter" className="h-8 opacity-80 hover:opacity-100 transition-opacity" />
-                  <img src="/service/desktop/p4.webp" alt="Java" className="h-8 opacity-80 hover:opacity-100 transition-opacity" />
-                </div>
-              </div>
-            </div>
-            
-            {/* Image/illustration */}
-            <div className="relative">
-              <div 
-                className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-100"
-                data-aos="fade-left"
-                 
-              >
-                <img 
-                  src="/service/desktop/hero.png" 
-                  alt="Desktop Application UI Showcase" 
-                  className="w-full h-auto"
-                />
-                {/* Floating UI elements */}
-                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-purple-500/10 rounded-full blur-xl"></div>
-                <div className="absolute -top-6 -right-6 w-40 h-40 bg-blue-500/10 rounded-full blur-xl"></div>
-              </div>
-              
-              {/* Floating badge */}
-              <div 
-                className="absolute -bottom-8 -right-8 bg-white px-4 py-3 rounded-xl shadow-lg border border-gray-100 flex items-center"
-                data-aos="zoom-in"
-                 
-              >
-                <div className="bg-green-100 p-2 rounded-lg mr-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900">Trusted by 250+</p>
-                  <p className="text-sm text-gray-500">Businesses worldwide</p>
-                </div>
-              </div>
+                View Case Studies
+              </Button>
+            </Link>
+          </div>
+          
+          {/* Tech stack logos */}
+          <div 
+            className="mt-8 md:mt-12"
+            data-aos="fade-up"
+          >
+            <p className="text-sm text-gray-500 mb-4 text-center lg:text-left">Built with modern technologies:</p>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6 items-center">
+              <img src="/service/desktop/p1.png" alt="Electron" className="h-6 md:h-8 w-auto max-w-[80px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
+              <img src="/service/desktop/p2.png" alt=".NET" className="h-6 md:h-8 w-auto max-w-[80px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
+              <img src="/service/desktop/p3.jpg" alt="Flutter" className="h-6 md:h-8 w-auto max-w-[80px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
+              <img src="/service/desktop/p4.webp" alt="Java" className="h-6 md:h-8 w-auto max-w-[80px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
             </div>
           </div>
         </div>
-      </section>
+        
+        {/* Image/illustration */}
+        <div className="relative order-1 lg:order-2">
+          <div 
+            className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl border border-gray-100"
+            data-aos="fade-left"
+          >
+            <img 
+              src="/service/desktop/hero.png" 
+              alt="Desktop Application UI Showcase" 
+              className="w-full h-auto"
+            />
+            {/* Floating UI elements */}
+            <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-16 h-16 md:w-32 md:h-32 bg-purple-500/10 rounded-full blur-xl"></div>
+            <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-20 h-20 md:w-40 md:h-40 bg-blue-500/10 rounded-full blur-xl"></div>
+          </div>
+          
+          {/* Floating badge */}
+          <div 
+            className="absolute -bottom-4 -right-4 md:-bottom-8 md:-right-8 bg-white px-3 py-2 md:px-4 md:py-3 rounded-lg md:rounded-xl shadow-lg border border-gray-100 flex items-center"
+            data-aos="zoom-in"
+          >
+            <div className="bg-green-100 p-1 md:p-2 rounded md:rounded-lg mr-2 md:mr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <p className="font-semibold text-gray-900 text-xs md:text-sm">Trusted by 250+</p>
+              <p className="text-[10px] md:text-sm text-gray-500">Businesses worldwide</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
       {/* Benefits Section */}
       <section className="py-20 bg-white" id="desktop-casestudies">

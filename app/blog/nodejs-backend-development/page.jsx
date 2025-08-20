@@ -200,7 +200,7 @@ const NodeJsBenefitsPost = () => {
                 <h3 className="text-xl font-bold mb-2">Need Node.js Experts for Your Project?</h3>
                 <p className="mb-6 opacity-90">Our team specializes in building scalable, high-performance backend systems with Node.js.</p>
                 <Link 
-                  href="#contact" 
+                  href="/contact-us" 
                   className="inline-flex items-center justify-center bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition shadow hover:shadow-md"
                 >
                   Get in touch with our team
@@ -240,7 +240,7 @@ const NodeJsBenefitsPost = () => {
                 <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">Share this article:</h4>
                 <div className="flex gap-3">
                   <Link 
-                    href="#" 
+                    href="https://www.facebook.com/pickzy" 
                     className="social-share-button bg-blue-600 hover:bg-blue-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition shadow hover:shadow-md"
                     aria-label="Share on Facebook"
                   >
@@ -249,7 +249,7 @@ const NodeJsBenefitsPost = () => {
                     </svg>
                   </Link>
                   <Link 
-                    href="#" 
+                    href="https://x.com/PickZySoftware" 
                     className="social-share-button bg-blue-400 hover:bg-blue-500 text-white w-10 h-10 rounded-full flex items-center justify-center transition shadow hover:shadow-md"
                     aria-label="Share on Twitter"
                   >
@@ -258,7 +258,7 @@ const NodeJsBenefitsPost = () => {
                     </svg>
                   </Link>
                   <Link 
-                    href="#" 
+                    href="https://www.linkedin.com/company/pickzy-interactive-private-limited/" 
                     className="social-share-button bg-blue-700 hover:bg-blue-800 text-white w-10 h-10 rounded-full flex items-center justify-center transition shadow hover:shadow-md"
                     aria-label="Share on LinkedIn"
                   >

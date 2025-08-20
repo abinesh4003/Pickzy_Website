@@ -41,7 +41,7 @@ const filters = [
       {
   id: 'algo-trading',
   title: "Algo Trading Platform",
-  category: "finance",
+  category: "saas",
   type: "Finance",
   description: "Designed and implemented a fully automated, high-frequency trading system tailored for NSE intraday equity markets with advanced risk control.",
   image: "/images/portfolio-images/algo_trade.png",

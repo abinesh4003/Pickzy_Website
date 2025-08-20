@@ -23,7 +23,8 @@ import {
   ArrowRight,
   Linkedin,
   Twitter,
-  Github
+  Github,
+  Facebook
 } from 'lucide-react';
 
 export default function Contact() {
@@ -80,189 +81,203 @@ const contactInfo = [
     }
   ];
   // Replace the existing Client Testimonial card with this component
-const TestimonialCarousel = () => {
- const [currentIndex, setCurrentIndex] = useState(0);
-  const [startX, setStartX] = useState(null);
-  const carouselRef = useRef(null);
+ const TestimonialCarousel = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [startX, setStartX] = useState(null);
+    const [containerHeight, setContainerHeight] = useState(0);
+    const carouselRef = useRef(null);
+    const testimonialRefs = useRef([]);
 
-const testimonials = [
+    const testimonials = [
   {
     name: "Dan",
     role: "President at DVO, United States",
-    content: "PickZy stands out among Indian software firms. Their engineers are highly skilled with a get-it-done attitude. They've helped us meet tight deadlines, working odd hours when needed. More than a vendor, they're true partners who understand our goals.",
+    content: "PickZy stands out among Indian software firms with their highly skilled engineers and get-it-done attitude. They've helped us meet tight deadlines consistently while working odd hours when needed. More than just a vendor, they're true partners who deeply understand our business goals and objectives.",
     rating: 5,
     image: "/client/Dan DVO.png"
   },
   {
     name: "Steve Lambert",
     role: "United States",
-    content: "PickZy excelled in Android development, leading us to hire them for website work. Great communication and timely delivery. So impressed, we're now developing a Windows app based on their Android work.",
+    content: "PickZy excelled in Android development, which led us to hire them for our website work as well. Their communication is excellent and delivery is always timely. We were so impressed that we're now developing a Windows app based on their Android expertise and quality work.",
     rating: 5,
     image: "/client/Equal-I.png"
   },
   {
     name: "Douglas Johnson",
     role: "United States",
-    content: "Our app has run smoothly since 2014 with few bugs. Issues were fixed quickly, improvements delivered as designed. Impressed with their Objective C/C# integration skills. Great communication and fair business practices.",
+    content: "Our application has been running smoothly since 2014 with very few bugs or issues. Whenever problems arose, they were fixed quickly and improvements were delivered exactly as designed. We were particularly impressed with their Objective C and C# integration skills and professional approach.",
     rating: 5,
     image: "/client/Art Model.jpg"
   },
   {
     name: "Waheed Iqbal",
     role: "CEO, Pakistan",
-    content: "Ratheesh has amazing technical knowledge and problem-solving skills. His software expertise, presentation abilities, and customer-focused attitude make him exceptional to work with.",
+    content: "Ratheesh possesses amazing technical knowledge and exceptional problem-solving capabilities. His software expertise combined with excellent presentation skills and customer-focused attitude makes him absolutely exceptional to work with on any project we undertake together.",
     rating: 5,
     image: "/client/Health mirror.jpg"
   },
   {
     name: "Douglas Campbell",
     role: "United States",
-    content: "PickZy's team was knowledgeable and creative throughout our project. I'll continue working with them and highly recommend them for outsourcing needs. Thumbs up!",
+    content: "PickZy's team demonstrated extensive knowledge and creativity throughout our entire project duration. I plan to continue working with them indefinitely and highly recommend them for any outsourcing needs. They truly deserve a thumbs up for their outstanding performance!",
     rating: 5,
     image: "/client/dummy.png"
   },
   {
     name: "Felix Santos",
     role: "United States",
-    content: "A++ service. PickZy exceeds expectations with their attention to detail and responsiveness. Top-notch performance that I'll definitely use again for future projects.",
+    content: "A++ service quality from PickZy who consistently exceeds all expectations with their meticulous attention to detail and rapid responsiveness. They deliver top-notch performance that I will definitely utilize again for all my future software development projects and requirements.",
     rating: 5,
     image: "/client/dummy.png"
   },
   {
     name: "Stavarengo",
     role: "United States",
-    content: "PickZy handled iOS app improvements professionally with fast feedback. Highly recommend their services for mobile development needs.",
+    content: "PickZy handled our iOS application improvements with complete professionalism and provided extremely fast feedback on all changes. I highly recommend their services for any mobile development needs you might have - they are reliable and technically excellent partners.",
     rating: 5,
     image: "/client/dummy.png"
   },
   {
     name: "Bryan Barclay",
     role: "United States",
-    content: "PickZy consistently exceeds expectations. They're currently handling multiple projects for me - a top-notch team that's easy to communicate with and completes any task expertly.",
+    content: "PickZy consistently exceeds all expectations and delivers beyond what's promised. They're currently handling multiple projects for me simultaneously - a truly top-notch team that's exceptionally easy to communicate with and completes every single task expertly.",
     rating: 5,
     image: "/client/dummy.png"
   },
   {
     name: "Bryan Barclay",
     role: "United States",
-    content: "Another excellent job completed promptly. Already engaged for the next project and planning future work with this reliable team.",
+    content: "Another excellent job completed promptly and delivered ahead of schedule. We're already engaged for the next project phase and planning substantial future work with this incredibly reliable team that always delivers quality results on time and within budget constraints.",
     rating: 5,
     image: "/client/dummy.png"
   }
 ];
-const handleTouchStart = (e) => {
-    setStartX(e.touches[0].clientX);
-  };
 
-  const handleTouchMove = (e) => {
-    if (!startX) return;
-    const currentX = e.touches[0].clientX;
-    const diff = startX - currentX;
-    
-    if (diff > 5) {
-      // Swipe left - go next
-      handleNext();
-    } else if (diff < -5) {
-      // Swipe right - go previous
-      handlePrev();
-    }
-    setStartX(null);
-  };
+    // Update container height when testimonial changes
+    useEffect(() => {
+      if (testimonialRefs.current[currentIndex]) {
+        const height = testimonialRefs.current[currentIndex].offsetHeight;
+        setContainerHeight(height);
+      }
+    }, [currentIndex]);
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
+    const handleTouchStart = (e) => {
+      setStartX(e.touches[0].clientX);
+    };
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+    const handleTouchMove = (e) => {
+      if (!startX) return;
+      const currentX = e.touches[0].clientX;
+      const diff = startX - currentX;
+      
+      if (diff > 5) {
+        // Swipe left - go next
+        handleNext();
+      } else if (diff < -5) {
+        // Swipe right - go previous
+        handlePrev();
+      }
+      setStartX(null);
+    };
 
-  return (
-    <Card 
-      className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-purple-50 overflow-hidden" 
-      data-aos="fade-left"
-      ref={carouselRef}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-    >
-      <CardContent className="p-6 relative h-[400px]">
-        {/* Testimonial content */}
-        <div className="absolute inset-0 p-6 h-full">
-          {testimonials.map((testimonial, index) => (
-            <div 
-              key={index}
-              className={`absolute inset-0 p-6 transition-transform duration-300 ease-in-out h-full flex flex-col justify-between ${
-                index === currentIndex ? 'translate-x-0' : 
-                (index < currentIndex ? '-translate-x-full' : 'translate-x-full')
-              }`}
-            >
-              <div className="flex items-center mb-4" data-aos="fade-up">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <p className="text-gray-700 mb-4 italic px-8" data-aos="fade-up">
-                "{testimonial.content.length > 200 ? testimonial.content.slice(0, 300) + '...' : testimonial.content}"
-              </p>
-              <div className="flex items-center space-x-3" data-aos="fade-up">
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                  onError={(e) => {
-                    e.target.src = "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400";
-                  }}
-                />
-                <div>
-                  <div className="font-semibold text-gray-900">
-                    {testimonial.name}
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    {testimonial.role}
+    const handleNext = () => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    };
+
+    const handlePrev = () => {
+      setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    };
+
+    return (
+      <Card 
+        className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-purple-50 overflow-hidden" 
+        data-aos="fade-left"
+        ref={carouselRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+      >
+        <CardContent className="p-4 xs:p-5 sm:p-6 relative" style={{ minHeight: containerHeight > 0 ? `${containerHeight}px` : 'auto' }}>
+          {/* Testimonial content */}
+          <div className="relative">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index}
+                ref={el => testimonialRefs.current[index] = el}
+                className={`transition-all duration-300 ease-in-out flex flex-col gap-4 xs:gap-5 ${
+                  index === currentIndex 
+                    ? 'opacity-100 translate-x-0 h-auto' 
+                    : 'opacity-0 absolute h-0 overflow-hidden'
+                }`}
+              >
+                <div className="flex items-center" data-aos="fade-up">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 xs:h-5 xs:w-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 italic text-xs xs:text-sm sm:text-base" data-aos="fade-up">
+                 {testimonial.content}
+                </p>
+                <div className="flex items-center space-x-2 xs:space-x-3 mt-auto" data-aos="fade-up">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name}
+                    className="w-10 h-10 xs:w-12 xs:h-12 rounded-full object-cover flex-shrink-0"
+                    onError={(e) => {
+                      e.target.src = "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400";
+                    }}
+                  />
+                  <div className="min-w-0">
+                    <div className="font-semibold text-gray-900 text-sm xs:text-base truncate">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-xs xs:text-sm text-gray-600 truncate">
+                      {testimonial.role}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Navigation dots */}
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-1">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                currentIndex === index ? 'bg-blue-600 w-4' : 'bg-gray-300'
-              }`}
-              aria-label={`View testimonial ${index + 1}`}
-            />
-          ))}
-        </div>
+          {/* Navigation dots */}
+          <div className="mt-6 flex justify-center space-x-1">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-1.5 h-1.5 xs:w-2 xs:h-2 rounded-full transition-all duration-300 ${
+                  currentIndex === index ? 'bg-blue-600 w-3 xs:w-4' : 'bg-gray-300'
+                }`}
+                aria-label={`View testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
 
-        {/* Manual navigation arrows */}
-        <button 
-          onClick={handlePrev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 backdrop-blur p-2 rounded-full bg-transparent shadow-md hover:bg-white"
-          aria-label="Previous testimonial"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="m15 18-6-6 6-6"/>
-          </svg>
-        </button>
-        <button 
-          onClick={handleNext}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent p-2 rounded-full shadow-md hover:bg-white backdrop-blur-xl"
-          aria-label="Next testimonial"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="m9 18 6-6-6-6"/>
-          </svg>
-        </button>
-      </CardContent>
-    </Card>
-  );
-};
+          {/* Manual navigation arrows */}
+          <button 
+            onClick={handlePrev}
+            className="absolute left-1 xs:left-2 top-1/2 -translate-y-1/2 backdrop-blur p-1 xs:p-2 rounded-full bg-white/70 hover:bg-white transition-colors shadow-sm xs:shadow-md"
+            aria-label="Previous testimonial"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 xs:w-4 xs:h-4">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </button>
+          <button 
+            onClick={handleNext}
+            className="absolute right-1 xs:right-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white transition-colors p-1 xs:p-2 rounded-full shadow-sm xs:shadow-md backdrop-blur-sm"
+            aria-label="Next testimonial"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 xs:w-4 xs:h-4">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </button>
+        </CardContent>
+      </Card>
+    );
+  };
+
 
   return (
  <div className="min-h-screen bg-white overflow-x-hidden">
@@ -424,14 +439,14 @@ const handleTouchStart = (e) => {
                 data-aos="fade-up"
                  
               >
-                <Link href="#" className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                <Link href="https://www.linkedin.com/company/pickzy-interactive-private-limited/" className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="p-3 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition-colors">
+                <Link href="https://x.com/PickZySoftware" className="p-3 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition-colors">
                   <Twitter className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="p-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
-                  <Github className="h-5 w-5" />
+                <Link href="https://www.facebook.com/pickzy" className="p-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
+                  <Facebook className="h-5 w-5" />
                 </Link>
               </div>
             </CardContent>

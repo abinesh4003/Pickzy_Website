@@ -298,9 +298,7 @@ export default function InternetMarketing() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">{service.description}</p>
-                  <Button variant="link" className="px-0 text-blue-600 hover:text-blue-800">
-                    Learn more <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                 
                 </CardContent>
               </Card>
             ))}

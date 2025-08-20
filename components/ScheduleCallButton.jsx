@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Calendar, Clock, ArrowRight, X, ChevronLeft, ChevronRight, Check, User, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
+import { showToast } from './ui/toast';
 
 const ScheduleCallButton = () => {
     // State management
@@ -23,14 +24,45 @@ const ScheduleCallButton = () => {
     const [isSuccess, setIsSuccess] = useState(false);
     const modalRef = useRef(null);
 
-    // Available time slots with duration
-    const timeSlots = [
-        { time: '10:00 AM', duration: '30 min', type: 'Strategy Session' },
-        { time: '11:00 AM', duration: '30 min', type: 'Consultation' },
-        { time: '1:00 PM', duration: '60 min', type: 'Deep Dive' },
-        { time: '2:30 PM', duration: '45 min', type: 'Technical Review' },
-        { time: '4:00 PM', duration: '30 min', type: 'Q&A Session' }
-    ];
+    // Get current date and time
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    
+    // Generate time slots based on current time for today, or all slots for future dates
+    const generateTimeSlots = (date) => {
+        const isToday = date && 
+            date.getDate() === now.getDate() &&
+            date.getMonth() === now.getMonth() &&
+            date.getFullYear() === now.getFullYear();
+        
+        const baseSlots = [
+            { time: '9:00 AM', duration: '30 min', type: 'Strategy Session' },
+            { time: '10:00 AM', duration: '30 min', type: 'Consultation' },
+            { time: '11:00 AM', duration: '30 min', type: 'Q&A' },
+            { time: '1:00 PM', duration: '60 min', type: 'Deep Dive' },
+            { time: '2:30 PM', duration: '45 min', type: 'Technical Review' },
+            { time: '4:00 PM', duration: '30 min', type: 'Discovery Call' },
+            { time: '5:30 PM', duration: '45 min', type: 'Planning Session' }
+        ];
+        
+        if (!isToday) return baseSlots;
+        
+        // Filter out past time slots for today
+        return baseSlots.filter(slot => {
+            const [time, modifier] = slot.time.split(' ');
+            let [hours, minutes] = time.split(':').map(Number);
+            
+            // Convert to 24-hour format
+            if (modifier === 'PM' && hours !== 12) hours += 12;
+            if (modifier === 'AM' && hours === 12) hours = 0;
+            
+            // Check if this time slot is in the future
+            if (hours > currentHour) return true;
+            if (hours === currentHour && minutes > currentMinute) return true;
+            return false;
+        });
+    };
 
     // Close modal when clicking outside
     useEffect(() => {
@@ -49,9 +81,20 @@ const ScheduleCallButton = () => {
 
     const days = [];
     for (let i = 0; i < firstDayOfMonth; i++) days.push(null);
-    for (let i = 1; i <= daysInMonth; i++) days.push(new Date(currentYear, currentMonth, i));
+    for (let i = 1; i <= daysInMonth; i++) {
+        const date = new Date(currentYear, currentMonth, i);
+        days.push(date);
+    }
+
+    // Check if a date is in the past
+    const isPastDate = (date) => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return date < today;
+    };
 
     const handleDateSelect = (date) => {
+        if (isPastDate(date)) return; // Don't allow selecting past dates
         setSelectedDate(date);
         setStep(2);
     };
@@ -71,23 +114,75 @@ const ScheduleCallButton = () => {
             setIsSuccess(false);
         }, 300);
     };
+    const validateConfig = (details) => {
+       if(!details.name) {
+            return false;
+        }
+        else if(details.email && !/\S+@\S+\.\S+/.test(details.email)) {
+            return false;
+        }
+        else if(details.phone && !/^\+?\d{1,4}?[-.\s]?\(?\d{1,4}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(details.phone)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
 
     const handleSubmit = async () => {
+        if(!validateConfig(userDetails)) {
+            showToast("Error", "Please fill in all required fields.", "error");
+            return;
+        }
         setIsSubmitting(true);
         
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const response = await fetch('/api/schedule-call', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                date: selectedDate,
+                time: selectedTime,
+                user: userDetails
+            })
+        });
+        if (!response.ok) {
+            showToast("Error", "Error scheduling appointment. Please try again.", "error");
+            setIsSubmitting(false);
+            setIsSuccess(false);
+             setStep(1);
+             return
+        }
+            
         setIsSubmitting(false);
         setIsSuccess(true);
         setStep(4);
+
+        console.log('Appointment Details:', {
+            date: selectedDate,
+            time: selectedTime,
+            user: userDetails
+        });
     };
+
 
     const navigateMonth = (direction) => {
         setCurrentMonth(prev => {
-            if (direction === 'prev') return prev === 0 ? 11 : prev - 1;
-            return prev === 11 ? 0 : prev + 1;
+            if (direction === 'prev') {
+                const newMonth = prev === 0 ? 11 : prev - 1;
+                if(currentYear<new Date().getFullYear() || (currentYear === new Date().getFullYear() && newMonth < new Date().getMonth())) {
+                    showToast("Error", "Cannot navigate to past months.", "error");
+                    return prev;
+                }           
+                if (prev === 0) setCurrentYear(prevYear => prevYear - 1);
+                return newMonth;
+            } else {
+                const newMonth = prev === 11 ? 0 : prev + 1;
+                if (prev === 11) setCurrentYear(prevYear => prevYear + 1);
+                return newMonth;
+            }
         });
-        if (direction === 'prev' && currentMonth === 0) setCurrentYear(prev => prev - 1);
-        if (direction === 'next' && currentMonth === 11) setCurrentYear(prev => prev + 1);
     };
 
     const monthName = new Date(currentYear, currentMonth).toLocaleString('default', {
@@ -97,7 +192,6 @@ const ScheduleCallButton = () => {
 
     return (
         <div className="text-center">
-
             <p className="text-sm text-gray-500 mt-10 font-semibold">Still have questions? </p>
             <Button
                 className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 
@@ -204,25 +298,28 @@ const ScheduleCallButton = () => {
 
                                         <div className="grid grid-cols-7 gap-1">
                                             {days.map((day, index) => {
-                                                const isToday = day && day.getDate() === new Date().getDate() &&
-                                                    day.getMonth() === new Date().getMonth() &&
-                                                    day.getFullYear() === new Date().getFullYear();
+                                                const isToday = day && day.getDate() === now.getDate() &&
+                                                    day.getMonth() === now.getMonth() &&
+                                                    day.getFullYear() === now.getFullYear();
                                                 const isSelected = selectedDate && day && day.toDateString() === selectedDate.toDateString();
+                                                const isPast = day && isPastDate(day);
 
                                                 return (
                                                     <button
                                                         key={index}
-                                                        onClick={() => day && handleDateSelect(day)}
-                                                        className={`aspect-square flex flex-col items-center justify-center rounded-md text-xs transition-all ${day ? 'hover:bg-blue-50 cursor-pointer' : 'cursor-default'
+                                                        onClick={() => day && !isPast && handleDateSelect(day)}
+                                                        className={`aspect-square flex flex-col items-center justify-center rounded-md text-xs transition-all ${day && !isPast ? 'hover:bg-blue-50 cursor-pointer' : 'cursor-default'
                                                             } ${isSelected
                                                                 ? 'bg-blue-600 text-white shadow-sm'
-                                                                : day ? 'text-gray-800' : 'text-gray-300'
-                                                            } ${isToday && !isSelected ? 'border border-blue-300' : ''
+                                                                : isPast 
+                                                                    ? 'text-gray-300 bg-gray-100' 
+                                                                    : day ? 'text-gray-800' : 'text-gray-300'
+                                                            } ${isToday && !isSelected && !isPast ? 'border border-blue-300' : ''
                                                             }`}
-                                                        disabled={!day}
+                                                        disabled={!day || isPast}
                                                     >
                                                         {day ? day.getDate() : ''}
-                                                        {isToday && !isSelected && (
+                                                        {isToday && !isSelected && !isPast && (
                                                             <div className="w-1 h-1 rounded-full bg-blue-600 mt-0.5"></div>
                                                         )}
                                                     </button>
@@ -244,26 +341,39 @@ const ScheduleCallButton = () => {
                                                 Available Time Slots
                                             </h4>
                                             <div className="space-y-2">
-                                                {timeSlots.map((slot) => (
-                                                    <button
-                                                        key={slot.time}
-                                                        onClick={() => handleTimeSelect(slot)}
-                                                        className={`w-full p-3 rounded-lg border transition-all text-left ${selectedTime?.time === slot.time
-                                                                ? 'border-blue-600 bg-blue-50 text-blue-600 shadow-sm'
-                                                                : 'border-gray-200 hover:border-blue-300 hover:shadow-sm'
-                                                            }`}
-                                                    >
-                                                        <div className="flex justify-between items-center">
-                                                            <div>
-                                                                <div className="font-medium text-sm">{slot.time}</div>
-                                                                <div className="text-xs text-gray-500">{slot.duration} • {slot.type}</div>
+                                                {generateTimeSlots(selectedDate).length > 0 ? (
+                                                    generateTimeSlots(selectedDate).map((slot) => (
+                                                        <button
+                                                            key={slot.time}
+                                                            onClick={() => handleTimeSelect(slot)}
+                                                            className={`w-full p-3 rounded-lg border transition-all text-left ${selectedTime?.time === slot.time
+                                                                    ? 'border-blue-600 bg-blue-50 text-blue-600 shadow-sm'
+                                                                    : 'border-gray-200 hover:border-blue-300 hover:shadow-sm'
+                                                                }`}
+                                                        >
+                                                            <div className="flex justify-between items-center">
+                                                                <div>
+                                                                    <div className="font-medium text-sm">{slot.time}</div>
+                                                                    <div className="text-xs text-gray-500">{slot.duration} • {slot.type}</div>
+                                                                </div>
+                                                                <div className="text-xs bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded">
+                                                                    {slot.duration}
+                                                                </div>
                                                             </div>
-                                                            <div className="text-xs bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded">
-                                                                {slot.duration}
-                                                            </div>
-                                                        </div>
-                                                    </button>
-                                                ))}
+                                                        </button>
+                                                    ))
+                                                ) : (
+                                                    <div className="text-center py-6 text-gray-500">
+                                                        <Clock className="h-8 w-8 mx-auto mb-2 text-gray-400" />
+                                                        <p className="text-sm">No available time slots for this date</p>
+                                                        <button 
+                                                            onClick={() => setStep(1)}
+                                                            className="text-blue-600 text-xs mt-2 hover:underline"
+                                                        >
+                                                            Choose another date
+                                                        </button>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     </motion.div>
@@ -293,7 +403,7 @@ const ScheduleCallButton = () => {
                                                     </div>
                                                     <input
                                                         type="text"
-                                                        className="pl-9 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm py-2"
+                                                        className="pl-9 w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm py-2"
                                                         value={userDetails.name}
                                                         onChange={(e) => setUserDetails({ ...userDetails, name: e.target.value })}
                                                         placeholder="John Doe"
@@ -309,7 +419,7 @@ const ScheduleCallButton = () => {
                                                     </div>
                                                     <input
                                                         type="email"
-                                                        className="pl-9 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm py-2"
+                                                        className="pl-9 w-full  rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm py-2"
                                                         value={userDetails.email}
                                                         onChange={(e) => setUserDetails({ ...userDetails, email: e.target.value })}
                                                         placeholder="you@example.com"
@@ -325,7 +435,7 @@ const ScheduleCallButton = () => {
                                                     </div>
                                                     <input
                                                         type="tel"
-                                                        className="pl-9 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm py-2"
+                                                        className="pl-9 w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm py-2"
                                                         value={userDetails.phone}
                                                         onChange={(e) => setUserDetails({ ...userDetails, phone: e.target.value })}
                                                         placeholder="+1 (___) ___-____"
@@ -336,7 +446,7 @@ const ScheduleCallButton = () => {
                                             <div>
                                                 <label className="block text-xs font-medium text-gray-700 mb-1">Additional Notes (Optional)</label>
                                                 <textarea
-                                                    className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm py-2"
+                                                    className="w-full rounded-md border-gray-300 border-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm py-2"
                                                     rows={2}
                                                     value={userDetails.notes}
                                                     onChange={(e) => setUserDetails({ ...userDetails, notes: e.target.value })}
@@ -401,13 +511,13 @@ const ScheduleCallButton = () => {
                                     {step === 3 && (
                                         <button
                                             onClick={handleSubmit}
-                                            disabled={!userDetails.name || !userDetails.email || isSubmitting}
-                                            className={`ml-auto px-4 py-2 rounded-md font-medium text-sm transition-all ${userDetails.name && userDetails.email
-                                                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-sm hover:shadow-md'
-                                                    : 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                                                } ${isSubmitting ? 'opacity-80' : ''
-                                                }`}
-                                        >
+                                            disabled={isSubmitting}
+                                            className={`ml-auto px-4 py-2 rounded-md font-medium text-sm transition-all 
+                                                     bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-sm hover:shadow-md'
+                                                    
+                                                 ${isSubmitting ? 'opacity-80' : ''
+                                                }`}>
+                                        
                                             {isSubmitting ? 'Confirming...' : 'Confirm Appointment'}
                                         </button>
                                     )}
