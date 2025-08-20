@@ -856,8 +856,8 @@ const filters = [
   category: "mobile-development",
   type: "Mobile Application",
   description: "An intuitive photo editing app that transforms images with powerful yet simple tools including filters, color adjustments, and AI-enhanced effects.",
-  image: "/images/portfolio-images/photo-lasso.jpg",
-  modalImage: "/images/portfolio-images/photo-lasso-view.jpg",
+  image: "/images/portfolio-images/Photo-lasso.png",
+  modalImage: "/images/portfolio-images/photo-lasso-view.png",
   tech: [
     "React Native",
     "Python (for AI filters)",
