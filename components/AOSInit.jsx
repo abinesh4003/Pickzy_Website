@@ -13,9 +13,9 @@ export default function AOSInit() {
     if (typeof window !== 'undefined') {
       AOS.init({
         duration: 800,
-        easing: 'ease-out-quad',
+      
         once: false,
-        mirror: true,
+        mirror: false,
         offset: 100,
         anchorPlacement: 'top-bottom',
         disable: window.innerWidth < 768, // Disable on mobile safely

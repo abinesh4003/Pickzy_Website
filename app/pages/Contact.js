@@ -285,7 +285,7 @@ const contactInfo = [
 
   {/* Hero Section */}
   <section 
-    className="pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20"
+    className="bg-gradient-to-br from-blue-50 via-white to-purple-50 py-8 md:py-16 lg:py-20"
     data-aos="fade"
   >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -344,7 +344,7 @@ const contactInfo = [
   </section>
 
   {/* Contact Form & Info */}
-  <section className="py-20 bg-white">
+  <section className="py-8 md:py-16 lg:py-20 bg-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
        {/* contact form */}
@@ -457,7 +457,7 @@ const contactInfo = [
   </section>
 
   {/* FAQ Section */}
-  <section className="py-20 bg-gray-50">
+  <section className="py-8 md:py-16 lg:py-20 bg-gray-50">
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-16">
         <h2 
@@ -508,7 +508,7 @@ const contactInfo = [
   </section>
 
  {/* Map Section */}
-<section className="py-20 bg-white">
+<section className="py-8 md:py-16 lg:py-20 bg-white">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
     <div 
       className="text-center mb-12"

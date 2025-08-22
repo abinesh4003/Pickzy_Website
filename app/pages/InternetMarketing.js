@@ -111,7 +111,7 @@ export default function InternetMarketing() {
        
       
       {/* Hero Section */}
-      <section className="relative  pt-8 pb-20 md:pt-32 md:pb-28 bg-white">
+      <section className="relative  pt-8 pb-12 md:pb-16 md:pt-32 md:pb-28 bg-white">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 bg-[url('/patterns/subtle-pattern.png')] opacity-5"></div>
         
@@ -195,7 +195,7 @@ export default function InternetMarketing() {
       </section>
 
       {/* Why Internet Marketing Matters */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-8 md:py-12 lg:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -266,7 +266,7 @@ export default function InternetMarketing() {
       </section>
 
       {/* Our Core Services */}
-      <section className="py-20 bg-white">
+      <section className="py-8 md:py-12 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -307,7 +307,7 @@ export default function InternetMarketing() {
       </section>
 
       {/* How We Work */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-8 md:py-12 lg:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -343,7 +343,7 @@ export default function InternetMarketing() {
       </section>
 
       {/* Tools & Platforms */}
-      <section className="py-20 bg-white">
+      <section className="py-8 md:py-12 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -384,7 +384,7 @@ export default function InternetMarketing() {
       </section>
 
       {/* Industries We Serve */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+      <section className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -419,7 +419,7 @@ export default function InternetMarketing() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
+      <section className="py-8 md:py-12 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -462,7 +462,7 @@ export default function InternetMarketing() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-gray-900 text-white">
+      <section className="py-8 md:py-12 lg:py-16 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold mb-6 text-center">
@@ -499,7 +499,7 @@ export default function InternetMarketing() {
       </section>
 
       {/* Get Started */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="py-8 md:py-12 lg:py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6 text-center">
             Let's Elevate Your <span className="text-blue-200">Online Growth</span>

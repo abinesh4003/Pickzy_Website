@@ -142,7 +142,7 @@ export default function ContactForm() {
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-                <form onSubmit={handleSubmit} className="space-y-4" data-aos="fade-up"  >
+                <form onSubmit={handleSubmit} className="space-y-2" data-aos="fade-up"  >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4"  >
                         <div>
                             <label htmlFor="firstName" className="text-sm font-medium mb-2 block">

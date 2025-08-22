@@ -253,7 +253,7 @@ export default function PositionsPage() {
 
   if (loading) {
     return (
-      <section className="py-20 bg-white" >
+      <section className="py-8 md:py-12 lg:py-20 bg-white" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Skeleton className="h-10 w-64 mx-auto mb-4" />
@@ -316,7 +316,7 @@ export default function PositionsPage() {
   }
 
   return (
-    <section className="py-20 bg-white" id='positions'>
+    <section className="py-8 md:py-12 lg:py-20 bg-white" id='positions'>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"  >
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" >Open Positions</h2>

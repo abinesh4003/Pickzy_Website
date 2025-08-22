@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Autoplay from "embla-carousel-autoplay";
+import Image from 'next/image';
 import Link from 'next/link';
 import { 
   Users, 
@@ -111,17 +112,17 @@ export default function About() {
    <div className="min-h-screen bg-white">
    
 {/* Hero Section */}
-  <section className="pt-8 md:pt-12 lg:pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-8 md:py-12 lg:py-16 ">
+  <section className="pt-8 md:pt-12 lg:pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-2 md:py-12 lg:py-16 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16" data-aos="fade-down"  >
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          <div className="text-center mb-8 md:mb-12 " data-aos="fade-down"  >
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 ">
               About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">PickZy</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up"  >
               Founded in 2011, PickZy Interactive is a Chennai‑based software company delivering AI‑driven web & mobile solutions to clients in the US, UK, and India.
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div data-aos="fade-right">
               <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center md:text-left">Our Journey</h2>
               <p className="text-lg text-gray-600 mb-6">
@@ -141,7 +142,7 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <div data-aos="fade-left"   className='w-full h-full'>
+            <div data-aos="fade-left"   className='flex justify-center items-center h-90'>
               <img src="/team/about_hero.jpg" alt="PickZy team working" className="rounded-lg shadow-xl w-full h-full" />
             </div>
           </div>
@@ -179,10 +180,12 @@ export default function About() {
   <section className="py-8 md:py-16 lg:py-20 bg-gray-50">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div 
-        className="text-center mb-16"
+        className="text-center mb-8 md:mb-12 "
         data-aos="fade-down"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Values</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 ">
+              Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Values</span>
+            </h2>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
           These core values guide everything we do and shape how we work with our clients and each other.
         </p>
@@ -210,10 +213,11 @@ export default function About() {
   </section>
 
    {/* Timeline */}
-      <section className="py-20 bg-white">
+      <section className="py-8 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Journey</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our  <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Journey</span></h2>
+            
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               From humble beginnings in Chennai, we’ve steadily evolved into an AI-forward technology partner.
             </p>
@@ -248,44 +252,34 @@ export default function About() {
         className="text-center mb-16"
         data-aos="fade-down"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Our Team</span></h2>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
           Our diverse team of experts brings together years of experience and passion for creating exceptional software.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {team.map((member, index) => (
-          <Card 
-            key={index} 
-            className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow duration-300"
-            data-aos="zoom-in"
+     <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 lg:gap-8 w-full h-max'>
+       <Image
+            src="/team/emp_01.jpg"
+            alt="Team Member 1"
+            width={500}
+            height={500}
+            className="w-full h-full object-cover "
+       
+          />
+             <Image
+            src="/team/emp_12.jpg"
+            alt="Team Member 1"
+            width={500}
+            height={500}
+            className="w-full h-full object-cover "
           
-          >
-            <CardContent className="p-6">
-              <img 
-                src={member.image}
-                alt={member.name}
-                className="w-24 h-24 object-cover rounded-full mx-auto mb-4"
-              />
-              <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-              <p className="text-blue-600 font-medium mb-3">{member.role}</p>
-              <p className="text-sm text-gray-600 mb-4">{member.bio}</p>
-              <div className="flex flex-wrap gap-2 justify-center">
-                {member.skills.map((skill, idx) => (
-                  <Badge key={idx} variant="secondary" className="text-xs">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+          />
+     </div>
     </div>
   </section>
 
-<Carousel
+{/* <Carousel
   opts={{
     loop: true,
     align: "center",
@@ -312,11 +306,11 @@ export default function About() {
       </CarouselItem>
     ))}
   </CarouselContent>
-</Carousel>
+</Carousel> */}
 
  {/* CTA */}
   <section 
-    className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+    className="py-8 md:py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white"
     data-aos="zoom-in"
   >
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

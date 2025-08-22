@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   },
   description:
     'Leading software development company providing custom solutions, mobile apps, web development, and digital transformation services.',
+  icons: {
+    icon: '/favicon.ico',
+  }
 };
 
 export default function RootLayout({
