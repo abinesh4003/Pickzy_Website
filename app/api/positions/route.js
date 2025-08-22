@@ -7,7 +7,7 @@ export async function GET() {
     const client = await clientPromise;
     const db = client.db();
     
-    const positions = await db.collection('positions').find({}).toArray();
+    const positions = await db.collection('careers').find({}).toArray();
 
     return new Response(JSON.stringify({ 
       success: true,

@@ -30,7 +30,7 @@ export const metadata = {
     description: 'Building high-performance iOS and Android applications since 2015',
   },
   alternates: {
-    canonical: '/mobile-development',
+    canonical: '/mobile-apps-development',
   }
 };
 

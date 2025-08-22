@@ -13,7 +13,7 @@ export async function GET(request, context) {
     const client = await clientPromise;
     const db = client.db();
 
-    const position = await db.collection('positions').findOne({
+    const position = await db.collection('careers').findOne({
       _id: new ObjectId(id)
     });
 

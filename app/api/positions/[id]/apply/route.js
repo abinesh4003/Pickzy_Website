@@ -12,7 +12,7 @@ export async function PUT(request, { params }) {
   try {
     const client = await clientPromise;
     const db = client.db();
-    const collection = db.collection('positions');
+    const collection = db.collection('careers');
 
     const result = await collection.updateOne(
       { _id: new ObjectId(id) },   

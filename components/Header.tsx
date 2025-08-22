@@ -31,7 +31,7 @@ export default function Header() {
   // Services data
   const services: NavItem[] = [
     { name: "Web Development", href: "/web-development" },
-    { name: "Mobile Apps", href: "/mobile-development" },
+    { name: "Mobile Apps", href: "/mobile-apps-development" },
     { name: "Desktop Apps", href: "/desktop-application-development" },
     { name: "Design & MarkUp", href: "/design-and-markup" },
     { name: "Internet Marketing", href: "/internet-marketing" },

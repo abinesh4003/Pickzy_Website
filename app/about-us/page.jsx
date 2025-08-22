@@ -4,7 +4,7 @@ export const metadata = {
   description:
     'Meet the team behind PickZy. Since 2015, we’ve delivered 300+ custom software solutions for businesses worldwide. Learn our story.',
   alternates: {
-    canonical: 'https://pickzy.com/about',
+    canonical: 'https://pickzy.com/about-us',
   },
   openGraph: {
     title: 'About PickZy - Our Story & Team',

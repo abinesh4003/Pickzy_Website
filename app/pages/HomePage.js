@@ -55,7 +55,7 @@ export default function Home() {
       icon: <Smartphone className="w-8 h-8 text-purple-600" />,
       title: "Mobile App Development",
       description: "Native and cross-platform mobile applications for iOS and Android platforms.",
-      link: "/mobile-development"
+      link: "/services/mobile-apps-development"
     },
     {
       icon: <Globe className="w-8 h-8 text-green-600" />,

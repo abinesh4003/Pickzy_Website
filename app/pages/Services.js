@@ -39,7 +39,7 @@ const services = [
     description: "Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.",
     features: ["iOS & Android apps", "React Native", "Progressive Web Apps", "App Store optimization"],
     technologies: ["React Native", "Flutter", "Swift", "Kotlin"],
-    link: "/mobile-development"
+    link: "/mobile-apps-development"
   },
   {
     icon: <Monitor className="w-12 h-12 text-green-600" />,
