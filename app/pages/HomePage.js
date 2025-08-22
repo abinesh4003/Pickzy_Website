@@ -49,38 +49,38 @@ export default function Home() {
       icon: <Code className="w-8 h-8 text-blue-600" />,
       title: "Custom Software Development",
       description: "Tailored solutions built to meet your specific business requirements and scale with growth.",
-      link: "/services/custom-software-development"
+      link: "/custom-software-development"
     },
     {
       icon: <Smartphone className="w-8 h-8 text-purple-600" />,
       title: "Mobile App Development",
       description: "Native and cross-platform mobile applications for iOS and Android platforms.",
-      link: "/services/mobile-development"
+      link: "/mobile-development"
     },
     {
       icon: <Globe className="w-8 h-8 text-green-600" />,
       title: "Web Development",
       description: "Modern, responsive websites and web applications optimized for performance.",
-      link: "/services/web-development"
+      link: "/web-development"
     },
      {
     icon: <PenTool className="w-8 h-8 text-pink-600" />,
     title: "UI/UX Design",
     description: "User-centered interfaces and experiences that drive engagement and conversions.",
-    link: "/services/design-and-markup"
+    link: "/design-and-markup"
   },
     {
       icon: <Database className="w-8 h-8 text-orange-600" />,
       title: "Cloud Solutions",
       description: "Scalable cloud infrastructure and migration services for modern businesses.",
-      link: "/services/cloud"
+      link: "/cloud"
     },
    
      {
     icon: <Megaphone className="w-8 h-8 text-blue-400" />,
     title: "Internet Marketing",
     description: "SEO, PPC, and social media strategies to grow your online presence.",
-    link: "/services/internet-marketing"
+    link: "/internet-marketing"
   },
   ];
 
@@ -412,6 +412,91 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+
+      {/* Testimonial Modal */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="max-w-2xl">{/* Testimonial Modal */}
+<Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+  <DialogContent
+    className="
+      w-[95%] sm:w-[90%] md:w-[80%] lg:w-[70%] 
+      max-w-lg sm:max-w-xl md:max-w-2xl 
+      px-4 sm:px-6 md:px-8 py-6
+      rounded-2xl
+      max-h-[90vh] overflow-y-auto
+    "
+  >
+    {selectedTestimonial && (
+      <>
+        <DialogHeader>
+          <DialogTitle className="text-lg sm:text-xl md:text-2xl text-center">
+            Client Testimonial
+          </DialogTitle>
+        </DialogHeader>
+
+        {/* Rating Stars */}
+        <div className="flex justify-center mb-4">
+          {[...Array(selectedTestimonial.rating)].map((_, i) => (
+            <Star
+              key={i}
+              className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 fill-yellow-400 text-yellow-400"
+            />
+          ))}
+        </div>
+
+        {/* Content */}
+        <p className="text-gray-700 mb-6 italic text-sm sm:text-base md:text-lg text-center">
+          "{selectedTestimonial.content}"
+        </p>
+
+        {/* Author */}
+        <div className="flex items-center justify-center space-x-3 mt-6">
+          <img
+            src={selectedTestimonial.image}
+            alt={selectedTestimonial.name}
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
+          />
+          <div className="text-center sm:text-left">
+            <div className="font-semibold text-gray-900 text-sm sm:text-base md:text-lg">
+              {selectedTestimonial.name}
+            </div>
+            <div className="text-xs sm:text-sm text-gray-600">
+              {selectedTestimonial.role}
+            </div>
+          </div>
+        </div>
+      </>
+    )}
+  </DialogContent>
+</Dialog>
+
+          {selectedTestimonial && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl">Client Testimonial</DialogTitle>
+              </DialogHeader>
+              <div className="flex justify-center mb-4">
+                {[...Array(selectedTestimonial.rating)].map((_, i) => (
+                  <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-gray-700 mb-6 italic text-sm md:text-base lg:text-lg">"{selectedTestimonial.content}"</p>
+              <div className="flex items-center space-x-3 mt-6">
+                <img
+                  src={selectedTestimonial.image}
+                  alt={selectedTestimonial.name}
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">{selectedTestimonial.name}</div>
+                  <div className="text-sm text-gray-600">{selectedTestimonial.role}</div>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* CTA Section */}
       <section className="py-12 sm:py-20 bg-gray-50">

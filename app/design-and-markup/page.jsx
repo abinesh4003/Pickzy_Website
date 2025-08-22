@@ -21,7 +21,7 @@ export const metadata = {
   openGraph: {
     title: 'Design to Code Conversion Services | PickZy',
     description: 'Expert PSD/Figma to HTML conversion with responsive implementation and W3C validated markup',
-    url: 'https://pickzy.com/services/design-and-markup',
+    url: 'https://pickzy.com/design-and-markup',
     images: [
       {
         url: '/images/design-markup-og.jpg',
@@ -42,7 +42,7 @@ export const metadata = {
     creator: '@PickZyOfficial',
   },
   alternates: {
-    canonical: 'https://pickzy.com/services/design-and-markup',
+    canonical: 'https://pickzy.com/design-and-markup',
   },
   authors: [
     {

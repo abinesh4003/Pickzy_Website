@@ -30,13 +30,13 @@ export default function Header() {
 
   // Services data
   const services: NavItem[] = [
-    { name: "Web Development", href: "/services/web-development" },
-    { name: "Mobile Apps", href: "/services/mobile-development" },
-    { name: "Desktop Apps", href: "/services/desktop-application-development" },
-    { name: "Design & MarkUp", href: "/services/design-and-markup" },
-    { name: "Internet Marketing", href: "/services/internet-marketing" },
-    { name: "Digital Transformation", href: "/services/digital-transformation" },
-    { name: "Custom Software", href: "/services/custom-software-development" },
+    { name: "Web Development", href: "/web-development" },
+    { name: "Mobile Apps", href: "/mobile-development" },
+    { name: "Desktop Apps", href: "/desktop-application-development" },
+    { name: "Design & MarkUp", href: "/design-and-markup" },
+    { name: "Internet Marketing", href: "/internet-marketing" },
+    { name: "Digital Transformation", href: "/digital-transformation" },
+    { name: "Custom Software", href: "/custom-software-development" },
   ];
 
   // Developer types for Hire dropdown

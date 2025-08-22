@@ -1218,7 +1218,7 @@ const filters = [
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8" >
             {[
               "React", "Node.js", "Python", "AWS", "MongoDB", "PostgreSQL",
               "React Native", "Flutter", "Vue.js", "Angular", "Docker", "Kubernetes",
@@ -1227,7 +1227,6 @@ const filters = [
               <div
                 key={index}
                 className="text-center group hover:-translate-y-1 transition-transform duration-200"
-                data-aos="zoom-in"
                 
               >
                 <div className="bg-white p-6 rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-300">

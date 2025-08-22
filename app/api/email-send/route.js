@@ -61,11 +61,13 @@ export async function POST(request) {
     };
     const formattedBudget = budget ? (budgetRanges[budget] || budget) : 'Not specified';
 
+    const {CONTACT_RECIPIENT_EMAIL1,CONTACT_RECIPIENT_EMAIL2,CONTACT_RECIPIENT_EMAIL3}= process.env;
+
     // Email options with all form data
     const mailOptions = {
       from: `"${process.env.MAIL_FROM_NAME}" <${process.env.MAIL_FROM_ADDRESS}>`,
       replyTo: email,
-      to: process.env.RECIPIENT_EMAIL,
+      to: `${CONTACT_RECIPIENT_EMAIL1},${CONTACT_RECIPIENT_EMAIL2},${CONTACT_RECIPIENT_EMAIL3}`,
       subject: `New contact from ${firstName}${lastName ? ' ' + lastName : ''} - ${service || 'General Inquiry'}`,
       text: `
         Contact Form Submission

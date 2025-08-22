@@ -31,7 +31,7 @@ const services = [
     description: "Modern, responsive websites and web applications optimized for performance and user engagement.",
     features: ["Responsive design", "E-commerce solutions", "CMS development", "Performance optimization"],
     technologies: ["Next.js", "React", "Vue.js", "WordPress"],
-    link: "/services/web-development"
+    link: "/web-development"
   },
   {
     icon: <Smartphone className="w-12 h-12 text-purple-600" />,
@@ -39,7 +39,7 @@ const services = [
     description: "Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.",
     features: ["iOS & Android apps", "React Native", "Progressive Web Apps", "App Store optimization"],
     technologies: ["React Native", "Flutter", "Swift", "Kotlin"],
-    link: "/services/mobile-development"
+    link: "/mobile-development"
   },
   {
     icon: <Monitor className="w-12 h-12 text-green-600" />,
@@ -47,7 +47,7 @@ const services = [
     description: "Robust desktop applications for Windows, macOS, and Linux with native performance and integration.",
     features: ["Cross-platform development", "Native performance", "System integration", "Offline capabilities"],
     technologies: ["Electron", ".NET", "Java", "C++"],
-    link: "/services/desktop-application-development"
+    link: "/desktop-application-development"
   },
   {
     icon: <Palette className="w-12 h-12 text-pink-600" />,
@@ -55,7 +55,7 @@ const services = [
     description: "User-centered design solutions that create intuitive and engaging experiences for your customers.",
     features: ["User research", "Wireframing", "Prototyping", "Design systems", "HTML/CSS markup"],
     technologies: ["Figma", "Adobe XD", "Sketch", "HTML5", "CSS3"],
-    link: "/services/design-and-markup"
+    link: "/design-and-markup"
   },
   {
     icon: <TrendingUp className="w-12 h-12 text-orange-600" />,
@@ -63,7 +63,7 @@ const services = [
     description: "Comprehensive digital marketing strategies to increase your online visibility and drive business growth.",
     features: ["SEO optimization", "Content marketing", "Social media", "PPC campaigns", "Analytics"],
     technologies: ["Google Analytics", "SEMrush", "HubSpot", "Mailchimp", "Google Ads"],
-    link: "/services/internet-marketing"
+    link: "/internet-marketing"
   },
   {
     icon: <Code className="w-12 h-12 text-red-600" />,
@@ -71,7 +71,7 @@ const services = [
     description: "Strategic consulting to modernize your business processes and technology stack for the digital age.",
     features: ["Process automation", "AI/ML integration", "Digital strategy", "Change management"],
     technologies: ["AI/ML", "RPA", "IoT", "Cloud technologies"],
-    link: "/services/digital-transformation"
+    link: "/digital-transformation"
   },
   {
     icon: <Code className="w-12 h-12 text-indigo-600" />,
@@ -79,7 +79,7 @@ const services = [
     description: "Tailored software solutions built to meet your specific business requirements and scale with your growth.",
     features: ["Full-stack development", "API integration", "Legacy system modernization", "Microservices architecture"],
     technologies: ["React", "Node.js", "Python", "Java", ".NET"],
-    link: "/services/custom-software-development"
+    link: "/custom-software-development"
   },
   {
     icon: <Cloud className="w-12 h-12 text-teal-600" />,
@@ -87,7 +87,7 @@ const services = [
     description: "Scalable cloud infrastructure and migration services to optimize your operations and reduce costs.",
     features: ["Cloud migration", "DevOps & CI/CD", "Database optimization", "Auto-scaling solutions"],
     technologies: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes"],
-    link: "/services/cloud"
+    link: "/cloud"
   }
 ];
 

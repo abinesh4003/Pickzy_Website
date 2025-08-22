@@ -1,3 +1,4 @@
+import { Mails, TowerControl } from 'lucide-react';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
@@ -49,8 +50,9 @@ export async function POST(request) {
       MAIL_PASSWORD,
       MAIL_FROM_NAME,
       MAIL_FROM_ADDRESS,
-      RECIPIENT_EMAIL,
+      RESUME_RECIPIENT_EMAIL,
       MAIL_ENCRYPTION,
+      RESUME_RECIPIENT_EMAIL_2,
     } = process.env;
 
     if (
@@ -60,7 +62,8 @@ export async function POST(request) {
       !MAIL_PASSWORD ||
       !MAIL_FROM_NAME ||
       !MAIL_FROM_ADDRESS ||
-      !RECIPIENT_EMAIL
+      !RESUME_RECIPIENT_EMAIL ||
+      !RESUME_RECIPIENT_EMAIL_2
     ) {
       return NextResponse.json(
         { error: 'Server email configuration is incomplete.' },
@@ -85,7 +88,7 @@ export async function POST(request) {
     // Define mail options
     const mailOptions = {
       from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDRESS}>`,
-      to: RECIPIENT_EMAIL,
+      to: `${RESUME_RECIPIENT_EMAIL}, ${RESUME_RECIPIENT_EMAIL_2}`,
       subject: `New Resume Submission: ${name} - ${position}`,
       text: `
 Name: ${name}
@@ -126,3 +129,4 @@ Message: ${message}
     );
   }
 }
+

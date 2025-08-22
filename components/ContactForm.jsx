@@ -142,8 +142,8 @@ export default function ContactForm() {
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4" data-aos="fade-up"  >
+                <form onSubmit={handleSubmit} className="space-y-4" data-aos="fade-up"  >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4"  >
                         <div>
                             <label htmlFor="firstName" className="text-sm font-medium mb-2 block">
                                 First Name *
@@ -174,7 +174,7 @@ export default function ContactForm() {
                         </div>
                     </div>
 
-                    <div data-aos="fade-up"  >
+                    <div  >
                         <label htmlFor="email" className="text-sm font-medium mb-2 block">
                             Email *
                         </label>
@@ -192,7 +192,7 @@ export default function ContactForm() {
                         )}
                     </div>
 
-                    <div data-aos="fade-up"  >
+                    <div  >
                         <label htmlFor="phone" className="text-sm font-medium mb-2 block">
                             Phone
                         </label>
@@ -205,7 +205,7 @@ export default function ContactForm() {
                         />
                     </div>
 
-                    <div data-aos="fade-up"  >
+                    <div  >
                         <label htmlFor="company" className="text-sm font-medium mb-2 block">
                             Company
                         </label>
@@ -218,7 +218,7 @@ export default function ContactForm() {
                         />
                     </div>
 
-                    <div data-aos="fade-up"  >
+                    <div  >
                         <label htmlFor="service" className="text-sm font-medium mb-2 block">
                             Service Interested In
                         </label>
@@ -236,7 +236,7 @@ export default function ContactForm() {
                         </select>
                     </div>
 
-                    <div data-aos="fade-up"  >
+                    <div  >
                         <label htmlFor="budget" className="text-sm font-medium mb-2 block">
                             Project Budget
                         </label>
@@ -254,7 +254,7 @@ export default function ContactForm() {
                         </select>
                     </div>
 
-                    <div data-aos="fade-up"  >
+                    <div  >
                         <label htmlFor="details" className="text-sm font-medium mb-2 block">
                             Project Details *
                         </label>
@@ -275,7 +275,7 @@ export default function ContactForm() {
                     <Button
                         type="submit"
                         className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-3 transition-all"
-                        data-aos="fade-up"
+                        
                          
                         disabled={isSubmitting}
                     >
@@ -298,7 +298,7 @@ export default function ContactForm() {
 
                 <p
                     className="text-xs text-gray-500 text-center"
-                    data-aos="fade-up"
+                    
                      
                 >
                     By submitting this form, you agree to our privacy policy and terms of service.

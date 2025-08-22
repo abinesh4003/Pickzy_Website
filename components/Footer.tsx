@@ -22,10 +22,10 @@ export default function Footer() {
             {/* Services - Column 2 */}
             <div className="foot_sstyle fm2 space-y-3">
               <h3 className="text-lg font-semibold mb-4">Mobile Services</h3>
-              <p><Link href="/services/mobile-development" className="text-gray-400 hover:text-white transition-colors text-sm block">Mobile Development</Link></p>
-              <p><Link href="/services/web-development" className="text-gray-400 hover:text-white transition-colors text-sm block">Web Development</Link></p>
-              <p><Link href="/services/cloud" className="text-gray-400 hover:text-white transition-colors text-sm block">Cloud Solutions</Link></p>
-              <p><Link href="/services/digital-transformation" className="text-gray-400 hover:text-white transition-colors text-sm block">Digital Transformation</Link></p>
+              <p><Link href="/mobile-development" className="text-gray-400 hover:text-white transition-colors text-sm block">Mobile Development</Link></p>
+              <p><Link href="/web-development" className="text-gray-400 hover:text-white transition-colors text-sm block">Web Development</Link></p>
+              <p><Link href="/cloud" className="text-gray-400 hover:text-white transition-colors text-sm block">Cloud Solutions</Link></p>
+              <p><Link href="/digital-transformation" className="text-gray-400 hover:text-white transition-colors text-sm block">Digital Transformation</Link></p>
               <p><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm block">All Services</Link></p>
             </div>
 

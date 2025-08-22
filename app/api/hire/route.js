@@ -47,13 +47,14 @@ export async function POST(request) {
 
 
     
+    const {CONTACT_RECIPIENT_EMAIL1,CONTACT_RECIPIENT_EMAIL2,CONTACT_RECIPIENT_EMAIL3}=process.env;
    
 
 
     const mailOptions = {
       from: `"${process.env.MAIL_FROM_NAME}" <${process.env.MAIL_FROM_ADDRESS}>`,
       replyTo: email,
-      to: process.env.RECIPIENT_EMAIL,
+      to: `${CONTACT_RECIPIENT_EMAIL1},${CONTACT_RECIPIENT_EMAIL2},${CONTACT_RECIPIENT_EMAIL3}`,
       subject: `New Hiring Form Submission from ${name}`,
       text: `
         Name: ${name}}

@@ -20,7 +20,7 @@ export const metadata = {
   openGraph: {
     title: 'Custom Software Development Services | PickZy',
     description: 'Tailored software solutions designed for your unique business needs and workflows',
-    url: 'https://pickzy.com/services/custom-software-development',
+    url: 'https://pickzy.com/custom-software-development',
     images: [
       {
         url: '/images/custom-software-og.jpg',
@@ -41,7 +41,7 @@ export const metadata = {
     creator: '@PickZyOfficial',
   },
   alternates: {
-    canonical: 'https://pickzy.com/services/custom-software-development',
+    canonical: 'https://pickzy.com/custom-software-development',
   },
   authors: [
     {

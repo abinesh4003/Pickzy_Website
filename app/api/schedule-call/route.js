@@ -27,12 +27,14 @@ export async function POST(request) {
       },
     });
 
+    const {CONTACT_RECIPIENT_EMAIL1, CONTACT_RECIPIENT_EMAIL2, CONTACT_RECIPIENT_EMAIL3} = process.env;
+
    
     // Email options with all form data
     const mailOptions = {
       from: `"${process.env.MAIL_FROM_NAME}" <${process.env.MAIL_FROM_ADDRESS}>`,
       replyTo: user.email,
-      to: process.env.RECIPIENT_EMAIL,
+      to: `${CONTACT_RECIPIENT_EMAIL1},${CONTACT_RECIPIENT_EMAIL2},${CONTACT_RECIPIENT_EMAIL3}`,
       subject: `New Call Scheduled with ${user.name} `,
       text: `
         Call Scheduled Details:

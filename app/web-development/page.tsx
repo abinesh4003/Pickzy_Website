@@ -30,7 +30,7 @@ export const metadata = {
     description: 'Building high-performance web applications since 2015',
   },
   alternates: {
-    canonical: '/services/web-development',
+    canonical: '/web-development',
   }
 };
 

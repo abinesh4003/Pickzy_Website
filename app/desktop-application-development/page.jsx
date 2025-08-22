@@ -21,7 +21,7 @@ export const metadata = {
   openGraph: {
     title: 'Professional Desktop Application Development Services | PickZy',
     description: 'PickZy builds custom desktop applications for Windows, macOS and Linux using modern technologies like Electron, .NET MAUI and Flutter Desktop.',
-    url: 'https://pickzy.com/services/desktop-application-development',
+    url: 'https://pickzy.com/desktop-application-development',
     images: [
       {
         url: '/images/desktop-app-development-og.jpg',
@@ -42,7 +42,7 @@ export const metadata = {
     creator: '@PickZyOfficial',
   },
   alternates: {
-    canonical: 'https://pickzy.com/services/desktop-application-development',
+    canonical: 'https://pickzy.com/desktop-application-development',
   },
   authors: [
     {
