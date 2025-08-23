@@ -284,20 +284,17 @@ export default function About() {
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-10" data-aos="fade-down">
       
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 ">
         Recognized by <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">NASSCOM</span>
       </h2>
       <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
     </div>
 <div className="bg-white p-6 md:p-8 border border-gray-200" data-aos="zoom-in">
-  <div className="flex flex-col md:flex-row items-center justify-start mb-6">
+  <div className="flex flex-col md:flex-row items-center justify-center mb-6 ">
     <div className="flex items-center justify-center mb-4 md:mb-0 md:mr-6">
       <Image src="/process/Nasscom.png" alt="NASSCOM Logo" width={180} height={180} />
     </div>
-    <div className="text-center md:text-left">
-      <h3 className="text-2xl font-bold text-gray-900">NASSCOM Member</h3>
-      <p className="text-gray-600 font-medium">Verified Since 2021</p>
-    </div>
+   
   </div>
 
   <div className="space-y-4 text-gray-700">
