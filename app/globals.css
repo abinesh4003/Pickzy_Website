@@ -120,3 +120,28 @@
   right: 20px !important;
   left: auto !important;
 }
+
+
+
+
+
+/* reCAPTCHA responsive scaling */
+.recaptcha-wrapper {
+  transform: scale(0.90);     
+  transform-origin: 0 0;         
+  -webkit-transform: scale(0.90);
+  -webkit-transform-origin: 0 0;
+}
+
+/* Adjust scaling for larger screens */
+@media (min-width: 640px) {   /* sm */
+  .recaptcha-wrapper {
+    transform: scale(0.95);
+  }
+}
+@media (min-width: 768px) {   /* md */
+  .recaptcha-wrapper {
+    transform: scale(1);
+  }
+}
+

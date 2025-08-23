@@ -30,7 +30,7 @@ export const metadata = {
     description: 'Building high-performance iOS and Android applications since 2015',
   },
   alternates: {
-    canonical: '/mobile-apps-development',
+    canonical: 'https://pickzy.com/mobile-apps-development',
   }
 };
 

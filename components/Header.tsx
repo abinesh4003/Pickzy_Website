@@ -56,7 +56,7 @@ export default function Header() {
   // Navigation links - Reordered as requested
   const navLinks: NavItem[] = [
     { name: "About", href: "/about-us" },
-    { name: "Our Works", href: "/portfolio" },
+    { name: "Works", href: "/portfolio" },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact-us" },
   ];
@@ -356,10 +356,22 @@ export default function Header() {
                   : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
-              Our Works
+              Works
             </Link>
 
-            {/* 5. Careers */}
+            {/* 5.process */}
+            {/* <Link
+              href="/process"
+              className={`block px-3 py-2 text-base font-medium rounded-md ${
+                pathname === "/process"
+                  ? ' text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              Process
+            </Link> */}
+
+            {/* 6. Careers */}
             <Link
               href="/careers"
               className={`block px-3 py-2 text-base font-medium rounded-md ${
@@ -371,7 +383,7 @@ export default function Header() {
               Careers
             </Link>
 
-            {/* 6. Contact */}
+            {/* 7. Contact */}
             <Link
               href="/contact-us"
               className={`block px-3 py-2 text-base font-medium rounded-md ${
@@ -494,6 +506,19 @@ export default function Header() {
             >
               Our Works
             </Link>
+
+            {/* 5.process */}
+            {/* <Link
+              href="/process"
+              className={`block px-3 py-2 text-base font-medium rounded-md ${
+                pathname === "/process"
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Process
+            </Link> */}
 
             {/* 5. Careers */}
             <Link

@@ -279,34 +279,68 @@ export default function About() {
     </div>
   </section>
 
-{/* <Carousel
-  opts={{
-    loop: true,
-    align: "center",
-    slidesToScroll: 1,
-  }}
-  plugins={[
-    Autoplay({
-      delay: 3000, // 3 seconds between slides
-      stopOnInteraction: false, // continue autoplay after user interaction
-    }),
-  ]}
-  className="py-20"
->
-  <CarouselContent>
-    {teamImages.map((image, index) => (
-      <CarouselItem key={index} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
-        <div className="p-1">
-          <img
-            src={`/team/emp_${image}.jpg`}
-            alt={`Team ${index + 1}`}
-            className="w-full h-64 object-cover rounded-xl"
-          />
-        </div>
-      </CarouselItem>
-    ))}
-  </CarouselContent>
-</Carousel> */}
+{/* Nasscom Membership Section */}
+<section className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-blue-50/30 to-purple-50/30">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-10" data-aos="fade-down">
+      
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Recognized by <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">NASSCOM</span>
+      </h2>
+      <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+    </div>
+<div className="bg-white p-6 md:p-8 border border-gray-200" data-aos="zoom-in">
+  <div className="flex flex-col md:flex-row items-center justify-start mb-6">
+    <div className="flex items-center justify-center mb-4 md:mb-0 md:mr-6">
+      <Image src="/process/Nasscom.png" alt="NASSCOM Logo" width={180} height={180} />
+    </div>
+    <div className="text-center md:text-left">
+      <h3 className="text-2xl font-bold text-gray-900">NASSCOM Member</h3>
+      <p className="text-gray-600 font-medium">Verified Since 2021</p>
+    </div>
+  </div>
+
+  <div className="space-y-4 text-gray-700">
+    <p className="leading-relaxed text-lg">
+      PickZy Interactive is a proud member of 
+      <span className="font-semibold text-blue-700"> NASSCOM</span> 
+      (National Association of Software and Services Companies), the premier trade association 
+      and chamber of commerce of the Indian IT and BPO industry.
+    </p>
+    
+    <div className="border-l-4 border-blue-500 pl-4 my-6">
+      <p className="italic text-gray-600">
+        "Established in 1988, NASSCOM is a non-profit organization focused on driving the growth 
+        and development of the technology sector in India."
+      </p>
+    </div>
+    
+    <p className="leading-relaxed">
+      With over <span className="font-semibold">2000 members</span>, including 250+ global companies from 
+      China, EU, Japan, US, UK, and India, NASSCOM represents businesses across software development, 
+      IT services, software products, BPO services, and e-commerce.
+    </p>
+    
+    <div className="bg-blue-50 p-4 rounded-md border border-blue-100">
+      <p className="text-blue-800 font-medium flex items-start">
+        <Award className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+        This membership reflects our commitment to industry standards, ethical practices, 
+        and excellence in technology services.
+      </p>
+    </div>
+  </div>
+
+  <div className="mt-8 pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-start">
+    <div className="flex items-center text-sm text-gray-600">
+      <Globe className="w-4 h-4 mr-2 text-blue-500" />
+      <span>Global Industry Recognition</span>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
 
  {/* CTA */}
   <section 

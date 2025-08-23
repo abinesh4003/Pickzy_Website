@@ -37,13 +37,16 @@ const ScheduleCallButton = () => {
             date.getFullYear() === now.getFullYear();
         
         const baseSlots = [
-            { time: '9:00 AM', duration: '30 min', type: 'Strategy Session' },
-            { time: '10:00 AM', duration: '30 min', type: 'Consultation' },
-            { time: '11:00 AM', duration: '30 min', type: 'Q&A' },
-            { time: '1:00 PM', duration: '60 min', type: 'Deep Dive' },
-            { time: '2:30 PM', duration: '45 min', type: 'Technical Review' },
-            { time: '4:00 PM', duration: '30 min', type: 'Discovery Call' },
-            { time: '5:30 PM', duration: '45 min', type: 'Planning Session' }
+            { time: '9:00 AM', duration: '60 min', type: 'Strategy Session' },
+            { time: '10:00 AM', duration: '60 min', type: 'Consultation' },
+            { time: '11:00 AM', duration: '60 min', type: 'Q&A' },
+            { time: '12:00 PM', duration: '60 min', type: 'Deep Dive' },
+            { time: '2:00 PM', duration: '60 min', type: 'Technical Review' },
+            { time: '3:00 PM', duration: '60 min', type: 'Discovery Call' },
+            { time: '4:00 PM', duration: '60 min', type: 'Planning Session' },
+             { time: '5:00 PM', duration: '60 min', type: 'Planning Session' },
+              { time: '6:00  PM', duration: '60 min', type: 'Planning Session' }
+
         ];
         
         if (!isToday) return baseSlots;
@@ -172,7 +175,7 @@ const ScheduleCallButton = () => {
             if (direction === 'prev') {
                 const newMonth = prev === 0 ? 11 : prev - 1;
                 if(currentYear<new Date().getFullYear() || (currentYear === new Date().getFullYear() && newMonth < new Date().getMonth())) {
-                    showToast("Error", "Cannot navigate to past months.", "error");
+                  
                     return prev;
                 }           
                 if (prev === 0) setCurrentYear(prevYear => prevYear - 1);
@@ -354,11 +357,9 @@ const ScheduleCallButton = () => {
                                                             <div className="flex justify-between items-center">
                                                                 <div>
                                                                     <div className="font-medium text-sm">{slot.time}</div>
-                                                                    <div className="text-xs text-gray-500">{slot.duration} • {slot.type}</div>
+                                                                  
                                                                 </div>
-                                                                <div className="text-xs bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded">
-                                                                    {slot.duration}
-                                                                </div>
+                                                               
                                                             </div>
                                                         </button>
                                                     ))

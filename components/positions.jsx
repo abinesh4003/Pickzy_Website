@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { MapPin, DollarSign, Clock, ArrowRight, Briefcase, BarChart2, Award, Users, Eye, FileText, ListChecks, Gift, Info } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { showToast } from './ui/toast';
+import Recaptcha from '@/components/ui/recaptcha';
 
 export default function PositionsPage() {
   const [positions, setPositions] = useState([]);
@@ -20,6 +21,8 @@ export default function PositionsPage() {
   const [loading, setLoading] = useState(false);
   const [applyID, setApplyID] = useState(null);
   const [selectedPosition, setSelectedPosition] = useState(null);
+  const recaptchaRef = useRef(null);
+  const [isRecaptchaVerified, setIsRecaptchaVerified] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -32,7 +35,8 @@ export default function PositionsPage() {
     name: '',
     email: '',
     phone: '',
-    resume: ''
+    resume: '',
+    recaptcha: ''
   });
 
   const validateField = (name, value) => {
@@ -65,26 +69,26 @@ export default function PositionsPage() {
   };
 
   const handleChange = (e) => {
-
     const { name, value } = e.target;
 
-          if (name === 'phone') {
-    // Remove any non-numeric characters
-    const numericValue = value.replace(/[^0-9]/g, '')
-    setFormData(prev => ({
-      ...prev,
-      [name]: numericValue
-    }))
-  } else {
-    setFormData(prev => ({ ...prev, [name]: value }));
-  }
-      // Validate on change
-      if (name in errors) {
-        setErrors(prev => ({
-          ...prev,
-          [name]: validateField(name, value)
-        }));
-      }
+    if (name === 'phone') {
+      // Remove any non-numeric characters
+      const numericValue = value.replace(/[^0-9]/g, '');
+      setFormData(prev => ({
+        ...prev,
+        [name]: numericValue
+      }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
+    
+    // Validate on change
+    if (name in errors) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: validateField(name, name === 'resume' ? formData.resume : value)
+      }));
+    }
   };
 
   const handleFileChange = (e) => {
@@ -105,12 +109,23 @@ export default function PositionsPage() {
       name: validateField('name', formData.name),
       email: validateField('email', formData.email),
       phone: validateField('phone', formData.phone),
-      resume: validateField('resume', formData.resume)
+      resume: validateField('resume', formData.resume),
+      recaptcha: isRecaptchaVerified ? '' : 'Please complete the reCAPTCHA verification'
     };
     
     setErrors(newErrors);
     
     return !Object.values(newErrors).some(error => error);
+  };
+
+  const handleRecaptchaVerified = () => {
+    setIsRecaptchaVerified(true);
+    setErrors(prev => ({ ...prev, recaptcha: '' }));
+  };
+
+  const handleRecaptchaError = (errorMsg) => {
+    setIsRecaptchaVerified(false);
+    setErrors(prev => ({ ...prev, recaptcha: errorMsg }));
   };
 
   const handleViewSubmit = async (position) => {
@@ -153,13 +168,11 @@ export default function PositionsPage() {
     // Validate form
     if (!validateForm()) {
       console.error('Form validation failed');
-      showToast('Validation Error', 'Please fix the errors in the form', 'error');
       return;
     }
-      showToast('Success', 'Resume submitted successfully! Our team will get back to you soon.', 'success');
-      setOpenApplyDialog(false);
-   
-      
+    
+    setLoading(true);
+    
     try {
       const formPayload = new FormData();
       formPayload.append('name', formData.name);
@@ -175,22 +188,27 @@ export default function PositionsPage() {
         method: 'POST',
         body: formPayload,
       });
-       clearForm();
+
       if (!response.ok) {
         throw new Error('Failed to submit resume');
       }
 
-     
+      showToast('Success', 'Resume submitted successfully! Our team will get back to you soon.', 'success');
+      setOpenApplyDialog(false);
       
-   
       if (positionId) {
         await handleApplySubmit();
       }
     } catch (error) {
       console.error(error);
-      
+      showToast('Error', 'Failed to submit resume. Please try again.', 'error');
     } finally {
-     
+      setLoading(false);
+      clearForm();
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
+      setIsRecaptchaVerified(false);
     }
   };
 
@@ -201,8 +219,13 @@ export default function PositionsPage() {
       name: '',
       email: '',
       phone: '',
-      resume: ''
+      resume: '',
+      recaptcha: ''
     });
+    if (recaptchaRef.current) {
+      recaptchaRef.current.reset();
+    }
+    setIsRecaptchaVerified(false);
   };
 
   const clearForm = () => {
@@ -484,6 +507,17 @@ export default function PositionsPage() {
           Accepted formats: PDF, DOC, DOCX (Max 5MB)
         </p>
       </div>
+        {/* ReCAPTCHA Component */}
+              <div className="sm:col-span-2">
+                <Recaptcha
+                  ref={recaptchaRef}
+                  onVerified={handleRecaptchaVerified}
+                  onError={handleRecaptchaError}
+                />
+                {errors.recaptcha && (
+                  <p className="text-red-500 text-xs mt-2">{errors.recaptcha}</p>
+                )}
+              </div>
       <div className="flex flex-col xs:flex-row justify-end gap-1.5 sm:gap-2 pt-2">
         <Button
           type="button"

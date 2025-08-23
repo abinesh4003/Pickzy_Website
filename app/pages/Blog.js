@@ -6,10 +6,11 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Calendar, User, ArrowRight, Clock, MapPin, Phone, Send, Mail, MessageSquare } from 'lucide-react';
 import Blogs from '@/app/blog/blog';
 import { showToast } from '@/components/ui/toast';
+import Recaptcha from '@/components/ui/recaptcha';
 
 export default function Blog() {
   const [formData, setFormData] = useState({
@@ -21,9 +22,12 @@ export default function Blog() {
   const [errors, setErrors] = useState({
     firstName: '',
     email: '',
-    details: ''
+    details: '',
+    recaptcha: ''
   });
-
+  
+  const recaptchaRef = useRef(null);
+  const [isRecaptchaVerified, setIsRecaptchaVerified] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -38,12 +42,23 @@ export default function Blog() {
     slug: "future-of-software-development-ai-ml"
   };
 
+  const handleRecaptchaVerified = () => {
+    setIsRecaptchaVerified(true);
+    setErrors(prev => ({ ...prev, recaptcha: '' }));
+  };
+
+  const handleRecaptchaError = (errorMsg) => {
+    setIsRecaptchaVerified(false);
+    setErrors(prev => ({ ...prev, recaptcha: errorMsg }));
+  };
+
   const validateForm = () => {
     let isValid = true;
     const newErrors = {
       firstName: '',
       email: '',
-      details: ''
+      details: '',
+      recaptcha: ''
     };
 
     // Name validation
@@ -73,6 +88,12 @@ export default function Blog() {
       isValid = false;
     }
 
+    // ReCAPTCHA validation
+    if (!isRecaptchaVerified) {
+      newErrors.recaptcha = 'Please complete the reCAPTCHA verification';
+      isValid = false;
+    }
+
     setErrors(newErrors);
     return isValid;
   };
@@ -96,7 +117,6 @@ export default function Blog() {
     e.preventDefault();
     
     if (!validateForm()) {
-      showToast('Error', 'Please fix the errors in the form', 'error');
       return;
     }
 
@@ -121,6 +141,12 @@ export default function Blog() {
         email: '',
         details: '' 
       });
+      
+      // Reset reCAPTCHA after successful submission
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
+      setIsRecaptchaVerified(false);
     } catch (error) {
       showToast('Error', 'Failed to send message. Please try again.', 'error');
       console.error('Error:', error);
@@ -338,6 +364,18 @@ export default function Blog() {
                           : 'border-gray-300 focus:ring-indigo-500'
                       }`}
                     ></textarea>
+                  </div>
+                  
+                  {/* ReCAPTCHA Component */}
+                  <div className="mb-4">
+                    <Recaptcha
+                      ref={recaptchaRef}
+                      onVerified={handleRecaptchaVerified}
+                      onError={handleRecaptchaError}
+                    />
+                    {errors.recaptcha && (
+                      <p className="text-red-500 text-xs mt-2">{errors.recaptcha}</p>
+                    )}
                   </div>
 
                   <Button
