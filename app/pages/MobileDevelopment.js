@@ -100,110 +100,106 @@ export default function MobileDevelopment() {
 
   return (
   <div className="min-h-screen bg-white">
-    {/* Hero Section */}
-    <section className="relative pb-10 md:pb-24 pt-8 md:pt-16 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen flex items-center">
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-[url('/service/mobile/hero_back.jpg')] bg-cover bg-center md:bg-[length:1200px] mix-blend-overlay"></div>
-      </div>
-      
-      <div className="container mx-auto px-4 sm:px-4 md:px-8 lg:px-8 py-4 md:py-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-16 items-center">
-          {/* Text Content */}
-          <div className="relative z-10 text-center lg:text-left" data-aos="fade-right">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 md:mb-6 leading-tight">
-              Mobile Application <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block mt-1 md:mt-2">Development</span>
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-4 md:mb-8 max-w-lg mx-auto lg:mx-0">
-              We build scalable, high-performance mobile applications that drive engagement and business growth for startups and enterprises.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center lg:justify-start">
-              <Link href="/contact-us">
-                <Button size="lg" className="bg-gradient-to-r w-full sm:w-auto from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg text-sm md:text-base">
-                  Get Started
-                </Button>
-              </Link>
-              <Link href="#case-studies">
-                <Button size="lg" variant="outline" className="border-gray-300 hover:bg-white/90 shadow-sm w-full sm:w-auto text-sm md:text-base">
-                  View Case studies
-                </Button>
-              </Link>
-            </div>
-            
-            {/* Trust indicators */}
-            <div className="mt-6 md:mt-12 flex flex-col sm:flex-row items-center gap-3 sm:gap-6 justify-center lg:justify-start">
-              <div className="flex -space-x-2">
-                <img 
-                  src="/service/mobile/p1.jpg" 
-                  alt="Client" 
-                  className="w-7 h-7 md:w-10 md:h-10 rounded-full border-2 border-white"
-                />
-                <img 
-                  src="/service/mobile/p1.jpg" 
-                  alt="Client" 
-                  className="w-7 h-7 md:w-10 md:h-10 rounded-full border-2 border-white"
-                />
-                <img 
-                  src="/service/mobile/p1.jpg" 
-                  alt="Client" 
-                  className="w-7 h-7 md:w-10 md:h-10 rounded-full border-2 border-white"
-                />
-              </div>
-              <div>
-                <p className="text-xs md:text-base text-gray-600 font-medium">Trusted by 100+ businesses</p>
-                <div className="flex items-center mt-1 justify-center lg:justify-start">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 md:w-4 md:h-4 text-yellow-400 fill-current" />
-                  ))}
-                  <span className="ml-1 text-xs md:text-sm text-gray-500">5.0 (120 reviews)</span>
-                </div>
-              </div>
-            </div>
+{/* Mobile Development Hero */}
+<section className="relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden min-h-screen flex items-center">
+  {/* Background pattern */}
+  <div className="absolute top-0 left-0 w-full h-full opacity-20">
+    <div className="absolute inset-0 bg-[url('/service/mobile/hero_back.jpg')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
+  </div>
+
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      {/* Text Content */}
+      <div className="relative z-10 text-center lg:text-left">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+          Mobile Application{" "}
+          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Development
+          </span>
+        </h1>
+        
+        <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-lg mx-auto lg:mx-0">
+          Scalable, High-Performance Mobile Solutions
+        </p>
+        
+        <p className="text-base md:text-lg text-gray-600 mb-8 md:mb-10 max-w-2xl mx-auto lg:mx-0">
+          We build scalable, high-performance mobile applications that drive engagement 
+          and business growth for startups and enterprises.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+          <Link href="/contact-us">
+            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 text-sm md:text-base">
+              Get Started
+            </Button>
+          </Link>
+          <Link href="/portfolio">
+            <Button variant="outline" className="border-gray-300 hover:bg-gray-50 text-sm md:text-base">
+              View Case Studies
+            </Button>
+          </Link>
+        </div>
+        
+        {/* Trust indicators */}
+        <div className="mt-8 flex items-center justify-center lg:justify-start">
+          <div className="flex -space-x-2">
+            <img 
+              src="/service/mobile/p1.jpg" 
+              alt="Client" 
+              className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white"
+            />
+            <img 
+              src="/service/mobile/p1.jpg" 
+              alt="Client" 
+              className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white"
+            />
+            <img 
+              src="/service/mobile/p1.jpg" 
+              alt="Client" 
+              className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white"
+            />
           </div>
-          
-          {/* Image Content */}
-          <div className="relative rounded-xl w-full h-full flex justify-center items-center order-first lg:order-last mt-4 md:mt-0" data-aos="fade-left">
-            <div className="relative z-10 w-56 sm:w-64 md:w-96 h-auto max-w-lg mx-auto">
-              <div className="relative">
-                {/* Main app screenshot with floating elements */}
-                <img 
-                  src="/service/mobile/hero.jpg" 
-                  alt="Mobile App Development" 
-                  className="w-full h-auto rounded-xl shadow-xl md:shadow-2xl border-2 md:border-4 lg:border-8 border-white"
-                />
-                
-                {/* Floating badge */}
-                <div className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 bg-white rounded-md md:rounded-lg shadow-md px-2 py-1 md:px-4 md:py-3 flex items-center">
-                  <div className="bg-green-100 p-1 md:p-2 rounded-full mr-1 md:mr-3">
-                    <Check className="w-3 h-3 md:w-5 md:h-5 text-green-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 text-xs md:text-sm">Top Rated</p>
-                    <p className="text-[9px] md:text-xs text-gray-500">Mobile Developers</p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Platform badges floating around */}
-              <div className="absolute -left-2 -top-2 md:-left-8 md:-top-8 bg-white p-1 md:p-3 rounded-full shadow-sm md:shadow-md">
-                <img src="/service/mobile/logo1.png" alt="iOS" className="w-4 h-4 md:w-8 md:h-8" />
-              </div>
-              <div className="absolute -right-2 -top-2 md:-right-8 md:-top-8 bg-white p-1 md:p-3 rounded-full shadow-sm md:shadow-md">
-                <img src="/service/mobile/logo2.png" alt="Android" className="w-4 h-4 md:w-8 md:h-8" />
-              </div>
-              <div className="absolute -left-2 -bottom-2 md:-left-8 md:-bottom-8 bg-white p-1 md:p-3 rounded-full shadow-sm md:shadow-md">
-                <img src="/service/mobile/logo3.png" alt="Flutter" className="w-4 h-4 md:w-8 md:h-8" />
-              </div>
-            </div>
-            
-            {/* Background decorative elements */}
-            <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div className="w-32 h-32 md:w-64 md:h-64 rounded-full bg-blue-400 opacity-10 blur-2xl md:blur-3xl"></div>
-              <div className="w-40 h-40 md:w-72 md:h-72 rounded-full bg-purple-400 opacity-10 blur-2xl md:blur-3xl absolute top-5 md:top-20 left-5 md:left-20"></div>
+          <div className="ml-3">
+            <p className="text-sm text-gray-600 font-medium">Trusted by 100+ businesses</p>
+            <div className="flex items-center mt-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+              ))}
+              <span className="ml-1 text-sm text-gray-500">5.0 (120 reviews)</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
+
+      {/* Image Content */}
+      <div className="relative mt-8 md:mt-0">
+        <div className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
+          <img
+            src="/service/mobile/hero.jpg"
+            alt="Mobile app development"
+            className="w-full h-auto object-cover"
+            width={600}
+            height={500}
+          />
+          <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-blue-400 rounded-full mix-blend-multiply opacity-20 animate-float"></div>
+          <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-28 h-28 md:w-40 md:h-40 bg-purple-400 rounded-full mix-blend-multiply opacity-20 animate-float-delay"></div>
+        </div>
+        
+        {/* Platform badges */}
+        <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-white p-2 md:p-3 rounded-full shadow-lg">
+          <div className="w-8 h-8 md:w-12 md:h-12 bg-blue-100 rounded-full flex items-center justify-center">
+            <img src="/service/mobile/logo1.png" alt="iOS" className="w-4 h-4 md:w-6 md:h-6" />
+          </div>
+        </div>
+        <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-white p-2 md:p-3 rounded-full shadow-lg">
+          <div className="w-8 h-8 md:w-12 md:h-12 bg-purple-100 rounded-full flex items-center justify-center">
+            <img src="/service/mobile/logo2.png" alt="Android" className="w-4 h-4 md:w-6 md:h-6" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     {/* Overview Section */}
     <section className="py-10 md:py-16 bg-white" id="case-studies">

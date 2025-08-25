@@ -83,31 +83,64 @@ const whyUs = [
        
       
       {/* Hero Section */}
-      <section className="relative pt-8 md:pt-12 lg:pt-16 pb-28 bg-gradient-to-br from-blue-900 to-purple-800 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://example.com/tech-pattern.svg')]"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Empower Your Business with <span className="text-blue-300">Digital Transformation</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-10">
-              Unlock efficiency, innovation, and growth with our end-to-end digital transformation solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/contact-us">
-              <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-100 px-8 py-6 text-lg font-semibold">
-                Get a Free Consultation
-              </Button>
-              </Link>
-              <Link href="/services">
-              <Button size="lg" variant="outline" className="text-blue-900 border-white hover:bg-white hover:text-blue-900 px-8 py-6 text-lg font-semibold">
-                Explore Our Services
-              </Button>
-              </Link>
-            </div>
-          </div>
+   <section className="relative min-h-screen pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden flex items-center">
+  {/* Background pattern */}
+  <div className="absolute top-0 left-0 w-full h-full opacity-20">
+    <div className="absolute inset-0 bg-[url('/service/marketing/digital.jpg')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
+  </div>
+
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-8 md:gap-12 items-center">
+      {/* Text Content */}
+      <div className="relative z-10 text-center lg:text-left">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+       Empower Your Business with {" "}
+          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Digital Transformation
+          </span>
+        </h1>
+        
+        <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-lg mx-auto lg:mx-0">
+         Unlock efficiency, innovation, and growth with our end-to-end digital transformation solutions.
+        </p>
+        
+       
+        
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+          <Link href="/contact-us">
+            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 text-sm md:text-base">
+             Get a Free Consultation
+            </Button>
+          </Link>
+          <Link href="/services">
+            <Button variant="outline" className="border-gray-300 hover:bg-gray-50 text-sm md:text-base">
+             Explore Our Services
+            </Button>
+          </Link>
         </div>
-      </section>
+      </div>
+
+    
+
+      {/* Image Content */}
+      <div className="relative mt-8 md:mt-0">
+        <div className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
+          <img
+            src="/service/marketing/digital.jpg"
+            alt="Web development illustration"
+            className="w-full h-auto object-cover"
+            width={600}
+            height={500}
+          />
+          <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-blue-400 rounded-full mix-blend-multiply opacity-20 animate-float"></div>
+          <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-28 h-28 md:w-40 md:h-40 bg-purple-400 rounded-full mix-blend-multiply opacity-20 animate-float-delay"></div>
+        </div>
+        
+       
+      </div>
+    </div>
+  </div>
+   </section>
 
       {/* Introduction */}
       <section className="py-8 md:py-16 lg:py-20 bg-white">

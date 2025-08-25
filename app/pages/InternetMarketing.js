@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, BarChart2, Mail, TrendingUp, Users, Target, ChevronRight, Check, ArrowRight } from 'lucide-react';
+import { Search, BarChart2, Mail, TrendingUp, Users, BarChart,Target, ChevronRight, Check, ArrowRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
@@ -111,88 +111,96 @@ export default function InternetMarketing() {
        
       
       {/* Hero Section */}
-      <section className="relative  pt-8 pb-12 md:pb-16 md:pt-32 md:pb-28 bg-white">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 bg-[url('/patterns/subtle-pattern.png')] opacity-5"></div>
+   {/* Internet Marketing Hero */}
+<section className="relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden min-h-[600px] flex items-center">
+  {/* Background pattern */}
+  <div className="absolute top-0 left-0 w-full h-full opacity-30">
+    <div className="absolute inset-0 bg-[url('/service/marketing/bg.jpg')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
+  </div>
+
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      {/* Text Content */}
+      <div className="relative z-10 text-center lg:text-left">
+        {/* Trust badge */}
+        <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm mb-6">
+          <span className="text-blue-600 mr-2">🏆</span>
+          <span className="text-sm font-medium text-gray-700">Trusted by 500+ businesses</span>
+        </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right">
-              {/* Trust badge with glass effect */}
-              <div 
-                className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm mb-6"
-                data-aos="fade-up"
-                  
-              >
-                <span className="text-blue-600 mr-2">🏆</span>
-                <span className="text-sm font-medium text-gray-700">Trusted by 500+ businesses</span>
-              </div>
-              
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
-                Data-Driven <span className="text-blue-600">Digital Marketing</span> That Delivers Results
-              </h1>
-              
-              <p 
-                className="text-xl text-gray-600 max-w-2xl mb-8"
-                data-aos="fade-up"
-                 
-              >
-                We craft measurable marketing strategies that increase visibility, drive qualified traffic, and convert visitors into customers.
-              </p>
-              
-              <div 
-                className="flex flex-wrap gap-4"
-                data-aos="fade-up"
-                 
-              >
-                <Link href="/contact-us">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-sm">
-                  Get a Free Consultation
-                </Button>
-                </Link>
-                <Link href="/services">
-                <Button size="lg" variant="outline" className="text-gray-700 hover:bg-gray-50 border-gray-300 hover:border-gray-400 shadow-sm">
-                  Explore Services <ChevronRight className="ml-2 h-4 w-4" />
-                </Button>
-                </Link>
-              </div>
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+          Data-Driven{" "}
+          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Internet Marketing
+          </span>
+        </h1>
+        
+        <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-lg mx-auto lg:mx-0">
+          That Delivers Measurable Results
+        </p>
+        
+        <p className="text-base md:text-lg text-gray-600 mb-8 md:mb-10 max-w-2xl mx-auto lg:mx-0">
+          We craft measurable marketing strategies that increase visibility, drive qualified traffic, 
+          and convert visitors into loyal customers through data-driven approaches.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+          <Link href="/contact-us">
+            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 text-sm md:text-base">
+              Free Consultation
+            </Button>
+          </Link>
+          <Link href="/services">
+            <Button variant="outline" className="border-gray-300 hover:bg-gray-50 text-sm md:text-base">
+              Explore Services
+            </Button>
+          </Link>
+        </div>
+      </div>
+
+      {/* Image Content */}
+      <div className="relative mt-8 md:mt-0">
+        <div className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300 border border-gray-100">
+          <img
+            src="/service/marketing/hero.jpg"
+            alt="Marketing analytics"
+            className="w-full h-auto object-cover"
+            width={600}
+            height={500}
+          />
+          <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-blue-400 rounded-full mix-blend-multiply opacity-20 animate-float"></div>
+          <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-28 h-28 md:w-40 md:h-40 bg-purple-400 rounded-full mix-blend-multiply opacity-20 animate-float-delay"></div>
+          
+          {/* Floating performance card */}
+          <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm p-3 rounded-lg shadow-sm border border-white/20 max-w-xs">
+            <div className="flex items-center mb-2">
+              <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
+              <span className="text-sm font-medium text-gray-700">Campaign Performance</span>
             </div>
-            
-            {/* Professional image with glass card effect */}
-            <div className="relative" data-aos="fade-left">
-              <div className="relative rounded-xl overflow-hidden shadow-lg">
-                <div className="absolute inset-0 bg-white/30 border border-white/20 rounded-xl"></div>
-                <Image 
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                  alt="Marketing team analyzing data"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto rounded-xl"
-                  priority
-                />
-                {/* Floating glass card */}
-                <div 
-                  className="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20 max-w-xs"
-                  data-aos="fade-up"
-                   
-                >
-                  <div className="flex items-center mb-2">
-                    <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-                    <span className="text-sm font-medium text-gray-700">Campaign Performance</span>
-                  </div>
-                  <div className="flex justify-between items-end">
-                    <div>
-                      <p className="text-2xl font-bold text-gray-900">+217%</p>
-                      <p className="text-sm text-gray-600">ROI increase</p>
-                    </div>
-                    <BarChart2 className="h-8 w-8 text-blue-600" />
-                  </div>
-                </div>
+            <div className="flex justify-between items-end">
+              <div>
+                <p className="text-xl font-bold text-gray-900">+217%</p>
+                <p className="text-xs text-gray-600">ROI increase</p>
               </div>
+              <BarChart2 className="h-6 w-6 text-blue-600" />
             </div>
           </div>
         </div>
-      </section>
+        
+        <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-white p-2 md:p-3 rounded-full shadow-lg">
+          <div className="w-8 h-8 md:w-12 md:h-12 bg-blue-100 rounded-full flex items-center justify-center">
+            <BarChart className="h-4 w-4 md:h-6 md:w-6 text-blue-600" />
+          </div>
+        </div>
+        <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-white p-2 md:p-3 rounded-full shadow-lg">
+          <div className="w-8 h-8 md:w-12 md:h-12 bg-purple-100 rounded-full flex items-center justify-center">
+            <TrendingUp className="h-4 w-4 md:h-6 md:w-6 text-purple-600" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Why Internet Marketing Matters */}
       <section className="py-8 md:py-12 lg:py-16 bg-gray-50">

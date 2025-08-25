@@ -94,106 +94,85 @@ export default function DesktopApplicationDevelopment() {
 
   return (
 <div className="min-h-screen bg-white">
-  {/* Hero Section */}
-  <section 
-    className="relative pt-12 md:pt-32 pb-10 md:pb-24 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50"
-    data-aos="fade-in"
-  >
-    {/* Background pattern */}
-    <div className="absolute top-0 left-0 w-full h-full opacity-10">
-      <div className="absolute inset-0 bg-[url('/service/desktop/hero.png')] bg-center bg-no-repeat bg-cover [mask-image:linear-gradient(to_bottom,rgba(37, 37, 37, 1),transparent)]"></div>
-    </div>
-    
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid lg:grid-cols-2 gap-6 md:gap-16 items-center">
-        {/* Text content */}
-        <div className="relative z-10 order-2 lg:order-1">
-          <h1 
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 md:mb-6 leading-tight text-center lg:text-left"
-            data-aos="fade-up"
-          >
-            Custom <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">Desktop Apps</span> Built for Performance
-          </h1>
-          <p 
-            className="text-base md:text-xl text-gray-600 mb-4 md:mb-8 text-center lg:text-left max-w-xl mx-auto lg:mx-0"
-            data-aos="fade-up"
-          >
-            We develop secure, high-performance desktop applications for Windows, macOS, and Linux using modern frameworks like Electron, .NET MAUI, and Flutter Desktop.
-          </p>
-          <div 
-            className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center lg:justify-start"
-            data-aos="fade-up"
-          >
-            <Link href="/contact-us">
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg w-full sm:w-auto text-sm md:text-base">
-                Request Free Consultation
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5 ml-1 md:ml-2" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </Button>
-            </Link>
-            <Link href="#desktop-casestudies"> 
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-gray-300 hover:bg-white/90 shadow-sm w-full sm:w-auto text-sm md:text-base"
-                data-aos="fade-up"
-              >
-                View Case Studies
-              </Button>
-            </Link>
-          </div>
-          
-          {/* Tech stack logos */}
-          <div 
-            className="mt-6 md:mt-12"
-            data-aos="fade-up"
-          >
-            <p className="text-xs md:text-sm text-gray-500 mb-3 md:mb-4 text-center lg:text-left">Built with modern technologies:</p>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-6 items-center">
-              <img src="/service/desktop/p1.png" alt="Electron" className="h-5 md:h-8 w-auto max-w-[70px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
-              <img src="/service/desktop/p2.png" alt=".NET" className="h-5 md:h-8 w-auto max-w-[70px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
-              <img src="/service/desktop/p3.jpg" alt="Flutter" className="h-5 md:h-8 w-auto max-w-[70px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
-              <img src="/service/desktop/p4.webp" alt="Java" className="h-5 md:h-8 w-auto max-w-[70px] md:max-w-[100px] hover:opacity-100 transition-opacity" />
-            </div>
-          </div>
+{/* Desktop Development Hero */}
+<section className="relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden min-h-[600px] flex items-center">
+  {/* Background pattern */}
+  <div className="absolute top-0 left-0 w-full h-full opacity-10">
+    <div className="absolute inset-0 bg-[url('/service/desktop/hero.png')] bg-no-repeat bg-center bg-cover"></div>
+  </div>
+
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      {/* Text Content */}
+      <div className="relative z-10 text-center lg:text-left">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+          Custom{" "}
+          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Desktop Apps
+          </span>
+        </h1>
+        
+        <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-lg mx-auto lg:mx-0">
+          Built for Performance and Security
+        </p>
+        
+        <p className="text-base md:text-lg text-gray-600 mb-8 md:mb-10 max-w-2xl mx-auto lg:mx-0">
+          We develop secure, high-performance desktop applications for Windows, macOS, 
+          and Linux using modern frameworks like Electron, .NET MAUI, and Flutter Desktop.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+          <Link href="/contact-us">
+            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 text-sm md:text-base">
+              Free Consultation
+            </Button>
+          </Link>
+          <Link href="/portfolio">
+            <Button variant="outline" className="border-gray-300 hover:bg-gray-50 text-sm md:text-base">
+              View Case Studies
+            </Button>
+          </Link>
         </div>
         
-        {/* Image/illustration */}
-        <div className="relative order-1 lg:order-2">
-          <div 
-            className="relative rounded-lg md:rounded-2xl overflow-hidden shadow-lg md:shadow-2xl border border-gray-100"
-            data-aos="fade-left"
-          >
-            <img 
-              src="/service/desktop/hero.png" 
-              alt="Desktop Application UI Showcase" 
-              className="w-full h-auto"
-            />
-            {/* Floating UI elements */}
-            <div className="absolute -bottom-3 -left-3 md:-bottom-6 md:-left-6 w-12 h-12 md:w-32 md:h-32 bg-purple-500/10 rounded-full blur-xl"></div>
-            <div className="absolute -top-3 -right-3 md:-top-6 md:-right-6 w-16 h-16 md:w-40 md:h-40 bg-blue-500/10 rounded-full blur-xl"></div>
+        {/* Tech stack logos */}
+        <div className="mt-8">
+          <p className="text-sm text-gray-500 mb-3 text-center lg:text-left">Built with modern technologies:</p>
+          <div className="flex flex-wrap justify-center lg:justify-start gap-4 items-center">
+            <img src="/service/desktop/p1.png" alt="Electron" className="h-6 md:h-8 w-auto" />
+            <img src="/service/desktop/p2.png" alt=".NET" className="h-6 md:h-8 w-auto" />
+            <img src="/service/desktop/p3.jpg" alt="Flutter" className="h-6 md:h-8 w-auto" />
           </div>
-          
-          {/* Floating badge */}
-          <div 
-            className="absolute -bottom-3 -right-3 md:-bottom-8 md:-right-5 bg-white px-2 py-1 md:px-4 md:py-3 rounded-md md:rounded-xl shadow-md md:shadow-lg border border-gray-100 flex items-center"
-            data-aos="zoom-in"
-          >
-            <div className="bg-green-100 p-1 md:p-2 rounded md:rounded-lg mr-1 md:mr-3">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 md:h-6 md:w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div>
-              <p className="font-semibold text-gray-900 text-xs md:text-sm">Trusted by 250+</p>
-              <p className="text-[9px] md:text-sm text-gray-500">Businesses worldwide</p>
-            </div>
+        </div>
+      </div>
+
+      {/* Image Content */}
+      <div className="relative mt-8 md:mt-0">
+        <div className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
+          <img
+            src="/service/desktop/hero.png"
+            alt="Desktop application"
+            className="w-full h-auto object-cover"
+            width={600}
+            height={500}
+          />
+          <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-blue-400 rounded-full mix-blend-multiply opacity-20 animate-float"></div>
+          <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-28 h-28 md:w-40 md:h-40 bg-purple-400 rounded-full mix-blend-multiply opacity-20 animate-float-delay"></div>
+        </div>
+        
+        <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-white p-2 md:p-3 rounded-full shadow-lg">
+          <div className="w-8 h-8 md:w-12 md:h-12 bg-blue-100 rounded-full flex items-center justify-center">
+            <Monitor className="h-4 w-4 md:h-6 md:w-6 text-blue-600" />
+          </div>
+        </div>
+        <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-white p-2 md:p-3 rounded-full shadow-lg">
+          <div className="w-8 h-8 md:w-12 md:h-12 bg-purple-100 rounded-full flex items-center justify-center">
+            <Cpu className="h-4 w-4 md:h-6 md:w-6 text-purple-600" />
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
       {/* Benefits Section */}

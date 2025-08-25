@@ -1,6 +1,7 @@
 "use client";
 
-import { Code, Cpu, Server, Database, Shield, Zap, Layers, Box, Globe, GitBranch, Cloud, Lock, Users, Settings, BarChart, Rocket, Target, PieChart, Clock, RefreshCw,Check,HeartPulse,Landmark ,ShoppingCart ,Factory ,GraduationCap ,Truck  } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Code, Cpu, Server, Database, Shield, Zap, Layers, Box, Globe, GitBranch, Cloud, Lock, Users, Settings, BarChart, Rocket, Target, PieChart, Clock, RefreshCw, Check, HeartPulse, Landmark, ShoppingCart, Factory, GraduationCap, Truck } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
@@ -8,66 +9,59 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function CustomSoftwareDevelopment() {
-  // Hero section image from Pexels
-  const heroImage = "/service/custom/hero.jpg";
+// Move static data outside component to prevent recreation on every render
+const featureImages = [
+  "/service/custom/feature1.jpg",
+  "/service/custom/feature2.jpg",
+  "/service/custom/feature3.jpg",
+  "/service/custom/feature4.jpg",
+  "/service/custom/feature5.jpg",
+  "/service/custom/feature6.jpg",
+];
 
-  // Feature images from Pexels
-  const featureImages = [
-    "/service/custom/feature1.jpg",
-     "/service/custom/feature2.jpg",
-      "/service/custom/feature3.jpg",
-       "/service/custom/feature4.jpg",
-        "/service/custom/feature5.jpg",
-         "/service/custom/feature6.jpg",
+const processImages = [
+  "/service/custom/process1.jpg",
+  "/service/custom/process2.jpg",
+  "/service/custom/process3.jpg",
+  "/service/custom/process4.jpg",
+  "/service/custom/process5.jpg",
+  "/service/custom/process6.jpg"
+];
 
-   
-  ];
+const features = [
+  {
+    icon: <Rocket className="h-6 w-6 text-blue-600" />,
+    title: "Tailor-Made Solutions",
+    description: "Software crafted specifically for your unique business requirements and workflows"
+  },
+  {
+    icon: <Target className="h-6 w-6 text-green-600" />,
+    title: "Precision Engineering",
+    description: "Solutions designed to hit your exact business objectives"
+  },
+  {
+    icon: <Shield className="h-6 w-6 text-red-600" />,
+    title: "Enterprise-Grade Security",
+    description: "Built with security best practices and compliance standards"
+  },
+  {
+    icon: <PieChart className="h-6 w-6 text-purple-600" />,
+    title: "Data-Driven Design",
+    description: "Applications that leverage your business data intelligently"
+  },
+  {
+    icon: <Clock className="h-6 w-6 text-yellow-600" />,
+    title: "Time-Efficient Development",
+    description: "Rapid delivery without compromising quality"
+  },
+  {
+    icon: <RefreshCw className="h-6 w-6 text-indigo-600" />,
+    title: "Future-Proof Architecture",
+    description: "Software that evolves with your business needs"
+  }
+];
 
-  // Process images from Pexels
-  const processImages = [
-    "/service/custom/process1.jpg",
-    "/service/custom/process2.jpg",
-    "/service/custom/process3.jpg",
-    "/service/custom/process4.jpg",
-    "/service/custom/process5.jpg",
-    "/service/custom/process6.jpg"
-  ];
-
-  const features = [
-    {
-      icon: <Rocket className="h-6 w-6 text-blue-600" />,
-      title: "Tailor-Made Solutions",
-      description: "Software crafted specifically for your unique business requirements and workflows"
-    },
-    {
-      icon: <Target className="h-6 w-6 text-green-600" />,
-      title: "Precision Engineering",
-      description: "Solutions designed to hit your exact business objectives"
-    },
-    {
-      icon: <Shield className="h-6 w-6 text-red-600" />,
-      title: "Enterprise-Grade Security",
-      description: "Built with security best practices and compliance standards"
-    },
-    {
-      icon: <PieChart className="h-6 w-6 text-purple-600" />,
-      title: "Data-Driven Design",
-      description: "Applications that leverage your business data intelligently"
-    },
-    {
-      icon: <Clock className="h-6 w-6 text-yellow-600" />,
-      title: "Time-Efficient Development",
-      description: "Rapid delivery without compromising quality"
-    },
-    {
-      icon: <RefreshCw className="h-6 w-6 text-indigo-600" />,
-      title: "Future-Proof Architecture",
-      description: "Software that evolves with your business needs"
-    }
-  ];
-
- const industriesWeServe = [
+const industriesWeServe = [
   {
     name: "Healthcare",
     description: "HIPAA-compliant solutions for providers and payers",
@@ -100,101 +94,103 @@ export default function CustomSoftwareDevelopment() {
   }
 ];
 
-  const developmentProcess = [
-    {
-      title: "Discovery Workshop",
-      description: "Deep dive into your business needs and technical requirements",
-      icon: <Users className="h-8 w-8 text-blue-500" />
-    },
-    {
-      title: "Solution Design",
-      description: "Architecture planning and technology selection",
-      icon: <Layers className="h-8 w-8 text-purple-500" />
-    },
-    {
-      title: "Agile Development",
-      description: "Iterative development with continuous feedback",
-      icon: <Code className="h-8 w-8 text-green-500" />
-    },
-    {
-      title: "Quality Assurance",
-      description: "Comprehensive testing at every stage",
-      icon: <Shield className="h-8 w-8 text-yellow-500" />
-    },
-    {
-      title: "Deployment",
-      description: "Seamless rollout with zero downtime",
-      icon: <Cloud className="h-8 w-8 text-cyan-500" />
-    },
-    {
-      title: "Ongoing Support",
-      description: "Continuous improvement and maintenance",
-      icon: <Settings className="h-8 w-8 text-orange-500" />
-    }
-  ];
+const developmentProcess = [
+  {
+    title: "Discovery Workshop",
+    description: "Deep dive into your business needs and technical requirements",
+    icon: <Users className="h-8 w-8 text-blue-500" />
+  },
+  {
+    title: "Solution Design",
+    description: "Architecture planning and technology selection",
+    icon: <Layers className="h-8 w-8 text-purple-500" />
+  },
+  {
+    title: "Agile Development",
+    description: "Iterative development with continuous feedback",
+    icon: <Code className="h-8 w-8 text-green-500" />
+  },
+  {
+    title: "Quality Assurance",
+    description: "Comprehensive testing at every stage",
+    icon: <Shield className="h-8 w-8 text-yellow-500" />
+  },
+  {
+    title: "Deployment",
+    description: "Seamless rollout with zero downtime",
+    icon: <Cloud className="h-8 w-8 text-cyan-500" />
+  },
+  {
+    title: "Ongoing Support",
+    description: "Continuous improvement and maintenance",
+    icon: <Settings className="h-8 w-8 text-orange-500" />
+  }
+];
 
+export default function CustomSoftwareDevelopment() {
   return (
     <div className="min-h-screen bg-white">
-       
-      
-     
       {/* Hero Section */}
-<section className="relative min-h-screen flex items-center pt-8 md:pt-12 pb-8 md:pb-12 lg:pb-16 overflow-hidden">
-  {/* Background Image with overlay */}
-  <div className="absolute inset-0 z-0">
-    <Image
-      src="/service/custom/hero.jpg"
-      alt="Software development background"
-      fill
-      className="object-cover"
-      priority
-    />
-    <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 to-purple-900/70"></div>
-  </div>
-  
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      {/* Text Content */}
-      <div className="text-center lg:text-left">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-          <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
-            Any Software
-          </span> <br />For Any Business Need
-        </h1>
-        <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto lg:mx-0">
-          We build completely custom software solutions designed to solve your exact business challenges
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-          <Button 
-            size="lg" 
-            className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg"
-          >
-            <Link href="/contact-us">Get Free Consultation</Link>
-          </Button>
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="border-white text-black hover:bg-white/10 hover:text-white"
-          >
-            <Link href="/portfolio">See Our Work</Link>
-          </Button>
+      <section className="relative min-h-screen flex items-center pt-8 md:pt-12 pb-8 md:pb-12 lg:pb-16 overflow-hidden">
+        {/* Background Image with overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/service/custom/hero.jpg"
+            alt="Software development background"
+            fill
+            className="object-cover"
+            priority
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaUMk9kfa"
+          /> 
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 to-purple-900/70"></div>
         </div>
-      </div>
-      
-      {/* Image Content - Optional foreground image */}
-      <div className="relative rounded-xl overflow-hidden shadow-2xl">
-        <Image
-          src="/service/custom/hero1.jpg"
-          alt="Custom software development"
-          width={800}
-          height={600}
-          className="w-full h-auto object-cover rounded-xl"
-          priority
-        />
-      </div>
-    </div>
-  </div>
-</section>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Text Content */}
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
+                  Any Software
+                </span> <br />For Any Business Need
+              </h1>
+              <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto lg:mx-0">
+                We build completely custom software solutions designed to solve your exact business challenges
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg"
+                >
+                  <Link href="/contact-us">Get Free Consultation</Link>
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white text-black hover:bg-white/10 hover:text-white"
+                >
+                  <Link href="/portfolio">See Our Work</Link>
+                </Button>
+              </div>
+            </div>
+            
+            {/* Image Content - Optional foreground image */}
+            <div className="relative rounded-xl overflow-hidden shadow-2xl">
+              <Image
+                src="/service/custom/hero1.jpg"
+                alt="Custom software development"
+                width={800}
+                height={600}
+                className="w-full h-auto object-cover rounded-xl"
+                priority
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaUMk9kfa"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* What We Build Section */}
       <section className="py-8 md:py-16 lg:py-20 bg-white">
@@ -232,6 +228,9 @@ export default function CustomSoftwareDevelopment() {
                       width={400}
                       height={300}
                       className="w-full h-48 object-cover rounded-lg"
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaUMk9kfa"
                     />
                   </div>
                 </CardContent>
@@ -303,6 +302,9 @@ export default function CustomSoftwareDevelopment() {
                     alt={step.title}
                     fill
                     className="object-cover"
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaUMk9kfa"
                   />
                 </div>
               </div>
@@ -322,6 +324,9 @@ export default function CustomSoftwareDevelopment() {
                 alt="Technology stack"
                 fill
                 className="object-cover"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaUMk9kfa"
               />
             </div>
             
@@ -382,8 +387,6 @@ export default function CustomSoftwareDevelopment() {
           </div>
         </div>
       </section>
-
-       
     </div>
   );
 }

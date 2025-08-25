@@ -124,108 +124,75 @@ export default function WebDevelopment() {
     <div className="min-h-screen bg-white">
        
       
-      {/* Hero Section with Image */}
-      <section 
-        className="relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden"
-        data-aos="fade-in"
-      >
-        {/* Background pattern */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 ">
-          <div className="absolute inset-0 bg-[url('/service/web/hero.jpg')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
+{/* Web Development Hero */}
+<section className="relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden min-h-screen flex items-center">
+  {/* Background pattern */}
+  <div className="absolute top-0 left-0 w-full h-full opacity-20">
+    <div className="absolute inset-0 bg-[url('/service/web/hero.jpg')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
+  </div>
+
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      {/* Text Content */}
+      <div className="relative z-10 text-center lg:text-left">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+          Web Development{" "}
+          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Services
+          </span>
+        </h1>
+        
+        <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-lg mx-auto lg:mx-0">
+          Build Powerful, Scalable, and Modern Web Solutions
+        </p>
+        
+        <p className="text-base md:text-lg text-gray-600 mb-8 md:mb-10 max-w-2xl mx-auto lg:mx-0">
+          We build high-performance web applications using all major technologies. 
+          Whether you're a startup or an enterprise, we'll bring your vision to life.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+          <Link href="/contact-us">
+            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 text-sm md:text-base">
+              Get Started
+            </Button>
+          </Link>
+          <Link href="/portfolio">
+            <Button variant="outline" className="border-gray-300 hover:bg-gray-50 text-sm md:text-base">
+              View Portfolio
+            </Button>
+          </Link>
         </div>
+      </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Text Content */}
-            <div className="relative z-10 text-center lg:text-left">
-              <h1 
-                className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight"
-                data-aos="fade-up"
-              >
-                Web Development{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Services
-                </span>
-              </h1>
-              
-              <p 
-                className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-lg mx-auto lg:mx-0"
-                data-aos="fade-up"
-                  
-              >
-                Build Powerful, Scalable, and Modern Web Solutions
-              </p>
-              
-              <p 
-                className="text-base md:text-lg text-gray-600 mb-8 md:mb-10 max-w-2xl mx-auto lg:mx-0"
-                data-aos="fade-up"
-                 
-              >
-                We build high-performance web applications using all major technologies. 
-                Whether you're a startup or an enterprise, we'll bring your vision to life.
-              </p>
-              
-              <div 
-                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start"
-                data-aos="fade-up"
-                 
-              >
-                  <Link href="/contact-us">
-                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 text-sm md:text-base">
-                Get Started
-                </Button>
-                </Link>
-                 <Link href="/portfolio" >
-                <Button variant="outline" className="border-gray-300 hover:bg-gray-50 text-sm md:text-base">
-                 View Portfolio
-                </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Image Content */}
-            <div className="relative mt-8 md:mt-0">
-              {/* Main hero image */}
-              <div 
-                className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300"
-                data-aos="fade-left"
-                 
-              >
-                <img
-                  src="/service/web/hero.avif"
-                  alt="Web development illustration"
-                  className="w-full h-auto object-cover"
-                  width={600}
-                  height={500}
-                />
-                {/* Floating elements overlay */}
-                <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-blue-400 rounded-full mix-blend-multiply opacity-20 animate-float"></div>
-                <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-28 h-28 md:w-40 md:h-40 bg-purple-400 rounded-full mix-blend-multiply opacity-20 animate-float-delay"></div>
-              </div>
-              
-              {/* Floating tech badges */}
-              <div 
-                className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-white p-2 md:p-3 rounded-full shadow-lg"
-                data-aos="zoom-in"
-                 
-              >
-                <div className="w-8 h-8 md:w-12 md:h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Code className="h-4 w-4 md:h-6 md:w-6 text-blue-600" />
-                </div>
-              </div>
-              <div 
-                className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-white p-2 md:p-3 rounded-full shadow-lg"
-                data-aos="zoom-in"
-                 
-              >
-                <div className="w-8 h-8 md:w-12 md:h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                  <Cpu className="h-4 w-4 md:h-6 md:w-6 text-purple-600" />
-                </div>
-              </div>
-            </div>
+      {/* Image Content */}
+      <div className="relative mt-8 md:mt-0">
+        <div className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
+          <img
+            src="/service/web/hero.avif"
+            alt="Web development illustration"
+            className="w-full h-auto object-cover"
+            width={600}
+            height={500}
+          />
+          <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-blue-400 rounded-full mix-blend-multiply opacity-20 animate-float"></div>
+          <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-28 h-28 md:w-40 md:h-40 bg-purple-400 rounded-full mix-blend-multiply opacity-20 animate-float-delay"></div>
+        </div>
+        
+        <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-white p-2 md:p-3 rounded-full shadow-lg">
+          <div className="w-8 h-8 md:w-12 md:h-12 bg-blue-100 rounded-full flex items-center justify-center">
+            <Code className="h-4 w-4 md:h-6 md:w-6 text-blue-600" />
           </div>
         </div>
-      </section>
+        <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-white p-2 md:p-3 rounded-full shadow-lg">
+          <div className="w-8 h-8 md:w-12 md:h-12 bg-purple-100 rounded-full flex items-center justify-center">
+            <Cpu className="h-4 w-4 md:h-6 md:w-6 text-purple-600" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Features Section */}
       <section className="py-12 md:py-20 bg-white">
