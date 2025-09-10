@@ -1,5 +1,6 @@
 import React from 'react';
 import WebDevelopment from '@/app/pages/WebDevelopment';
+import Script from 'next/script';
 export const metadata = {
   title: 'Web Development Services | Custom Web Apps | PickZy',
   description: 'Expert web development services using React, Next.js, and modern frameworks. 150+ web projects delivered. Get a free consultation today.',
@@ -35,5 +36,38 @@ export const metadata = {
 };
 
 export default function WebDevelopmentPage() {
-  return <WebDevelopment />;
+  return ( <>
+      <WebDevelopment />
+
+      {/* Data Schema.org */}
+      <Script id="web-dev-schema" type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          serviceType: 'Web Development',
+          provider: {
+            '@type': 'Organization',
+            name: 'PickZy',
+            url: 'https://pickzy.com',
+            logo: 'https://pickzy.com/logo.png',
+          },
+          description:
+            'Expert web development services using React, Next.js, and modern frameworks. 150+ web projects delivered.',
+          areaServed: {
+            '@type': 'Place',
+            name: 'Global',
+          },
+          offers: {
+            '@type': 'Offer',
+            url: 'https://pickzy.com/web-development',
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+            eligibleRegion: {
+              '@type': 'Place',
+              name: 'Worldwide',
+            },
+          },
+        })}
+      </Script>
+    </>);
 }

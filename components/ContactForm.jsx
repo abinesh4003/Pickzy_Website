@@ -20,9 +20,13 @@ const services = [
 ];
 
 const budgetRanges = [
-  { value: "10k-25k", label: "$10,000 - $25,000" },
-  { value: "25k-50k", label: "$25,000 - $50,000" },
-  { value: "50k-100k", label: "$50,000 - $100,000" },
+  { value: "1-100", label: "$1 - $100" },
+  { value: "101-1k", label: "$101 - $1,000" },
+  { value: "1k-5k", label: "$1,001 - $5,000" },
+  {value:"5k-10k",label:"$5,001 - $10,000"},
+  { value: "10k-25k", label: "$10,001 - $25,000" },
+  { value: "25k-50k", label: "$25,001 - $50,000" },
+  { value: "50k-100k", label: "$50,001 - $100,000" },
   { value: "100k+", label: "$100,000+" }
 ];
 
@@ -41,6 +45,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState({});
   const recaptchaRef = useRef();
   const [isRecaptchaVerified, setIsRecaptchaVerified] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const validateField = (name, value) => {
     switch (name) {
@@ -152,7 +157,8 @@ export default function ContactForm() {
       recaptchaRef.current.reset();
       setIsRecaptchaVerified(false);
 
-      showToast('success', 'Your message has been sent successfully! We will get back to you soon.');
+       setSuccessMessage('Your message has been sent successfully! We will get back to you soon.');
+      setTimeout(() => setSuccessMessage(''), 5000);
     } catch (error) {
       console.error('Submission error:', error);
       setErrors(prev => ({ ...prev, submit: 'An unexpected error occurred. Please try again later.' }));
@@ -162,7 +168,7 @@ export default function ContactForm() {
   };
 
   return (
-    <Card className="shadow-xl border-0" data-aos="fade-right">
+    <Card className="contact-form shadow-xl border-0 " data-aos="fade-right">
       <CardHeader>
         <CardTitle className="text-2xl" data-aos="fade-up">
           Send us a message
@@ -172,7 +178,7 @@ export default function ContactForm() {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        <form onSubmit={handleSubmit} className="space-y-4" data-aos="fade-up">
+        <form onSubmit={handleSubmit} className=" space-y-4" data-aos="fade-up">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label htmlFor="firstName" className="text-sm font-medium mb-2 block">
@@ -346,6 +352,11 @@ export default function ContactForm() {
         <p className="text-xs text-gray-500 text-center">
           By submitting this form, you agree to our privacy policy and terms of service.
         </p>
+         {successMessage && (
+          <div className="mt-4 text-green-600 font-semibold text-center transition-opacity duration-300">
+            {successMessage}
+          </div>
+        )}
       </CardContent>
     </Card>
   );

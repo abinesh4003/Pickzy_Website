@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 
 const FullstackBlogPost = () => {
   
@@ -16,6 +17,39 @@ const FullstackBlogPost = () => {
         <title>Building Modern Web Apps with React.js and Node.js in 2025 | PickZy</title>
         <meta name="description" content="Discover why the React.js and Node.js combination remains the top choice for fullstack development in 2025 with real-world benefits and case studies." />
       </Head>
+      <Script
+  id="nodejs-blog-schema"
+  type="application/ld+json"
+  strategy="afterInteractive"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://pickzy.com/blog/nodejs-benefits"
+      },
+      "headline": "Top 10 Benefits of Using Node.js for Scalable Backend Development in 2025",
+      "description": "Discover why Node.js continues to dominate backend development with its unparalleled performance and scalability in 2025.",
+      "image": "https://pickzy.com/assets/images/nodejs.png",
+      "author": {
+        "@type": "Person",
+        "name": "PickZy Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PickZy",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://pickzy.com/images/logo.png"
+        }
+      },
+      "datePublished": "2025-06-22",
+      "dateModified": "2025-06-22"
+    }),
+  }}
+/>
+
 
        
       

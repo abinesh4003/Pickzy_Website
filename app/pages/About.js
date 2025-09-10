@@ -112,7 +112,7 @@ export default function About() {
    <div className="min-h-screen bg-white">
    
 {/* Hero Section */}
-  <section className="pt-8 md:pt-12 lg:pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-2 md:py-12 lg:py-16 ">
+  <section className="about-us-hero pt-8 md:pt-12 lg:pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-2 md:py-12 lg:py-16 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12 " data-aos="fade-down"  >
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 ">
@@ -150,11 +150,11 @@ export default function About() {
       </section>
 
        {/* Mission & Vision */}
-      <section className="py-4 md:py-16 lg:py-20 bg-white">
+      <section className=" py-4 md:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12" data-aos="fade-up">
-            <Card className="p-8 border-0 shadow-lg" data-aos="flip-left"   >
-              <div className="text-center">
+            <Card className="about-us-mission p-8 border-0 shadow-lg" data-aos="flip-left"   >
+              <div className="text-center ">
                 <Target className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -162,8 +162,8 @@ export default function About() {
                 </p>
               </div>
             </Card>
-            <Card className="p-8 border-0 shadow-lg" data-aos="flip-right"  >
-              <div className="text-center">
+            <Card className="about-us-vision p-8 border-0 shadow-lg" data-aos="flip-right"  >
+              <div className="text-center ">
                 <Globe className="w-12 h-12 text-purple-600 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -177,7 +177,7 @@ export default function About() {
 
 
   {/* Values */}
-  <section className="py-8 md:py-16 lg:py-20 bg-gray-50">
+  <section className="about-us-values py-8 md:py-16 lg:py-20 bg-gray-50 ">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div 
         className="text-center mb-8 md:mb-12 "
@@ -213,7 +213,7 @@ export default function About() {
   </section>
 
    {/* Timeline */}
-      <section className="py-8 md:py-16 bg-white">
+      <section className="about-us-journey py-8 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our  <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Journey</span></h2>
@@ -246,7 +246,7 @@ export default function About() {
       </section>
 
   {/* Team */}
-  <section className="py-8 md:py-16 lg:py-20 bg-gray-50">
+  <section className="py-8 md:py-16 lg:py-20 bg-gray-50 about-us-team">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div 
         className="text-center mb-16"
@@ -280,7 +280,7 @@ export default function About() {
   </section>
 
 {/* Nasscom Membership Section */}
-<section className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-blue-50/30 to-purple-50/30">
+<section className="about-us-nasscom py-12 md:py-16 lg:py-20 bg-gradient-to-br from-blue-50/30 to-purple-50/30">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-10" data-aos="fade-down">
       
@@ -341,13 +341,13 @@ export default function About() {
 
  {/* CTA */}
   <section 
-    className="py-8 md:py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+    className="about-us-cta py-8 md:py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white"
     data-aos="zoom-in"
   >
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 
         className="text-3xl md:text-4xl font-bold mb-6"
-        data-aos="fade-down"
+        // data-aos="fade-down"
           
       >
         Ready to Work with Us?

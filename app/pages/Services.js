@@ -120,7 +120,7 @@ const services = [
 
   {/* Hero Section */}
   <section 
-    className="pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-4 md:py-8 lg:py-12 "
+    className="service-hero pt-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 py-4 md:py-8 lg:py-12 "
     data-aos="fade"
   >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -145,7 +145,7 @@ const services = [
 
   {/* Services Grid */}
   <section 
-    className="py-8 md:py-12 lg:py-16 bg-white"
+    className=".service-grid py-8 md:py-12 lg:py-16 bg-white"
     data-aos="fade-up"
   >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -223,7 +223,7 @@ const services = [
 
   {/* Process Section */}
   <section 
-    className="py-20 bg-gray-50"
+    className="service-process py-20 bg-gray-50"
     data-aos="fade-up"
   >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -289,7 +289,7 @@ const services = [
 
   {/* Why Choose Us */}
   <section 
-    className="py-8 md:py-12 lg:py-16 bg-white"
+    className="service-why-choose-us py-8 md:py-12 lg:py-16 bg-white"
     data-aos="fade-up"
   >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -369,7 +369,7 @@ const services = [
 
   {/* CTA Section */}
   <section 
-    className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+    className="service-cta py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white"
     data-aos="fade-up"
   >
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

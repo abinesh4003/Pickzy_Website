@@ -1,4 +1,5 @@
 import About from '@/app/pages/About';
+import Script from 'next/script';
 export const metadata = {
   title: 'About PickZy - Our Story & Team | Leading Software Developers',
   description:
@@ -29,5 +30,37 @@ export const metadata = {
 
 
 export default function AboutUsPage() {
-  return <About/>;
+  return (
+     <>
+      {/*  Schema.org JSON-LD for AboutPage */}
+      <Script
+        id="schema-about"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "url": "https://pickzy.com/about-us",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "PickZy Interactive",
+              "url": "https://pickzy.com",
+              "logo": "https://pickzy.com/logo.png",
+              "foundingDate": "2011",
+              "sameAs": [
+                "https://www.facebook.com/pickzy",
+                "https://www.instagram.com/pickzy",
+                "https://www.linkedin.com/company/pickzy"
+              ],
+              "founder": {
+                "@type": "Person",
+                "name": "Ratheesh", 
+              }
+            }
+          }),
+        }}
+      />
+      <About />
+    </>
+  );
 }

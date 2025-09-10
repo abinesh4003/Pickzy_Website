@@ -1,4 +1,5 @@
 import Portfolio from '@/app/pages/Portfolio';
+import Script from 'next/script';
 
 export const metadata = {
   title: 'Our Portfolio | PickZy Software Development Case Studies',
@@ -34,5 +35,28 @@ export const metadata = {
 };
 
 export default function PortfolioPage() {
-  return <Portfolio />;
+  return(
+     <>
+      <Script
+        id="portfolio-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "PickZy Software Development Portfolio",
+            "description": "Explore 300+ successful projects delivered by PickZy.",
+            "url": "https://pickzy.com/portfolio",
+            "publisher": {
+              "@type": "Organization",
+              "name": "PickZy",
+              "url": "https://pickzy.com",
+              "logo": "https://pickzy.com/logo.png"
+            }
+          }),
+        }}
+      />
+        <Portfolio />
+    </>
+  );
 }

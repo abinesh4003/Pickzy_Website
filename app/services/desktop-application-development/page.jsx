@@ -1,5 +1,6 @@
 import React from 'react';
 import DesktopApplicationDevelopment from '@/app/pages/DesktopApplicationDevelopment';
+import Script from 'next/script';
 
 export const metadata = {
   title: 'Custom Desktop Application Development Services | Windows, macOS, Linux | PickZy',
@@ -66,5 +67,57 @@ export const metadata = {
 };
 
 export default function DesktopApplicationDevelopmentPage() {
-  return <DesktopApplicationDevelopment />;
+return (
+    <>
+      <DesktopApplicationDevelopment />
+
+      {/* JSON-LD Schema inside <Script> */}
+      <Script
+        id="desktop-app-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "PickZy - Desktop Application Development",
+            "url": "https://pickzy.com/desktop-application-development",
+            "logo": "https://pickzy.com/images/logo.png",
+            "description":
+              "PickZy builds custom desktop applications for Windows, macOS and Linux using Electron, .NET MAUI and Flutter Desktop.",
+            "sameAs": [
+              "https://twitter.com/PickZyOfficial",
+              "https://www.linkedin.com/company/pickzy",
+              "https://facebook.com/pickzyofficial"
+            ],
+            "areaServed": {
+              "@type": "GeoCircle",
+              "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": "20.5937",
+                "longitude": "78.9629"
+              },
+              "geoRadius": "2000"
+            },
+            "serviceType": "Custom Desktop Application Development",
+            "offers": {
+              "@type": "Offer",
+              "url": "https://pickzy.com/desktop-application-development",
+              "priceCurrency": "USD",
+              "eligibleRegion": {
+                "@type": "Country",
+                "name": "Worldwide"
+              },
+              "availability": "https://schema.org/InStock"
+            },
+            "author": {
+              "@type": "Organization",
+              "name": "PickZy",
+              "url": "https://pickzy.com"
+            }
+          }),
+        }}
+      />
+    </>
+  );
 }

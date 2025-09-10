@@ -129,68 +129,66 @@ const developmentProcess = [
 
 export default function CustomSoftwareDevelopment() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-8 md:pt-12 pb-8 md:pb-12 lg:pb-16 overflow-hidden">
-        {/* Background Image with overlay */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/service/custom/hero.jpg"
-            alt="Software development background"
-            fill
-            className="object-cover"
-            priority
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaUMk9kfa"
-          /> 
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 to-purple-900/70"></div>
+    <div className="min-h-screen bg-white">   
+            {/* Hero Section */}
+   <section className="relative min-h-[calc(100vh-4rem)] bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden flex items-center">
+  {/* Background pattern */}
+  <div className="absolute top-0 left-0 w-full h-full opacity-20">
+    <div className="absolute inset-0 bg-[url('/service/custom/hero1.jpg')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
+  </div>
+
+  <div className="max-w-7xl mx-auto px-8 sm:px-6 py-4 lg:px-8 w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-8 md:gap-12 items-center">
+      {/* Text Content */}
+      <div className="relative z-10 text-center lg:text-left">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+        Any Software {" "}
+          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            For Any Business Need
+          </span>
+        </h1>
+        
+        <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-lg mx-auto lg:mx-0">
+         We build completely custom software solutions designed to solve your exact business challenges
+        </p>
+        
+       
+        
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+          <Link href="/contact-us">
+            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 text-sm md:text-base">
+             Get a Free Consultation 
+            </Button>
+          </Link>
+          <Link href="/portfolio">
+            <Button variant="outline" className="border-gray-300 hover:bg-gray-50 text-sm md:text-base">
+            See Our Work
+            </Button>
+          </Link>
+        </div>
+      </div>
+
+    
+
+      {/* Image Content */}
+      <div className="relative mt-8 md:mt-0">
+        <div className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
+          <img
+            src="/service/custom/hero1.jpg"
+            alt="Web development illustration"
+            className="w-full h-auto object-cover"
+            width={600}
+            height={500}
+          />
+          <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-blue-400 rounded-full mix-blend-multiply opacity-20 animate-float"></div>
+          <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-28 h-28 md:w-40 md:h-40 bg-purple-400 rounded-full mix-blend-multiply opacity-20 animate-float-delay"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Text Content */}
-            <div className="text-center lg:text-left">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
-                  Any Software
-                </span> <br />For Any Business Need
-              </h1>
-              <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto lg:mx-0">
-                We build completely custom software solutions designed to solve your exact business challenges
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg"
-                >
-                  <Link href="/contact-us">Get Free Consultation</Link>
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-white text-black hover:bg-white/10 hover:text-white"
-                >
-                  <Link href="/portfolio">See Our Work</Link>
-                </Button>
-              </div>
-            </div>
-            
-            {/* Image Content - Optional foreground image */}
-            <div className="relative rounded-xl overflow-hidden shadow-2xl">
-              <Image
-                src="/service/custom/hero1.jpg"
-                alt="Custom software development"
-                width={800}
-                height={600}
-                className="w-full h-auto object-cover rounded-xl"
-                priority
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaUMk9kfa"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+       
+      </div>
+    </div>
+  </div>
+   </section>
 
       {/* What We Build Section */}
       <section className="py-8 md:py-16 lg:py-20 bg-white">

@@ -23,6 +23,7 @@ export default function PositionsPage() {
   const [selectedPosition, setSelectedPosition] = useState(null);
   const recaptchaRef = useRef(null);
   const [isRecaptchaVerified, setIsRecaptchaVerified] = useState(false);
+ const [successMessage, setSuccessMessage] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -193,8 +194,16 @@ export default function PositionsPage() {
         throw new Error('Failed to submit resume');
       }
 
-      showToast('Success', 'Resume submitted successfully! Our team will get back to you soon.', 'success');
-      setOpenApplyDialog(false);
+      setSuccessMessage('Your message has been sent successfully! We will get back to you soon.')
+      setTimeout(()=>{
+        setOpenApplyDialog(false);
+        setSuccessMessage('')
+         clearForm();
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
+      setIsRecaptchaVerified(false);
+      },5000)
       
       if (positionId) {
         await handleApplySubmit();
@@ -204,11 +213,7 @@ export default function PositionsPage() {
       showToast('Error', 'Failed to submit resume. Please try again.', 'error');
     } finally {
       setLoading(false);
-      clearForm();
-      if (recaptchaRef.current) {
-        recaptchaRef.current.reset();
-      }
-      setIsRecaptchaVerified(false);
+     
     }
   };
 
@@ -274,50 +279,7 @@ export default function PositionsPage() {
     fetchData();
   }, []);
 
-  if (loading) {
-    return (
-      <section className="py-8 md:py-12 lg:py-20 bg-white" >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Skeleton className="h-10 w-64 mx-auto mb-4" />
-            <Skeleton className="h-6 w-96 mx-auto" />
-          </div>
-
-          <div className="space-y-6">
-            {[...Array(3)].map((_, index) => (
-              <Card key={index} className="border-0 shadow-lg">
-                <CardContent className="p-8">
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-3 mb-3">
-                        <Skeleton className="h-8 w-48" />
-                        <Skeleton className="h-6 w-20" />
-                        <Skeleton className="h-6 w-24" />
-                      </div>
-
-                      <Skeleton className="h-4 w-full mb-4" />
-                      <Skeleton className="h-4 w-3/4 mb-4" />
-
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                        <Skeleton className="h-4 w-32" />
-                        <Skeleton className="h-4 w-32" />
-                        <Skeleton className="h-4 w-32" />
-                      </div>
-                    </div>
-
-                    <div className="mt-6 lg:mt-0 lg:ml-8 flex gap-2">
-                      <Skeleton className="h-10 w-32" />
-                      <Skeleton className="h-10 w-32" />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
+  
 
   if (error) {
     return (
@@ -362,7 +324,7 @@ export default function PositionsPage() {
                   key={position.id}
                   className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
-                  <CardContent className="p-8">
+                  <CardContent className="job-listing p-8">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
                       <div className="flex-1">
                         <div className="flex flex-wrap items-center gap-3 mb-3">
@@ -393,7 +355,7 @@ export default function PositionsPage() {
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="p-1 h-8 w-8"
+                          className="btn-view p-1 h-8 w-8"
                           onClick={() => openPositionDetails(position)}
                         >
                           <Info className="w-4 h-4 text-blue-600" />
@@ -401,7 +363,7 @@ export default function PositionsPage() {
                    <Dialog open={openApplyDialog} onOpenChange={setOpenApplyDialog}>
   <DialogTrigger asChild>
     <Button
-      className='w-full bg-gradient-to-r from-blue-600 to-purple-600 text-xs sm:text-sm py-1 h-8'
+      className='btn-apply w-full bg-gradient-to-r from-blue-600 to-purple-600 text-xs sm:text-sm py-1 h-8'
       onClick={() => handleViewSubmit(position)}
     >
       Apply Now <span><ArrowRight className="w-3 h-3 ml-1" /></span>
@@ -518,7 +480,9 @@ export default function PositionsPage() {
                   <p className="text-red-500 text-xs mt-2">{errors.recaptcha}</p>
                 )}
               </div>
-      <div className="flex flex-col xs:flex-row justify-end gap-1.5 sm:gap-2 pt-2">
+        {successMessage?(<div className="mt-4 text-green-600 font-semibold text-center transition-opacity duration-300">
+            {successMessage}
+          </div>) :(  <div className="flex flex-col xs:flex-row justify-end gap-1.5 sm:gap-2 pt-2">
         <Button
           type="button"
           variant="outline"
@@ -535,8 +499,10 @@ export default function PositionsPage() {
         >
           {loading ? 'Submitting...' : 'Submit Resume'}
         </Button>
-      </div>
+      </div>)}
+    
     </form>
+
   </DialogContent>
 </Dialog>
                       </div>

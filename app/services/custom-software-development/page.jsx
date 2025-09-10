@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import CustomSoftwareDevelopment from '@/app/pages/CustomSoftwareDevelopment';
 
@@ -15,11 +16,12 @@ export const metadata = {
     'scalable software solutions',
     'secure software development',
     'industry-specific software',
-    'PickZy software developers'
+    'PickZy software developers',
   ],
   openGraph: {
     title: 'Custom Software Development Services | PickZy',
-    description: 'Tailored software solutions designed for your unique business needs and workflows',
+    description:
+      'Tailored software solutions designed for your unique business needs and workflows',
     url: 'https://pickzy.com/custom-software-development',
     images: [
       {
@@ -65,5 +67,39 @@ export const metadata = {
 };
 
 export default function CustomSoftwareDevelopmentPage() {
-  return <CustomSoftwareDevelopment />;
+  return (
+    <>
+      {/* Service Schema Markup */}
+      <Script
+        id="schema-service"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Custom Software Development",
+            "provider": {
+              "@type": "Organization",
+              "name": "PickZy Interactive",
+              "url": "https://pickzy.com",
+              "logo": "https://pickzy.com/logo.png",
+              "sameAs": [
+                "https://www.facebook.com/pickzy",
+                "https://www.instagram.com/pickzy",
+                "https://www.linkedin.com/company/pickzy"
+              ]
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "Global"
+            },
+            "description":
+              "Tailored software solutions for web, mobile, and enterprise applications. Scalable, secure, and designed for businesses of all sizes.",
+            "url": "https://pickzy.com/custom-software-development"
+          }),
+        }}
+      />
+      <CustomSoftwareDevelopment />
+    </>
+  );
 }

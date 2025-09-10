@@ -1,5 +1,6 @@
 import React from 'react';
 import MobileDevelopment from '@/app/pages/MobileDevelopment';
+import Script from 'next/script';
 export const metadata = {
   title: 'Mobile App Development Services | iOS & Android Experts | PickZy',
   description: 'Expert mobile app development for iOS, Android & cross-platform. 100+ apps launched. Get a free consultation for your mobile project today.',
@@ -35,5 +36,43 @@ export const metadata = {
 };
 
 export default function MobileDevelopmentPage() {
-  return <MobileDevelopment />;
+  return (
+     <>
+      <MobileDevelopment />
+
+      {/* JSON-LD Schema */}
+      <Script id="mobile-dev-schema" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "Mobile App Development",
+          "provider": {
+            "@type": "Organization",
+            "name": "PickZy",
+            "url": "https://pickzy.com",
+            "logo": "https://pickzy.com/logo.png"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "Worldwide"
+          },
+          "description": "Expert mobile app development for iOS, Android & cross-platform. 100+ apps launched. Get a free consultation for your mobile project today.",
+          "offers": {
+            "@type": "Offer",
+            "url": "https://pickzy.com/mobile-apps-development",
+            "priceCurrency": "USD",
+            "price": "0.0",
+            "eligibleRegion": {
+              "@type": "Place",
+              "name": "Global"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://pickzy.com/mobile-apps-development"
+          }
+        })}
+      </Script>
+    </>
+  );
 }

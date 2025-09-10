@@ -1,4 +1,5 @@
 import Careers from '@/app/pages/Careers';
+import Script from 'next/script';
 export const metadata = {
   title: 'Careers at PickZy | Join Our Software Development Team',
   description: 'Build your career with PickZy. Explore developer jobs with competitive salaries, remote options, and cutting-edge projects. View open positions.',
@@ -35,7 +36,65 @@ export const metadata = {
 
 
 export default function CareersPage() {
-  return <Careers />;
+  return (
+     <>
+     {/* Schema Markup for Careers Page */}
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "name": "PickZy",
+                "url": "https://pickzy.com",
+                "logo": "https://pickzy.com/logo.png",
+                "sameAs": [
+                  "https://twitter.com/pickzytech",
+                  "https://www.linkedin.com/company/pickzy",
+                  "https://www.facebook.com/pickzy"
+                ]
+              },
+              {
+                "@type": "WebPage",
+                "url": "https://pickzy.com/careers",
+                "name": "Careers at PickZy | Join Our Software Development Team",
+                "description": "Explore developer jobs with competitive salaries, remote options, and cutting-edge projects at PickZy.",
+                "publisher": {
+                  "@type": "Organization",
+                  "name": "PickZy",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://pickzy.com/logo.png"
+                  }
+                }
+              },
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://pickzy.com"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Careers",
+                    "item": "https://pickzy.com/careers"
+                  }
+                ]
+              }
+            ]
+          }),
+        }}
+      />
+      <Careers />
+      
+    </>
+  );
 
 }
 

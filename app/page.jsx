@@ -1,5 +1,6 @@
 // app/page.js (server component)
 import HomePage from '@/app/pages/HomePage'
+import Script from 'next/script'
 
 export const metadata = {
   title: 'Build with a Leading Software Development Company | PickZy',
@@ -45,5 +46,34 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <HomePage />;
+  return (
+     <>
+      {/* Schema.org JSON-LD for Organization */}
+      <Script
+        id="schema-org"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "PickZy Interactive",
+            "url": "https://pickzy.com",
+            "logo": "https://pickzy.com/logo.png",
+            "sameAs": [
+              "https://www.facebook.com/pickzy",
+              "https://www.instagram.com/pickzy",
+              "https://www.linkedin.com/company/pickzy"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91 44 4501 4466",
+              "contactType": "customer service",
+              "areaServed": "IN"
+            }
+          }),
+        }}
+      />
+      <HomePage />
+    </>
+  )
 }

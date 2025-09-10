@@ -181,7 +181,7 @@
 
 
   return (
-      <div className="min-h-screen relative"
+      <div className="min-h-screen relative homepage"
         style={{
           backgroundImage: "url('/assets/frame.jpg')",
           backgroundSize: "cover",
@@ -193,7 +193,7 @@
         
         {/* Hero Section */}
         <div className="relative z-10">
-        <section className="relative flex items-center justify-center min-h-[90vh] sm:min-h-[calc(100vh-var(--navbar-height))] w-full overflow-hidden">
+        <section className="relative flex items-center justify-center min-h-[90vh] sm:min-h-[calc(100vh-var(--navbar-height))] w-full overflow-hidden home-hero">
           {/* Background Layers - Contained within hero section */}
           <div className="absolute inset-0 z-0">
             <img
@@ -286,7 +286,7 @@
         </section>
 
         {/* Services Section */}
-        <section className="py-12 sm:py-20 bg-gray-50">
+        <section className="py-12 sm:py-20 bg-gray-50 home-services">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className="text-center mb-10 sm:mb-16"
@@ -298,7 +298,7 @@
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="home-services-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {services.map((service, index) => (
                 <Card
                   key={index}
@@ -336,7 +336,7 @@
         </section>
 
         {/* Stats Section */}
-        <section className="py-12 sm:py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <section className="home-stats py-12 sm:py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white home-stats">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-center">
               {[
@@ -360,7 +360,7 @@
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-12 sm:py-20 bg-white/60">
+        <section className="home-testimonials py-12 sm:py-20 bg-white/60 home-testimonials">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 sm:mb-16" data-aos="fade-up">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4" data-aos="fade-right">
@@ -499,7 +499,7 @@
         </Dialog>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-20 bg-gray-50">
+        <section className="home-cta py-12 sm:py-20 bg-gray-50 home-cta">
           <div
             className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
             data-aos="zoom-in"

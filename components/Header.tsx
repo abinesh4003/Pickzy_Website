@@ -27,6 +27,7 @@ export default function Header() {
   const hireButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const closeTimerRef = useRef<NodeJS.Timeout>();
+  const [successMessage, setSuccessMessage] = useState('');
 
   // Services data
   const services: NavItem[] = [
@@ -177,31 +178,36 @@ export default function Header() {
     }
   };
 
-  const handleHireDeveloper = async (formData: any) => {
-    console.log(formData);
-    try {
-      const response = await fetch('/api/hire', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          selectedDeveloper: selectedDeveloper || formData.developerType
-        })
-      });
+const handleHireDeveloper = async (formData: any) => {
+  try {
+    const response = await fetch('/api/hire', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...formData,
+        selectedDeveloper: selectedDeveloper || formData.developerType,
+      }),
+    });
 
-      if (!response.ok) {
-        throw new Error('Submission failed');
-      }
-      
-      showToast("Success", "Thanks! We have received your hiring request and will contact you shortly", "success");
-      setIsHireModalOpen(false);
-    } catch (error) {
-      console.error('Submission error:', error);
-      throw error;
+    if (!response.ok) {
+      throw new Error('Submission failed');
     }
-  };
+
+    // show success
+    setSuccessMessage('Your message has been sent successfully! We will get back to you soon.');
+
+    // close after 5 sec
+    setTimeout(() => {
+      setIsHireModalOpen(false);
+      setSuccessMessage('');
+    }, 5000);
+
+  } catch (error) {
+    console.error('Submission error:', error);
+    throw error;
+  }
+};
+
 
   const openHireModal = (developer: string = '') => {
     setSelectedDeveloper(developer);
@@ -566,6 +572,7 @@ export default function Header() {
         open={isHireModalOpen}
         onOpenChange={setIsHireModalOpen}
         onSubmit={handleHireDeveloper}
+        successMessage={successMessage}
       />
     </header>
   );

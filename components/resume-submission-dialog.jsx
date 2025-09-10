@@ -22,6 +22,7 @@ export function ResumeSubmissionDialog() {
   const [errors, setErrors] = useState({});
   const recaptchaRef = useRef(null);
   const [isRecaptchaVerified, setIsRecaptchaVerified] = useState(false);
+  const [successMessage,setSuccessMessage]= useState('');
 
   const validateField = (name, value) => {
     let error = '';
@@ -142,9 +143,14 @@ export function ResumeSubmissionDialog() {
       if (!response.ok) {
         throw new Error(await response.text() || 'Failed to submit resume');
       }
-
-      setOpen(false);
-      showToast('Success', 'Resume submitted successfully! Our team will get back to you soon.', 'success');
+  
+      setSuccessMessage('Your Resume has been sent successfully! We will get back to you soon.')
+      setTimeout(()=>{
+           setOpen(false);
+           setSuccessMessage('')
+      },5000)
+     
+    
       setFormData({
         name: '',
         email: '',
@@ -160,7 +166,7 @@ export function ResumeSubmissionDialog() {
       setIsRecaptchaVerified(false);
     } catch (error) {
       console.error('Submission error:', error);
-      showToast('Error', error.message || 'Failed to submit resume. Please try again.', 'error');
+      showToast('Error', 'Failed to submit resume. Please try again.', 'error');
     } finally {
       setLoading(false);
     }
@@ -186,7 +192,7 @@ export function ResumeSubmissionDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="text-xs sm:text-sm h-8 px-3">
+        <Button variant="outline" size="sm" className="send-resume text-xs sm:text-sm h-8 px-3">
           Send Us Your Resume
         </Button>
       </DialogTrigger>
@@ -300,8 +306,13 @@ export function ResumeSubmissionDialog() {
               <p className="text-red-500 text-xs mt-2">{errors.recaptcha}</p>
             )}
           </div>
+  
 
-          <div className="flex flex-col xs:flex-row justify-end gap-1.5 sm:gap-2 pt-2">
+         {
+          successMessage?(  <div className="mt-4 text-green-600 font-semibold text-center transition-opacity duration-300">
+            {successMessage}
+          </div>):(
+              <div className="flex flex-col xs:flex-row justify-end gap-1.5 sm:gap-2 pt-2">
             <Button
               type="button"
               variant="outline"
@@ -319,6 +330,12 @@ export function ResumeSubmissionDialog() {
               {loading ? 'Submitting...' : 'Submit Resume'}
             </Button>
           </div>
+          )
+
+         }
+
+          
+        
         </form>
       </DialogContent>
     </Dialog>

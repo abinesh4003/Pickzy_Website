@@ -30,6 +30,8 @@ export default function Blog() {
   const [isRecaptchaVerified, setIsRecaptchaVerified] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+
 
   const featuredPost = {
     title: "The Future of Software Development: AI and Machine Learning Integration",
@@ -134,8 +136,10 @@ export default function Blog() {
       if (!response.ok) {
         throw new Error('Failed to send message');
       }
-
-      showToast('Success', 'Your message has been sent successfully!', 'success');
+      setSuccessMessage('Your message has been sent successfully! We will get back to you soon.')
+      setTimeout(()=>{
+        setSuccessMessage('')
+      },5000)
       setFormData({
         firstName: '',
         email: '',
@@ -399,6 +403,11 @@ export default function Blog() {
                     )}
                   </Button>
                 </form>
+                 {successMessage && (
+          <div className="mt-4 text-green-600 font-semibold text-center transition-opacity duration-300">
+            {successMessage}
+          </div>
+        )}
               </div>
             </div>
           </div>

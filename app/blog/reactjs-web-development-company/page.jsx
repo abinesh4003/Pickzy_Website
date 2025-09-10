@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Script from 'next/script';
 import { ArrowLeft, ArrowRight, Check, Circle } from 'lucide-react';
 
 
@@ -11,6 +12,39 @@ const ReactJsBlogPost = () => {
   
 return (
     <>
+      <Script
+    id="reactjs-blog-schema"
+    type="application/ld+json"
+    strategy="afterInteractive"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://pickzy.com/blog/reactjs-modern-web-applications-2025"
+        },
+        "headline": "Why React.js Is the First Choice for Modern Web Applications in 2025",
+        "description": "Discover how React.js continues to dominate frontend development with its unparalleled ecosystem and performance.",
+        "image": "https://pickzy.com/assets/images/react-removebg-preview.png",
+        "author": {
+          "@type": "Person",
+          "name": "PickZy Team"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "PickZy",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://pickzy.com/images/logo.png"
+          }
+        },
+        "datePublished": "2025-06-15",
+        "dateModified": "2025-06-15",
+        "keywords": "React.js, Frontend Development, Modern Web Applications, SPA, Next.js, TailwindCSS"
+      }),
+    }}
+  />
       {/* Blog Content */}
       <main className="blog-post bg-white dark:bg-gray-900 transition-colors duration-300">
         <article>

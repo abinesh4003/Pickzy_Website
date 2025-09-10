@@ -1,5 +1,6 @@
 import React from 'react';
 import DesignAndMarkup from '@/app/pages/DesignAndMarkup';
+import Script from 'next/script';
 
 export const metadata = {
   title: 'Professional Design to Code Services | PSD/Figma to HTML Experts | PickZy',
@@ -66,5 +67,39 @@ export const metadata = {
 };
 
 export default function DesignAndMarkupPage() {
-  return <DesignAndMarkup />;
+return (
+    <>
+      {/* Service Schema Markup */}
+      <Script
+        id="schema-design-markup"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Design to Code Conversion (PSD/Figma to HTML)",
+            "provider": {
+              "@type": "Organization",
+              "name": "PickZy Interactive",
+              "url": "https://pickzy.com",
+              "logo": "https://pickzy.com/logo.png",
+              "sameAs": [
+                "https://www.facebook.com/pickzy",
+                "https://www.instagram.com/pickzy",
+                "https://www.linkedin.com/company/pickzy"
+              ]
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "Global"
+            },
+            "description":
+              "PickZy converts your designs (PSD, Figma, Sketch, XD) into pixel-perfect, responsive HTML/CSS/JS code with W3C validation, cross-browser compatibility, and SEO-friendly markup.",
+            "url": "https://pickzy.com/design-and-markup"
+          }),
+        }}
+      />
+      <DesignAndMarkup />
+    </>
+  );
 }

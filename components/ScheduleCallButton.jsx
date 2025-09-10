@@ -197,7 +197,7 @@ const ScheduleCallButton = () => {
         <div className="text-center">
             <p className="text-sm text-gray-500 mt-10 font-semibold">Still have questions? </p>
             <Button
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 
+                className="schedule-call bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 
                 hover:to-indigo-700 shadow hover:shadow-md transition-all 
                 duration-200 px-4 pb-2 rounded-lg text-sm font-medium mt-4"
                 onClick={() => setIsOpen(true)}

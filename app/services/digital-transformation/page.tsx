@@ -1,5 +1,6 @@
 import React from 'react';
 import DigitalTransformation from '@/app/pages/DigitalTransformation'
+import Script from 'next/script';
 export const metadata = {
   title: 'Digital Transformation Services | Business Automation & Tech Modernization',
   description: 'Future-proof your business with our digital transformation solutions - process automation, cloud migration, AI integration, and custom software development.',
@@ -39,6 +40,47 @@ export const metadata = {
   },
 };
 
+
 export default function Page() {
-  return <DigitalTransformation />;
+  return (
+        <>
+      <Script
+        id="digital-transformation-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Digital Transformation Services",
+            description:
+              "Future-proof your business with digital transformation solutions - process automation, cloud migration, AI integration, and custom software development.",
+            provider: {
+              "@type": "Organization",
+              name: "Pickzy",
+              url: "https://pickzy.com",
+              logo: "https://pickzy.com/images/logo.png",
+            },
+            areaServed: {
+              "@type": "Place",
+              name: "Worldwide",
+            },
+            serviceType: [
+              "Digital Transformation",
+              "Business Automation",
+              "Cloud Migration",
+              "AI Integration",
+              "Legacy System Modernization",
+              "Enterprise Software",
+              "Process Optimization",
+              "Technology Consulting",
+            ],
+            url: "https://pickzy.com/digital-transformation",
+            image: "https://pickzy.com/images/digital-transformation-og.jpg",
+          }),
+        }}
+      />
+      <DigitalTransformation />
+    </>
+  )
 }

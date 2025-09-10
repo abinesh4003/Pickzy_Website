@@ -15,7 +15,8 @@ export function HireDeveloperModal({
   defaultDeveloper = '',
   open,
   onOpenChange,
-  onSubmit
+  onSubmit,
+  successMessage
 }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
@@ -31,16 +32,15 @@ export function HireDeveloperModal({
   const [errors, setErrors] = useState({})
   const recaptchaRef = useRef(null)
   const [isRecaptchaVerified, setIsRecaptchaVerified] = useState(false)
-
   useEffect(() => {
-    if(defaultDeveloper) {
+    if (defaultDeveloper) {
       handleSelectChange('developerType', defaultDeveloper)
     }
   }, [defaultDeveloper])
 
   const validateField = (name, value) => {
     const stringValue = String(value);
-    
+
     switch (name) {
       case 'email':
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(stringValue) ? '' : 'Invalid email format';
@@ -53,7 +53,7 @@ export function HireDeveloperModal({
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    
+
     // For phone field, only allow numbers
     if (name === 'phone') {
       // Remove any non-numeric characters
@@ -125,20 +125,20 @@ export function HireDeveloperModal({
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     if (!validateForm()) {
       return;
     }
-    
+
     setIsSubmitting(true)
 
     try {
       // Get the verified reCAPTCHA token from the component
       const recaptchaToken = recaptchaRef.current?.getToken();
-      
+
       // Send the form data with the verified token
-      await onSubmit({...formData, recaptchaToken});
-      
+      await onSubmit({ ...formData, recaptchaToken });
+
       // Reset form on success
       setFormData({
         name: '',
@@ -155,8 +155,7 @@ export function HireDeveloperModal({
       recaptchaRef.current?.reset();
       setIsRecaptchaVerified(false);
 
-      // Close the modal
-      onOpenChange(false);
+
     } catch (error) {
       console.error('Submission error:', error)
       setErrors(prev => ({ ...prev, submit: 'An unexpected error occurred. Please try again later.' }));
@@ -202,12 +201,12 @@ export function HireDeveloperModal({
             <Label htmlFor="name">Your Name *</Label>
             <div className="relative">
               <User className="absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input 
-                id="name" 
-                name="name" 
+              <Input
+                id="name"
+                name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="John Doe" 
+                placeholder="John Doe"
                 className={`pl-8 h-9 ${errors.name ? 'border-red-500' : ''}`}
               />
             </div>
@@ -220,13 +219,13 @@ export function HireDeveloperModal({
             <Label htmlFor="email">Email *</Label>
             <div className="relative">
               <Mail className="absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input 
-                id="email" 
-                name="email" 
-                type="email" 
+              <Input
+                id="email"
+                name="email"
+                type="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="you@example.com" 
+                placeholder="you@example.com"
                 className={`pl-8 h-9 ${errors.email ? 'border-red-500' : ''}`}
               />
             </div>
@@ -239,15 +238,15 @@ export function HireDeveloperModal({
             <Label htmlFor="phone">Phone *</Label>
             <div className="relative">
               <Phone className="absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input 
-                id="phone" 
-                name="phone" 
+              <Input
+                id="phone"
+                name="phone"
                 value={formData.phone}
                 type="tel"
                 inputMode="numeric"
                 pattern="[0-9]*"
                 onChange={handleChange}
-                placeholder="+1 (555) 000-0000" 
+                placeholder="+1 (555) 000-0000"
                 className={`pl-8 h-9 ${errors.phone ? 'border-red-500' : ''}`}
                 maxLength={13}
               />
@@ -259,8 +258,8 @@ export function HireDeveloperModal({
 
           <div className="space-y-1">
             <Label htmlFor="developerType">Developer Type *</Label>
-            <Select 
-              value={formData.developerType || defaultDeveloper} 
+            <Select
+              value={formData.developerType || defaultDeveloper}
               onValueChange={(value) => handleSelectChange('developerType', value)}
             >
               <SelectTrigger className={`w-full h-9 text-sm ${errors.developerType ? 'border-red-500' : ''}`}>
@@ -279,10 +278,10 @@ export function HireDeveloperModal({
               <p className="text-red-500 text-xs mt-1">{errors.developerType}</p>
             )}
           </div>
-          
+
           <div className="space-y-1">
             <Label htmlFor="workType">Work Preference *</Label>
-            <Select 
+            <Select
               value={formData.workType}
               onValueChange={(value) => handleSelectChange('workType', value)}
             >
@@ -324,13 +323,13 @@ export function HireDeveloperModal({
             <Label htmlFor="duration">Contract Duration</Label>
             <div className="relative">
               <Clock className="absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input 
-                id="duration" 
-                name="duration" 
+              <Input
+                id="duration"
+                name="duration"
                 value={formData.duration}
                 onChange={handleChange}
-                placeholder="e.g., 6 months" 
-                className="pl-8 h-9" 
+                placeholder="e.g., 6 months"
+                className="pl-8 h-9"
               />
             </div>
           </div>
@@ -368,27 +367,32 @@ export function HireDeveloperModal({
           {errors.submit && (
             <p className="text-red-500 text-xs mt-2 text-center sm:col-span-2">{errors.submit}</p>
           )}
-
-          {/* Footer */}
-          <div className="sm:col-span-2 pt-2 flex justify-end gap-2">
-            <Button 
-              type="button" 
-              variant="outline" 
-              onClick={() => onOpenChange(false)} 
+              {successMessage? (
+          <div className="sm:col-span-2 mt-4 text-green-600 font-semibold text-center transition-opacity duration-300">
+            {successMessage}
+          </div>
+        ) : ( <div className="sm:col-span-2 pt-2 flex justify-end gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => onOpenChange(false)}
               className="h-9 px-4 text-sm"
               disabled={isSubmitting}
             >
               Cancel
             </Button>
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               className="h-9 px-4 text-sm"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Submitting...' : 'Submit Request'}
             </Button>
-          </div>
+          </div>)}
+          {/* Footer */}
+         
         </form>
+    
       </DialogContent>
     </Dialog>
   )
