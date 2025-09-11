@@ -18,9 +18,6 @@ const VoiceAssistantButton = ({
   useEffect(() => {
     if (isProcessing) {
       setTooltipText('Processing your request...');
-      // Hide tooltip after 2 seconds when processing
-      const timer = setTimeout(() => setShowTooltip(false), 2000);
-      return () => clearTimeout(timer);
     } else if (isListening) {
       setTooltipText('Listening... Click to stop');
     } else if (micPermission === 'denied') {
@@ -31,15 +28,6 @@ const VoiceAssistantButton = ({
       setTooltipText('Click to start voice assistant');
     }
   }, [isListening, isProcessing, micPermission, browserSupport.speechRecognition]);
-
-  // Clear timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (tooltipTimeoutRef.current) {
-        clearTimeout(tooltipTimeoutRef.current);
-      }
-    };
-  }, []);
 
   // Handle tooltip show/hide with delay
   const handleMouseEnter = () => {
@@ -58,8 +46,6 @@ const VoiceAssistantButton = ({
   const handleClick = () => {
     if (!isProcessing && browserSupport.speechRecognition) {
       toggleListening();
-      // Hide tooltip after click
-      setShowTooltip(false);
     }
   };
 
@@ -70,7 +56,7 @@ const VoiceAssistantButton = ({
         disabled={isProcessing || !browserSupport.speechRecognition}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className={`p-2 rounded-full shadow-lg flex items-center justify-center relative z-50 ${
+        className={`p-4 rounded-full shadow-lg flex items-center justify-center relative z-50 ${
           isListening 
             ? 'bg-red-500 hover:bg-red-600 animate-pulse' 
             : (browserSupport.speechRecognition ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700' : 'bg-gray-400 cursor-not-allowed')

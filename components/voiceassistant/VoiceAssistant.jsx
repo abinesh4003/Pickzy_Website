@@ -63,7 +63,7 @@ const VoiceAssistant = () => {
       
       // Only speak the welcome message if we successfully started listening
       welcomeTimeoutRef.current = setTimeout(() => {
-        speak("Hi, I'm your voice assistant. How can I help you?");
+        speak("Hi, I'm your Pickzy voice assistant. How can I help you?");
       }, 500);
     }
   }, [isListening, startListening, stopListening, speak]);
