@@ -1,13 +1,14 @@
 'use client';
 
-import { useCallback, useRef } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import Fuse from 'fuse.js';
 
 // Content selectors for different pages
 const contentSelectors = {
   '/': {
     'hero': '.home-hero ',
-    'services_overview': '.home-services',
+    'services': '.home-services',
     'service_list': '.home-services-list',
     'stats': '.home-stats',
     'testimonials': '.home-testimonials',
@@ -15,7 +16,7 @@ const contentSelectors = {
   },
   '/services': {
     'hero': '.service-hero',
-    'services_grid': '.service-grid',
+    'services': '.service-grid',
     'process': '.service-process',
     'why_choose': '.service-why-choose-us',
     'cta': '.service-cta'
@@ -82,210 +83,86 @@ const buttonSelectors = {
   },
 };
 
-// Advanced intent patterns with weighted scoring and multiple variations
-const advancedIntentPatterns = {
+// Intent patterns with weighted scoring
+const intentPatterns = {
   navigate: [
-    // Home navigation
-    { pattern: /^(?:can you |please |)?(?:take me|go|navigate|bring me) (?:to |on |over to |)?(?:the |our |)?(?:home|homepage|main page|start(?:ing)? page)(?: please)?[.!]?$/i, score: 15, target: 'home' },
-    { pattern: /^(?:i want to |i'd like to |)?(?:see|view|visit) (?:the |our |)?(?:home|homepage|main page)(?: please)?[.!]?$/i, score: 14, target: 'home' },
-    { pattern: /^(?:go|navigate) (?:back |)?home[.!]?$/i, score: 16, target: 'home' },
-    
-    // About us navigation
-    { pattern: /^(?:can you |please |)?(?:take me|go|navigate|bring me) (?:to |on |over to |)?(?:the |our |)?(?:about|about us|about page|company info|our story)(?: please)?[.!]?$/i, score: 15, target: 'about-us' },
-    { pattern: /^(?:i want to |i'd like to |)?(?:see|view|visit|learn about) (?:the |our |)?(?:company|about us|our team|who we are)(?: please)?[.!]?$/i, score: 14, target: 'about-us' },
-    { pattern: /^(?:show me|tell me about) (?:the |your |)?(?:company|team|story)(?: please)?[.!]?$/i, score: 13, target: 'about-us' },
-    
-    // Services navigation
-    { pattern: /^(?:can you |please |)?(?:take me|go|navigate|bring me) (?:to |on |over to |)?(?:the |our |)?(?:services|service page|what we offer|our offerings)(?: please)?[.!]?$/i, score: 15, target: 'services' },
-    { pattern: /^(?:i want to |i'd like to |)?(?:see|view|visit|explore) (?:the |our |)?(?:services|offerings|what you do)(?: please)?[.!]?$/i, score: 14, target: 'services' },
-    { pattern: /^(?:what (?:services|offerings) do you have|what do you offer)[?]?$/i, score: 13, target: 'services' },
-    
-    // Portfolio navigation
-    { pattern: /^(?:can you |please |)?(?:take me|go|navigate|bring me) (?:to |on |over to |)?(?:the |our |)?(?:portfolio|our work|projects|case studies)(?: please)?[.!]?$/i, score: 15, target: 'portfolio' },
-    { pattern: /^(?:i want to |i'd like to |)?(?:see|view|visit|check out) (?:the |our |)?(?:portfolio|work|projects)(?: please)?[.!]?$/i, score: 14, target: 'portfolio' },
-    { pattern: /^(?:show me|display) (?:your |some |)?(?:work|projects|portfolio)(?: examples)?(?: please)?[.!]?$/i, score: 13, target: 'portfolio' },
-    
-    // Contact navigation
-    { pattern: /^(?:can you |please |)?(?:take me|go|navigate|bring me) (?:to |on |over to |)?(?:the |our |)?(?:contact|contact us|contact page|get in touch|reach us)(?: please)?[.!]?$/i, score: 15, target: 'contact-us' },
-    { pattern: /^(?:i want to |i'd like to |)?(?:see|view|visit|access) (?:the |our |)?(?:contact (?:info|details)|get in touch)(?: please)?[.!]?$/i, score: 14, target: 'contact-us' },
-    { pattern: /^(?:how can i |what's the best way to |)?(?:contact|reach|get in touch with) (?:you|pickzy|the team)(?: please)?[.?]?$/i, score: 13, target: 'contact-us' },
-    
-    // Careers navigation
-    { pattern: /^(?:can you |please |)?(?:take me|go|navigate|bring me) (?:to |on |over to |)?(?:the |our |)?(?:careers|jobs|career page|work with us|join us)(?: please)?[.!]?$/i, score: 15, target: 'careers' },
-    { pattern: /^(?:i want to |i'd like to |)?(?:see|view|visit|check) (?:the |our |)?(?:careers|job openings|employment opportunities)(?: please)?[.!]?$/i, score: 14, target: 'careers' },
-    { pattern: /^(?:are you|do you) (?:hiring|recruiting|looking for new people)[?]?$/i, score: 13, target: 'careers' },
-    
-    // Service-specific navigation
-    { pattern: /^(?:can you |please |)?(?:take me|go|navigate|bring me) (?:to |on |over to |)?(?:the |our |)?(?:web development|web dev|website development)(?: page| section)?(?: please)?[.!]?$/i, score: 14, target: 'web-development' },
-    { pattern: /^(?:can you |please |)?(?:take me|go|navigate|bring me) (?:to |on |over to |)?(?:the |our |)?(?:mobile development|mobile app|app development)(?: page| section)?(?: please)?[.!]?$/i, score: 14, target: 'mobile-development' },
-    { pattern: /^(?:can you |please |)?(?:take me|go|navigate|bring me) (?:to |on |over to |)?(?:the |our |)?(?:digital marketing|seo|marketing|online marketing)(?: page| section)?(?: please)?[.!]?$/i, score: 14, target: 'digital-marketing' },
-    { pattern: /^(?:can you |please |)?(?:take me|go|navigate|bring me) (?:to |on |over to |)?(?:the |our |)?(?:desktop application|desktop development|desktop software)(?: page| section)?(?: please)?[.!]?$/i, score: 14, target: 'desktop-application-development' },
-    
-    // Complex navigation patterns
-    { pattern: /^(?:i'm interested in|i want to learn about|tell me more about) (?:your |)?(web development|mobile development|digital marketing|desktop applications)[.!]?$/i, score: 12, target: (match) => match[1].toLowerCase().replace(/\s+/g, '-') },
-    { pattern: /^(?:where can i find|how do i get to) (?:the |)?(services|about us|portfolio|contact|careers)[?]?$/i, score: 12, target: (match) => match[1].toLowerCase().replace(/\s+/g, '-') },
+    { pattern: /(go to|navigate to|take me to|show me) (the )?(home|homepage)/gi, score: 10, target: 'home' },
+    { pattern: /(go to|navigate to|take me to|show me) (the )?(about|about us|about page)/gi, score: 10, target: 'about-us' },
+    { pattern: /(go to|navigate to|take me to|show me) (the )?(services|service page)/gi, score: 10, target: 'services' },
+    { pattern: /(go to|navigate to|take me to|show me) (the )?(portfolio|work|projects)/gi, score: 10, target: 'portfolio' },
+    { pattern: /(go to|navigate to|take me to|show me) (the )?(contact|contact us|contact page)/gi, score: 10, target: 'contact-us' },
+    { pattern: /(go to|navigate to|take me to|show me) (the )?(careers|jobs|career page)/gi, score: 10, target: 'careers' },
+    { pattern: /(go to|navigate to|take me to|show me) (the )?(web development|web dev)/gi, score: 9, target: 'web-development' },
+    { pattern: /(go to|navigate to|take me to|show me) (the )?(mobile development|mobile app|app development)/gi, score: 9, target: 'mobile-development' },
+    { pattern: /(go to|navigate to|take me to|show me) (the )?(digital marketing|seo|marketing)/gi, score: 9, target: 'digital-marketing' },
+    { pattern: /(go to|navigate to|take me to|show me) (the )?(desktop application|desktop development)/gi, score: 9, target: 'desktop-application-development' },
   ],
-
   scroll: [
-    // Direction-based scrolling
-    { pattern: /^(?:can you |please |)?(?:scroll|move) (?:the page |)?(down|up|downwards|upwards)(?: a bit| slightly| a little)?(?: please)?[.!]?$/i, score: 15, direction: (match) => match[1].toLowerCase().includes('down') ? 'down' : 'up' },
-    { pattern: /^(?:scroll|move) (?:to the |)(top|bottom|beginning|end|start|footer)(?: of (?:the|this) page)?(?: please)?[.!]?$/i, score: 16, direction: (match) => {
-      const dir = match[1].toLowerCase();
-      return dir === 'top' || dir === 'beginning' || dir === 'start' ? 'top' : 'bottom';
-    }},
-    { pattern: /^(?:go|jump|take me) (?:to the |)(top|bottom|beginning|end)(?: please)?[.!]?$/i, score: 15, direction: (match) => match[1].toLowerCase() === 'top' ? 'top' : 'bottom' },
-    
-    // Section-based scrolling
-    { pattern: /^(?:can you |please |)?(?:scroll|go|jump) (?:to|into|down to) (?:the |)?(hero|header|title)(?: section)?(?: please)?[.!]?$/i, score: 14, section: 'hero' },
-    { pattern: /^(?:can you |please |)?(?:scroll|go|jump) (?:to|into|down to) (?:the |)?(services|service section|what we offer)(?: please)?[.!]?$/i, score: 14, section: 'services' },
-    { pattern: /^(?:can you |please |)?(?:scroll|go|jump) (?:to|into|down to) (?:the |)?(testimonials|reviews|feedback|client stories)(?: please)?[.!]?$/i, score: 14, section: 'testimonials' },
-    { pattern: /^(?:can you |please |)?(?:scroll|go|jump) (?:to|into|down to) (?:the |)?(contact|contact us|contact form|get in touch)(?: please)?[.!]?$/i, score: 14, section: 'contact' },
-    { pattern: /^(?:can you |please |)?(?:scroll|go|jump) (?:to|into|down to) (?:the |)?(about|about us|our team|company info)(?: please)?[.!]?$/i, score: 14, section: 'about' },
-    { pattern: /^(?:can you |please |)?(?:scroll|go|jump) (?:to|into|down to) (?:the |)?(portfolio|our work|projects|case studies)(?: please)?[.!]?$/i, score: 14, section: 'portfolio' },
-    { pattern: /^(?:can you |please |)?(?:scroll|go|jump) (?:to|into|down to) (?:the |)?(stats|statistics|numbers|achievements)(?: please)?[.!]?$/i, score: 13, section: 'stats' },
-    { pattern: /^(?:can you |please |)?(?:scroll|go|jump) (?:to|into|down to) (?:the |)?(cta|call to action|next step|what's next)(?: please)?[.!]?$/i, score: 13, section: 'cta' },
-    
-    // Complex scrolling patterns
-    { pattern: /^(?:i want to see|show me|take me to) (?:the |)?(services|testimonials|contact|about|portfolio)(?: section)?(?: please)?[.!]?$/i, score: 13, section: (match) => match[1].toLowerCase() },
-    { pattern: /^(?:where is|how do i get to) (?:the |)?(services|testimonials|contact form|about section|portfolio)(?: on this page)?[?]?$/i, score: 12, section: (match) => match[1].toLowerCase().replace(/\s+/g, '_') },
+    { pattern: /(scroll to|go to|show me|move to|find) (the )?(hero|top|header)/gi, score: 10, direction: 'top' },
+    { pattern: /(scroll to|go to|show me|move to|find) (the )?(bottom|footer|end)/gi, score: 10, direction: 'bottom' },
+    { pattern: /(scroll to|go to|show me|move to|find) (the )?(services|service section)/gi, score: 9, section: 'services' },
+    { pattern: /(scroll to|go to|show me|move to|find) (the )?(testimonials|reviews|feedback)/gi, score: 9, section: 'testimonials' },
+    { pattern: /(scroll to|go to|show me|move to|find) (the )?(contact|contact us|contact form)/gi, score: 9, section: 'contact' },
+    { pattern: /(scroll to|go to|show me|move to|find) (the )?(about|about us|team)/gi, score: 9, section: 'about' },
+    { pattern: /(scroll to|go to|show me|move to|find) (the )?(portfolio|work|projects)/gi, score: 9, section: 'portfolio' },
+    { pattern: /(scroll to|go to|show me|move to|find) (the )?(stats|statistics|numbers)/gi, score: 8, section: 'stats' },
+    { pattern: /(scroll to|go to|show me|move to|find) (the )?(cta|call to action)/gi, score: 8, section: 'cta' },
+    { pattern: /scroll (down|up)/gi, score: 10, direction: 'down' },
+    { pattern: /scroll up/gi, score: 10, direction: 'up' },
   ],
-
   read: [
-    // Content reading requests
-    { pattern: /^(?:can you |please |)?(?:read|tell me|what does it say) (?:in|on|at) (?:the |)?(hero|header|title)(?: section)?(?: please)?[.!]?$/i, score: 15, content_type: 'hero' },
-    { pattern: /^(?:can you |please |)?(?:read|tell me|what does it say) (?:in|on|at) (?:the |)?(services|service section|what we offer)(?: please)?[.!]?$/i, score: 14, content_type: 'services' },
-    { pattern: /^(?:can you |please |)?(?:read|tell me|what does it say) (?:in|on|at) (?:the |)?(testimonials|reviews|feedback|client stories)(?: please)?[.!]?$/i, score: 14, content_type: 'testimonials' },
-    { pattern: /^(?:can you |please |)?(?:read|tell me|what does it say) (?:in|on|at) (?:the |)?(stats|statistics|numbers|achievements)(?: please)?[.!]?$/i, score: 13, content_type: 'stats' },
-    { pattern: /^(?:can you |please |)?(?:read|tell me|what does it say) (?:in|on|at) (?:the |)?(mission|vision|values)(?: please)?[.!]?$/i, score: 14, content_type: (match) => match[1].toLowerCase() },
-    { pattern: /^(?:can you |please |)?(?:read|tell me|what does it say) (?:in|on|at) (?:the |)?(team|people|employees)(?: please)?[.!]?$/i, score: 13, content_type: 'team' },
-    { pattern: /^(?:can you |please |)?(?:read|tell me|what does it say) (?:in|on|at) (?:the |)?(process|how we work|our approach)(?: please)?[.!]?$/i, score: 13, content_type: 'process' },
-    
-    // Complex reading patterns
-    { pattern: /^(?:what's|what is) (?:in|on|at) (?:the |)?(hero|services|testimonials|contact|about|portfolio)(?: section)?[?]?$/i, score: 13, content_type: (match) => match[1].toLowerCase() },
-    { pattern: /^(?:can you |)?(?:read|tell me) (?:what's|what is) (?:in|on|at) (?:the |)?(hero|services|testimonials)(?: section)?[?]?$/i, score: 12, content_type: (match) => match[1].toLowerCase() },
-    { pattern: /^(?:i'd like to know|i want to hear) (?:what's|what is) (?:in|on|at) (?:the |)?(services|testimonials|about)(?: section)?[.!]?$/i, score: 12, content_type: (match) => match[1].toLowerCase() },
+    { pattern: /(read|what does it say|tell me about) (the )?(hero|header|title)/gi, score: 10, content_type: 'hero' },
+    { pattern: /(read|what does it say|tell me about) (the )?(services|service section|what we offer)/gi, score: 9, content_type: 'services' },
+    { pattern: /(read|what does it say|tell me about) (the )?(testimonials|reviews|feedback)/gi, score: 9, content_type: 'testimonials' },
+    { pattern: /(read|what does it say|tell me about) (the )?(stats|statistics|numbers)/gi, score: 8, content_type: 'stats' },
+    { pattern: /(read|what does it say|tell me about) (the )?(mission|vision|values)/gi, score: 9, content_type: 'mission' },
+    { pattern: /(read|what does it say|tell me about) (the )?(team|people|employees)/gi, score: 8, content_type: 'team' },
+    { pattern: /(read|what does it say|tell me about) (the )?(process|how we work)/gi, score: 8, content_type: 'process' },
   ],
-
   click: [
-    // Button clicking requests
-    { pattern: /^(?:can you |please |)?(?:click|press|select|tap) (?:on |the |)?(get in touch|contact us|contact button)(?: please)?[.!]?$/i, score: 15, target: 'get in touch' },
-    { pattern: /^(?:can you |please |)?(?:click|press|select|tap) (?:on |the |)?(view portfolio|see our work|portfolio button)(?: please)?[.!]?$/i, score: 14, target: 'view portfolio' },
-    { pattern: /^(?:can you |please |)?(?:click|press|select|tap) (?:on |the |)?(view services|our services|services button)(?: please)?[.!]?$/i, score: 14, target: 'view all services' },
-    { pattern: /^(?:can you |please |)?(?:click|press|select|tap) (?:on |the |)?(learn more|more info|details|read more)(?: please)?[.!]?$/i, score: 13, target: 'learn more' },
-    { pattern: /^(?:can you |please |)?(?:click|press|select|tap) (?:on |the |)?(apply now|apply|submit application)(?: please)?[.!]?$/i, score: 15, target: 'apply now' },
-    { pattern: /^(?:can you |please |)?(?:click|press|select|tap) (?:on |the |)?(send message|submit form|send)(?: please)?[.!]?$/i, score: 15, target: 'send message' },
-    
-    // Complex clicking patterns
-    { pattern: /^(?:i want to|i'd like to) (?:contact|get in touch|reach out)(?: please)?[.!]?$/i, score: 13, target: 'get in touch' },
-    { pattern: /^(?:how can i|what's the way to) (?:contact|get in touch|reach) you[?]?$/i, score: 12, target: 'get in touch' },
-    { pattern: /^(?:show me|i want to see) (?:your|the) (?:portfolio|work|projects)[.!]?$/i, score: 12, target: 'view portfolio' },
-    { pattern: /^(?:i'm interested in|i want to learn about) (?:your|the) (?:services|offerings)[.!]?$/i, score: 12, target: 'view all services' },
+    { pattern: /(click|press|select) (the )?(get in touch|contact us|contact button)/gi, score: 10, target: 'get in touch' },
+    { pattern: /(click|press|select) (the )?(view portfolio|see our work|portfolio button)/gi, score: 9, target: 'view portfolio' },
+    { pattern: /(click|press|select) (the )?(view services|our services|services button)/gi, score: 9, target: 'view all services' },
+    { pattern: /(click|press|select) (the )?(learn more|more info|details)/gi, score: 8, target: 'learn more' },
+    { pattern: /(click|press|select) (the )?(apply now|apply|submit application)/gi, score: 10, target: 'apply now' },
+    { pattern: /(click|press|select) (the )?(send message|submit form)/gi, score: 10, target: 'send message' },
   ],
-
   info: [
-    // Company information requests
-    { pattern: /^(?:can you |please |)?(?:tell me about|what are|describe) (?:your|the) (?:services|what you offer|offerings)(?: please)?[.?]?$/i, score: 15, topic: 'services' },
-    { pattern: /^(?:can you |please |)?(?:tell me about|what is|describe) (?:your|the) (?:company|about us|who you are)(?: please)?[.?]?$/i, score: 15, topic: 'about' },
-    { pattern: /^(?:can you |please |)?(?:tell me about|what are|describe) (?:your|the) (?:projects|work|portfolio)(?: please)?[.?]?$/i, score: 14, topic: 'projects' },
-    { pattern: /^(?:can you |please |)?(?:tell me about|what are|describe) (?:your|the) (?:technologies|tech stack|tools|technology)(?: please)?[.?]?$/i, score: 14, topic: 'technologies' },
-    { pattern: /^(?:can you |please |)?(?:tell me about|what is|describe) (?:your|the) (?:team|people|employees)(?: please)?[.?]?$/i, score: 13, topic: 'team' },
-    { pattern: /^(?:can you |please |)?(?:tell me about|what is|describe) (?:your|the) (?:nasscom|membership|affiliation)(?: please)?[.?]?$/i, score: 13, topic: 'nasscom' },
-    
-    // Complex information patterns
-    { pattern: /^(?:what (?:kind of|types of) (?:services|work) do you (?:offer|provide))[?]?$/i, score: 14, topic: 'services' },
-    { pattern: /^(?:how long have you been|when did you start) (?:in business|operating|running)[?]?$/i, score: 13, topic: 'about' },
-    { pattern: /^(?:what (?:technologies|tools|frameworks) do you (?:use|work with))[?]?$/i, score: 14, topic: 'technologies' },
-    { pattern: /^(?:how many (?:projects|clients) have you (?:worked with|completed))[?]?$/i, score: 13, topic: 'projects' },
-    { pattern: /^(?:do you have|are you part of) (?:any|a) (?:nasscom|membership|association)[?]?$/i, score: 13, topic: 'nasscom' },
+    { pattern: /(what|tell me about) (your|the) (services|what you offer|offerings)/gi, score: 10, topic: 'services' },
+    { pattern: /(what|tell me about) (your|the) (company|about|who you are)/gi, score: 10, topic: 'about' },
+    { pattern: /(what|tell me about) (your|the) (projects|work|portfolio)/gi, score: 9, topic: 'projects' },
+    { pattern: /(what|tell me about) (your|the) (technologies|tech stack|tools)/gi, score: 9, topic: 'technologies' },
+    { pattern: /(what|tell me about) (your|the) (team|people|employees)/gi, score: 8, topic: 'team' },
+    { pattern: /(what|tell me about) (your|the) (nasscom|membership|affiliation)/gi, score: 8, topic: 'nasscom' },
   ],
-
   stop: [
-    // Stop listening requests
-    { pattern: /^(?:that's all|that will be all|i'm done|no more commands)(?: for now)?[.!]?$/i, score: 16 },
-    { pattern: /^(?:stop|end|exit|quit) (?:listening|voice|assistant|help)(?: please)?[.!]?$/i, score: 15 },
-    { pattern: /^(?:thank you|thanks)(?: that's all| that will be all)?[.!]?$/i, score: 14 },
-    { pattern: /^(?:goodbye|see you|farewell|bye)(?: for now)?[.!]?$/i, score: 14 },
-    { pattern: /^(?:i don't need|no more) (?:help|assistance)(?: right now)?[.!]?$/i, score: 13 },
+    { pattern: /(stop|end|that's all|thank you|goodbye)/gi, score: 10 },
   ],
-
   help: [
-    // Help requests
-    { pattern: /^(?:what can you do|how can you help|what are my options)(?: please)?[?]?$/i, score: 15 },
-    { pattern: /^(?:help|assist me|guide me|show me what to do)(?: please)?[.!]?$/i, score: 14 },
-    { pattern: /^(?:i need help|i need assistance|can you help me)(?: please)?[.?]?$/i, score: 14 },
-    { pattern: /^(?:what commands|what can i say|what should i say)(?: please)?[?]?$/i, score: 13 },
-    { pattern: /^(?:how does this work|how do i use this|what's possible)(?: please)?[?]?$/i, score: 13 },
-  ],
-
-  form: [
-    // Form interaction requests
-    { pattern: /^(?:i want to|i'd like to) (?:contact|get in touch|reach out|send a message)(?: please)?[.!]?$/i, score: 14, action: 'contact' },
-    { pattern: /^(?:how can i|what's the process to) (?:contact|get in touch|reach) you[?]?$/i, score: 13, action: 'contact' },
-    { pattern: /^(?:i'm interested in|i want to apply for) (?:a job|careers|working with you)(?: please)?[.!]?$/i, score: 14, action: 'careers' },
-    { pattern: /^(?:i need|i want) (?:more information|additional details)(?: please)?[.!]?$/i, score: 13, action: 'information' },
-  ],
-
-  search: [
-    // Search requests
-    { pattern: /^(?:search|find|look for) (?:web development|mobile development|digital marketing)(?: information| details)?[.!]?$/i, score: 14, query: (match) => match[1] },
-    { pattern: /^(?:where can i find|how do i find) (?:information|details) about (?:web development|mobile development|digital marketing)[?]?$/i, score: 13, query: (match) => match[1] },
-    { pattern: /^(?:show me|tell me about) (?:web development|mobile development|digital marketing)(?: services)?[.!]?$/i, score: 13, query: (match) => match[1] },
+    { pattern: /(help|what can you do|assist me)/gi, score: 10 },
   ]
 };
 
-// Contextual understanding patterns
-const contextualPatterns = {
-  greetings: [
-    /^(?:hello|hi|hey|greetings|good (?:morning|afternoon|evening))(?: there| pickzy| assistant)?[!.]?$/i,
-    /^(?:howdy|what's up|yo)(?: pickzy| assistant)?[!.]?$/i
-  ],
-  appreciation: [
-    /^(?:thank you|thanks|appreciate it|much appreciated)(?: very much| a lot)?[!.]?$/i,
-    /^(?:that's|that is) (?:great|awesome|wonderful|perfect|helpful|excellent)[!.]?$/i
-  ],
-  confirmation: [
-    /^(?:yes|yeah|yep|sure|ok|okay|alright|correct|right)(?: please)?[!.]?$/i,
-    /^(?:that's|that is) (?:right|correct|what i wanted|what i meant)[!.]?$/i
-  ],
-  negation: [
-    /^(?:no|nope|nah|not really|not exactly|that's not)(?: what i meant| what i wanted)?[!.]?$/i,
-    /^(?:cancel|stop|nevermind|forget it)(?: that| please)?[!.]?$/i
-  ]
-};
+// Stop words to remove during preprocessing
+const STOP_WORDS = new Set([
+  'a', 'an', 'the', 'and', 'or', 'but', 'is', 'are', 'was', 'were', 'be', 'been', 'being',
+  'to', 'of', 'in', 'on', 'at', 'for', 'by', 'with', 'about', 'against', 'between', 'into',
+  'through', 'during', 'before', 'after', 'above', 'below', 'from', 'up', 'down', 'off', 'over',
+  'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how',
+  'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor',
+  'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 'can', 'will', 'just', 'should',
+  'now', 'i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', 'your', 'yours',
+  'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', 'her', 'hers', 'herself',
+  'it', 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'this', 'that',
+  'these', 'those', 'am', 'do', 'does', 'did', 'doing', 'would', 'could', 'should', 'has', 'have',
+  'had', 'having', 'what', 'which', 'who', 'whom', 'please', 'kindly', 'could you', 'would you'
+]);
 
-// Advanced synonym mapping for better intent recognition
-const synonymMap = {
-  // Navigation synonyms
-  'home': ['home', 'homepage', 'main page', 'start page', 'starting page', 'main'],
-  'about': ['about', 'about us', 'about page', 'company', 'company info', 'our story', 'who we are'],
-  'services': ['services', 'service page', 'what we offer', 'our offerings', 'what you do'],
-  'portfolio': ['portfolio', 'our work', 'projects', 'case studies', 'work examples'],
-  'contact': ['contact', 'contact us', 'contact page', 'get in touch', 'reach us', 'contact info'],
-  'careers': ['careers', 'jobs', 'career page', 'work with us', 'join us', 'employment'],
-  
-  // Section synonyms
-  'hero': ['hero', 'header', 'title', 'top section', 'main banner'],
-  'services_section': ['services', 'service section', 'what we offer', 'our services'],
-  'testimonials': ['testimonials', 'reviews', 'feedback', 'client stories', 'customer feedback'],
-  'contact_section': ['contact', 'contact us', 'contact form', 'get in touch'],
-  'about_section': ['about', 'about us', 'our team', 'company info'],
-  'portfolio_section': ['portfolio', 'our work', 'projects', 'case studies'],
-  'stats': ['stats', 'statistics', 'numbers', 'achievements', 'metrics'],
-  'cta': ['cta', 'call to action', 'next step', "what's next", 'action button'],
-  
-  // Action synonyms
-  'click': ['click', 'press', 'select', 'tap', 'choose'],
-  'read': ['read', 'tell me', 'what does it say', 'what is written', 'what is there'],
-  'scroll': ['scroll', 'move', 'navigate', 'go', 'jump'],
-  'view': ['view', 'see', 'look at', 'check out', 'visit'],
-  
-  // Information synonyms
-  'services_info': ['services', 'what you offer', 'offerings', 'what you do'],
-  'company_info': ['company', 'about us', 'who you are', 'your story', 'background'],
-  'projects_info': ['projects', 'work', 'portfolio', 'case studies', 'what youve done'],
-  'tech_info': ['technologies', 'tech stack', 'tools', 'technology', 'frameworks'],
-  'team_info': ['team', 'people', 'employees', 'staff', 'who works here'],
-  'nasscom_info': ['nasscom', 'membership', 'affiliation', 'association'],
+// Confidence thresholds
+const CONFIDENCE_THRESHOLDS = {
+  EXACT_MATCH: 0.9,
+  FUZZY_MATCH: 0.7,
+  EMBEDDING_MATCH: 0.6
 };
 
 export const useVoiceAssistantCommands = ({
@@ -296,12 +173,46 @@ export const useVoiceAssistantCommands = ({
 }) => {
   const router = useRouter();
   const pathname = usePathname();
-  const conversationContext = useRef({
-    lastIntent: null,
-    lastParameters: {},
-    expectedNext: null,
-    userContext: {}
-  });
+
+  // Memoize Fuse instances globally
+  const fuseInstances = useMemo(() => {
+    const instances = {};
+    
+    Object.entries(intentPatterns).forEach(([intent, patterns]) => {
+      const searchItems = patterns.map((patternObj, index) => ({
+        id: index,
+        pattern: patternObj.pattern.source.replace(/\\b|\\s|\\(|\)|\\|)/gi, ' ').replace(/\s+/g, ' ').trim(),
+        ...patternObj
+      })); 
+      
+      instances[intent] = new Fuse(searchItems, {
+        keys: ['pattern'],
+        includeScore: true,
+        threshold: 0.3,
+        distance: 100,
+        minMatchCharLength: 2
+      });
+    });
+    
+    return instances;
+  }, []);
+
+  // Preprocess command text
+  const preprocessCommand = useCallback((command) => {
+    // Lowercase
+    let processed = command.toLowerCase();
+    
+    // Remove punctuation (optional)
+    processed = processed.replace(/[^\w\s]/g, ' ');
+    
+    // Remove stop words
+    processed = processed.split(/\s+/)
+      .filter(word => !STOP_WORDS.has(word) && word.length > 1)
+      .join(' ')
+      .trim();
+    
+    return processed;
+  }, []);
 
   // Enhanced content reading for different page types
   const readPageContent = useCallback((contentType) => {
@@ -312,13 +223,17 @@ export const useVoiceAssistantCommands = ({
     if (!selector) return null;
     
     try {
-      const element = document.querySelector(selector);
-      if (element) {
-        const content = element.textContent.trim();
-        return content;
+      const elements = document.querySelectorAll(selector);
+      if (elements.length) {
+        return Array.from(elements).map(el => el.textContent.trim()).join(' ');
       }
     } catch (error) {
-      console.error('Error reading content:', error);
+      console.error({ 
+        step: 'Error reading content', 
+        error: error.message, 
+        contentType, 
+        selector 
+      });
     }
     
     return null;
@@ -377,7 +292,12 @@ export const useVoiceAssistantCommands = ({
         return true;
       }
     } catch (error) {
-      console.error('Error scrolling to section:', error);
+      console.error({ 
+        step: 'Error scrolling to section', 
+        error: error.message, 
+        sectionId, 
+        selector 
+      });
     }
     
     return false;
@@ -398,7 +318,12 @@ export const useVoiceAssistantCommands = ({
         return true;
       }
     } catch (error) {
-      console.error('Error clicking button:', error);
+      console.error({ 
+        step: 'Error clicking button', 
+        error: error.message, 
+        buttonName, 
+        selector 
+      });
     }
     
     return false;
@@ -410,461 +335,293 @@ export const useVoiceAssistantCommands = ({
       '/': {
         name: 'Homepage',
         features: ['hero section', 'services overview', 'testimonials', 'contact form'],
-        availableActions: ['navigate', 'scroll', 'read content', 'click buttons', 'get information']
       },
       '/about-us': {
         name: 'About Us',
         features: ['company history', 'team', 'mission', 'vision', 'values', 'nasscom membership'],
-        availableActions: ['navigate', 'scroll', 'read content', 'click buttons', 'get information']
       },
       '/contact-us': {
         name: 'Contact',
         features: ['contact form', 'office location', 'contact details', 'FAQ'],
-        availableActions: ['navigate', 'scroll', 'read content', 'click buttons', 'get information']
       },
       '/services': {
         name: 'Services',
         features: ['service categories', 'technologies', 'process', 'why choose us'],
-        availableActions: ['navigate', 'scroll', 'read content', 'click buttons', 'get information']
       },
       '/portfolio': {
         name: 'Portfolio',
         features: ['project showcase', 'case studies', 'technology filters', 'client testimonials'],
-        availableActions: ['navigate', 'scroll', 'read content', 'click buttons', 'get information']
       },
       '/careers': {
         name: 'Careers',
         features: ['job openings', 'company culture', 'benefits', 'application process'],
-        availableActions: ['navigate', 'scroll', 'read content', 'click buttons', 'get information']
       }
     };
 
     return contexts[pathname] || {
       name: 'Page',
       features: [],
-      availableActions: ['navigate', 'scroll', 'read content', 'click buttons', 'get information']
     };
   }, [pathname]);
 
-  // Advanced text normalization
-  const normalizeText = useCallback((text) => {
-    return text
-      .toLowerCase()
-      .replace(/\s+/g, ' ')
-      .trim()
-      .replace(/[^\w\s]/g, '')
-      .replace(/\b(?:please|kindly|could you|would you|can you)\b/gi, '')
-      .trim();
-  }, []);
-
-  // Advanced synonym expansion
-  const expandSynonyms = useCallback((text) => {
-    let expandedText = text;
-    Object.entries(synonymMap).forEach(([key, synonyms]) => {
-      synonyms.forEach(synonym => {
-        const regex = new RegExp(`\\b${synonym}\\b`, 'gi');
-        if (regex.test(expandedText)) {
-          expandedText = expandedText.replace(regex, key);
-        }
-      });
-    });
-    return expandedText;
-  }, []);
-
-  // Contextual understanding
-  const understandContext = useCallback((command) => {
-    const normalizedCommand = normalizeText(command);
-    
-    // Check for greetings
-    for (const pattern of contextualPatterns.greetings) {
-      if (pattern.test(command)) {
-        return { type: 'greeting', response: "Hello! I'm PickZy assistant. How can I help you today?" };
-      }
-    }
-    
-    // Check for appreciation
-    for (const pattern of contextualPatterns.appreciation) {
-      if (pattern.test(command)) {
-        return { type: 'appreciation', response: "You're welcome! Is there anything else I can help you with?" };
-      }
-    }
-    
-    // Check for confirmation
-    for (const pattern of contextualPatterns.confirmation) {
-      if (pattern.test(command)) {
-        return { type: 'confirmation', response: "Great! What would you like to do next?" };
-      }
-    }
-    
-    // Check for negation
-    for (const pattern of contextualPatterns.negation) {
-      if (pattern.test(command)) {
-        return { type: 'negation', response: "I understand. How can I assist you differently?" };
-      }
-    }
-    
-    return null;
-  }, []);
-
-  // Advanced intent recognition with multiple strategies
+  // Hybrid intent recognition with multiple layers
   const recognizeIntent = useCallback((command) => {
-    const normalizedCommand = normalizeText(command);
-    const expandedCommand = expandSynonyms(normalizedCommand);
+    const preprocessedCommand = preprocessCommand(command);
+    const lowerCommand = command.toLowerCase();
+    let bestMatch = { intent: null, score: 0, parameters: {}, confidence: 0 };
     
-    let bestMatch = { intent: null, score: 0, parameters: {} };
-    
-    // Strategy 1: Exact pattern matching
-    Object.entries(advancedIntentPatterns).forEach(([intent, patterns]) => {
+    // Layer 1: Exact regex matching
+    Object.entries(intentPatterns).forEach(([intent, patterns]) => {
       patterns.forEach(({ pattern, score, ...params }) => {
-        const match = command.match(pattern);
-        if (match && score > bestMatch.score) {
-          let processedParams = {};
-          
-          // Process parameters that might be functions
-          Object.entries(params).forEach(([key, value]) => {
-            if (typeof value === 'function') {
-              processedParams[key] = value(match);
-            } else {
-              processedParams[key] = value;
-            }
-          });
-          
+        const matches = lowerCommand.match(pattern);
+        if (matches && score > bestMatch.score) {
           bestMatch = { 
             intent, 
             score, 
-            parameters: processedParams,
-            match
+            parameters: { ...params },
+            confidence: CONFIDENCE_THRESHOLDS.EXACT_MATCH
           };
         }
       });
     });
     
-    // Strategy 2: Keyword-based matching with context
-    if (bestMatch.score < 8) {
-      const keywords = expandedCommand.split(' ');
-      const pageContext = getPageContext();
-      
-      // Navigation detection
-      const navKeywords = ['go', 'navigate', 'take', 'show', 'view', 'visit'];
-      const navTargets = ['home', 'about', 'services', 'portfolio', 'contact', 'careers'];
-      
-      if (keywords.some(k => navKeywords.includes(k)) && 
-          keywords.some(k => navTargets.includes(k))) {
-        const target = keywords.find(k => navTargets.includes(k));
-        bestMatch = {
-          intent: 'navigate',
-          score: 9,
-          parameters: { target }
-        };
-      }
-      
-      // Scroll detection
-      const scrollKeywords = ['scroll', 'move', 'jump', 'top', 'bottom', 'up', 'down'];
-      if (keywords.some(k => scrollKeywords.includes(k))) {
-        if (keywords.includes('top') || keywords.includes('up')) {
-          bestMatch = {
-            intent: 'scroll',
-            score: 9,
-            parameters: { direction: 'top' }
-          };
-        } else if (keywords.includes('bottom') || keywords.includes('down')) {
-          bestMatch = {
-            intent: 'scroll',
-            score: 9,
-            parameters: { direction: 'bottom' }
-          };
-        } else {
-          bestMatch = {
-            intent: 'scroll',
-            score: 8,
-            parameters: { direction: 'down' }
+    // If exact match found with good confidence, return it
+    if (bestMatch.confidence >= CONFIDENCE_THRESHOLDS.EXACT_MATCH) {
+      return bestMatch;
+    }
+    
+    // Layer 2: Fuzzy matching fallback
+    let fuzzyBestMatch = { intent: null, score: 0, parameters: {}, confidence: 0 };
+    
+    Object.entries(fuseInstances).forEach(([intent, fuse]) => {
+      const results = fuse.search(preprocessedCommand);
+      if (results.length > 0) {
+        const bestFuzzyResult = results[0];
+        const confidence = 1 - (bestFuzzyResult.score || 0);
+        
+        if (confidence > fuzzyBestMatch.confidence && confidence >= CONFIDENCE_THRESHOLDS.FUZZY_MATCH) {
+          fuzzyBestMatch = {
+            intent,
+            score: bestFuzzyResult.item.score,
+            parameters: { ...bestFuzzyResult.item },
+            confidence
           };
         }
       }
+    });
+    
+    // If fuzzy match has better confidence, use it
+    if (fuzzyBestMatch.confidence > bestMatch.confidence) {
+      bestMatch = fuzzyBestMatch;
+    }
+    
+    // Layer 3: Keyword-based fallback for very low confidence cases
+    if (bestMatch.confidence < CONFIDENCE_THRESHOLDS.FUZZY_MATCH) {
+      const keywordMatches = {
+        navigate: ['go to', 'navigate', 'show me', 'take me', 'open'],
+        scroll: ['scroll', 'up', 'down', 'top', 'bottom'],
+        read: ['read', 'what does', 'tell me about', 'say'],
+        click: ['click', 'press', 'select', 'button'],
+        info: ['what', 'tell me', 'information', 'about'],
+        stop: ['stop', 'end', 'thank you', 'goodbye'],
+        help: ['help', 'assist', 'what can you do']
+      };
       
-      // Read detection
-      const readKeywords = ['read', 'tell', 'what', 'say', 'content'];
-      if (keywords.some(k => readKeywords.includes(k))) {
-        const contentTypes = ['hero', 'services', 'testimonials', 'stats', 'mission', 'team'];
-        const contentType = keywords.find(k => contentTypes.includes(k)) || 'hero';
+      let keywordScore = 0;
+      let detectedIntent = 'unknown';
+      
+      Object.entries(keywordMatches).forEach(([intent, keywords]) => {
+        const matchCount = keywords.filter(keyword => 
+          lowerCommand.includes(keyword)
+        ).length;
+        
+        if (matchCount > keywordScore) {
+          keywordScore = matchCount;
+          detectedIntent = intent;
+        }
+      });
+      
+      if (keywordScore > 0) {
         bestMatch = {
-          intent: 'read',
-          score: 8,
-          parameters: { content_type: contentType }
+          intent: detectedIntent,
+          score: 6,
+          parameters: {},
+          confidence: CONFIDENCE_THRESHOLDS.EMBEDDING_MATCH
         };
       }
     }
     
-    // Strategy 3: Contextual follow-up
-    if (bestMatch.score < 6 && conversationContext.current.expectedNext) {
-      const { expectedIntent, expectedParameters } = conversationContext.current.expectedNext;
-      bestMatch = {
-        intent: expectedIntent,
-        score: 7,
-        parameters: expectedParameters
-      };
-      conversationContext.current.expectedNext = null;
+    // Final confidence check
+    if (bestMatch.confidence < CONFIDENCE_THRESHOLDS.EMBEDDING_MATCH) {
+      return { intent: 'unknown', score: 0, parameters: {}, confidence: 0 };
     }
     
-    return bestMatch.intent ? bestMatch : { intent: 'unknown', score: 0, parameters: {} };
-  }, [getPageContext]);
+    return bestMatch;
+  }, [preprocessCommand, fuseInstances]);
 
-  // Intent handlers
+  // Intent handlers with try/catch blocks
   const handleNavigateIntent = useCallback((parameters) => {
-    if (parameters && parameters.target) {
-      const target = parameters.target;
-      const route = enhancedNavigate(target);
-      
-      // Update context
-      conversationContext.current.lastIntent = 'navigate';
-      conversationContext.current.lastParameters = parameters;
-      conversationContext.current.expectedNext = null;
-      
-      return route ? 
-        `As a PickZy assistant, I'll take you to the ${target} page.` : 
-        `As a PickZy assistant, I couldn't find a page for "${target}".`;
+    try {
+      if (parameters && parameters.target) {
+        const target = parameters.target;
+        const route = enhancedNavigate(target);
+        return route ? 
+          ` I'll take you to the ${target} page.` : 
+          ` I couldn't find a page for "${target}".`;
+      }
+      return " I need to know where you want to navigate.";
+    } catch (error) {
+      console.error({ 
+        step: 'Error in handleNavigateIntent', 
+        error: error.message, 
+        parameters 
+      });
+      return " I encountered an error while trying to navigate.";
     }
-    
-    // If no target specified, ask for clarification
-    conversationContext.current.expectedNext = {
-      expectedIntent: 'navigate',
-      expectedParameters: {}
-    };
-    
-    return "As a PickZy assistant, where would you like to go? You can say 'home', 'services', 'about us', 'portfolio', 'contact us', or 'careers'.";
   }, [enhancedNavigate]);
 
   const handleScrollIntent = useCallback((parameters) => {
-    if (parameters && parameters.direction) {
-      if (parameters.direction === 'down' || parameters.direction === 'up') {
-        const scrollAmount = window.innerHeight * 0.8;
-        window.scrollBy({ 
-          top: parameters.direction === 'down' ? scrollAmount : -scrollAmount, 
-          behavior: 'smooth' 
-        });
-        
-        // Update context
-        conversationContext.current.lastIntent = 'scroll';
-        conversationContext.current.lastParameters = parameters;
-        conversationContext.current.expectedNext = null;
-        
-        return `As a PickZy assistant, I'm scrolling ${parameters.direction}.`;
-      } else if (parameters.direction === 'top') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        
-        conversationContext.current.lastIntent = 'scroll';
-        conversationContext.current.lastParameters = parameters;
-        conversationContext.current.expectedNext = null;
-        
-        return "As a PickZy assistant, I'm taking you to the top of the page.";
-      } else if (parameters.direction === 'bottom') {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        
-        conversationContext.current.lastIntent = 'scroll';
-        conversationContext.current.lastParameters = parameters;
-        conversationContext.current.expectedNext = null;
-        
-        return "As a PickZy assistant, I'm taking you to the bottom of the page.";
+    try {
+      if (parameters && parameters.direction) {
+        if (parameters.direction === 'down' || parameters.direction === 'up') {
+          const scrollAmount = window.innerHeight * 0.8;
+          window.scrollBy({ 
+            top: parameters.direction === 'down' ? scrollAmount : -scrollAmount, 
+            behavior: 'smooth' 
+          });
+          return ` I'm scrolling ${parameters.direction}.`;
+        } else if (parameters.direction === 'top') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return " I'm taking you to the top of the page.";
+        } else if (parameters.direction === 'bottom') {
+          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+          return " I'm taking you to the bottom of the page.";
+        }
+      } else if (parameters && parameters.section) {
+        const scrolled = enhancedScrollToSection(parameters.section);
+        return scrolled ? 
+          ` I'm scrolling to the ${parameters.section} section.` : 
+          ` I couldn't find the ${parameters.section} section on this page.`;
       }
-    } else if (parameters && parameters.section) {
-      const scrolled = enhancedScrollToSection(parameters.section);
-      
-      conversationContext.current.lastIntent = 'scroll';
-      conversationContext.current.lastParameters = parameters;
-      conversationContext.current.expectedNext = null;
-      
-      return scrolled ? 
-        `As a PickZy assistant, I'm scrolling to the ${parameters.section} section.` : 
-        `As a PickZy assistant, I couldn't find the ${parameters.section} section on this page.`;
+      return " I need to know where you want to scroll.";
+    } catch (error) {
+      console.error({ 
+        step: 'Error in handleScrollIntent', 
+        error: error.message, 
+        parameters 
+      });
+      return " I encountered an error while trying to scroll.";
     }
-    
-    // If no direction/section specified, ask for clarification
-    conversationContext.current.expectedNext = {
-      expectedIntent: 'scroll',
-      expectedParameters: {}
-    };
-    
-    return "As a PickZy assistant, where would you like to scroll? You can say 'up', 'down', 'top', 'bottom', or specify a section like 'services' or 'testimonials'.";
   }, [enhancedScrollToSection]);
 
   const handleReadContentIntent = useCallback((parameters) => {
-    if (parameters && parameters.content_type) {
-      const content = readPageContent(parameters.content_type);
-      
-      // Update context
-      conversationContext.current.lastIntent = 'read';
-      conversationContext.current.lastParameters = parameters;
-      conversationContext.current.expectedNext = null;
-      
-      return content ? 
-        `As a PickZy assistant, here's what's in the ${parameters.content_type} section: ${content}` : 
-        `As a PickZy assistant, I couldn't find the ${parameters.content_type} section on this page.`;
+    try {
+      if (parameters && parameters.content_type) {
+        const content = readPageContent(parameters.content_type);
+        return content ? 
+          ` here's what's in the ${parameters.content_type} section: ${content}` : 
+          ` I couldn't find the ${parameters.content_type} section on this page.`;
+      }
+      return " I need to know what content you want me to read.";
+    } catch (error) {
+      console.error({ 
+        step: 'Error in handleReadContentIntent', 
+        error: error.message, 
+        parameters 
+      });
+      return " I encountered an error while trying to read content.";
     }
-    
-    // If no content type specified, ask for clarification
-    conversationContext.current.expectedNext = {
-      expectedIntent: 'read',
-      expectedParameters: {}
-    };
-    
-    return "As a PickZy assistant, what content would you like me to read? You can specify a section like 'hero', 'services', 'testimonials', or 'stats'.";
   }, [readPageContent]);
 
   const handleClickIntent = useCallback((parameters) => {
-    if (parameters && parameters.target) {
-      const clicked = clickButton(parameters.target);
-      
-      // Update context
-      conversationContext.current.lastIntent = 'click';
-      conversationContext.current.lastParameters = parameters;
-      conversationContext.current.expectedNext = null;
-      
-      return clicked ? 
-        `As a PickZy assistant, I clicked the ${parameters.target} button.` : 
-        `As a PickZy assistant, I couldn't find a ${parameters.target} button on this page.`;
+    try {
+      if (parameters && parameters.target) {
+        const clicked = clickButton(parameters.target);
+        return clicked ? 
+          ` I clicked the ${parameters.target} button.` : 
+          ` I couldn't find a ${parameters.target} button on this page.`;
+      }
+      return " I need to know what button you want me to click.";
+    } catch (error) {
+      console.error({ 
+        step: 'Error in handleClickIntent', 
+        error: error.message, 
+        parameters 
+      });
+      return " I encountered an error while trying to click the button.";
     }
-    
-    // If no target specified, ask for clarification
-    conversationContext.current.expectedNext = {
-      expectedIntent: 'click',
-      expectedParameters: {}
-    };
-    
-    return "As a PickZy assistant, what button would you like me to click? You can say 'contact us', 'view portfolio', 'learn more', or other available buttons.";
   }, [clickButton]);
 
   const handleCompanyInfoIntent = useCallback((parameters) => {
-    if (parameters && parameters.topic) {
-      // Update context
-      conversationContext.current.lastIntent = 'info';
-      conversationContext.current.lastParameters = parameters;
-      conversationContext.current.expectedNext = null;
-      
-      if (parameters.topic === 'services') {
-        return "As a PickZy assistant, we offer custom software development, mobile app development, web development, UI/UX design, cloud solutions, and digital marketing services. We specialize in creating tailored solutions that drive business growth.";
-      } else if (parameters.topic === 'about') {
-        return "As a PickZy assistant, we're a Chennai-based software company founded in 2011. We deliver AI-driven web and mobile solutions to clients globally. With over 300 successful projects, we're known for delivering flawless, on-time IT solutions with 24/7 support.";
-      } else if (parameters.topic === 'projects') {
-        return "As a PickZy assistant, we have completed over 300 projects with more than 200 happy clients across various industries including e-commerce, healthcare, finance, and education. Our portfolio showcases innovative solutions that drive real business results.";
-      } else if (parameters.topic === 'technologies') {
-        return "As a PickZy assistant, we use a wide range of technologies including React, Node.js, Next.js, Python, .NET, Java, Flutter, React Native, AWS, Azure, and Google Cloud. We stay updated with the latest tech trends to deliver cutting-edge solutions.";
-      } else if (parameters.topic === 'team') {
-        return "As a PickZy assistant, our team consists of 50-200 skilled professionals including developers, designers, project managers, and digital marketing experts. We're proud of our diverse talent pool that brings years of experience to every project.";
-      } else if (parameters.topic === 'nasscom') {
-        return "As a PickZy assistant, we're proud members of NASSCOM, the premier trade association of the Indian IT industry. This membership reflects our commitment to industry standards, excellence, and ethical business practices.";
+    try {
+      if (parameters && parameters.topic === 'services') {
+        return " we offer custom software development, mobile app development, web development, UI/UX design, cloud solutions, and digital marketing services. We specialize in creating tailored solutions that drive business growth.";
+      } else if (parameters && parameters.topic === 'about') {
+        return " we're a Chennai-based software company founded in 2011. We deliver AI-driven web and mobile solutions to clients globally. With over 300 successful projects, we're known for delivering flawless, on-time IT solutions with 24/7 support.";
+      } else if (parameters && parameters.topic === 'projects') {
+        return " we have completed over 300 projects with more than 200 happy clients across various industries including e-commerce, healthcare, finance, and education. Our portfolio showcases innovative solutions that drive real business results.";
+      } else if (parameters && parameters.topic === 'technologies') {
+        return " we use a wide range of technologies including React, Node.js, Next.js, Python, .NET, Java, Flutter, React Native, AWS, Azure, and Google Cloud. We stay updated with the latest tech trends to deliver cutting-edge solutions.";
+      } else if (parameters && parameters.topic === 'team') {
+        return " our team consists of 50-200 skilled professionals including developers, designers, project managers, and digital marketing experts. We're proud of our diverse talent pool that brings years of experience to every project.";
+      } else if (parameters && parameters.topic === 'nasscom') {
+        return " we're proud members of NASSCOM, the premier trade association of the Indian IT industry. This membership reflects our commitment to industry standards, excellence, and ethical business practices.";
       }
+      return " I can tell you about our services, projects, technologies, team, or NASSCOM membership. What would you like to know?";
+    } catch (error) {
+      console.error({ 
+        step: 'Error in handleCompanyInfoIntent', 
+        error: error.message, 
+        parameters 
+      });
+      return " I encountered an error while retrieving company information.";
     }
-    
-    // If no topic specified, ask for clarification
-    conversationContext.current.expectedNext = {
-      expectedIntent: 'info',
-      expectedParameters: {}
-    };
-    
-    return "As a PickZy assistant, what would you like to know about? You can ask about our 'services', 'company', 'projects', 'technologies', 'team', or 'NASSCOM membership'.";
   }, []);
 
   const handleStopIntent = useCallback(() => {
-    // Update context
-    conversationContext.current.lastIntent = 'stop';
-    conversationContext.current.lastParameters = {};
-    conversationContext.current.expectedNext = null;
-    
-    return "As a PickZy assistant, I'll stop listening now. Click the button if you need me again!";
+    try {
+      return " I'll stop listening now. Click the button if you need me again!";
+    } catch (error) {
+      console.error({ 
+        step: 'Error in handleStopIntent', 
+        error: error.message 
+      });
+      return " I encountered an error while trying to stop.";
+    }
   }, []);
 
   const handleHelpIntent = useCallback(() => {
-    const pageContext = getPageContext();
-    
-    // Update context
-    conversationContext.current.lastIntent = 'help';
-    conversationContext.current.lastParameters = {};
-    conversationContext.current.expectedNext = null;
-    
-    return `As a PickZy assistant, I can help you navigate our website, get information about our services, and assist with various tasks. On this ${pageContext.name} page, I can help you with: ${pageContext.features.join(', ')}. Try saying: "go to services", "scroll down", or "contact us".`;
+    try {
+      const pageContext = getPageContext();
+      return ` I can help you navigate our website, get information about our services, and assist with various tasks. On this ${pageContext.name} page, I can help you with: ${pageContext.features.join(', ')}. Try saying: "go to services", "scroll down", or "contact us".`;
+    } catch (error) {
+      console.error({ 
+        step: 'Error in handleHelpIntent', 
+        error: error.message 
+      });
+      return " I can help you navigate our website, get information about our services, and assist with various tasks. Try saying: 'go to services', 'scroll down', or 'contact us'.";
+    }
   }, [getPageContext]);
 
-  const handleFormIntent = useCallback((parameters) => {
-    if (parameters && parameters.action) {
-      // Update context
-      conversationContext.current.lastIntent = 'form';
-      conversationContext.current.lastParameters = parameters;
-      
-      if (parameters.action === 'contact') {
-        const contactClicked = clickButton('get in touch');
-        return contactClicked ? 
-          "As a PickZy assistant, I've opened the contact form for you. How can I help you with it?" : 
-          "As a PickZy assistant, I'll take you to our contact page where you can reach out to us.";
-      } else if (parameters.action === 'careers') {
-        const careersClicked = clickButton('apply now');
-        return careersClicked ? 
-          "As a PickZy assistant, I've opened the careers section for you. Would you like to see available positions?" : 
-          "As a PickZy assistant, I'll take you to our careers page where you can explore job opportunities.";
-      }
-    }
-    
-    return "As a PickZy assistant, I can help you with forms. Would you like to contact us or explore career opportunities?";
-  }, [clickButton]);
-
-  const handleSearchIntent = useCallback((parameters) => {
-    if (parameters && parameters.query) {
-      // Update context
-      conversationContext.current.lastIntent = 'search';
-      conversationContext.current.lastParameters = parameters;
-      
-      // Navigate to services page for search queries
-      enhancedNavigate('services');
-      return `As a PickZy assistant, I'm taking you to our services page where you can find information about ${parameters.query}.`;
-    }
-    
-    return "As a PickZy assistant, what would you like to search for? You can ask about our services like 'web development' or 'digital marketing'.";
-  }, [enhancedNavigate]);
-
-  const handleUnknownIntent = useCallback((command) => {
-    // Try to understand the context of the unknown command
-    const contextualResponse = understandContext(command);
-    if (contextualResponse) {
-      return contextualResponse.response;
-    }
-    
-    // If we have context from previous interaction, use it
-    if (conversationContext.current.lastIntent) {
-      const { lastIntent, lastParameters } = conversationContext.current;
-      
-      switch (lastIntent) {
-        case 'navigate':
-          return "I'm not sure where you want to go. Please specify a destination like 'home', 'services', or 'contact us'.";
-        case 'scroll':
-          return "I'm not sure where you want to scroll. Please specify a direction like 'up', 'down', or a section like 'services'.";
-        case 'read':
-          return "I'm not sure what content you want me to read. Please specify a section like 'hero' or 'testimonials'.";
-        case 'click':
-          return "I'm not sure what button you want me to click. Please specify a button like 'contact us' or 'learn more'.";
-        case 'info':
-          return "I'm not sure what information you're looking for. Please specify a topic like 'services' or 'company'.";
-        default:
-          return "I'm not sure I understand. Can you please rephrase your request? Try saying 'help' to see what I can do.";
-      }
-    }
-    
-    // Default response for completely unknown commands
-    return "I'm not sure I understand. Can you please rephrase your request? Try saying 'help' to see what I can do.";
-  }, [understandContext]);
-
-  // Enhanced command processing with advanced intent recognition
+  // Enhanced command processing with hybrid intent recognition
   const processCommand = useCallback(async (command) => {
     if (!command.trim()) return;
     
-    console.log('Processing command:', command);
+    console.log({ step: 'Processing command', command });
     setIsProcessing(true);
     
     let response = '';
     let shouldContinueListening = true;
     
-    // Recognize intent using our advanced system
-    const { intent, parameters } = recognizeIntent(command);
+    // Recognize intent using our hybrid system
+    const { intent, parameters, confidence } = recognizeIntent(command);
     
-    console.log('Recognized intent:', intent, 'with parameters:', parameters);
+    console.log({ 
+      step: 'Intent Recognized', 
+      intent, 
+      parameters, 
+      confidence 
+    });
     
     // Process based on recognized intent
     switch (intent) {
@@ -890,15 +647,8 @@ export const useVoiceAssistantCommands = ({
       case 'help':
         response = handleHelpIntent();
         break;
-      case 'form':
-        response = handleFormIntent(parameters);
-        break;
-      case 'search':
-        response = handleSearchIntent(parameters);
-        break;
-      case 'unknown':
       default:
-        response = handleUnknownIntent(command);
+        response = " I'm not sure I understand. Can you please rephrase your request? Try saying 'help' to see what I can do.";
         break;
     }
     
@@ -909,7 +659,7 @@ export const useVoiceAssistantCommands = ({
       { type: 'assistant', content: response, timestamp: new Date().toISOString() }
     ]);
     
-    console.log('Response:', response);
+    console.log({ step: 'Response Generated', response });
     speak(response);
     setIsProcessing(false);
     
@@ -928,10 +678,7 @@ export const useVoiceAssistantCommands = ({
     handleClickIntent,
     handleCompanyInfoIntent,
     handleStopIntent,
-    handleHelpIntent,
-    handleFormIntent,
-    handleSearchIntent,
-    handleUnknownIntent
+    handleHelpIntent
   ]);
 
   return {
