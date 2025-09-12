@@ -1,41 +1,21 @@
-'use client';
-
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 export const useVoiceRecognition = () => {
   const [isListening, setIsListening] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [browserSupport, setBrowserSupport] = useState({ 
     speechRecognition: true, 
     speechSynthesis: true 
   });
   const [micPermission, setMicPermission] = useState('prompt');
+  const recognitionInstanceRef = useRef(null);
+  const shouldListenRef = useRef(false);
+  const isAutoRestartingRef = useRef(false);
 
-  // Check microphone permission
-  useEffect(() => {
-    const checkMicrophonePermission = async () => {
-      try {
-        const permissionStatus = await navigator.permissions.query({ name: 'microphone' });
-        setMicPermission(permissionStatus.state);
-        
-        permissionStatus.onchange = () => {
-          setMicPermission(permissionStatus.state);
-        };
-      } catch (error) {
-        console.error('Error checking microphone permission:', error);
-      }
-    };
-    
-    if (typeof navigator !== 'undefined' && navigator.permissions) {
-      checkMicrophonePermission();
-    }
-  }, []);
-
-  // Initialize speech recognition
   useEffect(() => {
     const initializeVoiceRecognition = () => {
       if (typeof window === 'undefined') return;
 
-      // Check browser support
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       
       if (!SpeechRecognition) {
@@ -43,51 +23,54 @@ export const useVoiceRecognition = () => {
         return;
       }
 
-      // Initialize speech recognition
       const recognition = new SpeechRecognition();
       recognition.continuous = true;
       recognition.interimResults = true;
       recognition.lang = 'en-US';
       recognition.maxAlternatives = 3;
 
-      recognition.onstart = () => {
-        setIsListening(true);
-      };
+    recognition.onstart = () => {
+  setIsListening(true);
+  isAutoRestartingRef.current = false;
+};
 
       recognition.onresult = (event) => {
-        const results = event.results;
-        const latestResult = results[results.length - 1];
+        if (isPaused) return;
+        const latestResult = event.results[event.results.length - 1];
         const newTranscript = latestResult[0].transcript;
-        
-        // If the result is final, process it
+
         if (latestResult.isFinal && window.voiceRecognition && window.voiceRecognition.onCommand) {
           window.voiceRecognition.onCommand(newTranscript);
         }
       };
 
       recognition.onerror = (event) => {
-        if (event.error === 'no-speech') {
-          if (window.voiceRecognition && window.voiceRecognition.onError) {
-            window.voiceRecognition.onError("As a PickZy assistant, I didn't hear anything. Please try again.");
-          }
-        } else if (event.error === 'audio-capture') {
-          if (window.voiceRecognition && window.voiceRecognition.onError) {
-            window.voiceRecognition.onError("As a PickZy assistant, I can't access your microphone. Please check your microphone settings.");
-          }
-        } else if (event.error === 'not-allowed') {
-          if (window.voiceRecognition && window.voiceRecognition.onError) {
-            window.voiceRecognition.onError("As a PickZy assistant, microphone access is not allowed. Please enable microphone permissions.");
-          }
-          setMicPermission('denied');
+        console.error('Speech recognition error:', event.error);
+        if (window.voiceRecognition && window.voiceRecognition.onError) {
+          window.voiceRecognition.onError(`Recognition error: ${event.error}`);
         }
-        setIsListening(false);
       };
 
-      recognition.onend = () => {
-        setIsListening(false);
-      };
 
-      // Store recognition instance globally for access
+   recognition.onend = () => {
+  if (!isPaused && shouldListenRef.current) {
+    isAutoRestartingRef.current = true;
+    // Do NOT set isListening to false during auto-restart
+    setTimeout(() => {
+      try {
+        recognition.start();
+      } catch (e) {
+        console.error('Auto-restart failed:', e);
+        isAutoRestartingRef.current = false;
+        setIsListening(false);  // Fallback: if restart fails, reflect stopped state
+      }
+    }, 300);
+  } else {
+    isListening && setIsListening(false);
+  }
+};
+
+      recognitionInstanceRef.current = recognition;
       window.voiceRecognition = window.voiceRecognition || {};
       window.voiceRecognition.instance = recognition;
     };
@@ -95,48 +78,67 @@ export const useVoiceRecognition = () => {
     initializeVoiceRecognition();
 
     return () => {
-      if (window.voiceRecognition && window.voiceRecognition.instance) {
-        window.voiceRecognition.instance.stop();
+      if (recognitionInstanceRef.current) {
+        recognitionInstanceRef.current.stop();
         setIsListening(false);
       }
     };
-  }, []);
+  }, [isPaused]);
 
   const startListening = useCallback(() => {
     if (!browserSupport.speechRecognition) return;
 
     if (micPermission === 'denied') {
       if (window.voiceRecognition && window.voiceRecognition.onError) {
-        window.voiceRecognition.onError("As a PickZy assistant, microphone access is blocked. Please enable microphone permissions in your browser settings.");
+        window.voiceRecognition.onError('Microphone permission denied.');
       }
       return;
     }
 
-    if (window.voiceRecognition && window.voiceRecognition.instance && !isListening) {
-      try {
-        window.voiceRecognition.instance.start();
-      } catch (e) {
-        setIsListening(false);
-      }
+    shouldListenRef.current = true;
+
+    try {
+      recognitionInstanceRef.current.start();
+    } catch (e) {
+      console.error('Failed to start listening:', e);
     }
-  }, [isListening, browserSupport.speechRecognition, micPermission]);
+  }, [browserSupport.speechRecognition, micPermission]);
 
   const stopListening = useCallback(() => {
-    if (window.voiceRecognition && window.voiceRecognition.instance) {
-      try {
-        window.voiceRecognition.instance.stop();
-        setIsListening(false);
-      } catch (e) {
-        setIsListening(false);
-      }
+    shouldListenRef.current = false;
+    if (recognitionInstanceRef.current) {
+      recognitionInstanceRef.current.stop();
+      setIsListening(false);
+      setIsPaused(false);
     }
   }, []);
 
+  const pauseListening = useCallback(() => {
+    setIsPaused(true);
+    if (recognitionInstanceRef.current) {
+      recognitionInstanceRef.current.stop();
+    }
+  }, []);
+
+  const resumeListening = useCallback(() => {
+    setIsPaused(false);
+    if (recognitionInstanceRef.current && !isListening) {
+      try {
+        recognitionInstanceRef.current.start();
+      } catch (e) {
+        console.error('Failed to resume listening:', e);
+      }
+    }
+  }, [isListening]);
+
   return {
     isListening,
+    isPaused,
     browserSupport,
     micPermission,
     startListening,
-    stopListening
+    stopListening,
+    pauseListening,
+    resumeListening
   };
 };

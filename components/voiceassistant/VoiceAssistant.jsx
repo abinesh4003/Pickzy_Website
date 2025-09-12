@@ -17,7 +17,9 @@ const VoiceAssistant = () => {
     browserSupport,
     micPermission,
     startListening,
-    stopListening
+    stopListening,
+    pauseListening, 
+    resumeListening
   } = useVoiceRecognition();
 
   const {
@@ -49,24 +51,43 @@ const VoiceAssistant = () => {
     }
   }, [processCommand]);
 
-  const toggleListening = useCallback(() => {
-    if (isListening) {
-      stopListening();
-      
-      // Clear any pending welcome message
-      if (welcomeTimeoutRef.current) {
-        clearTimeout(welcomeTimeoutRef.current);
-        welcomeTimeoutRef.current = null;
-      }
-    } else {
-      startListening();
-      
-      // Only speak the welcome message if we successfully started listening
-      welcomeTimeoutRef.current = setTimeout(() => {
-        speak("Hi, I'm your Pickzy voice assistant. How can I help you?");
-      }, 500);
+
+  const speakAndPauseRecognition = useCallback((text, onEndCallback) => {
+  pauseListening();  // Pause recognition before speaking
+
+  speak(
+    text,
+    () => { /* onStart */ },
+    () => { 
+      resumeListening();  // Resume recognition after speaking ends
+      if (onEndCallback) onEndCallback();
+    },
+    (error) => { 
+      console.error('Speech synthesis error:', error);
+      resumeListening();  // Ensure recognition always resumes
     }
-  }, [isListening, startListening, stopListening, speak]);
+  );
+}, [pauseListening, resumeListening, speak]);
+
+
+
+const toggleListening = useCallback(() => {
+  if (isListening) {
+    stopListening();
+    
+    if (welcomeTimeoutRef.current) {
+      clearTimeout(welcomeTimeoutRef.current);
+      welcomeTimeoutRef.current = null;
+    }
+  } else {
+    startListening();
+    
+    welcomeTimeoutRef.current = setTimeout(() => {
+      speakAndPauseRecognition("Hi, I'm your PickZy voice assistant. How can I help you?");
+    }, 500);
+  }
+}, [isListening, startListening, stopListening, speakAndPauseRecognition]);
+
 
   return (
     <div className="fixed bottom-24 right-6 z-50">
