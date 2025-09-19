@@ -95,7 +95,7 @@ export default function DesktopApplicationDevelopment() {
   return (
 <div className="min-h-screen bg-white">
 {/* Desktop Development Hero */}
-<section className="relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden min-h-[600px] flex items-center">
+<section className="desktop-hero relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden min-h-[600px] flex items-center">
   {/* Background pattern */}
   <div className="absolute top-0 left-0 w-full h-full opacity-10">
     <div className="absolute inset-0 bg-[url('/service/desktop/hero.png')] bg-no-repeat bg-center bg-cover"></div>
@@ -176,7 +176,7 @@ export default function DesktopApplicationDevelopment() {
 
 
       {/* Benefits Section */}
-      <section className="py-12 md:py-20 bg-white" id="desktop-casestudies">
+      <section className="desktop-benefits py-12 md:py-20 bg-white" id="desktop-casestudies">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             className="text-center mb-10 md:mb-16"
@@ -214,7 +214,7 @@ export default function DesktopApplicationDevelopment() {
       </section>
 
       {/* Services Section */}
-      <section className="py-12 md:py-20 bg-gray-50">
+      <section className="desktop-services py-12 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             className="text-center mb-10 md:mb-16"
@@ -248,7 +248,7 @@ export default function DesktopApplicationDevelopment() {
       </section>
 
       {/* Technologies Section */}
-      <section className="py-12 md:py-20 bg-white">
+      <section className="desktop-technologies py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             className="text-center mb-10 md:mb-16"
@@ -321,7 +321,7 @@ export default function DesktopApplicationDevelopment() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-12 md:py-20 bg-gray-50">
+      <section className="desktop-usecases py-12 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             className="text-center mb-10 md:mb-16"
@@ -352,7 +352,7 @@ export default function DesktopApplicationDevelopment() {
       </section>
 
       {/* Process Section */}
-      <section className="py-12 md:py-20 bg-white">
+      <section className="desktop-process py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             className="text-center mb-10 md:mb-16"
@@ -382,7 +382,7 @@ export default function DesktopApplicationDevelopment() {
       </section>
 
       {/* Why Us Section */}
-      <section className="py-8 md:py-12 lg:py-16 bg-white">
+      <section className="desktop-whyus py-8 md:py-12 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             className="text-center mb-10 md:mb-16"
@@ -502,7 +502,7 @@ export default function DesktopApplicationDevelopment() {
 
       {/* CTA Section */}
       <section 
-        className="py-12 md:py-20 bg-gradient-to-br from-blue-600 to-purple-600"
+        className="desktop-cta py-12 md:py-20 bg-gradient-to-br from-blue-600 to-purple-600"
         data-aos="fade-in"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

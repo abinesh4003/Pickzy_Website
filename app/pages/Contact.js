@@ -348,13 +348,15 @@ const contactInfo = [
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
        {/* contact form */}
-       <ContactForm />
+       <div className='contact-form'>
+              <ContactForm />
+        </div>
        
         {/* Additional Info */}
         <div className="space-y-8">
           {/* Why Choose Us */}
           <Card 
-            className="border-0 shadow-lg"
+            className="why-choose border-0 shadow-lg"
             data-aos="fade-left"
           >
             <CardHeader>
@@ -413,7 +415,9 @@ const contactInfo = [
           </Card>
 
           {/* Client Testimonial */}
-         <TestimonialCarousel />
+           <div className="contact-testimonials">
+                <TestimonialCarousel />
+              </div>
 
           {/* Social Links */}
           <Card 
@@ -435,7 +439,7 @@ const contactInfo = [
             </CardHeader>
             <CardContent>
               <div 
-                className="flex space-x-4"
+                className="social-links flex space-x-4"
                 data-aos="fade-up"
                  
               >
@@ -508,7 +512,7 @@ const contactInfo = [
   </section>
 
  {/* Map Section */}
-<section className=".map py-8 md:py-16 lg:py-20 bg-white">
+<section className="contact-map py-8 md:py-16 lg:py-20 bg-white">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
     <div 
       className="text-center mb-12"

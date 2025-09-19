@@ -125,7 +125,7 @@ export default function WebDevelopment() {
        
       
 {/* Web Development Hero */}
-<section className="relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden min-h-screen flex items-center">
+<section className="webdev-hero relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden min-h-screen flex items-center">
   {/* Background pattern */}
   <div className="absolute top-0 left-0 w-full h-full opacity-20">
     <div className="absolute inset-0 bg-[url('/service/web/hero.jpg')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
@@ -195,7 +195,7 @@ export default function WebDevelopment() {
 </section>
 
       {/* Features Section */}
-      <section className="py-12 md:py-20 bg-white">
+      <section className="webdev-features py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             className="text-center mb-12 md:mb-16"
@@ -236,7 +236,7 @@ export default function WebDevelopment() {
       </section>
 
       {/* Services Section */}
-      <section className="py-12 md:py-20 bg-gray-50">
+      <section className="webdev-services py-12 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             className="text-center mb-12 md:mb-16"
@@ -284,7 +284,7 @@ export default function WebDevelopment() {
       </section>
 
       {/* Technologies Section */}
-      <section className="py-12 md:py-20 bg-white">
+      <section className="webdev-technologies py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             className="text-center mb-12 md:mb-16"
@@ -327,7 +327,7 @@ export default function WebDevelopment() {
       </section>
 
       {/* Process Section */}
-      <section className="py-12 md:py-20 bg-gray-50">
+      <section className="webdev-process py-12 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             className="text-center mb-12 md:mb-16"
@@ -381,7 +381,7 @@ export default function WebDevelopment() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-12 md:py-20 bg-white">
+      <section className="webdev-why-choose py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             className="text-center mb-12 md:mb-16"
@@ -436,7 +436,7 @@ export default function WebDevelopment() {
 
       {/* CTA Section */}
       <section 
-        className="py-12 md:py-20 bg-gradient-to-r from-blue-600 to-purple-600"
+        className="webdev-cta py-12 md:py-20 bg-gradient-to-r from-blue-600 to-purple-600"
         data-aos="fade-in"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

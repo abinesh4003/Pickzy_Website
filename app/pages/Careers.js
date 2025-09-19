@@ -231,7 +231,7 @@ export default function Careers() {
   </section>
 
   {/* Employee Testimonial */}
-  <section className="py-20 bg-white">
+  <section className="careers-testimonial py-20 bg-white">
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <Card 
         className="border-0 shadow-xl bg-gradient-to-r from-blue-50 to-purple-50"
@@ -259,7 +259,7 @@ export default function Careers() {
   </section>
 
   {/* CTA Section */}
-  <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+  <section className="careers-cta py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 className="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-down">
         Ready to Join Our Team?

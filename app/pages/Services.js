@@ -145,7 +145,7 @@ const services = [
 
   {/* Services Grid */}
   <section 
-    className=".service-grid py-8 md:py-12 lg:py-16 bg-white"
+    className="service-grid py-8 md:py-12 lg:py-16 bg-white"
     data-aos="fade-up"
   >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

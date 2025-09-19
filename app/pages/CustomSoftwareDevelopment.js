@@ -129,69 +129,69 @@ const developmentProcess = [
 
 export default function CustomSoftwareDevelopment() {
   return (
-    <div className="min-h-screen bg-white">   
-            {/* Hero Section */}
-   <section className="relative min-h-[calc(100vh-4rem)] bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden flex items-center">
-  {/* Background pattern */}
-  <div className="absolute top-0 left-0 w-full h-full opacity-20">
-    <div className="absolute inset-0 bg-[url('/service/custom/hero1.jpg')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
-  </div>
-
-  <div className="max-w-7xl mx-auto px-8 sm:px-6 py-4 lg:px-8 w-full">
-    <div className="grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-8 md:gap-12 items-center">
-      {/* Text Content */}
-      <div className="relative z-10 text-center lg:text-left">
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
-        Any Software {" "}
-          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            For Any Business Need
-          </span>
-        </h1>
-        
-        <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-lg mx-auto lg:mx-0">
-         We build completely custom software solutions designed to solve your exact business challenges
-        </p>
-        
-       
-        
-        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
-          <Link href="/contact-us">
-            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 text-sm md:text-base">
-             Get a Free Consultation 
-            </Button>
-          </Link>
-          <Link href="/portfolio">
-            <Button variant="outline" className="border-gray-300 hover:bg-gray-50 text-sm md:text-base">
-            See Our Work
-            </Button>
-          </Link>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="custom-hero relative min-h-[calc(100vh-4rem)] bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden flex items-center">
+        {/* Background pattern */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-20">
+          <div className="absolute inset-0 bg-[url('/service/custom/hero1.jpg')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
         </div>
-      </div>
 
-    
+        <div className="max-w-7xl mx-auto px-8 sm:px-6 py-4 lg:px-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-8 md:gap-12 items-center">
+            {/* Text Content */}
+            <div className="relative z-10 text-center lg:text-left">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+                Any Software {" "}
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  For Any Business Need
+                </span>
+              </h1>
 
-      {/* Image Content */}
-      <div className="relative mt-8 md:mt-0">
-        <div className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
-          <img
-            src="/service/custom/hero1.jpg"
-            alt="Web development illustration"
-            className="w-full h-auto object-cover"
-            width={600}
-            height={500}
-          />
-          <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-blue-400 rounded-full mix-blend-multiply opacity-20 animate-float"></div>
-          <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-28 h-28 md:w-40 md:h-40 bg-purple-400 rounded-full mix-blend-multiply opacity-20 animate-float-delay"></div>
+              <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-lg mx-auto lg:mx-0">
+                We build completely custom software solutions designed to solve your exact business challenges
+              </p>
+
+
+
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+                <Link href="/contact-us">
+                  <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 text-sm md:text-base">
+                    Get a Free Consultation
+                  </Button>
+                </Link>
+                <Link href="/portfolio">
+                  <Button variant="outline" className="border-gray-300 hover:bg-gray-50 text-sm md:text-base">
+                    See Our Work
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+
+
+            {/* Image Content */}
+            <div className="relative mt-8 md:mt-0">
+              <div className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
+                <img
+                  src="/service/custom/hero1.jpg"
+                  alt="Web development illustration"
+                  className="w-full h-auto object-cover"
+                  width={600}
+                  height={500}
+                />
+                <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-blue-400 rounded-full mix-blend-multiply opacity-20 animate-float"></div>
+                <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-28 h-28 md:w-40 md:h-40 bg-purple-400 rounded-full mix-blend-multiply opacity-20 animate-float-delay"></div>
+              </div>
+
+
+            </div>
+          </div>
         </div>
-        
-       
-      </div>
-    </div>
-  </div>
-   </section>
+      </section>
 
       {/* What We Build Section */}
-      <section className="py-8 md:py-16 lg:py-20 bg-white">
+      <section className="custom-build py-8 md:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -205,8 +205,8 @@ export default function CustomSoftwareDevelopment() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card 
-                key={index} 
+              <Card
+                key={index}
                 className="hover:shadow-lg transition-all duration-300 h-full"
               >
                 <CardHeader>
@@ -239,7 +239,7 @@ export default function CustomSoftwareDevelopment() {
       </section>
 
       {/* Industries We Serve */}
-      <section className="py-8 md:py-16 lg:py-20 bg-gray-50">
+      <section className="custom-industries py-8 md:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -253,7 +253,7 @@ export default function CustomSoftwareDevelopment() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {industriesWeServe.map((industry, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -267,7 +267,7 @@ export default function CustomSoftwareDevelopment() {
       </section>
 
       {/* Our Development Process */}
-      <section className="py-8 md:py-16 lg:py-20 bg-white">
+      <section className="custom-process py-8 md:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -281,7 +281,7 @@ export default function CustomSoftwareDevelopment() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {developmentProcess.map((step, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
               >
@@ -312,7 +312,7 @@ export default function CustomSoftwareDevelopment() {
       </section>
 
       {/* Technology Agnostic Section */}
-      <section className="py-8 md:py-16 lg:py-20 bg-gray-50">
+      <section className="custom-technology py-8 md:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Image */}
@@ -327,7 +327,7 @@ export default function CustomSoftwareDevelopment() {
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaUMk9kfa"
               />
             </div>
-            
+
             {/* Content */}
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -337,7 +337,7 @@ export default function CustomSoftwareDevelopment() {
               <p className="text-lg text-gray-600 mb-6">
                 We don't believe in one-size-fits-all solutions. Our team selects the perfect technology stack for your specific requirements, whether it's:
               </p>
-              
+
               <div className="grid grid-cols-2 gap-4 mb-8">
                 <div className="flex items-center">
                   <Check className="h-5 w-5 text-green-500 mr-2" />
@@ -356,7 +356,7 @@ export default function CustomSoftwareDevelopment() {
                   <span>SQL or NoSQL</span>
                 </div>
               </div>
-              
+
               <p className="text-lg text-gray-600">
                 Our expertise spans all major platforms and frameworks, ensuring we always use the right tool for the job.
               </p>
@@ -366,7 +366,7 @@ export default function CustomSoftwareDevelopment() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-8 md:py-16 lg:py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="custom-cta py-8 md:py-16 lg:py-20 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Build Your Custom Software Solution?

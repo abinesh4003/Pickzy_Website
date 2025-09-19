@@ -101,7 +101,7 @@ export default function MobileDevelopment() {
   return (
   <div className="min-h-screen bg-white">
 {/* Mobile Development Hero */}
-<section className="relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden min-h-screen flex items-center">
+<section className="mobile-hero relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden min-h-screen flex items-center">
   {/* Background pattern */}
   <div className="absolute top-0 left-0 w-full h-full opacity-20">
     <div className="absolute inset-0 bg-[url('/service/mobile/hero_back.jpg')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
@@ -202,7 +202,7 @@ export default function MobileDevelopment() {
 </section>
 
     {/* Overview Section */}
-    <section className="py-10 md:py-16 bg-white" id="case-studies">
+    <section className="mobile-overview py-10 md:py-16 bg-white" id="case-studies">
       <div className="max-w-7xl mx-auto px-4 sm:px-4 md:px-8 lg:px-8">
         <div className="bg-gray-50 rounded-lg md:rounded-xl p-5 md:p-12" data-aos="fade-up">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
@@ -246,7 +246,7 @@ export default function MobileDevelopment() {
     </section>
 
     {/* Features Section */}
-    <section className="py-12 md:py-20 bg-white">
+    <section className="mobile-features py-12 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-4 md:px-8 lg:px-8">
         <div className="text-center mb-10 md:mb-16" data-aos="fade-up">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
@@ -279,7 +279,7 @@ export default function MobileDevelopment() {
     </section>
 
     {/* Capabilities Section */}
-    <section className="py-12 md:py-20 bg-gray-50">
+    <section className="mobile-capabilities py-12 md:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-4 md:px-8 lg:px-8">
         <div className="text-center mb-10 md:mb-16" data-aos="fade-up">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
@@ -317,7 +317,7 @@ export default function MobileDevelopment() {
     </section>
 
     {/* Process Section */}
-    <section className="py-12 md:py-20 bg-white">
+    <section className="mobile-process py-12 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-4 md:px-8 lg:px-8">
         <div className="text-center mb-10 md:mb-16" data-aos="fade-up">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
@@ -372,7 +372,7 @@ export default function MobileDevelopment() {
     </section>
 
     {/* Why Choose Us Section */}
-    <section className="py-12 md:py-20 bg-gray-50">
+    <section className="mobile-why-choose py-12 md:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-4 md:px-8 lg:px-8">
         <div className="text-center mb-10 md:mb-16" data-aos="fade-up">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
@@ -484,7 +484,7 @@ export default function MobileDevelopment() {
 
     {/* CTA Section */}
     <section 
-      className="py-12 md:py-20 bg-gradient-to-r from-blue-600 to-purple-600"
+      className="mobile-cta py-12 md:py-20 bg-gradient-to-r from-blue-600 to-purple-600"
       data-aos="fade-up"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-4 md:px-8 lg:px-8 text-center">

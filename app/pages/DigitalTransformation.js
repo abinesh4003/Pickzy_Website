@@ -83,7 +83,7 @@ const whyUs = [
        
       
       {/* Hero Section */}
-   <section className="relative min-h-screen pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden flex items-center">
+   <section className="digital-hero relative min-h-screen pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden flex items-center">
   {/* Background pattern */}
   <div className="absolute top-0 left-0 w-full h-full opacity-20">
     <div className="absolute inset-0 bg-[url('/service/marketing/digital.jpg')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
@@ -143,7 +143,7 @@ const whyUs = [
    </section>
 
       {/* Introduction */}
-      <section className="py-8 md:py-16 lg:py-20 bg-white">
+      <section className="digital-intro py-8 md:py-16 lg:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -158,7 +158,7 @@ const whyUs = [
       </section>
 
       {/* Services Section */}
-      <section className="py-8 md:py-16 lg:py-20 bg-gray-50">
+      <section className="digital-services py-8 md:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -191,7 +191,7 @@ const whyUs = [
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-8 md:py-16 lg:py-20 bg-blue-900 text-white">
+      <section className="digital-why-choose py-8 md:py-16 lg:py-20 bg-blue-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -216,7 +216,7 @@ const whyUs = [
       </section>
 
       {/* Technologies */}
-      <section className="py-8 md:py-16 lg:py-20 bg-white">
+      <section className="digital-technologies py-8 md:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -236,7 +236,7 @@ const whyUs = [
       </section>
 
       {/* Final CTA */}
-      <section className="py-8 md:py-16 lg:py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="digital-cta py-8 md:py-16 lg:py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Rocket className="h-12 w-12 mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-bold mb-6">

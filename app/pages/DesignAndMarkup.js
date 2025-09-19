@@ -123,7 +123,7 @@ export default function DesignAndMarkup() {
        
       
 {/* Design & Markup Hero */}
-<section className="relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden min-h-screen flex items-center">
+<section className="design-hero relative pt-16 pb-12 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden min-h-screen flex items-center">
   {/* Background pattern */}
   <div className="absolute top-0 left-0 w-full h-full opacity-20">
     <div className="absolute inset-0 bg-[url('/service/design/hero.avif')] bg-no-repeat bg-center bg-cover bg-[length:70px_70px]"></div>
@@ -194,7 +194,7 @@ export default function DesignAndMarkup() {
   </div>
 </section> 
       {/* Why It Matters Section */}
-      <section className="py-8 md:py-16 lg:py-20 bg-white">
+      <section className="design-why py-8 md:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -232,7 +232,7 @@ export default function DesignAndMarkup() {
       </section>
 
       {/* Services Section */}
-      <section className="py-8 md:py-16 lg:py-20 bg-gray-50">
+      <section className="design-services py-8 md:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -274,7 +274,7 @@ export default function DesignAndMarkup() {
       </section>
 
       {/* Process Section */}
-      <section className="py-8 md:py-16 lg:py-20 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="design-process py-8 md:py-16 lg:py-20 bg-gradient-to-b from-white via-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -325,7 +325,7 @@ export default function DesignAndMarkup() {
       </section>
 
       {/* Technologies Section */}
-      <section className="py-8 md:py-16 lg:py-20 bg-gray-50">
+      <section className="design-technologies py-8 md:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -360,7 +360,7 @@ export default function DesignAndMarkup() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-8 md:py-16 lg:py-20 bg-white">
+      <section className="design-benefits py-8 md:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -400,7 +400,7 @@ export default function DesignAndMarkup() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-8 md:py-16 lg:py-20 bg-gray-50">
+      <section className="design-testimonials py-8 md:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -447,7 +447,7 @@ export default function DesignAndMarkup() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-8 md:py-16 lg:py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
+      <section className="design-cta py-8 md:py-16 lg:py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-6 text-center">
             Let's Turn Your <span className="text-blue-200">Design Into Reality</span>

@@ -955,7 +955,7 @@ const filters = [
 
       {/* Hero Section */}
       <section
-        className="bg-gradient-to-br from-blue-50 via-white to-purple-50 py-8 md:py-20"
+        className="portfolio-hero bg-gradient-to-br from-blue-50 via-white to-purple-50 py-8 md:py-20"
         data-aos="fade"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -997,7 +997,7 @@ const filters = [
 
       {/* Filter Tabs */}
      <section
-  className="py-8 bg-white border-b"
+  className="portfolio-categories py-8 bg-white border-b"
   data-aos="fade-up"
 >
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1025,7 +1025,7 @@ const filters = [
 </section>
 
       {/* Projects Grid */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section className="portfolio-projects py-12 sm:py-16 lg:py-20 bg-white">
         <div className=" mx-auto px-4 sm:px-6 lg:px-8">
           <div 
            key={activeFilter}
@@ -1051,7 +1051,7 @@ const filters = [
                       <Button
                         variant="secondary"
                         size="sm"
-                        className="translate-y-2 group-hover:translate-y-0 transition-transform duration-300"
+                        className="btn-quick-view translate-y-2 group-hover:translate-y-0 transition-transform duration-300"
                       >
                         Quick View
                       </Button>
@@ -1099,7 +1099,7 @@ const filters = [
 
       {/* Project Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm ">
+        <div className="portfolio-modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm ">
           {/* Modal Container - scales with zoom but stays within viewport */}
           <div
             className="relative bg-white rounded-lg shadow-xl w-[95vw] max-w-[800px] max-h-[95vh] overflow-hidden p-4"
@@ -1111,7 +1111,7 @@ const filters = [
           >
             {/* Close Button */}
             <button
-              className="absolute top-2 right-2 z-10 p-1 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+              className="btn-close absolute top-2 right-2 z-10 p-1 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
               onClick={() => setSelectedProject(null)}
             >
               <X className="w-4 h-4 text-gray-600" />
@@ -1207,7 +1207,7 @@ const filters = [
       )}
 
       {/* Technologies Section */}
-      <section className="py-8 md:py-12 lg:py-16  bg-gray-50">
+      <section className="portfolio-technologies py-8 md:py-12 lg:py-16  bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -1239,7 +1239,7 @@ const filters = [
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="portfolio-cta py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Build Your Next Project?
