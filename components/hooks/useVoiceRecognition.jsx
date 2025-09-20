@@ -54,21 +54,27 @@ export const useVoiceRecognition = () => {
         setIsListening(true);
       };
 
-      // Store last transcript and process on end if needed
-      let lastTranscript = '';
-      let lastProcessedTime = 0;
+      // Buffer and timeout for processing
+      let buffer = "";
+      let processTimeout;
+
       recognition.onresult = (event) => {
-        const now = Date.now();
-        const results = event.results;
-        const latestResult = results[results.length - 1];
-        const newTranscript = latestResult[0].transcript;
-        lastTranscript = newTranscript;
-        if (latestResult.isFinal && now - lastProcessedTime > 800) {
-          lastProcessedTime = now;
-          if (window.voiceRecognition && window.voiceRecognition.onCommand) {
-            window.voiceRecognition.onCommand(newTranscript);
-            lastTranscript = '';
-          }
+        const latestResult = event.results[event.results.length - 1];
+        const transcript = latestResult[0].transcript;
+
+        // collect transcripts into buffer
+        buffer = (buffer + " " + transcript).trim();
+
+        if (latestResult.isFinal) {
+          clearTimeout(processTimeout);
+
+          // wait 1s before committing, so mobile short-pauses don't cut speech
+          processTimeout = setTimeout(() => {
+            if (window.voiceRecognition?.onCommand) {
+              window.voiceRecognition.onCommand(buffer.trim());
+            }
+            buffer = "";
+          }, 1000);
         }
       };
 
@@ -88,14 +94,20 @@ export const useVoiceRecognition = () => {
           setMicPermission('denied');
         }
         setIsListening(false);
+        buffer = "";
       };
 
       recognition.onend = () => {
         setIsListening(false);
-        // If lastTranscript is not empty, process it
-        if (lastTranscript && window.voiceRecognition && window.voiceRecognition.onCommand) {
-          window.voiceRecognition.onCommand(lastTranscript);
-          lastTranscript = '';
+        // Clear any pending timeout
+        if (processTimeout) {
+          clearTimeout(processTimeout);
+            processTimeout = null;
+        }
+        // Process any remaining buffer content
+        if (buffer.trim() && window.voiceRecognition?.onCommand) {
+          window.voiceRecognition.onCommand(buffer.trim());
+          buffer = "";
         }
         // Restart recognition if keepAlive is true and we're not currently speaking
         if (window.voiceRecognition?.keepAlive && !window.speechSynthesis?.speaking) {
@@ -162,4 +174,4 @@ export const useVoiceRecognition = () => {
     startListening,
     stopListening
   };
-};
+};  
