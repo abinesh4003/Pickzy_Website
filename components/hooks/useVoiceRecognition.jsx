@@ -58,6 +58,10 @@ export const useVoiceRecognition = () => {
       let buffer = "";
       let processTimeout;
 
+
+      // Detect mobile device once at top of effect (before onresult)
+      const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
       recognition.onresult = (event) => {
         const latestResult = event.results[event.results.length - 1];
         const transcript = latestResult[0].transcript;
@@ -68,15 +72,22 @@ export const useVoiceRecognition = () => {
         if (latestResult.isFinal) {
           clearTimeout(processTimeout);
 
-          // wait 1s before committing, so mobile short-pauses don't cut speech
-          processTimeout = setTimeout(() => {
+          if (isMobile) {
+            processTimeout = setTimeout(() => {
+              if (window.voiceRecognition?.onCommand) {
+                window.voiceRecognition.onCommand(buffer.trim());
+              }
+              buffer = "";
+            }, 1000);
+          } else {
             if (window.voiceRecognition?.onCommand) {
               window.voiceRecognition.onCommand(buffer.trim());
             }
             buffer = "";
-          }, 1000);
+          }
         }
       };
+
 
       recognition.onerror = (event) => {
         if (event.error === 'no-speech') {
@@ -102,7 +113,7 @@ export const useVoiceRecognition = () => {
         // Clear any pending timeout
         if (processTimeout) {
           clearTimeout(processTimeout);
-            processTimeout = null;
+          processTimeout = null;
         }
         // Process any remaining buffer content
         if (buffer.trim() && window.voiceRecognition?.onCommand) {
@@ -158,7 +169,7 @@ export const useVoiceRecognition = () => {
   const stopListening = useCallback(() => {
     if (window.voiceRecognition && window.voiceRecognition.instance) {
       try {
-        window.voiceRecognition.keepAlive = false; 
+        window.voiceRecognition.keepAlive = false;
         window.voiceRecognition.instance.stop();
         setIsListening(false);
       } catch (e) {
