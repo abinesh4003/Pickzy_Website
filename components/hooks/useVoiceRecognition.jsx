@@ -55,13 +55,17 @@ export const useVoiceRecognition = () => {
       };
 
       recognition.onresult = (event) => {
+        // Debounce to prevent multiple command processing on mobile
+        if (!recognition._lastProcessedTime) recognition._lastProcessedTime = 0;
+        const now = Date.now();
         const results = event.results;
         const latestResult = results[results.length - 1];
         const newTranscript = latestResult[0].transcript;
-
-        // If the result is final, process it
-        if (latestResult.isFinal && window.voiceRecognition && window.voiceRecognition.onCommand) {
-          window.voiceRecognition.onCommand(newTranscript);
+        if (latestResult.isFinal && now - recognition._lastProcessedTime > 800) {
+          recognition._lastProcessedTime = now;
+          if (window.voiceRecognition && window.voiceRecognition.onCommand) {
+            window.voiceRecognition.onCommand(newTranscript);
+          }
         }
       };
 
