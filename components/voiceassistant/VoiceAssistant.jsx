@@ -21,7 +21,9 @@ const VoiceAssistant = () => {
   } = useVoiceRecognition();
 
   const {
-    speak
+    speak,
+    isSpeaking,
+    stopSpeaking
   } = useSpeechSynthesis();
 
   const {
@@ -50,6 +52,19 @@ const VoiceAssistant = () => {
   }, [processCommand]);
 
   const toggleListening = useCallback(() => {
+    // If currently speaking, stop the speech
+    if (isSpeaking) {
+      stopSpeaking();
+      stopListening();
+      
+      // Clear any pending welcome message
+      if (welcomeTimeoutRef.current) {
+        clearTimeout(welcomeTimeoutRef.current);
+        welcomeTimeoutRef.current = null;
+      }
+      return;
+    }
+    
     if (isListening) {
       stopListening();
       
@@ -66,13 +81,13 @@ const VoiceAssistant = () => {
         speak("Hi, I'm your pickzy voice assistant. How can I help you?");
       }, 500);
     }
-  }, [isListening, startListening, stopListening, speak]);
+  }, [isListening, isSpeaking, startListening, stopListening, speak, stopSpeaking]);
 
   return (
     <div className="fixed bottom-24 right-6 z-50">
       <VoiceAssistantButton
         isListening={isListening}
-        isProcessing={isProcessing}
+        isProcessing={isProcessing || isSpeaking} // Show processing state when speaking too
         browserSupport={browserSupport}
         micPermission={micPermission}
         toggleListening={toggleListening}

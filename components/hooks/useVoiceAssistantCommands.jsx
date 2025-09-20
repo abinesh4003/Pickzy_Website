@@ -223,7 +223,54 @@ const siteConfig = {
         selector: 'a[href="/services"]',
         keywords: ["view", "services", "explore", "services", "our", "services"]
       }
-    }
+    },
+    multiButtons: {
+  quick_view: [
+    { title: "Algo Trading Platform", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Nubet", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "BayFay", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Equal-i", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Offline Ticketing", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Light House Vision", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Elfkins", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "HeartFace", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "MISS ME KISS ME", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "SpotYa", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "WEEDSEEKER", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "FORAGER PRO", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "COCAVE", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "GYM LINK", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "BLASTER", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "NCC Video Connect", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "COMPUTER DOCTOR", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Super Market Billing Software", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "HIIT", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "TO SHARE", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "ECOMMERCE MAGAZIN", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "FLURV", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "CITY LIMOUSINE", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "CLASSIC VACATIONS", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "EHR EVOLUTION", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "T5 DATA CENTERS", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "WI SPA USA", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "PLE", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Smart Home", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Home Controls", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Ez Trailer", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "HOME AUTOMATION", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "React Native", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Angular JS", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Ionic", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Xamarin", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Face Guru, Face Dox & Sales Guru", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "COOK'N", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Health Mirror", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Meditation App", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Photo Lasso", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "TIX ALERT", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" },
+    { title: "Fajr WakeUp", cardSelector: ".portfolio-projects .group", buttonSelector: ".btn-quick-view" }
+  ],
+}
   },
   "/blog": {
     sections: {
@@ -1000,7 +1047,7 @@ export const useVoiceAssistantCommands = ({
             break;
           }
           case 'stop': {
-            response = "Stopping listening now. Say 'Hey Nova' to start again";
+            response = "Stopping listening now.";
             shouldContinueListening = false;
             break;
           }

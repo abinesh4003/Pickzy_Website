@@ -86,8 +86,8 @@ export const useVoiceRecognition = () => {
       recognition.onend = () => {
         setIsListening(false);
 
-        // Restart recognition if keepAlive is true
-        if (window.voiceRecognition?.keepAlive) {
+        // Restart recognition if keepAlive is true and we're not currently speaking
+        if (window.voiceRecognition?.keepAlive && !window.speechSynthesis?.speaking) {
           try {
             recognition.start();
           } catch (e) {
@@ -124,7 +124,7 @@ export const useVoiceRecognition = () => {
 
     if (window.voiceRecognition?.instance && !isListening) {
       try {
-        window.voiceRecognition.keepAlive = true;   // <-- add this
+        window.voiceRecognition.keepAlive = true;
         window.voiceRecognition.instance.start();
       } catch (e) {
         setIsListening(false);

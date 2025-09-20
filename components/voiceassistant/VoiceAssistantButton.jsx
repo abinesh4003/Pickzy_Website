@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Mic } from 'lucide-react';
+import { Mic, VolumeX } from 'lucide-react';
 import Image from 'next/image';
 
 const VoiceAssistantButton = ({
@@ -18,7 +18,7 @@ const VoiceAssistantButton = ({
   // Update tooltip text based on state
   useEffect(() => {
     if (isProcessing) {
-      setTooltipText('Processing your request...');
+      setTooltipText('Processing your request... Click to stop');
     } else if (isListening) {
       setTooltipText('Listening... Click to stop');
     } else if (micPermission === 'denied') {
@@ -45,16 +45,14 @@ const VoiceAssistantButton = ({
   };
 
   const handleClick = () => {
-    if (!isProcessing && browserSupport.speechRecognition) {
-      toggleListening();
-    }
+    toggleListening();
   };
 
   return (
     <div className="relative">
       <button
         onClick={handleClick}
-        disabled={isProcessing || !browserSupport.speechRecognition}
+        disabled={!browserSupport.speechRecognition}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className="w-14 h-14 rounded-full shadow-lg flex items-center justify-center 
