@@ -54,17 +54,20 @@ export const useVoiceRecognition = () => {
         setIsListening(true);
       };
 
+      // Store last transcript and process on end if needed
+      let lastTranscript = '';
+      let lastProcessedTime = 0;
       recognition.onresult = (event) => {
-        // Debounce to prevent multiple command processing on mobile
-        if (!recognition._lastProcessedTime) recognition._lastProcessedTime = 0;
         const now = Date.now();
         const results = event.results;
         const latestResult = results[results.length - 1];
         const newTranscript = latestResult[0].transcript;
-        if (latestResult.isFinal && now - recognition._lastProcessedTime > 800) {
-          recognition._lastProcessedTime = now;
+        lastTranscript = newTranscript;
+        if (latestResult.isFinal && now - lastProcessedTime > 800) {
+          lastProcessedTime = now;
           if (window.voiceRecognition && window.voiceRecognition.onCommand) {
             window.voiceRecognition.onCommand(newTranscript);
+            lastTranscript = '';
           }
         }
       };
@@ -89,7 +92,11 @@ export const useVoiceRecognition = () => {
 
       recognition.onend = () => {
         setIsListening(false);
-
+        // If lastTranscript is not empty, process it
+        if (lastTranscript && window.voiceRecognition && window.voiceRecognition.onCommand) {
+          window.voiceRecognition.onCommand(lastTranscript);
+          lastTranscript = '';
+        }
         // Restart recognition if keepAlive is true and we're not currently speaking
         if (window.voiceRecognition?.keepAlive && !window.speechSynthesis?.speaking) {
           try {
