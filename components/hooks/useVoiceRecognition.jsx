@@ -78,7 +78,7 @@ export const useVoiceRecognition = () => {
                 window.voiceRecognition.onCommand(buffer.trim());
               }
               buffer = "";
-            }, 1000);
+            }, 100);
           } else {
             if (window.voiceRecognition?.onCommand) {
               window.voiceRecognition.onCommand(buffer.trim());
