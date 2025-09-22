@@ -60,7 +60,11 @@ const VoiceAssistantButton = ({
         aria-label={isListening ? 'Stop listening' : 'Start voice assistant'}
       >
         {isProcessing ? (
-          <div className="w-6 h-6 border-2 border-gray-600 border-t-transparent rounded-full animate-spin"></div>
+         <div className="flex items-center justify-center space-x-1">
+  <span className="w-2 h-2 bg-blue-500 rounded-full animate-ping"></span>
+  <span className="w-2 h-2 bg-purple-500 rounded-full animate-ping delay-150"></span>
+  <span className="w-2 h-2 bg-pink-500 rounded-full animate-ping delay-300"></span>
+</div>
         ) : isListening ? (
           <Mic className="h-6 w-6 text-blue-500" />
         ) : (

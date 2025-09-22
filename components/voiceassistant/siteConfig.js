@@ -216,7 +216,7 @@ const siteConfig = {
       },
       contact_cta: {
         selector: 'a[href="/contact-us"]',
-        keywords: ["start", "project", "contact", "free", "consultation", "get", "in", "touch"]
+        keywords: ["start", "project", "contact", "free", "consultation", "get", "touch"]
       },
       services_cta: {
         selector: 'a[href="/services"]',
@@ -681,7 +681,7 @@ const globalButtons = {
   cookies: { selector: 'a[href="/placeholders/cookies"]', keywords: ["cookies", "cookie policy"] },
   terms: { selector: 'a[href="/placeholders/terms"]', keywords: ["terms", "terms and conditions"] },
   linkedin: { selector: 'a[href*="linkedin.com"]', keywords: ["linkedin"] },
-  twitter: { selector: 'a[href*="x.com"], a[href*="twitter.com"]', keywords: ["twitter", "x"] },
+  twitter: { selector: 'a[href*="x.com"], a[href*="twitter.com"]', keywords: ["twitter"] },
   instagram: { selector: 'a[href*="instagram.com"]', keywords: ["instagram"] },
   facebook: { selector: 'a[href*="facebook.com"]', keywords: ["facebook"] }
 };

@@ -62,31 +62,25 @@ export const useVoiceRecognition = () => {
       // Detect mobile device once at top of effect (before onresult)
       const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-      recognition.onresult = (event) => {
-        const latestResult = event.results[event.results.length - 1];
-        const transcript = latestResult[0].transcript;
+  recognition.onresult = (event) => {
+  const latestResult = event.results[event.results.length - 1];
+  const transcript = latestResult[0].transcript.trim();
 
-        // collect transcripts into buffer
-        buffer = (buffer + " " + transcript).trim();
+  if (!latestResult.isFinal) return; // ignore interim results
 
-        if (latestResult.isFinal) {
-          clearTimeout(processTimeout);
+  if (isMobile) {
+    setTimeout(() => {
+      if (window.voiceRecognition?.onCommand) {
+        window.voiceRecognition.onCommand(transcript);
+      }
+    }, 1000);
+  } else {
+    if (window.voiceRecognition?.onCommand) {
+      window.voiceRecognition.onCommand(transcript);
+    }
+  }
+};
 
-          if (isMobile) {
-            processTimeout = setTimeout(() => {
-              if (window.voiceRecognition?.onCommand) {
-                window.voiceRecognition.onCommand(buffer.trim());
-              }
-              buffer = "";
-            }, 1000);
-          } else {
-            if (window.voiceRecognition?.onCommand) {
-              window.voiceRecognition.onCommand(buffer.trim());
-            }
-            buffer = "";
-          }
-        }
-      };
 
 
       recognition.onerror = (event) => {
