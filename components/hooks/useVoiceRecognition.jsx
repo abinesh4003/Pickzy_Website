@@ -82,7 +82,7 @@ export const useVoiceRecognition = () => {
               window.voiceRecognition.onCommand(mobileBuffer);
             }
             mobileBuffer = "";
-          }, 800); // wait for more finals before sending
+          },1200); // wait for more finals before sending
         } else {
           // Desktop → send immediately
           if (window.voiceRecognition?.onCommand) {
