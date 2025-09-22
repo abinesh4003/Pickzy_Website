@@ -62,24 +62,35 @@ export const useVoiceRecognition = () => {
       // Detect mobile device once at top of effect (before onresult)
       const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-  recognition.onresult = (event) => {
-  const latestResult = event.results[event.results.length - 1];
-  const transcript = latestResult[0].transcript.trim();
+      // Add mobileBuffer outside onresult
+      let mobileBuffer = "";
+      let mobileTimer;
 
-  if (!latestResult.isFinal) return; // ignore interim results
+      recognition.onresult = (event) => {
+        const latestResult = event.results[event.results.length - 1];
+        const transcript = latestResult[0].transcript.trim();
 
-  if (isMobile) {
-    setTimeout(() => {
-      if (window.voiceRecognition?.onCommand) {
-        window.voiceRecognition.onCommand(transcript);
-      }
-    }, 1000);
-  } else {
-    if (window.voiceRecognition?.onCommand) {
-      window.voiceRecognition.onCommand(transcript);
-    }
-  }
-};
+        if (!latestResult.isFinal) return; // ignore interim
+
+        if (isMobile) {
+          // Merge finals on mobile
+          mobileBuffer = (mobileBuffer + " " + transcript).trim();
+
+          clearTimeout(mobileTimer);
+          mobileTimer = setTimeout(() => {
+            if (window.voiceRecognition?.onCommand) {
+              window.voiceRecognition.onCommand(mobileBuffer);
+            }
+            mobileBuffer = "";
+          }, 800); // wait for more finals before sending
+        } else {
+          // Desktop → send immediately
+          if (window.voiceRecognition?.onCommand) {
+            window.voiceRecognition.onCommand(transcript);
+          }
+        }
+      };
+
 
 
 
@@ -104,17 +115,13 @@ export const useVoiceRecognition = () => {
 
       recognition.onend = () => {
         setIsListening(false);
-        // Clear any pending timeout
-        if (processTimeout) {
-          clearTimeout(processTimeout);
-          processTimeout = null;
+
+        // Flush mobileBuffer if any pending text
+        if (mobileBuffer.trim() && window.voiceRecognition?.onCommand) {
+          window.voiceRecognition.onCommand(mobileBuffer.trim());
+          mobileBuffer = "";
         }
-        // Process any remaining buffer content
-        if (buffer.trim() && window.voiceRecognition?.onCommand) {
-          window.voiceRecognition.onCommand(buffer.trim());
-          buffer = "";
-        }
-        // Restart recognition if keepAlive is true and we're not currently speaking
+
         if (window.voiceRecognition?.keepAlive && !window.speechSynthesis?.speaking) {
           try {
             recognition.start();
@@ -123,6 +130,7 @@ export const useVoiceRecognition = () => {
           }
         }
       };
+
 
       // Store recognition instance globally for access
       window.voiceRecognition = window.voiceRecognition || {};

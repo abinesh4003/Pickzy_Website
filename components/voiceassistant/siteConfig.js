@@ -130,6 +130,12 @@ const siteConfig = {
         selector: ".map",
         keywords: ["map", "location", "office", "visit", "address", "directions"]
       }
+    },
+    form: {
+      name: { selector: 'contact-form input[name="name"]', keywords: ["name"] },
+      email: { selector: 'contact-form input[name="email"]', keywords: ["email"] },
+      phone: { selector: 'contact-form input[name="phone"]', keywords: ["phone"] },
+      message: { selector: 'contact-form textarea[name="message"]', keywords: ["message"] }
     }
   },
   "/careers": {
