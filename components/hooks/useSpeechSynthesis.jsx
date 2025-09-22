@@ -82,7 +82,7 @@ export const useSpeechSynthesis = () => {
             } catch (e) {
               console.warn('Failed to restart recognition:', e);
             }
-          }, 300);
+          }, 100);
         }
       };
 
