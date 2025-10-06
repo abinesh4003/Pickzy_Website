@@ -538,7 +538,6 @@ const contactInfo = [
       className="overflow-hidden rounded-lg shadow-lg w-full h-15"
       data-aos="zoom-in" >
       <iframe
-      className='map'
         title="PickZy Office Location"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0021472816775!2d80.24262777489412!3d13.035534987285773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267b2ccd93b41%3A0x41ed7963e2164dfe!2sPickZy!5e0!3m2!1sen!2sin!4v1753084995249!5m2!1sen!2sin"
         width="100%"

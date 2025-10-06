@@ -2,8 +2,5 @@
 User-agent: *
 Allow: /
 
-# Host
-Host: https://pickzy.com
-
 # Sitemaps
 Sitemap: https://pickzy.com/sitemap.xml

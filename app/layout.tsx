@@ -20,19 +20,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Extend the JSX namespace to include custom elements
-// declare global {
-//   namespace JSX {
-//     interface IntrinsicElements {
-//       'elevenlabs-convai': React.DetailedHTMLProps<
-//         React.HTMLAttributes<HTMLElement> & {
-//           'agent-id'?: string;
-//         },
-//         HTMLElement
-//       >;
-//     }
-//   }
-// }
 
 export default function RootLayout({
   children,
@@ -61,18 +48,10 @@ export default function RootLayout({
           }}
         />
 
-        {/* ElevenLabs Convai Widget
-        <Script
-          src="https://unpkg.com/@elevenlabs/convai-widget-embed"
-          strategy="afterInteractive"
-        /> */}
       </head>
       <body className={inter.className}>
         <ClientWrapper>{children}</ClientWrapper>
         <VoiceAssistant/>
-
-        {/* Widget element with proper TypeScript handling
-        <elevenlabs-convai agent-id="agent_8501k3te3tbaev3tvgs2fb0k9jhp"></elevenlabs-convai> */}
       </body>
     </html>
   );

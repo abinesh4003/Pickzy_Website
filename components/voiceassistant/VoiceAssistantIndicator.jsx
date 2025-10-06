@@ -24,6 +24,7 @@ const VoiceAssistantIndicator = ({
 
       {/* Status indicator (small dot on corner) */}
       <div className="absolute -top-2 -right-2 z-40">
+      
       </div>
 
       {/* Browser support warning */}

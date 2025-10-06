@@ -11,6 +11,7 @@ const VoiceAssistant = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [conversationHistory, setConversationHistory] = useState([]);
   const welcomeTimeoutRef = useRef(null);
+  const hasWelcomedRef = useRef(false); // ✅ NEW: Track if welcome message has already been spoken
   
   const {
     isListening,
@@ -56,8 +57,6 @@ const VoiceAssistant = () => {
     if (isSpeaking) {
       stopSpeaking();
       stopListening();
-      
-      // Clear any pending welcome message
       if (welcomeTimeoutRef.current) {
         clearTimeout(welcomeTimeoutRef.current);
         welcomeTimeoutRef.current = null;
@@ -67,19 +66,20 @@ const VoiceAssistant = () => {
     
     if (isListening) {
       stopListening();
-      
-      // Clear any pending welcome message
       if (welcomeTimeoutRef.current) {
         clearTimeout(welcomeTimeoutRef.current);
         welcomeTimeoutRef.current = null;
       }
     } else {
       startListening();
-      
-      // Only speak the welcome message if we successfully started listening
-      welcomeTimeoutRef.current = setTimeout(() => {
-        speak("Hi, I'm your pickzy voice assistant. How can I help you?");
-      }, 500);
+
+      // ✅ Speak welcome message only the FIRST time
+      if (!hasWelcomedRef.current) {
+        hasWelcomedRef.current = true;
+        welcomeTimeoutRef.current = setTimeout(() => {
+          speak("Hi, I'm your PickZy voice assistant. How can I help you?");
+        }, 500);
+      }
     }
   }, [isListening, isSpeaking, startListening, stopListening, speak, stopSpeaking]);
 
@@ -87,7 +87,7 @@ const VoiceAssistant = () => {
     <div className="fixed bottom-24 right-6 z-50">
       <VoiceAssistantButton
         isListening={isListening}
-        isProcessing={isProcessing || isSpeaking} // Show processing state when speaking too
+        isProcessing={isProcessing || isSpeaking} 
         browserSupport={browserSupport}
         micPermission={micPermission}
         toggleListening={toggleListening}

@@ -137,7 +137,7 @@ export default function CloudServices() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100">
+      <section className="cloud-hero relative pt-32 pb-24 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[url('/service/cloud/hero.jpg')] bg-cover bg-[length:300px] bg-center mix-blend-overlay"></div>
         </div>
@@ -154,12 +154,12 @@ export default function CloudServices() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact-us">
-                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg">
+                <Button size="lg" className="btn-get-assessment bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg">
                   Get Cloud Assessment
                 </Button>
                 </Link>
                 <Link href="#cloud-case-studies">
-                <Button size="lg" variant="outline" className="border-gray-300 hover:bg-white/90 shadow-sm">
+                <Button size="lg" variant="outline" className="btn-view-case-studies border-gray-300 hover:bg-white/90 shadow-sm">
                   View Case Studies
                 </Button>
                 </Link>
@@ -206,7 +206,7 @@ export default function CloudServices() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white" id="cloud-case-studies">
+      <section className="cloud-features py-20 bg-white" id="cloud-case-studies">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -239,7 +239,7 @@ export default function CloudServices() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="cloud-services py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -277,7 +277,7 @@ export default function CloudServices() {
       </section>
 
       {/* Cloud Providers Section */}
-      <section className="py-20 bg-white">
+      <section className="cloud-providers py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -300,7 +300,7 @@ export default function CloudServices() {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="cloud-process py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -328,7 +328,7 @@ export default function CloudServices() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
+      <section className="cloud-cta py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6" data-aos="fade-up">
             Ready to Accelerate Your Cloud Journey?
@@ -340,14 +340,14 @@ export default function CloudServices() {
           <div className="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up">
             <Button 
               size="lg" 
-              className="bg-white text-blue-600 hover:bg-gray-100"
+              className="btn-start-assessment bg-white text-blue-600 hover:bg-gray-100"
             >
              <Link href="/contact-us">Start Cloud Assessment</Link>
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white text-gradient-to-r from-blue-600 to-indigo-600 hover:bg-white hover:text-blue-600"
+              className="btn-talk-expert border-white text-gradient-to-r from-blue-600 to-indigo-600 hover:bg-white hover:text-blue-600"
             >
               <Link href="/contact-us">Talk to Cloud Expert</Link>
             </Button>

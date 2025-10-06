@@ -92,8 +92,6 @@ export const useVoiceRecognition = () => {
       };
 
 
-
-
       recognition.onerror = (event) => {
         if (event.error === 'no-speech') {
           if (window.voiceRecognition && window.voiceRecognition.onError) {
@@ -121,7 +119,6 @@ export const useVoiceRecognition = () => {
           window.voiceRecognition.onCommand(mobileBuffer.trim());
           mobileBuffer = "";
         }
-
         if (window.voiceRecognition?.keepAlive && !window.speechSynthesis?.speaking) {
           try {
             recognition.start();
@@ -130,7 +127,6 @@ export const useVoiceRecognition = () => {
           }
         }
       };
-
 
       // Store recognition instance globally for access
       window.voiceRecognition = window.voiceRecognition || {};
