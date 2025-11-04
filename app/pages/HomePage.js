@@ -10,6 +10,7 @@
   import AnimatedCounter from '@/components/AnimatedCounter'
   import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
   import { useState } from 'react';
+  import Script from 'next/script'; 
 
   import {
     ArrowRight,
@@ -528,6 +529,23 @@
           </div>
         </section>
       </div>
+
+     <div className="relative w-20 h-20">
+             
+       <elevenlabs-convai
+  agent-id="agent_3401k73pcjbzfdbr5wa24mvm7gsm"
+  autoplay
+>
+</elevenlabs-convai>
+
+     </div>
+
+      {/* Load the widget script */}
+      <Script
+        src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+        async
+        type="text/javascript"
+      />
       </div>
     );
   }
